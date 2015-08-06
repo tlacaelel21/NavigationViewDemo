@@ -1,4 +1,4 @@
-package com.vinidsl.navigationviewdemo;
+package com.vinidsl.navigationviewdemo.Adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
+import com.vinidsl.navigationviewdemo.Model.FeriaIntModel;
+import com.vinidsl.navigationviewdemo.R;
 
 import java.util.List;
 
