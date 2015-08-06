@@ -1,4 +1,4 @@
-package com.vinidsl.navigationviewdemo;
+package com.vinidsl.navigationviewdemo.Adapter;
 
 /**
  * Created by root on 24/07/15.
@@ -13,6 +13,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.vinidsl.navigationviewdemo.Directivo;
+import com.vinidsl.navigationviewdemo.Principal;
+import com.vinidsl.navigationviewdemo.R;
 
 public class AdapterDirectivos extends BaseAdapter{
 

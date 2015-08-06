@@ -1,4 +1,4 @@
-package com.vinidsl.navigationviewdemo;
+package com.vinidsl.navigationviewdemo.Model;
 
 /**
  * Created by root on 4/08/15.
