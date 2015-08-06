@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">CPTM</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="frag1">Ferias Internacionales</string>
+    <string name="frag2">Ferias Nacionales</string>
+    <string name="frag3">Noticias</string>
+    <string name="frag4">Ingresa</string>
+    <string name="link">www.visitmexico.com</string>
+
+    <string name="term_cond">
+      <![CDATA[
+        Al dar clic en <b>Registra</b> aceptas las <font color="#1CA8B8"><b>Conidiciones de servicio</b></font> y <font color="#1CA8B8"><b>Política de Privacidad</b></font>.
+      ]]>
+    </string>
+    <string name="login_text">
+      <![CDATA[
+        <font color="#FFFFFF"><b>¿Problemas con el inicio de sesión?</b></font>
+      ]]>
+    </string>
+    <string name="login_text2">
+      <![CDATA[
+        <font color="#FFFFFF"><b>¿Aún no tienes cuenta?</b></font>
+      ]]>
+    </string>
+
+    <string name="consCebPaco">Directivos de Cebollas Paco:</string>
+
+</resources>

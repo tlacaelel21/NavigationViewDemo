@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="@drawable/login"
+    android:id="@+id/registro">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/titulo_login">
+
+        <TextView
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=""
+            android:id="@+id/textView7" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/head_profile_st" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Iniciar sesión"
+            android:id="@+id/textView"
+            android:textSize="24dip"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="295dp"
+        android:layout_height="454dp"
+        android:layout_gravity="center"
+        android:dividerPadding="15dp"
+        android:weightSum="1">
+
+        <EditText android:id="@+id/correo_electronico"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="35dp"
+            android:background="@color/window_background"
+            android:inputType="textEmailAddress"
+            android:text="julian@mobt-k.com"
+            android:hint="Correo Electrónico"
+            android:paddingLeft="10dp"
+            android:textSize="17dip"
+            android:singleLine="true"/>
+
+        <EditText
+            android:id="@+id/psw"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="25dp"
+            android:text="123456"
+            android:textSize="17dip"
+            android:background="@color/window_background"
+            android:hint="Contraseña"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:inputType="textPassword"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="INICIAR"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:textSize="20dip"
+            android:background="@drawable/boton_login"
+            android:id="@+id/boton_ingresar"
+            android:layout_weight="0.11" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/textViewLogin"
+            android:layout_weight="0.42" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/textViewLoginCuenta"
+            android:layout_weight="0.12" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="REGISTRAR"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:textSize="20dip"
+            android:background="@drawable/botonpulsado"
+            android:id="@+id/buttonRegistrate"
+            android:layout_weight="0.11" />
+    </LinearLayout>
+
+
+</LinearLayout>

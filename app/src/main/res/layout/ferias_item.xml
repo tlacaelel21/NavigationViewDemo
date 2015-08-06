@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF">
+
+
+    <ImageView
+        android:id="@+id/foto"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/company"
+        android:cropToPadding="true"
+        android:scaleType="center"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ubicacion"
+        android:layout_marginBottom="14dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/foto"
+        android:clickable="true"
+        android:text="Nombre evento I"
+        android:textColor="#000"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/ubicacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/foto"
+        android:layout_alignLeft="@+id/nombre"
+        android:layout_alignRight="@+id/nombre"
+        android:layout_marginBottom="12dp"
+        android:textSize="14dip"
+        android:textColor="#000"
+        android:text="Ubicación del evento, MEX."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="65dp"
+        android:layout_height="150dp"
+        android:id="@+id/linearLayout"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/foto"
+        android:background="@drawable/event_list"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="bottom">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="27dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="27 JUL"
+            android:gravity="center_horizontal"
+            android:id="@+id/textView" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="31 JUL"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/textView6" />
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

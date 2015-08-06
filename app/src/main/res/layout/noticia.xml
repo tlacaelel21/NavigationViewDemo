@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/liston_noticias"
+        android:weightSum="1">
+        <TextView
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=""
+            android:id="@+id/textView9" />
+
+        <ImageView
+            android:layout_width="38dp"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView"
+            android:src="@drawable/head_noticias" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Noticia"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/textView"
+            android:textSize="24dip"
+            android:textColor="#FFFFFF"
+            android:layout_weight="0.91"
+            android:gravity="center_vertical"/>
+
+    </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="198dp"
+        android:id="@+id/imageEvento"
+        android:src="@drawable/newspaper"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="14dip"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:text="Título del artículo"
+        android:paddingLeft="20dp"
+        android:paddingTop="15dp"
+        android:id="@+id/textView11" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="12dip"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:text="Julio 31, 2015"
+        android:paddingLeft="20dp"
+        android:paddingTop="15dp"
+        android:id="@+id/text_fecha" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="14dip"
+        android:textColor="#000"
+        android:paddingLeft="20dp"
+        android:paddingTop="5dp"
+        android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
+        android:id="@+id/textView12" />
+
+</LinearLayout>

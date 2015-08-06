@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/liston_noticias"
+        android:weightSum="1"
+        android:layout_weight="0.06">
+        <TextView
+            android:layout_width="38dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=""
+            android:id="@+id/textView9" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView"
+            android:src="@drawable/head_noticias"
+            android:layout_weight="0.09" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Noticias"
+            android:id="@+id/textView"
+            android:textSize="24dip"
+            android:textColor="#FFFFFF"
+            android:layout_weight="0.91"
+            android:paddingLeft="10dp"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#FFF"
+        android:layout_marginTop="30dp"
+        android:weightSum="1"
+        android:layout_weight="0.07">
+        <FrameLayout
+            android:layout_width="53dp"
+            android:layout_height="match_parent"
+            android:background="@color/primary">
+
+            <ImageView
+                android:id="@+id/foto_noticia"
+                android:layout_width="53dp"
+                android:layout_height="fill_parent"
+                android:adjustViewBounds="true"
+                android:background="@drawable/newspaper"
+                android:cropToPadding="true"
+                android:scaleType="center"
+                android:gravity="center_horizontal"
+                android:layout_alignTop="@+id/nombre"
+                android:layout_alignRight="@+id/nombre"
+                android:layout_alignEnd="@+id/nombre"
+                android:layout_marginRight="24dp"
+                android:layout_marginEnd="24dp"/>
+
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.59"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/nombre"
+                android:layout_width="146dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/ubicacion"
+                android:layout_marginLeft="10dp"
+                android:text="Título del artículo"
+                android:textColor="#000"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_marginLeft="10dp"
+                android:text="Julio 31, 2015"
+                android:textColor="#000"
+                android:id="@+id/textView14" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="53dp"
+            android:layout_height="47dp"
+            android:background="@color/primary">
+
+            <!--ImageView
+                android:id="@+id/fotoLink"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/action_open_orange"
+                android:cropToPadding="true"
+                android:scaleType="center"
+                android:gravity="center_horizontal"
+                android:layout_alignTop="@+id/nombre"
+                android:layout_alignRight="@+id/nombre"
+                android:layout_alignEnd="@+id/nombre"
+                android:layout_marginRight="24dp"
+                android:layout_marginEnd="24dp" /-->
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/action_open_orange"
+                android:id="@+id/ver_noticia"
+                android:layout_gravity="center" />
+
+        </FrameLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#FFF"
+        android:layout_marginTop="30dp"
+        android:weightSum="1"
+        android:layout_weight="0.07">
+        <FrameLayout
+            android:layout_width="53dp"
+            android:layout_height="match_parent"
+            android:background="@color/primary">
+
+            <ImageView
+                android:id="@+id/foto_noticia2"
+                android:layout_width="53dp"
+                android:layout_height="fill_parent"
+                android:adjustViewBounds="true"
+                android:background="@drawable/newspaper"
+                android:cropToPadding="true"
+                android:scaleType="center"
+                android:gravity="center_horizontal"
+                android:layout_alignTop="@+id/nombre2"
+                android:layout_alignRight="@+id/nombre2"
+                android:layout_alignEnd="@+id/nombre2"
+                android:layout_marginRight="24dp"
+                android:layout_marginEnd="24dp"/>
+
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.59"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/nombre2"
+                android:layout_width="146dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/ubicacion"
+                android:layout_marginLeft="10dp"
+                android:text="Título del artículo"
+                android:textColor="#000"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_marginLeft="10dp"
+                android:text="Julio 31, 2015"
+                android:textColor="#000"
+                android:id="@+id/textView14b" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="53dp"
+            android:layout_height="47dp"
+            android:background="@color/primary">
+
+            <!--ImageView
+                android:id="@+id/fotoLink"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/action_open_orange"
+                android:cropToPadding="true"
+                android:scaleType="center"
+                android:gravity="center_horizontal"
+                android:layout_alignTop="@+id/nombre"
+                android:layout_alignRight="@+id/nombre"
+                android:layout_alignEnd="@+id/nombre"
+                android:layout_marginRight="24dp"
+                android:layout_marginEnd="24dp" /-->
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/action_open_orange"
+                android:id="@+id/ver_noticia2"
+                android:layout_gravity="center" />
+
+        </FrameLayout>
+
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#FFF"
+        android:layout_marginTop="30dp"
+        android:weightSum="1"
+        android:layout_weight="0.07">
+        <FrameLayout
+            android:layout_width="53dp"
+            android:layout_height="match_parent"
+            android:background="@color/primary">
+
+            <ImageView
+                android:id="@+id/foto_noticia3"
+                android:layout_width="53dp"
+                android:layout_height="fill_parent"
+                android:adjustViewBounds="true"
+                android:background="@drawable/newspaper"
+                android:cropToPadding="true"
+                android:scaleType="center"
+                android:gravity="center_horizontal"
+                android:layout_alignTop="@+id/nombre3"
+                android:layout_alignRight="@+id/nombre3"
+                android:layout_alignEnd="@+id/nombre3"
+                android:layout_marginRight="24dp"
+                android:layout_marginEnd="24dp"/>
+
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.59"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/nombre3"
+                android:layout_width="146dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/ubicacion"
+                android:layout_marginLeft="10dp"
+                android:text="Título del artículo"
+                android:textColor="#000"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_marginLeft="10dp"
+                android:text="Julio 31, 2015"
+                android:textColor="#000"
+                android:id="@+id/textView14c" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="53dp"
+            android:layout_height="47dp"
+            android:background="@color/primary"
+            android:layout_weight="0.06">
+
+            <!--ImageView
+                android:id="@+id/fotoLink"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/action_open_orange"
+                android:cropToPadding="true"
+                android:scaleType="center"
+                android:gravity="center_horizontal"
+                android:layout_alignTop="@+id/nombre"
+                android:layout_alignRight="@+id/nombre"
+                android:layout_alignEnd="@+id/nombre"
+                android:layout_marginRight="24dp"
+                android:layout_marginEnd="24dp" /-->
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/action_open_orange"
+                android:id="@+id/ver_noticia3"
+                android:layout_gravity="center" />
+
+        </FrameLayout>
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

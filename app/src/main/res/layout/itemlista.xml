@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/paddingRL" >
+
+    <ImageView
+        android:id="@+id/foto"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/icon01"
+        android:cropToPadding="true"
+        android:scaleType="center"
+        android:layout_below="@+id/textSeparator"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ubicacion"
+        android:layout_marginBottom="14dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/foto"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/ubicacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/foto"
+        android:layout_alignLeft="@+id/nombre"
+        android:layout_alignRight="@+id/nombre"
+        android:layout_marginBottom="14dp"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="65dp"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/foto"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textSeparator"
+        android:id="@+id/linearLayout">
+
+        <ImageView
+            android:id="@+id/foto2"
+            android:layout_width="65dp"
+            android:layout_height="50dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/icon01"
+            android:cropToPadding="true"
+            android:scaleType="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/textView" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/liston_main"
+        android:weightSum="1">
+        <TextView
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=""
+            android:id="@+id/textView9" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/head_eventinfo_st" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Evento"
+            android:id="@+id/textView"
+            android:textSize="24dip"
+            android:textColor="#FFFFFF"
+            android:layout_weight="0.91"
+            android:gravity="center_vertical"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:src="@drawable/action_eventadd_st" />
+
+    </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="198dp"
+        android:id="@+id/imageEvento"
+        android:src="@drawable/personas"
+        android:scaleType="centerCrop"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:background="@color/liston_main">
+
+        <TextView
+            android:id="@+id/nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Nombre evento I"
+            android:textColor="#FFF"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/linearLayout"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp" />
+
+        <TextView
+            android:id="@+id/ubicacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dip"
+            android:textColor="#FFF"
+            android:text="Ubicación del evento, MEX."
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:layout_below="@+id/nombre"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/cargo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dip"
+            android:textColor="#FFF"
+            android:text="Aventura"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:paddingLeft="20dp"
+            android:layout_below="@+id/ubicacion"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="55dp"
+            android:layout_height="150dp"
+            android:id="@+id/linearLayout"
+            android:layout_alignParentTop="true"
+            android:layout_alignBottom="@+id/foto"
+            android:background="@drawable/event_info_st"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="bottom"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:layout_width="56dp"
+                android:layout_height="23dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#FFF"
+                android:textSize="10dip"
+                android:text="27 JUL"
+                android:gravity="center"
+                android:id="@+id/textView23" />
+            <TextView
+                android:layout_width="54dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#FFF"
+                android:textSize="10dip"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="31 JUL"
+                android:id="@+id/textView6" />
+        </LinearLayout>
+    </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="14dip"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:text="Información"
+        android:paddingLeft="20dp"
+        android:paddingTop="15dp"
+        android:id="@+id/textView11" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="14dip"
+        android:textColor="#000"
+        android:paddingLeft="20dp"
+        android:paddingTop="5dp"
+        android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
+        android:id="@+id/textView12" />
+
+</LinearLayout>
