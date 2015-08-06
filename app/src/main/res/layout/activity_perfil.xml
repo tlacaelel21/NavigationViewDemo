@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <TextView
+        android:background="@color/cab_perfil_color"
+        android:drawableLeft="@drawable/head_profile_st"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:text="Mi Perfil"
+        android:textSize="18sp"
+        android:textColor="@android:color/white" />
+
+    <ScrollView
+        android:background="@android:color/white"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/perfil_nombre"
+                android:hint="Nombre"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/perfil_empresa"
+                android:hint="Empresa"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/perfil_puesto"
+                android:hint="Puesto"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/perfil_telefono"
+                android:hint="Telefono"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/perfil_correo"
+                android:hint="Correo"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:text="Datos Fiscales"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/perfil_rfc"
+                android:hint="RFC"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/perfil_calle"
+                android:hint="Calle"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/perfil_colonia"
+                android:hint="Colonia"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:background="@drawable/field_profile"
+                    android:id="@+id/perfil_delegacion"
+                    android:hint="Delegacion"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:padding="15dp"
+                    android:textSize="16dp"/>
+
+                <EditText
+                    android:background="@drawable/field_profile"
+                    android:id="@+id/perfil_codigo_postal"
+                    android:hint="Codigo"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_width="100dp"
+                    android:padding="15dp"
+                    android:textSize="16dp"/>
+
+            </LinearLayout>
+
+            <Button
+                android:background="@drawable/boton_perfil"
+                android:id="@+id/perfil_boton_actualizar"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:text="Actualizar perfil"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"/>
+
+            <Button
+                android:background="@drawable/boton_condiciones"
+                android:id="@+id/perfil_boton_terminos"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:text="Condiciones del Servicio y Politica de Privacidad"
+                android:textSize="14sp"
+                android:textAllCaps="false"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
