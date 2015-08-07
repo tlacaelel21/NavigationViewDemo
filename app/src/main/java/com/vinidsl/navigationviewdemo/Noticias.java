@@ -3,83 +3,59 @@ package com.vinidsl.navigationviewdemo;
 /**
  * Created by root on 31/07/15.
  */
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.text.Html;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.ListView;
+
+import com.vinidsl.navigationviewdemo.Adapter.NoticiasAdapter;
+import com.vinidsl.navigationviewdemo.Model.Noticia;
+
+import java.util.ArrayList;
 
 public class Noticias extends Fragment {
+
     Button aButton;
     View rootView;
-    public Noticias() {
-        // Required empty public constructor
-    }
+
+    public Noticias() { }
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
-        //Log.d("ENTRO", "ENTRAAAAAA***************************************************7777777");
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.noticias, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_noticias, container, false);
 
-        // aButton = (Button)rootView.findViewById(R.id.button_registrado);
+        String[][] noticias = {
+                {"-1", "Julio, 2015", "Ir a sitio" , ""},
+                {"1", "Título del articulo", "Julio 15, 2015" , ""},
+                {"2", "Título del articulo", "Julio 16, 2015" , "http://www.youtube.com/yt/brand/media/image/YouTube-icon-full_color.png"},
+                {"3", "Título del articulo", "Julio 18, 2015" , ""},
+                {"-1", "Agosto, 2015", "Ir a sitio" , ""},
+                {"4", "Título del articulo", "Agosto 8, 2015" , ""},
+        };
 
-        ((ImageButton) rootView.findViewById(R.id.ver_noticia)).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                //Log.d("ENTRO", "ENTRAAAAAA***************************************************888888888");
-                FragmentManager manager = getActivity().getSupportFragmentManager();
-                FragmentTransaction ft = manager.beginTransaction();
-                Noticia noticia = new Noticia();
-                Fragment newFragment = noticia;
-                Fragment actual = visualiza();
-                actual.onDestroy();
-                ft.remove(actual);
-                ft.replace(container.getId(), newFragment);
-                //container is the ViewGroup of current fragment
-                ft.addToBackStack(null);
-                ft.commit();
-            }
-        });
-        ((ImageButton) rootView.findViewById(R.id.ver_noticia2)).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                //Log.d("ENTRO", "ENTRAAAAAA***************************************************888888888");
-                FragmentManager manager = getActivity().getSupportFragmentManager();
-                FragmentTransaction ft = manager.beginTransaction();
-                Noticia noticia = new Noticia();
-                Fragment newFragment = noticia;
-                Fragment actual = visualiza();
-                actual.onDestroy();
-                ft.remove(actual);
-                ft.replace(container.getId(), newFragment);
-                //container is the ViewGroup of current fragment
-                ft.addToBackStack(null);
-                ft.commit();
-            }
-        });
-        ((ImageButton) rootView.findViewById(R.id.ver_noticia3)).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                //Log.d("ENTRO", "ENTRAAAAAA***************************************************888888888");
-                FragmentManager manager = getActivity().getSupportFragmentManager();
-                FragmentTransaction ft = manager.beginTransaction();
-                Noticia noticia = new Noticia();
-                Fragment newFragment = noticia;
-                Fragment actual = visualiza();
-                actual.onDestroy();
-                ft.remove(actual);
-                ft.replace(container.getId(), newFragment);
-                //container is the ViewGroup of current fragment
-                ft.addToBackStack(null);
-                ft.commit();
-            }
-        });
+        ArrayList<Noticia> listaM = new ArrayList<Noticia>();
+
+        for (int i=0; i< noticias.length; i++) {
+            long id = Long.parseLong(noticias[i][0]);
+            String titulo = "", fecha = "", path = "", contenido = "";
+            titulo = noticias[i][1];
+            fecha = noticias[i][2];
+            path = noticias[i][3];
+            contenido = "";
+            Noticia objeto = new Noticia(id, titulo, fecha, path, contenido);
+            listaM.add(objeto);
+        }
+
+        ListView lista = (ListView)rootView.findViewById(R.id.noticias_lista);
+
+        NoticiasAdapter adapter = new NoticiasAdapter((Activity) getActivity(), listaM);
+        lista.setAdapter(adapter);
 
         return rootView;
     }
@@ -87,14 +63,8 @@ public class Noticias extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TextInputLayout
 
     }
 
-
-    public Fragment visualiza(){
-        this.onDestroy();
-        return this;
-    }
 }
 
