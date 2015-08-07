@@ -46,13 +46,6 @@
                 android:text="@string/ponentes_list_cab_cita"
                 android:textColor="@color/texto_separador"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:textColor="@color/texto_separador"/>
-
         </LinearLayout>
 
         <View

@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="30dp"
-        android:text="@string/perfil_cab"
+        android:text="@string/encuestas_cab"
         android:textSize="20sp"
         android:textColor="@android:color/white" />
 
@@ -55,7 +55,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
-            <Spinner
+            <!--<Spinner
                 android:layout_width="match_parent"
                 android:layout_margin="5dp"
                 android:layout_height="50dp" />
@@ -63,7 +63,7 @@
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_margin="5dp"
-                android:layout_height="50dp"/>
+                android:layout_height="50dp"/> -->
 
             <Button
                 android:background="@drawable/boton_perfil"
