@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="http://schemas.android.com/apk/res-auto">
     <string name="app_name">CPTM</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -26,5 +26,72 @@
     </string>
 
     <string name="consCebPaco">Directivos de Cebollas Paco:</string>
+
+    <!-- Textos de la UI Mi Perfil -->
+    <string name="perfil_cab">Mi Perfil</string>
+    <string name="perfil_nombre">Nombre</string>
+    <string name="perfil_empresa">Empresa</string>
+    <string name="perfil_puesto">Puesto</string>
+    <string name="perfil_telefono">Telefono</string>
+    <string name="perfil_correo">Correo</string>
+    <string name="perfil_d_fiscales">Datos Fiscales</string>
+    <string name="perfil_rfc">RFC</string>
+    <string name="perfil_calle">Calle</string>
+    <string name="perfil_colonia">Colonia</string>
+    <string name="perfil_delegacion">Delegación</string>
+    <string name="perfil_codigo">Código</string>
+    <string name="perfil_act">Actualizar perfil</string>
+    <string name="perfil_term">Condiciones del Servicio y Politica de Privacidad</string>
+
+    <!-- Textos de la UI Noticias -->
+    <string name="noticias_cab">Noticias</string>
+
+    <!-- Textos de la UI Noticia -->
+    <string name="noticia_cab">Noticia</string>
+    <string name="noticia_contenido">Lorem ipsum dolor sit amet, consectetur adipiscing</string>
+
+    <!-- Textos de la UI Patrocinadores -->
+    <string name="patrocinadores_cab">Patrocinadores</string>
+    <string name="patrocinadores_list_cab_pat">Patrocinador</string>
+    <string name="patrocinadores_list_cab_cita">Cita</string>
+    <string name="patrocinadores_list_cab_enlace">Enlace</string>
+
+    <!-- Textos de la UI Ponentes -->
+    <string name="ponentes_cab">Ponentes</string>
+    <string name="ponentes_list_cab_pon">Ponente</string>
+    <string name="ponentes_list_cab_cita">Cita</string>
+
+    <!-- Textos de la UI Encuestas -->
+    <string name="encuestas_cab">Encuestas</string>
+    <string name="encuestas_pregunta_1">Este es un texto de prueba</string>
+    <string name="encuestas_pregunta_2">Este es otro texto de prueba</string>
+    <string name="encuestas_respuesta">Respuesta</string>
+
+    <!-- Textos de la UI Programa -->
+    <string name="programa_cab">Patrocinadores</string>
+    <string name="programa_list_cab_horario">Horario</string>
+    <string name="programa_list_cab_dia">Día: <xliff:g id="dia">%d</xliff:g></string>
+
+    <!-- Textos de la UI de los items de las listas -->
+    <!-- noticias -->
+    <string name="noticias_item_titulo">Titulo del artículo</string>
+    <string name="noticias_item_subtitulo">Julio 15, 2015</string>
+    <string name="noticias_item_cd_foto">Foto de noticia</string>
+    <string name="noticias_item_cd_boton">Ir a noticia</string>
+    <string name="noticias_cab_item_titulo">Julio, 2015</string>
+    <string name="noticias_cab_item_subtitulo">Ir a sitio</string>
+    <!-- patrocinadores -->
+    <string name="patrocinadores_item_nombre">Nombre</string>
+    <string name="patrocinadores_item_numero">Número</string>
+    <string name="patrocinadores_item_cd_foto">Foto del patrocinador</string>
+    <!-- ponentes -->
+    <string name="ponentes_item_nombre">Nombre</string>
+    <string name="ponentes_item_puesto">Empresa, Puesto</string>
+    <string name="ponentes_item_cd_foto">Foto del ponente</string>
+    <!-- programa -->
+    <string name="programa_item_horario"><xliff:g id="hora">%d</xliff:g>:<xliff:g id="minutos">%d</xliff:g></string>
+    <string name="programa_item_nombre">Nombre del evento</string>
+    <string name="programa_item_sala">Sala (opcional)</string>
+
 
 </resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:background="@color/cab_noticia"
+        android:drawableLeft="@drawable/head_noticias"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:text="@string/noticias_cab"
+        android:textSize="20sp"
+        android:textColor="@android:color/white" />
+
+    <ListView
+        android:id="@+id/noticias_lista"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/default_fondo_img"
+        android:dividerHeight="1dp">
+
+    </ListView>
+
+</LinearLayout>

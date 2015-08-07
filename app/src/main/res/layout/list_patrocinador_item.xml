@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="6dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="15dp"
+    android:paddingTop="6dp">
+
+    <ImageView
+        android:background="@color/default_fondo_img"
+        android:contentDescription="@string/patrocinadores_item_cd_foto"
+        android:id="@+id/list_patrocinadores_foto"
+        android:layout_height="60dp"
+        android:layout_width="60dp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/list_patrocinadores_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/patrocinadores_item_nombre"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/list_patrocinadores_numero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/patrocinadores_item_numero"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:background="@color/default_fondo_img"
+        android:contentDescription="@string/noticias_item_cd_boton"
+        android:id="@+id/list_patrocinador_boton_agregar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/action_eventadd_clear"
+        android:tint="@color/cab_patrocinadores"/>
+
+    <ImageButton
+        android:background="@color/default_fondo_img"
+        android:contentDescription="@string/noticias_item_cd_boton"
+        android:id="@+id/list_patrocinadores_boton_ver"
+        android:layout_width="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/action_open2_clear"
+        android:tint="@color/cab_patrocinadores"/>
+
+</LinearLayout>
