@@ -73,7 +73,7 @@ public class FeriasIntAdapter extends ArrayAdapter<FeriaIntModel> {
             holder.nombreTV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("msg","hola");
+                    /*Log.i("msg","hola");
                     //Creating the instance of PopupMenu
                     PopupMenu popup = new PopupMenu(aquery.getContext(), button1);
                     //Inflating the Popup using xml file
@@ -87,7 +87,7 @@ public class FeriasIntAdapter extends ArrayAdapter<FeriaIntModel> {
                         }
                     });
 
-                    popup.show();//showing popup menu
+                    popup.show();//showing popup menu*/
                 }
             });
             aquery.id(holder.foto).image("http://www.idg.es/BBDD_IMAGEN/logo-android.gif");

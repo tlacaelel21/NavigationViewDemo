@@ -29,11 +29,11 @@ public class Ferias_Int extends Fragment {
         rootView = inflater.inflate(R.layout.ferias_int, container, false);
 
         String[][] ferias = {
-                {"feria 1","mexico"},
-                {"feria 2","guadalajara"},
-                {"feria 3","df"},
-                {"feria 4","sonora"},
-                {"feria 5","mexico"}
+                {"feria 1","Paris"},
+                {"feria 2","Tokio"},
+                {"feria 3","Austria"},
+                {"feria 4","España"},
+                {"feria 5","Argentina"}
         };
 
         List<FeriaIntModel> listaM = new ArrayList<FeriaIntModel>();
