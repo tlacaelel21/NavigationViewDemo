@@ -46,6 +46,33 @@
                 android:value=".MainActivity" />
         </activity>
 
+        <activity
+            android:name=".PatrocinadoresActivity"
+            android:label="@string/patrocinadores_cab"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".PonentesActivity"
+            android:label="@string/ponentes_cab"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".EncuestaActivity"
+            android:label="@string/ponentes_cab"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
     </application>
 
 </manifest>
