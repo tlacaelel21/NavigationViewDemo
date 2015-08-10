@@ -4,6 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar"/>
+
     <TextView
         android:background="@color/cab_patrocinadores"
         android:drawableLeft="@drawable/head_profile_st"
@@ -12,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="30dp"
-        android:text="@string/ponentes_cab"
+        android:text="@string/noticias_cab"
         android:textSize="20sp"
         android:textColor="@android:color/white" />
 
@@ -35,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="@string/ponentes_list_cab_pon"
+                android:text="@string/patrocinadores_list_cab_pat"
                 android:textColor="@color/texto_separador"/>
 
             <TextView
@@ -43,20 +46,28 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="@string/ponentes_list_cab_cita"
+                android:text="@string/patrocinadores_list_cab_cita"
+                android:textColor="@color/texto_separador"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/patrocinadores_list_cab_enlace"
                 android:textColor="@color/texto_separador"/>
 
         </LinearLayout>
 
         <View
-            android:background="@color/cab_ponentes"
+            android:background="@color/cab_patrocinadores"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
 
     </LinearLayout>
 
     <ListView
-        android:id="@+id/ponentes_lista"
+        android:id="@+id/patrocinadores_lista"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@color/default_fondo_img"

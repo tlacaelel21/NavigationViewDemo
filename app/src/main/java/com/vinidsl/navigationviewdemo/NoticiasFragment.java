@@ -17,12 +17,11 @@ import com.vinidsl.navigationviewdemo.Model.Noticia;
 
 import java.util.ArrayList;
 
-public class Noticias extends Fragment {
+public class NoticiasFragment extends Fragment {
 
-    Button aButton;
     View rootView;
 
-    public Noticias() { }
+    public NoticiasFragment() { }
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -67,4 +66,3 @@ public class Noticias extends Fragment {
     }
 
 }
-

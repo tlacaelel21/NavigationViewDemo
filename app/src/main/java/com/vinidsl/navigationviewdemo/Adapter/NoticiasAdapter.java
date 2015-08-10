@@ -18,8 +18,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.androidquery.AQuery;
+import com.vinidsl.navigationviewdemo.EncuestaActivity;
 import com.vinidsl.navigationviewdemo.Model.Noticia;
 import com.vinidsl.navigationviewdemo.NoticiaActivity;
+import com.vinidsl.navigationviewdemo.PatrocinadoresActivity;
+import com.vinidsl.navigationviewdemo.PonentesActivity;
 import com.vinidsl.navigationviewdemo.R;
 
 import java.util.ArrayList;

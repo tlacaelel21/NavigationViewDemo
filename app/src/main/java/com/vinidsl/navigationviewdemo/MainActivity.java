@@ -15,15 +15,10 @@
  */
 package com.vinidsl.navigationviewdemo;
 
-import android.app.AlertDialog;
-import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -150,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                                 //Snackbar.make(navigationView, "Item calendario seleccionado", Snackbar.LENGTH_LONG).show();
                                 break;
                             case R.id.nav_music:
-                                Noticias noticias = new Noticias();
+                                NoticiasFragment noticias = new NoticiasFragment();
                                 MuestraFragment(noticias);
                                 //Snackbar.make(navigationView, "Item música seleccionado", Snackbar.LENGTH_LONG).show();
                                 break;

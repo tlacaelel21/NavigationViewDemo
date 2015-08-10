@@ -5,37 +5,37 @@ package com.vinidsl.navigationviewdemo.Model;
  */
 public class Noticia {
 
-    private long id;
-    private String titulo;
-    private String fecha;
-    private String pathFoto;
-    private String contenido;
+    private long mId;
+    private String mTitulo;
+    private String mFecha;
+    private String mPathFoto;
+    private String mContenido;
 
     public Noticia(long id, String titulo, String fecha, String pathFoto, String contenido) {
-        this.id = id;
-        this.titulo = titulo;
-        this.fecha = fecha;
-        this.pathFoto = pathFoto;
-        this.contenido = contenido;
+        this.mId = id;
+        this.mTitulo = titulo;
+        this.mFecha = fecha;
+        this.mPathFoto = pathFoto;
+        this.mContenido = contenido;
     }
 
     public long getId() {
-        return id;
+        return mId;
     }
 
     public String getTitulo() {
-        return titulo;
+        return mTitulo;
     }
 
     public String getFecha() {
-        return fecha;
+        return mFecha;
     }
 
     public String getPathFoto() {
-        return pathFoto;
+        return mPathFoto;
     }
 
     public String getContenido() {
-        return contenido;
+        return mContenido;
     }
 }
