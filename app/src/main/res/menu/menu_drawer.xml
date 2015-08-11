@@ -16,23 +16,29 @@
   -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_ferias_int"
             android:icon="@drawable/menu_international_clear"
-            android:title="@string/frag1"/>
+            android:title="@string/nav_item_ferias_int"/>
         <item
-            android:id="@+id/nav_calendar"
+            android:id="@+id/nav_ferias_nac"
             android:icon="@drawable/menu_nacional_clear"
-            android:title="@string/frag2"/>
+            android:title="@string/nav_item_ferias_nac"/>
+    </group>
+    <group
+        android:id="@+id/items_login"
+        android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_music"
+            android:id="@+id/nav_mis_eventos"
             android:icon="@drawable/ic_event_amar"
-            android:title="@string/frag3" />
+            android:title="@string/nav_item_mis_eventos" />
         <item
-            android:id="@+id/nav_messages"
+            android:id="@+id/nav_mi_perfil"
             android:icon="@drawable/menu_profile_clear"
-            android:title="@string/frag4" />
+            android:title="@string/nav_item_mi_perfil" />
+
     </group>
 
     <!--item android:title="Items secundarios">

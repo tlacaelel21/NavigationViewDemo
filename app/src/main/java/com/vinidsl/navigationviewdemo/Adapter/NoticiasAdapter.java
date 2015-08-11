@@ -25,6 +25,8 @@ import com.vinidsl.navigationviewdemo.PatrocinadoresActivity;
 import com.vinidsl.navigationviewdemo.PonentesActivity;
 import com.vinidsl.navigationviewdemo.R;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class NoticiasAdapter extends BaseAdapter {
@@ -135,6 +137,7 @@ public class NoticiasAdapter extends BaseAdapter {
                         activityRef.getResources().getColor(R.color.cab_noticia));
             }
         }
+
 
         // Retornamos la vista
         return v;

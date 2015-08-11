@@ -3,6 +3,19 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+
+    <!-- Textos para parametros -->
+    <string name="espacio_prefs">CPTM PrefSpace</string>
+    <string name="pref_idusuario">i_u_act</string>
+
+    <!-- Textos para la NavigationView -->
+    <string name="nav_item_ferias_int">Ferias Internacionales</string>
+    <string name="nav_item_ferias_nac">Ferias Nacionales</string>
+    <string name="nav_item_mis_eventos">Mis eventos</string>
+    <string name="nav_item_mi_perfil">Mi perfil</string>
+    <string name="nav_button_login">Iniciar sesión</string>
+    <string name="nav_button_logout">Cerrar sesión</string>
+
     <string name="frag1">Ferias Internacionales</string>
     <string name="frag2">Ferias Nacionales</string>
     <string name="frag3">Noticias</string>

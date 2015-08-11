@@ -27,15 +27,33 @@
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_height="match_parent"
+        android:paddingRight="20dp"
         android:layout_width="wrap_content"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         android:background="@drawable/fondo_menu"
         android:divider="@color/drawer_item"
-        android:dividerHeight="20dp"
+        android:dividerHeight="2dp"
         app:menu="@menu/menu_drawer"
         app:headerLayout="@layout/nav_header"
-        app:itemTextColor="@color/drawer_item"
-        />
+        app:itemTextColor="@color/drawer_item" >
+
+        <Button
+            android:background="@drawable/boton_perfil"
+            android:id="@+id/navigation_button"
+            android:layout_gravity="bottom|center_horizontal"
+            android:gravity="left|center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="200dp"
+            android:drawableLeft="@drawable/action_login_clear"
+            android:onClick="llamarRutinaSesion"
+            android:text="@string/nav_button_login"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"/>
+
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>

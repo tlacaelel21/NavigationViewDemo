@@ -5,7 +5,9 @@ package com.vinidsl.navigationviewdemo;
  */
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -80,9 +82,15 @@ public class Login extends Fragment {
                             setMessage("Ingrese datos").setNeutralButton("Cerrar", null).show();
                 }
                 if(paso){
-                    GlobalClass varGlobal= new GlobalClass();
-                    varGlobal.setSomeVariable("foo");
+                    /*GlobalClass varGlobal= new GlobalClass();
+                    varGlobal.setSomeVariable("foo");*/
+                    SharedPreferences preferencias =
+                            getActivity().getSharedPreferences(getString(R.string.espacio_prefs), Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferencias.edit();
+                    editor.putString(getString(R.string.pref_idusuario), "1");
+                    editor.commit();
                     MainActivity mainActivity= (MainActivity) getActivity();
+                    mainActivity.buscaUsuario();
                     mainActivity.cambiarMenu();
 
                     FragmentManager manager=getActivity().getSupportFragmentManager();

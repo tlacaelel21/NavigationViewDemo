@@ -17,8 +17,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="192dp"
-    android:background="@drawable/fondo_menu"
+    android:layout_height="120dp"
     android:padding="16dp"
     android:theme="@style/Base.Theme.NavigationViewDemo"
     android:orientation="vertical"
@@ -26,17 +25,15 @@
     android:divider="@color/drawer_item"
     android:dividerHeight="25dp">
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@drawable/logo_mexico_clear" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:gravity="center"
+        android:drawableTop="@drawable/logo_mexico_clear"
+        android:drawablePadding="16dp"
         android:text="www.visitmexico.com"
         android:textColor="@color/link"
-        />
+        android:textSize="16sp"/>
 
 </LinearLayout>

@@ -15,6 +15,8 @@
  */
 package com.vinidsl.navigationviewdemo;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -27,13 +29,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle drawerToggle;
+    String idUsuario;
     String valor_global="";
+    private Button sessionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +66,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // get
-        valor_global = ((GlobalClass) this.getApplication()).getSomeVariable();
+        //valor_global = ((GlobalClass) this.getApplication()).getSomeVariable();
 
         Pantalla_Princi fe_int = new Pantalla_Princi();
         MuestraFragment(fe_int);
 
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        buscaUsuario();
+        sessionButton = (Button) findViewById(R.id.navigation_button);
+        cambiarMenu();
     }
 
     @Override
@@ -122,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.aditional2:
                                 Snackbar.make(navigationView, "Item adicional 2 seleccionado", Snackbar.LENGTH_LONG).show();
                                 return true;*/
-                            case R.id.nav_home:
+                            case R.id.nav_ferias_int:
                                 Ferias_Int ferias_int = new Ferias_Int();
                                 MuestraFragment(ferias_int);
                                 //Creamos el Intent
@@ -139,19 +152,19 @@ public class MainActivity extends AppCompatActivity {
                                 //startActivity(intent);
                                 //Snackbar.make(navigationView, "Item principal seleccionado", Snackbar.LENGTH_LONG).show();
                                 break;
-                            case R.id.nav_calendar:
+                            case R.id.nav_ferias_nac:
                                 Ferias_Nac fragment = new Ferias_Nac();
                                 MuestraFragment(fragment);
                                 //Snackbar.make(navigationView, "Item calendario seleccionado", Snackbar.LENGTH_LONG).show();
                                 break;
-                            case R.id.nav_music:
+                            case R.id.nav_mis_eventos:
                                 NoticiasFragment noticias = new NoticiasFragment();
                                 MuestraFragment(noticias);
                                 //Snackbar.make(navigationView, "Item música seleccionado", Snackbar.LENGTH_LONG).show();
                                 break;
-                            case R.id.nav_messages:
+                            case R.id.nav_mi_perfil:
                                 //Registro fragRegistro = new Registro();
-                                Login fragRegistro = new Login();
+                                Perfil fragRegistro = new Perfil();
                                 MuestraFragment(fragRegistro);
                                 //Perfil fragRegistro = new Perfil();
                                 //MuestraFragment(fragRegistro);
@@ -171,7 +184,40 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.content_frame, fragment).commit();
     }
 
-    public void cambiarMenu(){
+    public void llamarRutinaSesion(View v) {
+        if(sesionActiva()) {
+            idUsuario = "0";
+            SharedPreferences preferencias =
+                    getSharedPreferences(getString(R.string.espacio_prefs), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferencias.edit();
+            editor.remove(getString(R.string.pref_idusuario));
+            editor.commit();
+            cambiarMenu();
+        } else {
+            Login fragRegistro = new Login();
+            MuestraFragment(fragRegistro);
+        }
+        mDrawerLayout.closeDrawers();
+    }
 
+    public boolean sesionActiva() {
+        return !(idUsuario.isEmpty() || idUsuario.equals("0"));
+    }
+
+    public void buscaUsuario() {
+        SharedPreferences preferencias =
+                getSharedPreferences(getString(R.string.espacio_prefs), Context.MODE_PRIVATE);
+        idUsuario = preferencias.getString(getString(R.string.pref_idusuario), "0");
+    }
+
+    public void cambiarMenu() {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        if(sesionActiva()) {
+            sessionButton.setText(getString(R.string.nav_button_logout));
+            navigationView.getMenu().setGroupVisible(R.id.items_login, true);
+        } else {
+            sessionButton.setText(getString(R.string.nav_button_login));
+            navigationView.getMenu().setGroupVisible(R.id.items_login, false);
+        }
     }
 }
