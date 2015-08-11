@@ -38,6 +38,7 @@
         app:headerLayout="@layout/nav_header"
         app:itemTextColor="@color/drawer_item" >
 
+
         <Button
             android:background="@drawable/boton_perfil"
             android:id="@+id/navigation_button"

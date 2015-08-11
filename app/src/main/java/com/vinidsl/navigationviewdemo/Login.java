@@ -84,6 +84,8 @@ public class Login extends Fragment {
                 if(paso){
                     /*GlobalClass varGlobal= new GlobalClass();
                     varGlobal.setSomeVariable("foo");*/
+
+
                     SharedPreferences preferencias =
                             getActivity().getSharedPreferences(getString(R.string.espacio_prefs), Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferencias.edit();
