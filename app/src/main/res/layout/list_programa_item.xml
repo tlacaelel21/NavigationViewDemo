@@ -33,7 +33,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/list_progra"
+            android:id="@+id/list_programa_sala"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/programa_item_sala"

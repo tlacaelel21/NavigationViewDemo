@@ -15,7 +15,9 @@
  */
 package com.vinidsl.navigationviewdemo;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.content.res.Configuration;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     String idUsuario;
     String valor_global="";
     private Button sessionButton;
+    Activity act;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
+        act = this;
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -159,8 +163,10 @@ public class MainActivity extends AppCompatActivity {
                                 //Snackbar.make(navigationView, "Item calendario seleccionado", Snackbar.LENGTH_LONG).show();
                                 break;
                             case R.id.nav_mis_eventos:
-                                NoticiasFragment noticias = new NoticiasFragment();
-                                MuestraFragment(noticias);
+                                /*NoticiasFragment noticias = new NoticiasFragment();
+                                MuestraFragment(noticias);*/
+                                Intent prog = new Intent(act, ProgramaActivity.class);
+                                startActivity(prog);
                                 //Snackbar.make(navigationView, "Item música seleccionado", Snackbar.LENGTH_LONG).show();
                                 break;
                             case R.id.nav_mi_perfil:

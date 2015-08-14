@@ -8,7 +8,6 @@
     <string name="espacio_prefs">CPTM PrefSpace</string>
     <string name="pref_idusuario">i_u_act</string>
 
-
     <!-- Textos para la NavigationView -->
     <string name="nav_item_ferias_int">Ferias Internacionales</string>
     <string name="nav_item_ferias_nac">Ferias Nacionales</string>
@@ -45,15 +44,28 @@
     <string name="perfil_cab">Mi Perfil</string>
     <string name="perfil_nombre">Nombre</string>
     <string name="perfil_empresa">Empresa</string>
-    <string name="perfil_puesto">Puesto</string>
     <string name="perfil_telefono">Telefono</string>
-    <string name="perfil_correo">Correo</string>
-    <string name="perfil_d_fiscales">Datos Fiscales</string>
+    <string name="perfil_correo">Correo electrónico</string>
+    <string name="perfil_contrasenia">Contraseña</string>
+    <string name="perfil_conf_contrasenia">Confirmar contraseña</string>
+    <string name="perfil_cargo">Cargo</string>
     <string name="perfil_rfc">RFC</string>
     <string name="perfil_calle">Calle</string>
     <string name="perfil_colonia">Colonia</string>
+    <string name="perfil_num_ext">Número exterior</string>
+    <string name="perfil_num_int">Número interior</string>
+    <string name="perfil_codigo_post">Código postal</string>
+    <string name="perfil_municipio">Municipio</string>
+    <string name="perfil_estado">Estado</string>
     <string name="perfil_delegacion">Delegación</string>
     <string name="perfil_codigo">Código</string>
+    <string name="perfil_pais">País</string>
+    <string name="perfil_pagina">Página Web</string>
+    <string name="perfil_actividad">Actividad</string>
+    <string name="perfil_d_cuenta">Cuenta</string>
+    <string name="perfil_d_contacto">Contacto</string>
+    <string name="perfil_d_compania">Datos de la compañia</string>
+    <string name="perfil_d_fiscales">Datos de facturación</string>
     <string name="perfil_act">Actualizar perfil</string>
     <string name="perfil_term">Condiciones del Servicio y Politica de Privacidad</string>
 
@@ -82,7 +94,7 @@
     <string name="encuestas_respuesta">Respuesta</string>
 
     <!-- Textos de la UI Programa -->
-    <string name="programa_cab">Patrocinadores</string>
+    <string name="programa_cab">Programa</string>
     <string name="programa_list_cab_horario">Horario</string>
     <string name="programa_list_cab_dia">Día: <xliff:g id="dia">%d</xliff:g></string>
 

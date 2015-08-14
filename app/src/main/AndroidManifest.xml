@@ -36,7 +36,6 @@
             </intent-filter>
         </activity>
 
-
         <activity
             android:name=".NoticiaActivity"
             android:label="@string/noticia_cab"
@@ -66,7 +65,16 @@
 
         <activity
             android:name=".EncuestaActivity"
-            android:label="@string/ponentes_cab"
+            android:label="@string/encuestas_cab"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".ProgramaActivity"
+            android:label="@string/programa_cab"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
