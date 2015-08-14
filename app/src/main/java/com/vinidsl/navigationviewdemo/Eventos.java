@@ -3,6 +3,8 @@ package com.vinidsl.navigationviewdemo;
 /**
  * Created by root on 23/07/15.
  */
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.ContextMenu;
@@ -30,7 +32,11 @@ public class Eventos extends Fragment {
 
         //startActivity(actividad.getIntent());
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.mis_eventos, container, false);
+        SharedPreferences varGlobal= getActivity().getSharedPreferences("cptm", Context.MODE_PRIVATE);
+        String usuario=varGlobal.getString("usr", "0");
+        //if(!usuario.equals("0")){
+           rootView = inflater.inflate(R.layout.mis_eventos, container, false);
+        //}
         return rootView;
     }
 
