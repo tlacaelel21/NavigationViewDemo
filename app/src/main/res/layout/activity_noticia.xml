@@ -20,7 +20,7 @@
         android:textColor="@android:color/white" />
 
     <ImageView
-        android:background="@color/default_fondo_img"
+        android:background="@drawable/newspaper"
         android:contentDescription="@string/noticias_item_cd_foto"
         android:id="@+id/noticia_foto"
         android:layout_width="match_parent"

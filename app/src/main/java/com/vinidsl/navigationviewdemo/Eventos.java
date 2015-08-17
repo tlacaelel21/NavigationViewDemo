@@ -3,17 +3,20 @@ package com.vinidsl.navigationviewdemo;
 /**
  * Created by root on 23/07/15.
  */
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 
-import java.util.zip.Inflater;
+import com.vinidsl.navigationviewdemo.Adapter.MisEventosAdapter;
+import com.vinidsl.navigationviewdemo.Model.MisEventosModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Eventos extends Fragment {
     View rootView;
@@ -21,30 +24,36 @@ public class Eventos extends Fragment {
         // Required empty public constructor
     }
 
-    public void onCreate(){
-
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //this.onCreateView()
-        //MainActivity actividad=new MainActivity();
-
-        //startActivity(actividad.getIntent());
         // Inflate the layout for this fragment
-        SharedPreferences varGlobal= getActivity().getSharedPreferences("cptm", Context.MODE_PRIVATE);
-        String usuario=varGlobal.getString("usr", "0");
-        //if(!usuario.equals("0")){
-           rootView = inflater.inflate(R.layout.mis_eventos, container, false);
-        //}
+        rootView = inflater.inflate(R.layout.mis_eventos, container, false);
+
+        String[][] mis_eventos = {
+                {"Nombre Evento I","Ubicación del evento, Paris","Solicitado"},
+                {"Nombre Evento II","Ubicación del evento, China","Aceptado"},
+                {"Nombre Evento III","Ubicación del evento, España","Pagado"}
+        };
+        List<MisEventosModel> listaM = new ArrayList<MisEventosModel>();
+
+        for (int i=0; i< mis_eventos.length; i++) {
+            String nombre_evento = "", ubicacion_evento = "", status_evento="";
+            nombre_evento = mis_eventos[i][0];
+            ubicacion_evento = mis_eventos[i][1];
+            status_evento = mis_eventos[i][2];
+            MisEventosModel objeto = new MisEventosModel(nombre_evento, ubicacion_evento,status_evento);
+            listaM.add(objeto);
+        }
+        ListView lista = (ListView)rootView.findViewById(R.id.listado_mis_eventos);
+
+        MisEventosAdapter adapter = new MisEventosAdapter(getActivity(), R.layout.mis_eventos_item,
+                listaM);
+        lista.setAdapter(adapter);
+
+
+
         return rootView;
     }
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v,
-                                    ContextMenu.ContextMenuInfo menuInfo)
-    {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        //(rootView.getContext())..inflate(R.menu.menu_ctx_etiqueta, menu);
-    }
 }

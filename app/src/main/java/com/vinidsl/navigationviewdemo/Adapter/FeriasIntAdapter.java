@@ -90,7 +90,7 @@ public class FeriasIntAdapter extends ArrayAdapter<FeriaIntModel> {
                     popup.show();//showing popup menu*/
                 }
             });
-            aquery.id(holder.foto).image("http://www.idg.es/BBDD_IMAGEN/logo-android.gif");
+            aquery.id(holder.foto).image("http://desarrollo.smartthinking.com.mx:8080/Cptm/images/imgEventoDetalle.jpg");
 
         }
 

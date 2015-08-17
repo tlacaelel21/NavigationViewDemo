@@ -87,6 +87,10 @@
         android:text=""
         android:background="@color/liston_main"
         android:id="@+id/textView8" />
-    <include layout="@layout/vista_miseventos_lista"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listado_mis_eventos" />
 
 </LinearLayout>

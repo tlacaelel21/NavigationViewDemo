@@ -28,12 +28,12 @@ public class PonentesActivity extends AppCompatActivity {
 
 
         String[][] ponentes = {
-                {"1", "Nombre", "Empresa, Puesto" , "" , "0"},
-                {"2", "Nombre", "Empresa, Puesto" , "" , "0"},
-                {"3", "Nombre", "Empresa, Puesto" , "" , "0"},
-                {"4", "Nombre", "Empresa, Puesto" , "http://www.youtube.com/yt/brand/media/image/YouTube-icon-full_color.png" , "1"},
-                {"5", "Nombre", "Empresa, Puesto" , "" , "2"},
-                {"6", "Nombre", "Empresa, Puesto" , "" , "3"},
+                {"1", "Nombre", "Empresa, Puesto" , "https://image.freepik.com/foto-gratis/ponente-en-una-conferencia_318-85460.jpg" , "0"},
+                {"2", "Nombre", "Empresa, Puesto" , "https://image.freepik.com/foto-gratis/ponente-en-una-conferencia_318-85460.jpg" , "0"},
+                {"3", "Nombre", "Empresa, Puesto" , "https://image.freepik.com/foto-gratis/ponente-en-una-conferencia_318-85460.jpg" , "0"},
+                {"4", "Nombre", "Empresa, Puesto" , "https://image.freepik.com/foto-gratis/ponente-en-una-conferencia_318-85460.jpg" , "1"},
+                {"5", "Nombre", "Empresa, Puesto" , "https://image.freepik.com/foto-gratis/ponente-en-una-conferencia_318-85460.jpg" , "2"},
+                {"6", "Nombre", "Empresa, Puesto" , "https://image.freepik.com/foto-gratis/ponente-en-una-conferencia_318-85460.jpg" , "3"},
         };
 
         ArrayList<Ponente> listaM = new ArrayList<Ponente>();

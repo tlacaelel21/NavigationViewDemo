@@ -30,12 +30,12 @@ public class NoticiasFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_noticias, container, false);
 
         String[][] noticias = {
-                {"-1", "Julio, 2015", "Ir a sitio" , ""},
-                {"1", "Título del articulo", "Julio 15, 2015" , ""},
-                {"2", "Título del articulo", "Julio 16, 2015" , "http://www.youtube.com/yt/brand/media/image/YouTube-icon-full_color.png"},
-                {"3", "Título del articulo", "Julio 18, 2015" , ""},
-                {"-1", "Agosto, 2015", "Ir a sitio" , ""},
-                {"4", "Título del articulo", "Agosto 8, 2015" , ""},
+                {"-1", "Julio, 2015", "Ir a sitio" , "http://farm8.static.flickr.com/7281/8718400698_dbf9d7d2ae_m.jpg"},
+                {"1", "Título del articulo", "Julio 15, 2015" , "https://disability.workforce3one.org/ws/disability/images/thumbs/newspaper.jpg"},
+                {"2", "Título del articulo", "Julio 16, 2015" , "https://disability.workforce3one.org/ws/disability/images/thumbs/newspaper.jpg"},
+                {"3", "Título del articulo", "Julio 18, 2015" , "https://disability.workforce3one.org/ws/disability/images/thumbs/newspaper.jpg"},
+                {"-1", "Agosto, 2015", "Ir a sitio" , "http://farm8.static.flickr.com/7281/8718400698_dbf9d7d2ae_m.jpg"},
+                {"4", "Título del articulo", "Agosto 8, 2015" , "https://disability.workforce3one.org/ws/disability/images/thumbs/newspaper.jpg"},
         };
 
         ArrayList<Noticia> listaM = new ArrayList<Noticia>();

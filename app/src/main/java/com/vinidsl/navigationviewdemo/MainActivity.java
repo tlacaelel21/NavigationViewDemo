@@ -55,8 +55,12 @@ public class MainActivity extends AppCompatActivity {
         act = this;
 
         Cifrado obj=new Cifrado();
-        String valorEnc=obj.encriptar("300|admin@s-t.mx|admin");
+        //String valorEnc=obj.encriptar("300|admin@s-t.mx|admin");
+        String valorEnc=obj.encriptar("301");
         Log.i("ENC",valorEnc);
+
+        PonentesTask objeto=new PonentesTask(this.getBaseContext());
+
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -170,8 +174,10 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.nav_mis_eventos:
                                 /*NoticiasFragment noticias = new NoticiasFragment();
                                 MuestraFragment(noticias);*/
-                                Intent prog = new Intent(act, ProgramaActivity.class);
-                                startActivity(prog);
+                                /*Intent prog = new Intent(act, ProgramaActivity.class);
+                                startActivity(prog);*/
+                                Eventos fragMisEventos = new Eventos();
+                                MuestraFragment(fragMisEventos);
                                 //Snackbar.make(navigationView, "Item música seleccionado", Snackbar.LENGTH_LONG).show();
                                 break;
                             case R.id.nav_mi_perfil:
@@ -230,6 +236,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             sessionButton.setText(getString(R.string.nav_button_login));
             navigationView.getMenu().setGroupVisible(R.id.items_login, false);
+            Pantalla_Princi fe_int = new Pantalla_Princi();
+            MuestraFragment(fe_int);
         }
     }
 }

@@ -40,7 +40,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:background="@drawable/field_profile"
+                android:background="@drawable/button_policy"
                 android:id="@+id/perfil_respuesta"
                 android:inputType="textCapWords|textAutoComplete"
                 android:hint="@string/perfil_nombre"
@@ -61,15 +61,18 @@
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_margin="5dp"
-                android:layout_height="50dp" />
+                android:layout_height="50dp"
+                android:id="@+id/spinner_pais"
+                android:spinnerMode="dropdown"/>
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_margin="5dp"
-                android:layout_height="50dp"/>
+                android:layout_height="50dp"
+                android:id="@+id/spinner_edo"
+                android:spinnerMode="dropdown"/>
 
             <Button
-                android:background="@drawable/boton_perfil"
                 android:id="@+id/perfil_boton_actualizar"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -77,8 +80,9 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="25dp"
                 android:layout_width="match_parent"
+                android:background="@color/cab_encuesta"
                 android:backgroundTint="@color/cab_encuesta"
-                android:text="@string/perfil_act"
+                android:text="@string/boton_terminar"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"/>
 

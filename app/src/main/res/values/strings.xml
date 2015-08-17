@@ -92,6 +92,7 @@
     <string name="encuestas_pregunta_1">Este es un texto de prueba</string>
     <string name="encuestas_pregunta_2">Este es otro texto de prueba</string>
     <string name="encuestas_respuesta">Respuesta</string>
+    <string name="boton_terminar">Terminar</string>
 
     <!-- Textos de la UI Programa -->
     <string name="programa_cab">Programa</string>
@@ -119,5 +120,12 @@
     <string name="programa_item_nombre">Nombre del evento</string>
     <string name="programa_item_sala">Sala (opcional)</string>
 
+    <string-array name="valores_array">
+        <item>Elem1</item>
+        <item>Elem2</item>
+        <item>Elem3</item>
+        <item>Elem4</item>
+        <item>Elem5</item>
+    </string-array>
 
 </resources>

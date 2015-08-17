@@ -28,12 +28,12 @@ public class PatrocinadoresActivity extends AppCompatActivity {
 
 
         String[][] patrocinadores = {
-                {"1", "Nombre", "55 1234 5678" , "" , "0"},
-                {"2", "Nombre", "55 1234 5678" , "" , "0"},
-                {"3", "Nombre", "55 1234 5678" , "" , "0"},
-                {"4", "Nombre", "55 1234 5678" , "http://www.youtube.com/yt/brand/media/image/YouTube-icon-full_color.png" , "1"},
-                {"5", "Nombre", "55 1234 5678" , "" , "2"},
-                {"6", "Nombre", "55 1234 5678" , "" , "3"},
+                {"1", "Nombre", "55 1234 5678" , "https://lh3.ggpht.com/-YB6KnEchAo4/UPVTr9sLlbI/AAAAAAAAADg/3I6mHnx0XWM/s1600/icono-patrocinadores-y-colaboradores.png" , "0"},
+                {"2", "Nombre", "55 1234 5678" , "https://lh3.ggpht.com/-YB6KnEchAo4/UPVTr9sLlbI/AAAAAAAAADg/3I6mHnx0XWM/s1600/icono-patrocinadores-y-colaboradores.png" , "0"},
+                {"3", "Nombre", "55 1234 5678" , "https://lh3.ggpht.com/-YB6KnEchAo4/UPVTr9sLlbI/AAAAAAAAADg/3I6mHnx0XWM/s1600/icono-patrocinadores-y-colaboradores.png" , "0"},
+                {"4", "Nombre", "55 1234 5678" , "https://lh3.ggpht.com/-YB6KnEchAo4/UPVTr9sLlbI/AAAAAAAAADg/3I6mHnx0XWM/s1600/icono-patrocinadores-y-colaboradores.png" , "1"},
+                {"5", "Nombre", "55 1234 5678" , "https://lh3.ggpht.com/-YB6KnEchAo4/UPVTr9sLlbI/AAAAAAAAADg/3I6mHnx0XWM/s1600/icono-patrocinadores-y-colaboradores.png" , "2"},
+                {"6", "Nombre", "55 1234 5678" , "https://lh3.ggpht.com/-YB6KnEchAo4/UPVTr9sLlbI/AAAAAAAAADg/3I6mHnx0XWM/s1600/icono-patrocinadores-y-colaboradores.png" , "3"},
         };
 
         ArrayList<Patrocinador> listaM = new ArrayList<Patrocinador>();

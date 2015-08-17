@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="@string/noticias_cab_item_subtitulo"
+            android:text="@string/noticias_item_cd_boton"
             android:textColor="@color/texto_separador"/>
 
     </LinearLayout>
