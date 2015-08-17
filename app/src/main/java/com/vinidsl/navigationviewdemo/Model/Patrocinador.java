@@ -15,13 +15,16 @@ public class Patrocinador {
     private String mNombre;
     private String mNumero;
     private String mPathFoto;
+    private String mUrl;
 
-    public Patrocinador(long id, int estado, String nombre, String numero, String pathFoto) {
+    public Patrocinador(long id, int estado, String nombre, String numero, String pathFoto,
+                        String url) {
         this.mId = id;
         this.mEstado = estado;
         this.mNombre = nombre;
         this.mNumero = numero;
         this.mPathFoto = pathFoto;
+        this.mUrl = url;
     }
 
     public long getId() {
@@ -42,5 +45,9 @@ public class Patrocinador {
 
     public String getPathFoto() {
         return mPathFoto;
+    }
+
+    public String getUrl() {
+        return mUrl;
     }
 }

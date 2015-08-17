@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.vinidsl.navigationviewdemo.Adapter.ProgramasAdapter;
 import com.vinidsl.navigationviewdemo.Model.Horario;
 import com.vinidsl.navigationviewdemo.Model.Noticia;
+import com.vinidsl.navigationviewdemo.Tasks.ProgramaTask;
 
 import java.util.ArrayList;
 
@@ -34,7 +35,9 @@ public class ProgramaActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        String[][] horarios = {
+        String idEvento = "1";
+
+        /*String[][] horarios = {
                 {"1", "08:00", "Nombre del evento", "Sala"},
                 {"2", "10:00", "Nombre del evento", "Sala"},
                 {"3", "12:00", "Nombre del evento", "Sala"},
@@ -53,18 +56,18 @@ public class ProgramaActivity extends AppCompatActivity {
                 horario = horarios[i][1];
                 nombre = horarios[i][2];
                 sala = horarios[i][3];
-                Horario objeto = new Horario(id, horario, nombre, sala);
+                Horario objeto = new Horario(id, horario, nombre, sala, "", "" ,"" ,"");
                 listaM.add(objeto);
             }
             listamM.add(listaM);
         }
 
 
-        mIndicatorContainer = (LinearLayout) findViewById(R.id.programa_paginador);
+        mIndicatorContainer = (LinearLayout) findViewById(R.id.programa_paginador);*/
         ViewPager pager = (ViewPager) findViewById(R.id.programa_contenedor);
-        ProgramasAdapter adapter =
+        /*ProgramasAdapter adapter =
                 new ProgramasAdapter(getSupportFragmentManager(), listamM);
-        pager.setAdapter(adapter);
+        pager.setAdapter(adapter);*/
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
@@ -79,7 +82,10 @@ public class ProgramaActivity extends AppCompatActivity {
 
             }
         });
-        dibujarPaginas(listamM.size());
+        //dibujarPaginas(listamM.size());
+
+        ProgramaTask task = new ProgramaTask(this);
+        task.execute(idEvento);
 
     }
 

@@ -3,6 +3,7 @@ package com.vinidsl.navigationviewdemo.Adapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,6 +97,19 @@ public class PatrocinadoresAdapter extends BaseAdapter {
             if(!pathFoto.isEmpty()) {
                 aquery.id(holder.mFotoIV).image(pathFoto);
             }
+
+            final String url = pat.getUrl();
+            holder.mVerBoton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent browserIntent =
+                            new Intent(Intent.ACTION_VIEW,
+                            Uri.parse(
+                                    (!url.startsWith("http://") && !url.startsWith("https://"))?
+                                            "http://" + url: url));
+                    activityRef.startActivity(browserIntent);
+                }
+            });
 
         }
 

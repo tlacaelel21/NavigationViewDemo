@@ -41,11 +41,12 @@ public class PatrocinadoresActivity extends AppCompatActivity {
         for (int i=0; i< patrocinadores.length; i++) {
             int estado = Integer.parseInt(patrocinadores[i][4]);
             long id = Long.parseLong(patrocinadores[i][0]);
-            String nombre = "", numero = "", path = "";
+            String nombre = "", numero = "", path = "", url = "";
             nombre = patrocinadores[i][1];
             numero = patrocinadores[i][2];
             path = patrocinadores[i][3];
-            Patrocinador objeto = new Patrocinador(id, estado, nombre, numero, path);
+            url = patrocinadores[i][4];
+            Patrocinador objeto = new Patrocinador(id, estado, nombre, numero, path, url);
             listaM.add(objeto);
         }
 
