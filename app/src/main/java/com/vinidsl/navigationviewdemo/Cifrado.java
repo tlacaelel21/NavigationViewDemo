@@ -26,6 +26,7 @@ public class Cifrado {
     public Cifrado(){
         addKey("MyQzji6Kq6lZCin");
     }
+
     public void addKey(String value) {
         byte[] valuebytes = value.getBytes();
         key = new SecretKeySpec(Arrays.copyOf(valuebytes, keysize), algoritmo);

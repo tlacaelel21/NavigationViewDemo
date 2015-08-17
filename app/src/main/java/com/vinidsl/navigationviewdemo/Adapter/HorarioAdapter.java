@@ -69,7 +69,7 @@ public class HorarioAdapter extends BaseAdapter {
 
         if (hor != null) {
 
-            holder.mHorarioTV.setText(hor.getHorario());
+            holder.mHorarioTV.setText(hor.getFechaInicio());
             holder.mNombreTV.setText(hor.getNombre());
             holder.mSalaTV.setText(hor.getSala());
 

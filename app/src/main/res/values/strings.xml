@@ -4,6 +4,8 @@
     <string name="action_settings">Settings</string>
 
 
+    <string name="base_url">http://www.smartthinking.com.mx:8080/Cptm/DataSMobile?</string>
+
     <!-- Textos para parametros -->
     <string name="espacio_prefs">CPTM PrefSpace</string>
     <string name="pref_idusuario">i_u_act</string>
