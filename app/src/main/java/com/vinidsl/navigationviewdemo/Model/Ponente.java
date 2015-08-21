@@ -15,13 +15,18 @@ public class Ponente {
     private String mNombre;
     private String mPuesto;
     private String mPathFoto;
+    private String mCorreo;
+    private String mCalificacion;
 
-    public Ponente(long id, int estado, String nombre, String puesto, String pathFoto) {
+    public Ponente(long id, int estado, String nombre, String puesto, String pathFoto,
+                   String correo, String calificacion) {
         this.mId = id;
         this.mEstado = estado;
         this.mNombre = nombre;
         this.mPuesto = puesto;
         this.mPathFoto = pathFoto;
+        this.mCorreo = correo;
+        this.mCalificacion = calificacion;
     }
 
     public long getId() {
@@ -42,5 +47,13 @@ public class Ponente {
 
     public String getPathFoto() {
         return mPathFoto;
+    }
+
+    public String getCorreo() {
+        return mCorreo;
+    }
+
+    public String getCalificacion() {
+        return mCalificacion;
     }
 }

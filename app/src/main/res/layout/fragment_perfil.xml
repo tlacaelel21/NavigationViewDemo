@@ -247,78 +247,37 @@
                 android:textSize="16dp"/>
 
             <!-- Separador de sección -->
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:layout_width="match_parent"
-                android:text="@string/perfil_d_fiscales"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
-            <!-- -->
-
-            <EditText
-                android:background="@drawable/field_profile"
-                android:id="@+id/perfil_rfc"
-                android:inputType="textCapCharacters|textAutoComplete"
-                android:hint="@string/perfil_rfc"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_width="match_parent"
-                android:padding="15dp"
-                android:textSize="16dp"/>
-
-            <EditText
-                android:background="@drawable/field_profile"
-                android:id="@+id/perfil_calle"
-                android:inputType="textCapSentences|textAutoComplete"
-                android:hint="@string/perfil_calle"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_width="match_parent"
-                android:padding="15dp"
-                android:textSize="16dp"/>
-
-            <EditText
-                android:background="@drawable/field_profile"
-                android:id="@+id/perfil_colonia"
-                android:inputType="textCapSentences|textAutoComplete"
-                android:hint="@string/perfil_colonia"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_width="match_parent"
-                android:padding="15dp"
-                android:textSize="16dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-                <EditText
-                    android:background="@drawable/field_profile"
-                    android:id="@+id/perfil_delegacion"
-                    android:inputType="textCapSentences|textAutoComplete"
-                    android:hint="@string/perfil_delegacion"
+                <TextView
+                    android:gravity="center_horizontal"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_margin="15dp"
                     android:layout_width="0dp"
-                    android:padding="15dp"
-                    android:textSize="16dp"/>
+                    android:layout_weight="1"
+                    android:text="@string/perfil_d_fiscales"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
 
-                <EditText
-                    android:background="@drawable/field_profile"
-                    android:id="@+id/perfil_codigo_postal"
-                    android:inputType="number|textAutoComplete"
-                    android:hint="@string/perfil_codigo"
+                <ImageButton
+                    android:id="@+id/perfil_boton_agregar_datos"
+                    android:background="@color/cab_perfil"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_width="100dp"
-                    android:padding="15dp"
-                    android:textSize="16dp"/>
+                    android:src="@drawable/action_eventadd_clear"/>
 
             </LinearLayout>
+            <!-- -->
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/perfil_df_contenedor"
+                android:layout_width="match_parent"
+                android:layout_height="700dp"/>
 
             <Button
                 android:background="@drawable/boton_perfil"

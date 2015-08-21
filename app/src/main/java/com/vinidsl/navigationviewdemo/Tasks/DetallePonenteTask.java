@@ -3,21 +3,21 @@ package com.vinidsl.navigationviewdemo.Tasks;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vinidsl.navigationviewdemo.Adapter.PatrocinadoresAdapter;
+import com.androidquery.AQuery;
+import com.vinidsl.navigationviewdemo.Adapter.PonenciaAdapter;
 import com.vinidsl.navigationviewdemo.Adapter.PonentesAdapter;
 import com.vinidsl.navigationviewdemo.Cifrado;
-import com.vinidsl.navigationviewdemo.Model.Patrocinador;
+import com.vinidsl.navigationviewdemo.Model.Ponencia;
 import com.vinidsl.navigationviewdemo.Model.Ponente;
-import com.vinidsl.navigationviewdemo.PonenteActivity;
 import com.vinidsl.navigationviewdemo.R;
 
 import org.json.JSONArray;
@@ -35,17 +35,19 @@ import java.util.ArrayList;
 /**
  * Created by JoseRogelio on 15/08/2015.
  */
-public class PonentesTask extends AsyncTask<String, Void, Void> {
+public class DetallePonenteTask extends AsyncTask<String, Void, Void> {
 
-    private final String LOG_TAG = PonentesTask.class.getSimpleName();
-    private final String SERVICE_ID = "319";
+    private final String LOG_TAG = DetallePonenteTask.class.getSimpleName();
+    private final String SERVICE_ID = "320";
 
     private final Context mContext;
     private ProgressDialog mDialog;
-    private ArrayList<Ponente> ponentes;
+    private Ponente ponente;
+    private ArrayList<Ponencia> ponencias;
     private int insertados;
+    private AQuery aquery;
 
-    public PonentesTask(Context context) {
+    public DetallePonenteTask(Context context) {
         mContext = context;
     }
 
@@ -53,36 +55,43 @@ public class PonentesTask extends AsyncTask<String, Void, Void> {
             throws JSONException {
 
         try {
-            ponentes = new ArrayList<Ponente>();
+
             JSONObject mainNode = new JSONObject(JsonStr);
-            JSONArray mainArray = mainNode.getJSONArray("ponente"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
+
+
+            // detalle_pon:{pon_nombre, pon_foto, pon_empresa, pon_correo, pon_puesto, pon_calif},
+            // ponencias:[{pro_id, pro_nombre, pro_fecha_ini, pro_lugar}, {}, {}]
+
+            JSONArray mainArray = mainNode.getJSONArray("ponencias");
+
+            String nombre = mainNode.getString("pon_nombre");
+            String foto = mainNode.getString("pon_empresa");
+            String empresa = mainNode.getString("pon_empresa");
+            String correo = mainNode.getString("pon_correo");
+            String calificacion = mainNode.getString("pon_calif");
 
             for(int i = 0; i < mainArray.length(); i++) {
 
-                // ponente:{pon_id, pon_nombre, pon_foto, pon_empresa}
-
                 JSONObject node = mainArray.getJSONObject(i);
 
-                long id = node.getLong("pon_id");
-                String nombre = node.getString("pon_nombre");
-                String numero = node.getString("pon_empresa");
-                String pathFoto = node.getString("pon_foto");
-                String correo = "";
-                String calificacion = "";
-                //String url = node.getString("pat_url");
-                int estado = 0; //node.getInt("tipo");
+                long id = node.getLong("pro_id");
+                String nombreArr = node.getString("pro_nombre");
+                String fechaIniArr = node.getString("pro_fecha_ini");
+                String lugarArr = node.getString("pro_lugar");
 
-                Ponente p =
-                        new Ponente(id, estado, nombre, numero, pathFoto, correo, calificacion);
+                Ponencia p =
+                        new Ponencia(id, nombreArr, fechaIniArr, lugarArr);
 
-                ponentes.add(p);
+                ponencias.add(p);
 
             }
 
+            ponente = new Ponente(0, 0, nombre, empresa, foto, correo, calificacion);
+
             insertados = 0;
 
-            if ( ponentes.size() > 0 ) {
-                insertados = ponentes.size();
+            if ( ponente != null ) {
+                insertados = 1;
             }
 
         } catch (JSONException e) {
@@ -176,7 +185,7 @@ public class PonentesTask extends AsyncTask<String, Void, Void> {
         }
 
         // validaciones correspondientes
-        if(ponentes == null) {
+        if(ponente == null) {
             Toast.makeText(mContext, "Sin conexión a Internet", Toast.LENGTH_LONG).show();
             Log.i("DESCARGA", "SIN INTERNET");
         } else if(insertados == 0) {
@@ -186,21 +195,39 @@ public class PonentesTask extends AsyncTask<String, Void, Void> {
             // ejecución para un caso ideal donde todo resulto exitoso
         } else {
 
-            ListView lista = (ListView)
-                    ((Activity) mContext).findViewById(R.id.ponentes_lista); // id del ListView
-            final PonentesAdapter adapter =
-                    new PonentesAdapter((Activity) mContext, ponentes);
-            lista.setAdapter(adapter);
+            aquery = new AQuery(mContext);
+            Activity a = (Activity) mContext;
+            TextView nombreTV = (TextView) a.findViewById(R.id.ponente_nombre);
+            TextView puestoTV = (TextView) a.findViewById(R.id.ponente_puesto);
+            TextView empresaTV = (TextView) a.findViewById(R.id.ponente_empresa);
+            TextView correoTV = (TextView) a.findViewById(R.id.ponente_correo);
+            RatingBar califRB = (RatingBar) a.findViewById(R.id.ponente_calificacion);
+            ListView lista = (ListView) a.findViewById(R.id.ponente_lista_ponencias);
 
-            lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Ponente p = adapter.getItem(position);
-                    Intent intent = new Intent(mContext, PonenteActivity.class);
-                    intent.putExtra("id", p.getId());
-                    mContext.startActivity(intent);
-                }
-            });
+            String pathFoto = ponente.getPathFoto();
+
+            float calif;
+            try {
+                calif = Float.parseFloat(ponente.getCalificacion());
+            } catch (NumberFormatException e) {
+                calif = 0f;
+            }
+
+            if(pathFoto != null && !pathFoto.isEmpty()) {
+                aquery.id(R.id.ponente_foto).image(ponente.getPathFoto());
+            }
+
+            nombreTV.setText(ponente.getNombre());
+            puestoTV.setText(ponente.getPuesto());
+            empresaTV.setText("");
+            correoTV.setText(ponente.getCorreo());
+
+            califRB.setMax(5);
+            califRB.setStepSize(0.5f);
+            califRB.setRating(calif);
+
+            PonenciaAdapter adapter = new PonenciaAdapter((Activity) mContext, ponencias);
+            lista.setAdapter(adapter);
 
         }
 

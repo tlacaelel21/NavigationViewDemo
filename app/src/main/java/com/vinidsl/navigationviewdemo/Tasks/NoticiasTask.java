@@ -12,12 +12,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.vinidsl.navigationviewdemo.Adapter.NoticiasAdapter;
 import com.vinidsl.navigationviewdemo.Adapter.PatrocinadoresAdapter;
-import com.vinidsl.navigationviewdemo.Adapter.PonentesAdapter;
 import com.vinidsl.navigationviewdemo.Cifrado;
+import com.vinidsl.navigationviewdemo.Model.Noticia;
 import com.vinidsl.navigationviewdemo.Model.Patrocinador;
-import com.vinidsl.navigationviewdemo.Model.Ponente;
-import com.vinidsl.navigationviewdemo.PonenteActivity;
+import com.vinidsl.navigationviewdemo.NoticiaActivity;
 import com.vinidsl.navigationviewdemo.R;
 
 import org.json.JSONArray;
@@ -35,17 +35,17 @@ import java.util.ArrayList;
 /**
  * Created by JoseRogelio on 15/08/2015.
  */
-public class PonentesTask extends AsyncTask<String, Void, Void> {
+public class NoticiasTask extends AsyncTask<String, Void, Void> {
 
-    private final String LOG_TAG = PonentesTask.class.getSimpleName();
-    private final String SERVICE_ID = "319";
+    private final String LOG_TAG = NoticiasTask.class.getSimpleName();
+    private final String SERVICE_ID = "322";
 
     private final Context mContext;
     private ProgressDialog mDialog;
-    private ArrayList<Ponente> ponentes;
+    private ArrayList<Noticia> noticias;
     private int insertados;
 
-    public PonentesTask(Context context) {
+    public NoticiasTask(Context context) {
         mContext = context;
     }
 
@@ -53,36 +53,33 @@ public class PonentesTask extends AsyncTask<String, Void, Void> {
             throws JSONException {
 
         try {
-            ponentes = new ArrayList<Ponente>();
+            noticias = new ArrayList<Noticia>();
             JSONObject mainNode = new JSONObject(JsonStr);
-            JSONArray mainArray = mainNode.getJSONArray("ponente"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
+            JSONArray mainArray = mainNode.getJSONArray("noticias"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
 
             for(int i = 0; i < mainArray.length(); i++) {
 
-                // ponente:{pon_id, pon_nombre, pon_foto, pon_empresa}
+                // noticias:[{not_id, not_titulo, not_desc, not_imagen}, {}, {}]
 
                 JSONObject node = mainArray.getJSONObject(i);
 
-                long id = node.getLong("pon_id");
-                String nombre = node.getString("pon_nombre");
-                String numero = node.getString("pon_empresa");
-                String pathFoto = node.getString("pon_foto");
-                String correo = "";
-                String calificacion = "";
-                //String url = node.getString("pat_url");
-                int estado = 0; //node.getInt("tipo");
+                long id = node.getLong("not_id");
+                String titulo = node.getString("not_titulo");
+                String desc = node.getString("not_desc");
+                String pathFoto = node.getString("not_imagen");
+                String fecha = "";
 
-                Ponente p =
-                        new Ponente(id, estado, nombre, numero, pathFoto, correo, calificacion);
+                Noticia n =
+                        new Noticia(id, titulo, fecha, pathFoto, desc);
 
-                ponentes.add(p);
+                noticias.add(n);
 
             }
 
             insertados = 0;
 
-            if ( ponentes.size() > 0 ) {
-                insertados = ponentes.size();
+            if ( noticias.size() > 0 ) {
+                insertados = noticias.size();
             }
 
         } catch (JSONException e) {
@@ -176,7 +173,7 @@ public class PonentesTask extends AsyncTask<String, Void, Void> {
         }
 
         // validaciones correspondientes
-        if(ponentes == null) {
+        if(noticias == null) {
             Toast.makeText(mContext, "Sin conexión a Internet", Toast.LENGTH_LONG).show();
             Log.i("DESCARGA", "SIN INTERNET");
         } else if(insertados == 0) {
@@ -187,18 +184,24 @@ public class PonentesTask extends AsyncTask<String, Void, Void> {
         } else {
 
             ListView lista = (ListView)
-                    ((Activity) mContext).findViewById(R.id.ponentes_lista); // id del ListView
-            final PonentesAdapter adapter =
-                    new PonentesAdapter((Activity) mContext, ponentes);
+                    ((Activity) mContext).findViewById(R.id.noticias_lista); // id del ListView
+            final NoticiasAdapter adapter =
+                    new NoticiasAdapter((Activity) mContext, noticias);
             lista.setAdapter(adapter);
 
             lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Ponente p = adapter.getItem(position);
-                    Intent intent = new Intent(mContext, PonenteActivity.class);
-                    intent.putExtra("id", p.getId());
-                    mContext.startActivity(intent);
+                    Noticia n = adapter.getItem(position);
+
+                    Intent activity = new Intent(mContext, NoticiaActivity.class);
+                    activity.putExtra("id", n.getId());
+                    activity.putExtra("titulo", n.getTitulo());
+                    activity.putExtra("desc", n.getContenido());
+                    activity.putExtra("fecha", n.getFecha());
+                    activity.putExtra("pathFoto", n.getPathFoto());
+
+                    mContext.startActivity(activity);
                 }
             });
 

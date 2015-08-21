@@ -52,6 +52,7 @@
     <string name="perfil_conf_contrasenia">Confirmar contraseña</string>
     <string name="perfil_cargo">Cargo</string>
     <string name="perfil_rfc">RFC</string>
+    <string name="perfil_rs">Razón social</string>
     <string name="perfil_calle">Calle</string>
     <string name="perfil_colonia">Colonia</string>
     <string name="perfil_num_ext">Número exterior</string>
@@ -69,6 +70,7 @@
     <string name="perfil_d_compania">Datos de la compañia</string>
     <string name="perfil_d_fiscales">Datos de facturación</string>
     <string name="perfil_act">Actualizar perfil</string>
+    <string name="perfil_guardar">Guardar datos</string>
     <string name="perfil_term">Condiciones del Servicio y Politica de Privacidad</string>
 
     <!-- Textos de la UI Noticias -->
@@ -89,6 +91,12 @@
     <string name="ponentes_list_cab_pon">Ponente</string>
     <string name="ponentes_list_cab_cita">Cita</string>
 
+    <!-- Textos de la UI Ponente -->
+    <string name="ponente_cab">Ponente</string>
+    <string name="ponencias_cab">Ponencias</string>
+    <string name="ponencia_list_cab_pon">Ponencia y lugar</string>
+    <string name="ponencia_list_cab_fecha">Fecha</string>
+
     <!-- Textos de la UI Encuestas -->
     <string name="encuestas_cab">Encuestas</string>
     <string name="encuestas_pregunta_1">Este es un texto de prueba</string>
@@ -98,6 +106,7 @@
 
     <!-- Textos de la UI Programa -->
     <string name="programa_cab">Programa</string>
+    <string name="programa_list_cab_dia_nf">Día</string>
     <string name="programa_list_cab_horario">Horario</string>
     <string name="programa_list_cab_dia">Día: <xliff:g id="dia">%d</xliff:g></string>
 

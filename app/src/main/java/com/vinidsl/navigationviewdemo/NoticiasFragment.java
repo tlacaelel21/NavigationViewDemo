@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.vinidsl.navigationviewdemo.Adapter.NoticiasAdapter;
@@ -27,7 +26,7 @@ public class NoticiasFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_noticias, container, false);
+        View rootView = inflater.inflate(R.layout.activity_noticias, container, false);
 
         String[][] noticias = {
                 {"-1", "Julio, 2015", "Ir a sitio" , "http://farm8.static.flickr.com/7281/8718400698_dbf9d7d2ae_m.jpg"},

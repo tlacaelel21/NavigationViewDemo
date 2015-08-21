@@ -17,8 +17,8 @@ package com.vinidsl.navigationviewdemo;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -34,9 +34,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.vinidsl.navigationviewdemo.Tasks.GuardarDatosFacturaTask;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements DatosFacturaDialog.DatosFacturaListener {
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle drawerToggle;
@@ -182,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case R.id.nav_mi_perfil:
                                 //Registro fragRegistro = new Registro();
-                                Perfil fragRegistro = new Perfil();
+                                PerfilFragment fragRegistro = new PerfilFragment();
                                 MuestraFragment(fragRegistro);
                                 //Perfil fragRegistro = new Perfil();
                                 //MuestraFragment(fragRegistro);
@@ -240,4 +244,47 @@ public class MainActivity extends AppCompatActivity {
             MuestraFragment(fe_int);
         }
     }
+
+    @Override
+    public void onDialogClick(DialogFragment dialog) {
+
+        TextView rfcTV = (TextView) dialog.getDialog().findViewById(R.id.perfil_rfc);
+        TextView rsTV = (TextView) dialog.getDialog().findViewById(R.id.perfil_rs);
+        TextView calleFacTV = (TextView) dialog.getDialog().findViewById(R.id.perfil_calle_fac);
+        TextView numExtTV = (TextView) dialog.getDialog().findViewById(R.id.perfil_num_ext_fac);
+        TextView numIntTV = (TextView) dialog.getDialog().findViewById(R.id.perfil_num_int_fac);
+        TextView coloniaFacTV = (TextView) dialog.getDialog().findViewById(R.id.perfil_colonia_fac);
+        TextView delegacionFacTV = (TextView) dialog.getDialog().findViewById(R.id.perfil_delegacion_fac);
+        TextView cpFacTV = (TextView) dialog.getDialog().findViewById(R.id.perfil_codigo_postal_fac);
+        TextView estadoTV = (TextView) dialog.getDialog().findViewById(R.id.perfil_estado_fac);
+
+        /*
+
+            id_usuario|rfc|razon_social|calle|noext|noint|colonia|cp
+
+            |municipio|estado
+
+         */
+
+        String idPerfil = "1";
+        String parametro;
+
+        String rfc = rfcTV.getText().toString();
+        String rs= rsTV.getText().toString();
+        String calle = calleFacTV.getText().toString();
+        String numExt = numExtTV.getText().toString();
+        String numInt = numIntTV.getText().toString();
+        String colonia = coloniaFacTV.getText().toString();
+        String cp = cpFacTV.getText().toString();
+        String municipio = delegacionFacTV.getText().toString();
+        String estado = estadoTV.getText().toString();
+
+        parametro = idPerfil + "|" + rfc + "|" + rs + "|" + calle + "|" + numExt + "|" +
+                numInt + "|" + colonia + "|" + cp + "|" + municipio + "|" + estado;
+
+        GuardarDatosFacturaTask task = new GuardarDatosFacturaTask(this);
+        task.execute(parametro);
+
+    }
+
 }

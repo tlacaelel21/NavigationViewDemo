@@ -22,72 +22,31 @@
 
     <ScrollView
         android:background="@android:color/white"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_width="match_parent">
 
         <LinearLayout
+            android:id="@+id/encuesta_preguntas_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
 
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:layout_width="match_parent"
-                android:text="@string/encuestas_pregunta_1"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
-
-            <EditText
-                android:background="@drawable/button_policy"
-                android:id="@+id/perfil_respuesta"
-                android:inputType="textCapWords|textAutoComplete"
-                android:hint="@string/perfil_nombre"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_width="match_parent"
-                android:padding="15dp"
-                android:textSize="16dp"/>
-
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:layout_width="match_parent"
-                android:text="@string/encuestas_pregunta_2"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_margin="5dp"
-                android:layout_height="50dp"
-                android:id="@+id/spinner_pais"
-                android:spinnerMode="dropdown"/>
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_margin="5dp"
-                android:layout_height="50dp"
-                android:id="@+id/spinner_edo"
-                android:spinnerMode="dropdown"/>
-
-            <Button
-                android:id="@+id/perfil_boton_actualizar"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="25dp"
-                android:layout_width="match_parent"
-                android:background="@color/cab_encuesta"
-                android:backgroundTint="@color/cab_encuesta"
-                android:text="@string/boton_terminar"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"/>
 
         </LinearLayout>
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/perfil_boton_actualizar"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:background="@color/cab_encuesta"
+        android:backgroundTint="@color/cab_encuesta"
+        android:text="@string/boton_terminar"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"/>
 
 </LinearLayout>

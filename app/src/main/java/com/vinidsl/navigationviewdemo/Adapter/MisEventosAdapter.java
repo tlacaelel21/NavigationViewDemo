@@ -22,6 +22,7 @@ import com.androidquery.AQuery;
 import com.vinidsl.navigationviewdemo.EncuestaActivity;
 import com.vinidsl.navigationviewdemo.Model.MisEventosModel;
 import com.vinidsl.navigationviewdemo.NoticiaActivity;
+import com.vinidsl.navigationviewdemo.NoticiasActivity;
 import com.vinidsl.navigationviewdemo.NoticiasFragment;
 import com.vinidsl.navigationviewdemo.PatrocinadoresActivity;
 import com.vinidsl.navigationviewdemo.PonentesActivity;
@@ -136,8 +137,8 @@ public class MisEventosAdapter extends ArrayAdapter<MisEventosModel> {
                             if (item.getItemId() == R.id.item_noticias){
                                 //Intent prog = new Intent(act, NoticiaActivity.class);
                                 //act.startActivity(prog);
-                                NoticiasFragment noticias = new NoticiasFragment();
-                                MuestraFragment(noticias);
+                                Intent prog = new Intent(act, NoticiasActivity.class);
+                                act.startActivity(prog);
                                 //Toast.makeText(aquery.getContext(), "** "+tituloItem, Toast.LENGTH_SHORT).show();
 
                             }

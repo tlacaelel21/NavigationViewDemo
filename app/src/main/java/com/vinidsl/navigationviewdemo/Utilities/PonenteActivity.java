@@ -1,20 +1,21 @@
-package com.vinidsl.navigationviewdemo;
+package com.vinidsl.navigationviewdemo.Utilities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import com.vinidsl.navigationviewdemo.R;
 import com.vinidsl.navigationviewdemo.Tasks.PonentesTask;
 
 /**
- * Created by JoseRogelio on 09/08/2015.
+ * Created by JoseRogelio on 17/08/2015.
  */
-public class PonentesActivity extends AppCompatActivity {
+public class PonenteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ponentes);
+        setContentView(R.layout.activity_ponente);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -26,5 +27,4 @@ public class PonentesActivity extends AppCompatActivity {
         task.execute(idEvento);
 
     }
-
 }

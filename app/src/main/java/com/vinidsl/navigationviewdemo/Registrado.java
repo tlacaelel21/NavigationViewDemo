@@ -7,13 +7,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.text.Html;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class Registrado extends Fragment {
     Button aButton;
@@ -36,7 +33,7 @@ public class Registrado extends Fragment {
                 //Log.d("ENTRO", "ENTRAAAAAA***************************************************888888888");
                 FragmentManager manager=getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = manager.beginTransaction();
-                Perfil perfil= new Perfil();
+                PerfilFragment perfil= new PerfilFragment();
                 Fragment newFragment = perfil;
                 Fragment actual= visualiza();
                 actual.onDestroy();

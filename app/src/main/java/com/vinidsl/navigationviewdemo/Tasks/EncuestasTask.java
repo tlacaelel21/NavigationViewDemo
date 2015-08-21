@@ -1,23 +1,23 @@
 package com.vinidsl.navigationviewdemo.Tasks;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vinidsl.navigationviewdemo.Adapter.PatrocinadoresAdapter;
-import com.vinidsl.navigationviewdemo.Adapter.PonentesAdapter;
+import com.vinidsl.navigationviewdemo.Adapter.DatosFacturaAdapter;
 import com.vinidsl.navigationviewdemo.Cifrado;
-import com.vinidsl.navigationviewdemo.Model.Patrocinador;
-import com.vinidsl.navigationviewdemo.Model.Ponente;
-import com.vinidsl.navigationviewdemo.PonenteActivity;
+import com.vinidsl.navigationviewdemo.Model.Compania;
+import com.vinidsl.navigationviewdemo.Model.DatosFactura;
+import com.vinidsl.navigationviewdemo.Model.Pregunta;
+import com.vinidsl.navigationviewdemo.Model.Respuesta;
+import com.vinidsl.navigationviewdemo.Model.Usuario;
 import com.vinidsl.navigationviewdemo.R;
 
 import org.json.JSONArray;
@@ -35,17 +35,19 @@ import java.util.ArrayList;
 /**
  * Created by JoseRogelio on 15/08/2015.
  */
-public class PonentesTask extends AsyncTask<String, Void, Void> {
+public class EncuestasTask extends AsyncTask<String, Void, Void> {
 
-    private final String LOG_TAG = PonentesTask.class.getSimpleName();
-    private final String SERVICE_ID = "319";
+    private final String LOG_TAG = EncuestasTask.class.getSimpleName();
+    private final String SERVICE_ID = "324";
 
     private final Context mContext;
     private ProgressDialog mDialog;
-    private ArrayList<Ponente> ponentes;
+    private Usuario usuario;
+    private Compania compania;
+    private ArrayList<Pregunta> preguntas;
     private int insertados;
 
-    public PonentesTask(Context context) {
+    public EncuestasTask(Context context) {
         mContext = context;
     }
 
@@ -53,36 +55,46 @@ public class PonentesTask extends AsyncTask<String, Void, Void> {
             throws JSONException {
 
         try {
-            ponentes = new ArrayList<Ponente>();
+
             JSONObject mainNode = new JSONObject(JsonStr);
-            JSONArray mainArray = mainNode.getJSONArray("ponente"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
+
+            // preguntas:[{preg_id, preg_caption, preg_tipo, respuestas[{resp_id,resp_caption}]}]
+
+            JSONArray mainArray = mainNode.getJSONArray("preguntas");
+
+            preguntas = new ArrayList<Pregunta>();
 
             for(int i = 0; i < mainArray.length(); i++) {
 
-                // ponente:{pon_id, pon_nombre, pon_foto, pon_empresa}
-
                 JSONObject node = mainArray.getJSONObject(i);
 
-                long id = node.getLong("pon_id");
-                String nombre = node.getString("pon_nombre");
-                String numero = node.getString("pon_empresa");
-                String pathFoto = node.getString("pon_foto");
-                String correo = "";
-                String calificacion = "";
-                //String url = node.getString("pat_url");
-                int estado = 0; //node.getInt("tipo");
+                long id = node.getLong("preg_id");
+                String caption = node.getString("preg_caption");
+                String tipo = node.getString("preg_tipo");
 
-                Ponente p =
-                        new Ponente(id, estado, nombre, numero, pathFoto, correo, calificacion);
 
-                ponentes.add(p);
+                JSONArray innerArray = mainArray.getJSONArray(3);
+
+                Respuesta[] respuestas = new Respuesta[innerArray.length()];
+
+                for (int j = 0; j< innerArray.length(); j++) {
+                    JSONObject innerNode = innerArray.getJSONObject(j);
+                    long idArr = innerNode.getInt("resp_id");
+                    String resCaption = innerNode.getString("resp_caption");
+                    respuestas[j] = new Respuesta(idArr, resCaption);
+                }
+
+                Pregunta p =
+                        new Pregunta(id, caption, tipo, respuestas);
+
+                preguntas.add(p);
 
             }
 
             insertados = 0;
 
-            if ( ponentes.size() > 0 ) {
-                insertados = ponentes.size();
+            if ( preguntas.size() > 0 ) {
+                insertados = preguntas.size();
             }
 
         } catch (JSONException e) {
@@ -176,7 +188,7 @@ public class PonentesTask extends AsyncTask<String, Void, Void> {
         }
 
         // validaciones correspondientes
-        if(ponentes == null) {
+        if(usuario == null) {
             Toast.makeText(mContext, "Sin conexión a Internet", Toast.LENGTH_LONG).show();
             Log.i("DESCARGA", "SIN INTERNET");
         } else if(insertados == 0) {
@@ -186,21 +198,8 @@ public class PonentesTask extends AsyncTask<String, Void, Void> {
             // ejecución para un caso ideal donde todo resulto exitoso
         } else {
 
-            ListView lista = (ListView)
-                    ((Activity) mContext).findViewById(R.id.ponentes_lista); // id del ListView
-            final PonentesAdapter adapter =
-                    new PonentesAdapter((Activity) mContext, ponentes);
-            lista.setAdapter(adapter);
+            AppCompatActivity a = (AppCompatActivity) mContext;
 
-            lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Ponente p = adapter.getItem(position);
-                    Intent intent = new Intent(mContext, PonenteActivity.class);
-                    intent.putExtra("id", p.getId());
-                    mContext.startActivity(intent);
-                }
-            });
 
         }
 

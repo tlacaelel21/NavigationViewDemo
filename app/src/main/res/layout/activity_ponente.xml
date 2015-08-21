@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar"/>
+
+    <TextView
+        android:background="@color/cab_ponentes"
+        android:drawableLeft="@drawable/head_profile_st"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:text="@string/ponente_cab"
+        android:textSize="20sp"
+        android:textColor="@android:color/white" />
+
+    <ImageView
+        android:background="@drawable/newspaper"
+        android:contentDescription="@string/noticias_item_cd_foto"
+        android:id="@+id/ponente_foto"
+        android:layout_width="match_parent"
+        android:layout_height="198dp"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/ponente_nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/noticias_item_titulo"
+        android:layout_marginTop="20dp"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:id="@+id/ponente_puesto"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:text="@string/noticias_item_subtitulo"
+        android:textColor="@android:color/black"
+        android:textSize="14dp"/>
+
+    <RatingBar
+        android:id="@+id/ponente_calificacion"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:numStars="5" />
+
+    <TextView
+        android:id="@+id/ponente_empresa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/noticias_item_titulo"
+        android:textColor="@android:color/black"
+        android:textSize="16dp"/>
+
+    <TextView
+        android:id="@+id/ponente_correo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/noticias_item_subtitulo"
+        android:textColor="@android:color/black"
+        android:textSize="14dp"/>
+
+    <TextView
+        android:background="@color/cab_ponentes"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="30dp"
+        android:text="@string/ponencias_cab"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:textColor="@android:color/white" />
+
+    <LinearLayout
+        android:background="@color/cab_ponentes"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/ponencia_list_cab_pon"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/ponencia_list_cab_fecha"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/ponente_lista_ponencias"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/default_fondo_img"
+        android:dividerHeight="1dp"/>
+
+</LinearLayout>

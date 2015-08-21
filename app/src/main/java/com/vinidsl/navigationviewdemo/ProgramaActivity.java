@@ -37,37 +37,8 @@ public class ProgramaActivity extends AppCompatActivity {
 
         String idEvento = "1";
 
-        /*String[][] horarios = {
-                {"1", "08:00", "Nombre del evento", "Sala"},
-                {"2", "10:00", "Nombre del evento", "Sala"},
-                {"3", "12:00", "Nombre del evento", "Sala"},
-                {"4", "14:00", "Nombre del evento", "Sala"},
-                {"5", "16:00", "Nombre del evento", "Sala"},
-                {"6", "18:00", "Nombre del evento", "Sala"}
-        };
-
-        ArrayList<ArrayList<Horario>> listamM = new ArrayList<ArrayList<Horario>>();
-
-        for(int j=0; j < 5; j++) {
-            ArrayList<Horario> listaM = new ArrayList<Horario>();
-            for (int i=0; i< horarios.length; i++) {
-                long id = Long.parseLong(horarios[i][0]);
-                String horario = "", nombre = "", sala = "";
-                horario = horarios[i][1];
-                nombre = horarios[i][2];
-                sala = horarios[i][3];
-                Horario objeto = new Horario(id, horario, nombre, sala, "", "" ,"" ,"");
-                listaM.add(objeto);
-            }
-            listamM.add(listaM);
-        }
-
-
-        mIndicatorContainer = (LinearLayout) findViewById(R.id.programa_paginador);*/
         ViewPager pager = (ViewPager) findViewById(R.id.programa_contenedor);
-        /*ProgramasAdapter adapter =
-                new ProgramasAdapter(getSupportFragmentManager(), listamM);
-        pager.setAdapter(adapter);*/
+
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
@@ -82,7 +53,6 @@ public class ProgramaActivity extends AppCompatActivity {
 
             }
         });
-        //dibujarPaginas(listamM.size());
 
         ProgramaTask task = new ProgramaTask(this);
         task.execute(idEvento);
@@ -112,7 +82,5 @@ public class ProgramaActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.programa_cab_indicador_dia))
                 .setText(String.format(getString(R.string.programa_list_cab_dia), seleccion + 1));
     }
-
-
 
 }

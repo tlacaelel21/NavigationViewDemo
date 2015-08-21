@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:background="@drawable/field_profile"
+            android:id="@+id/perfil_rfc"
+            android:inputType="textCapCharacters|textAutoComplete"
+            android:hint="@string/perfil_rfc"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:padding="15dp"
+            android:textSize="16dp"/>
+
+        <EditText
+            android:background="@drawable/field_profile"
+            android:id="@+id/perfil_rs"
+            android:inputType="textCapWords|textAutoComplete"
+            android:hint="@string/perfil_rs"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:padding="15dp"
+            android:textSize="16dp"/>
+
+        <EditText
+            android:background="@drawable/field_profile"
+            android:id="@+id/perfil_calle_fac"
+            android:inputType="textCapSentences|textAutoComplete"
+            android:hint="@string/perfil_calle"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:padding="15dp"
+            android:textSize="16dp"/>
+
+        <EditText
+            android:background="@drawable/field_profile"
+            android:id="@+id/perfil_num_ext_fac"
+            android:inputType="phone|textAutoComplete"
+            android:hint="@string/perfil_num_ext"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:padding="15dp"
+            android:textSize="16dp"/>
+
+        <EditText
+            android:background="@drawable/field_profile"
+            android:id="@+id/perfil_num_int_fac"
+            android:inputType="phone|textAutoComplete"
+            android:hint="@string/perfil_num_int"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:padding="15dp"
+            android:textSize="16dp"/>
+
+        <EditText
+            android:background="@drawable/field_profile"
+            android:id="@+id/perfil_colonia_fac"
+            android:inputType="textCapSentences|textAutoComplete"
+            android:hint="@string/perfil_colonia"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:padding="15dp"
+            android:textSize="16dp"/>
+
+        <EditText
+            android:background="@drawable/field_profile"
+            android:id="@+id/perfil_delegacion_fac"
+            android:inputType="textCapSentences|textAutoComplete"
+            android:hint="@string/perfil_delegacion"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:padding="15dp"
+            android:textSize="16dp"/>
+
+        <EditText
+            android:background="@drawable/field_profile"
+            android:id="@+id/perfil_codigo_postal_fac"
+            android:inputType="number|textAutoComplete"
+            android:hint="@string/perfil_codigo"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:padding="15dp"
+            android:textSize="16dp"/>
+
+        <EditText
+            android:background="@drawable/field_profile"
+            android:id="@+id/perfil_estado_fac"
+            android:inputType="textCapSentences|textAutoComplete"
+            android:hint="@string/perfil_estado"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:padding="15dp"
+            android:textSize="16dp"/>
+
+        <Button
+            android:background="@drawable/boton_perfil"
+            android:id="@+id/datos_fiscales_boton_actualizar"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:text="@string/perfil_guardar"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+</ScrollView>
