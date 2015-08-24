@@ -8,6 +8,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +40,12 @@ import java.util.ArrayList;
  * Created by JoseRogelio on 15/08/2015.
  */
 public class EncuestasTask extends AsyncTask<String, Void, Void> {
+
+    private final static String TIPO_INPUT_TEXT = "1";
+    private final static String TIPO_COMBO_BOX = "2";
+    private final static String TIPO_CHECK_BOX = "3";
+    private final static String TIPO_MULTI_CHECK = "4";
+    private final static String TIPO_PICKER = "5";
 
     private final String LOG_TAG = EncuestasTask.class.getSimpleName();
     private final String SERVICE_ID = "324";
@@ -73,7 +83,7 @@ public class EncuestasTask extends AsyncTask<String, Void, Void> {
                 String tipo = node.getString("preg_tipo");
 
 
-                JSONArray innerArray = mainArray.getJSONArray(3);
+                JSONArray innerArray = node.getJSONArray("respuestas");
 
                 Respuesta[] respuestas = new Respuesta[innerArray.length()];
 
@@ -141,6 +151,17 @@ public class EncuestasTask extends AsyncTask<String, Void, Void> {
             InputStream inputStream = urlConnection.getInputStream();
             StringBuffer buffer = new StringBuffer();
             if (inputStream == null) {
+                forecastJsonStr = "{\"preguntas\" : [" +
+                        "{\"preg_id\": 1 , \"preg_caption\": \"pregunta 1\", \"preg_tipo\": \"1\"," +
+                        " \"respuestas\": []}," +
+                        "{\"preg_id\": 2 , \"preg_caption\": \"pregunta 2\", \"preg_tipo\": \"2\"," +
+                        " \"respuestas\": [" +
+                            "{\"resp_id\" : 1, \"resp_caption\":\"respuesta 1\"}," +
+                            "{\"resp_id\" : 2, \"resp_caption\":\"respuesta 2\"}," +
+                            "{\"resp_id\" : 1, \"resp_caption\":\"respuesta 3\"}" +
+                        "]}" +
+                        "]}";
+                populateList(forecastJsonStr);
                 return null;
             }
             reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -151,6 +172,17 @@ public class EncuestasTask extends AsyncTask<String, Void, Void> {
             }
 
             if (buffer.length() == 0) {
+                forecastJsonStr = "{\"preguntas\" : [" +
+                        "{\"preg_id\": 1 , \"preg_caption\": \"pregunta 1\", \"preg_tipo\": \"1\"," +
+                        " \"respuestas\": []}," +
+                        "{\"preg_id\": 2 , \"preg_caption\": \"pregunta 2\", \"preg_tipo\": \"2\"," +
+                        " \"respuestas\": [" +
+                        "{\"resp_id\" : 1, \"resp_caption\":\"respuesta 1\"}," +
+                        "{\"resp_id\" : 2, \"resp_caption\":\"respuesta 2\"}," +
+                        "{\"resp_id\" : 1, \"resp_caption\":\"respuesta 3\"}" +
+                        "]}" +
+                        "]}";
+                populateList(forecastJsonStr);
                 return null;
             }
 
@@ -188,7 +220,7 @@ public class EncuestasTask extends AsyncTask<String, Void, Void> {
         }
 
         // validaciones correspondientes
-        if(usuario == null) {
+        if(preguntas == null) {
             Toast.makeText(mContext, "Sin conexión a Internet", Toast.LENGTH_LONG).show();
             Log.i("DESCARGA", "SIN INTERNET");
         } else if(insertados == 0) {
@@ -199,7 +231,47 @@ public class EncuestasTask extends AsyncTask<String, Void, Void> {
         } else {
 
             AppCompatActivity a = (AppCompatActivity) mContext;
+            LinearLayout contenedor =
+                    (LinearLayout) a.findViewById(R.id.encuesta_preguntas_container);
 
+            for(int i = 0; i<preguntas.size() ; i++) {
+
+                TextView caption = new TextView(mContext);
+                caption.setText(preguntas.get(i).getCaption());
+                contenedor.addView(caption);
+
+                switch(preguntas.get(i).getTipo()) {
+                    case TIPO_INPUT_TEXT:
+                        EditText inputET = new EditText(mContext);
+                        inputET.setHint("Respuesta");
+                        contenedor.addView(inputET);
+                        break;
+                    case TIPO_CHECK_BOX:
+
+                        break;
+                    case TIPO_MULTI_CHECK:
+
+                        break;
+                    case TIPO_COMBO_BOX:
+                        Spinner inputSP = new Spinner(mContext);
+                        ArrayList<String> respuestas = new ArrayList<String>();
+                        Respuesta[] r = preguntas.get(i).getRespuestas();
+                        for(int j = 0 ; j<r.length ; j++) {
+                            respuestas.add(r[j].getRespuesta());
+                        }
+                        ArrayAdapter<String> adapter =
+                                new ArrayAdapter<String>(mContext,
+                                        android.R.layout.simple_expandable_list_item_1,
+                                        respuestas);
+                        inputSP.setAdapter(adapter);
+                        contenedor.addView(inputSP);
+                        break;
+                    case TIPO_PICKER:
+
+                        break;
+                }
+
+            }
 
         }
 

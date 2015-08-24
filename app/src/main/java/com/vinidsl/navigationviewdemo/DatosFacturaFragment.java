@@ -92,9 +92,24 @@ public class DatosFacturaFragment extends Fragment {
         TextView cpFacTV = (TextView) v.findViewById(R.id.perfil_codigo_postal_fac);
         TextView estadoTV = (TextView) v.findViewById(R.id.perfil_estado_fac);
 
-
         String idDatosFactura = "1";
-        String parametro = "";
+
+        String rfc = rfcTV.getText().toString();
+        String rs= rsTV.getText().toString();
+        String calle = calleFacTV.getText().toString();
+        String numExt = numExtTV.getText().toString();
+        String numInt = numIntTV.getText().toString();
+        String colonia = coloniaFacTV.getText().toString();
+        String cp = cpFacTV.getText().toString();
+        String municipio = delegacionFacTV.getText().toString();
+        String estado = estadoTV.getText().toString();
+
+        /*
+                id_datosfactura|rfc|razon_social|calle|noext|noint|colonia|cp|municipio|estado
+         */
+        String parametro = idDatosFactura + "|" + rfc + "|" + rs + "|" + calle + "|" +
+                numExt + "|" + numInt + "|" + colonia + "|" + cp + "|" + municipio + "|" +
+                estado;
 
         ActualizaDatosFacturaTask task = new ActualizaDatosFacturaTask(getActivity());
         task.execute(parametro);

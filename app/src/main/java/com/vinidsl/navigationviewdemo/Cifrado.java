@@ -1,5 +1,8 @@
 package com.vinidsl.navigationviewdemo;
 
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 
 import java.security.InvalidKeyException;
@@ -55,4 +58,25 @@ public class Cifrado {
         return value;
     }
 
+    /**
+     * Created by JoseRogelio on 17/08/2015.
+     */
+    public static class PonenteActivity extends AppCompatActivity {
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_ponente);
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            toolbar.setTitle("");
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+            String idEvento = "1";
+
+            com.vinidsl.navigationviewdemo.Tasks.PonentesTask task = new com.vinidsl.navigationviewdemo.Tasks.PonentesTask(this);
+            task.execute(idEvento);
+
+        }
+    }
 }
