@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.vinidsl.navigationviewdemo.Adapter.DatosFacturaAdapter;
 import com.vinidsl.navigationviewdemo.Cifrado;
+import com.vinidsl.navigationviewdemo.EncuestaActivity;
 import com.vinidsl.navigationviewdemo.Model.Compania;
 import com.vinidsl.navigationviewdemo.Model.DatosFactura;
 import com.vinidsl.navigationviewdemo.Model.Pregunta;
@@ -52,8 +53,6 @@ public class EncuestasTask extends AsyncTask<String, Void, Void> {
 
     private final Context mContext;
     private ProgressDialog mDialog;
-    private Usuario usuario;
-    private Compania compania;
     private ArrayList<Pregunta> preguntas;
     private int insertados;
 
@@ -230,7 +229,7 @@ public class EncuestasTask extends AsyncTask<String, Void, Void> {
             // ejecución para un caso ideal donde todo resulto exitoso
         } else {
 
-            AppCompatActivity a = (AppCompatActivity) mContext;
+            EncuestaActivity a = (EncuestaActivity) mContext;
             LinearLayout contenedor =
                     (LinearLayout) a.findViewById(R.id.encuesta_preguntas_container);
 
@@ -272,6 +271,8 @@ public class EncuestasTask extends AsyncTask<String, Void, Void> {
                 }
 
             }
+
+            a.llenaLista(preguntas);
 
         }
 
