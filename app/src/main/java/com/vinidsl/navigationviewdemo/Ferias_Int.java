@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.vinidsl.navigationviewdemo.Adapter.FeriasIntAdapter;
 import com.vinidsl.navigationviewdemo.Model.FeriaIntModel;
+import com.vinidsl.navigationviewdemo.Tasks.FeriaInterTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ public class Ferias_Int extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.ferias_int, container, false);
-
+/*
         String[][] ferias = {
                 {"feria 1","Paris"},
                 {"feria 2","Tokio"},
@@ -42,7 +43,9 @@ public class Ferias_Int extends Fragment {
             String nombre = "", ubicacion = "";
             nombre = ferias[i][0];
             ubicacion = ferias[i][1];
-            FeriaIntModel objeto = new FeriaIntModel(nombre, ubicacion);
+            long id=0;
+            String pais_desc="", int_lugar="", int_titulo="", foto="", int_final="", int_inicio="";
+            FeriaIntModel objeto = new FeriaIntModel(id, nombre,ubicacion,pais_desc,int_titulo,foto,int_final);
             listaM.add(objeto);
         }
 
@@ -50,7 +53,11 @@ public class Ferias_Int extends Fragment {
 
         FeriasIntAdapter adapter = new FeriasIntAdapter(getActivity(), R.layout.ferias_item,
                 listaM);
-        lista.setAdapter(adapter);
+        lista.setAdapter(adapter);*/
+
+        FeriaInterTask feriasTask= new FeriaInterTask(getActivity());
+        feriasTask.execute("");
+
         return rootView;
     }
 

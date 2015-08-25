@@ -1,5 +1,9 @@
 package com.vinidsl.navigationviewdemo.Tasks;
 
+/**
+ * Created by root on 24/08/15.
+ */
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -11,11 +15,11 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.vinidsl.navigationviewdemo.Adapter.PatrocinadoresAdapter;
+import com.vinidsl.navigationviewdemo.Adapter.FeriasIntAdapter;
 import com.vinidsl.navigationviewdemo.Adapter.ProgramasAdapter;
 import com.vinidsl.navigationviewdemo.Cifrado;
+import com.vinidsl.navigationviewdemo.Model.FeriaIntModel;
 import com.vinidsl.navigationviewdemo.Model.Horario;
-import com.vinidsl.navigationviewdemo.Model.Patrocinador;
 import com.vinidsl.navigationviewdemo.ProgramaActivity;
 import com.vinidsl.navigationviewdemo.R;
 
@@ -31,67 +35,49 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-/**
- * Created by JoseRogelio on 15/08/2015.
- */
-public class ProgramaTask extends AsyncTask<String, Void, Void> {
 
-    private final String LOG_TAG = ProgramaTask.class.getSimpleName();
-    private final String SERVICE_ID = "321";
+public class FeriaInterTask extends AsyncTask<String, Void, Void> {
+
+    private final String LOG_TAG = FeriaInterTask.class.getSimpleName();
+    private final String SERVICE_ID = "301";
 
     private final Context mContext;
     private ProgressDialog mDialog;
-    private ArrayList<ArrayList<Horario>> programa;
+    private ArrayList<FeriaIntModel> feriaListado;
     private int insertados;
 
-    public ProgramaTask(Context context) {
+    public FeriaInterTask(Context context) {
         mContext = context;
     }
 
     private void populateList(String JsonStr)
             throws JSONException {
         try {
-            programa = new ArrayList<ArrayList<Horario>>();
+            feriaListado = new ArrayList<FeriaIntModel>();
             JSONObject mainNode = new JSONObject(JsonStr);
-            JSONArray mainArray = mainNode.getJSONArray("programa"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
+            JSONArray mainArray = mainNode.getJSONArray("abajo"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
 
             for(int i = 0; i < mainArray.length(); i++) {
 
-                // programa:[[{pro_id, pro_nombre, pro_fecha_ini, pro_fecha_fin, pro_fecha_ini, pro_fecha_fin, pro_lugar, pro_foto, pon_nombre,
-                //pon_empresa, pon_puesto}, {}, {}], [dia2], [dia3]]
+                    JSONObject node = mainArray.getJSONObject(i);
+                    long id = node.getLong("int_id");
+                   // String int_foto = node.getString("int_foto");
+                    String pais_desc = node.getString("pais_desc");
+                    String int_lugar = node.getString("int_lugar");
+                    String int_titulo = node.getString("int_titulo");
+                    String foto = node.getString("int_foto");
+                    String int_final = node.getString("int_final");
+                    String int_inicio = node.getString("int_inicio");
 
-                JSONArray innerArray = mainArray.getJSONArray(i);
-
-                ArrayList<Horario> horario = new ArrayList<Horario>();
-
-                for(int j = 0; j < innerArray.length(); j++) {
-                    JSONObject node = mainArray.getJSONObject(j);
-
-                    long id = node.getLong("pro_id");
-                    String nombre = node.getString("pro_nombre");
-                    String fechaIni = node.getString("pro_fecha_ini");
-                    String fechaFin = node.getString("pro_fecha_fin");
-                    String lugar = node.getString("pro_lugar");
-                    String foto = node.getString("pro_foto");
-                    String ponenteNom = node.getString("pon_nombre");
-                    String ponenteEmp = node.getString("pon_empresa");
-                    String ponentePues = node.getString("pon_puesto");
-
-                    Horario h =
-                            new Horario(id, fechaIni, fechaFin, lugar, foto,
-                            ponenteNom, ponenteEmp, ponentePues);
-
-                    horario.add(h);
-                }
-
-                programa.add(horario);
-
+                    FeriaIntModel feriasIntM =
+                            new FeriaIntModel(id,pais_desc,int_lugar,int_titulo,foto,int_final,int_inicio);
+                feriaListado.add(feriasIntM);
             }
 
             insertados = 0;
 
-            if ( programa.size() > 0 ) {
-                insertados = programa.size();
+            if ( feriaListado.size() > 0 ) {
+                insertados = feriaListado.size();
             }
 
         } catch (JSONException e) {
@@ -121,7 +107,8 @@ public class ProgramaTask extends AsyncTask<String, Void, Void> {
             final String BASE_URL =
                     mContext.getString(R.string.base_url);
             final String QUERY_PARAM = "cod";
-            String parametro = c.encriptar(SERVICE_ID + "|" + params[0]);
+            //String parametro = c.encriptar(SERVICE_ID + "|" + params[0]);
+            String parametro = c.encriptar(SERVICE_ID);
 
             Uri builtUri = Uri.parse(BASE_URL).buildUpon()
                     .appendQueryParameter(QUERY_PARAM, parametro).build();
@@ -185,7 +172,7 @@ public class ProgramaTask extends AsyncTask<String, Void, Void> {
         }
 
         // validaciones correspondientes
-        if(programa == null) {
+        if(feriaListado == null) {
             Toast.makeText(mContext, "Sin conexión a Internet", Toast.LENGTH_LONG).show();
             Log.i("DESCARGA", "SIN INTERNET");
         } else if(insertados == 0) {
@@ -195,16 +182,26 @@ public class ProgramaTask extends AsyncTask<String, Void, Void> {
             // ejecución para un caso ideal donde todo resulto exitoso
         } else {
 
-            ViewPager paginador = (ViewPager)
-                    ((Activity) mContext).findViewById(R.id.programa_contenedor); // id del ViewPager
+            Activity acitividad= (Activity)mContext;
+
+            ListView lista = (ListView)acitividad.findViewById(R.id.listadoFerias);
+
+            FeriasIntAdapter adapter = new FeriasIntAdapter(acitividad, R.layout.ferias_item,
+                    feriaListado);
+            lista.setAdapter(adapter);
+            /*FeriasIntAdapter adapter =
+                    new FeriasIntAdapter(mContext, );*/
+            //paginador.setAdapter(adapter);
+            /*ViewPager paginador = (ViewPager)
+                    ((Activity) mContext).findViewById(R.id.feriaListado_contenedor); // id del ViewPager
             ProgramasAdapter adapter =
                     new ProgramasAdapter((
-                            (AppCompatActivity) mContext).getSupportFragmentManager(), programa);
+                            (AppCompatActivity) mContext).getSupportFragmentManager(), feriaListado);
             paginador.setAdapter(adapter);
 
 
             ProgramaActivity activity = (ProgramaActivity) mContext;
-            activity.dibujarPaginas(programa.size());
+            activity.dibujarPaginas(feriaListado.size());*/
 
         }
 
