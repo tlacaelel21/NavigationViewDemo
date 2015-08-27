@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.vinidsl.navigationviewdemo.FotosFragmente;
 import com.vinidsl.navigationviewdemo.Model.CarruselModel;
 import com.vinidsl.navigationviewdemo.Model.Horario;
 import com.vinidsl.navigationviewdemo.Pantalla_Princi;
@@ -18,7 +19,7 @@ public class CarruselAdapter extends FragmentPagerAdapter {
 
     ArrayList<CarruselModel> programa;
 
-    public CarruselAdapter(FragmentManager fm, ArrayList<ArrayList<CarruselModel>> datos) {
+    public CarruselAdapter(FragmentManager fm, ArrayList<CarruselModel> datos) {
         super(fm);
         programa = datos;
     }
@@ -26,7 +27,9 @@ public class CarruselAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
 
-        return Pantalla_Princi.newInstance(programa.get(position));
+        //return FotosFragmente.newInstance(programa.get(position));
+        return new Fragment();//esto solo lo puse para q me dejara hacer el push
+
     }
 
     @Override
