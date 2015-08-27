@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class CarruselAdapter extends FragmentPagerAdapter {
 
-    ArrayList<ArrayList<CarruselModel>> programa;
+    ArrayList<CarruselModel> programa;
 
     public CarruselAdapter(FragmentManager fm, ArrayList<ArrayList<CarruselModel>> datos) {
         super(fm);

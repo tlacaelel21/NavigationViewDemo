@@ -89,6 +89,7 @@ public class Pantalla_Princi extends Fragment {
         });
 
         CarruselTask principalTask= new CarruselTask(getActivity());
+        principalTask.setFragment(this);
         principalTask.execute("");
 
         return rootView;

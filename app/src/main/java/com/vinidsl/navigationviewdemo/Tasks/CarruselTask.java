@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -45,6 +46,7 @@ public class CarruselTask extends AsyncTask<String, Void, Void> {
     private ArrayList<FeriaIntModel> feriaListado;
     private int insertados;
     private ArrayList<ArrayList<CarruselModel>> carrusel;
+    private Fragment fragmento;
 
     public CarruselTask(Context context) {
         mContext = context;
@@ -217,27 +219,31 @@ public class CarruselTask extends AsyncTask<String, Void, Void> {
             // ejecución para un caso ideal donde todo resulto exitoso
         } else {
 
-            Activity acitividad= (Activity)mContext;
+            Activity actividad= (Activity)mContext;
 
-            ListView lista = (ListView)acitividad.findViewById(R.id.listadoFerias);
+            ListView lista = (ListView)actividad.findViewById(R.id.listadoFerias);
 
-            FeriasIntAdapter adapter = new FeriasIntAdapter(acitividad, R.layout.ferias_item,
+            FeriasIntAdapter adapter = new FeriasIntAdapter(actividad, R.layout.ferias_item,
                     feriaListado);
             lista.setAdapter(adapter);
 
             /************ Para el carrusel ******************/
-            /*ViewPager paginador = (ViewPager)
-                    ((Activity) mContext).findViewById(R.id.programa_contenedor); // id del ViewPager
+            ViewPager paginador = (ViewPager)
+                    actividad.findViewById(R.id.fotos_contenedor); // id del ViewPager
             CarruselAdapter adapterCarrusel =
                     new CarruselAdapter((
                             (AppCompatActivity) mContext).getSupportFragmentManager(), carrusel);
             paginador.setAdapter(adapterCarrusel);
-*/
-            /*Pantalla_Princi activity = (Pantalla_Princi) mContext;
+
+            Pantalla_Princi activity = (Pantalla_Princi) fragmento;
             activity.dibujarPaginas(carrusel.size());
-*/
+
         }
 
+    }
+
+    public void setFragment(Fragment f){
+        fragmento = f;
     }
 
 }
