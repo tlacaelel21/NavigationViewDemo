@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +35,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.vinidsl.navigationviewdemo.Tasks.GuardarDatosFacturaTask;
@@ -58,10 +61,11 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         act = this;
 
-        Cifrado obj=new Cifrado();
-        //String valorEnc=obj.encriptar("300|admin@s-t.mx|admin");
-        String valorEnc=obj.encriptar("301");
-        Log.i("ENC",valorEnc);
+
+        /*Cifrado obj=new Cifrado();
+        String valorEnc=obj.encriptar("300|admin@s-t.mx|admin");
+        String valorEnc=obj.encriptar("302|2");
+        Log.i("ENC",valorEnc);*/
 
         PonentesTask objeto=new PonentesTask(this.getBaseContext());
 

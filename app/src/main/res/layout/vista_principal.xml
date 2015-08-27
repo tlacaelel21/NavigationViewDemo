@@ -6,13 +6,12 @@
     tools:context=".Principal"
     android:weightSum="1">
 
-    <ImageView
-        android:id="@+id/foto3"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/fotos_contenedor"
         android:layout_width="match_parent"
         android:layout_height="198dp"
         android:adjustViewBounds="true"
-        android:background="@drawable/main"
-        android:scaleType="center" />
+        android:scaleType="center"/>
 
     <LinearLayout
         android:orientation="horizontal"

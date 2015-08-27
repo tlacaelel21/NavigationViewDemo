@@ -26,6 +26,7 @@ public class ProgramaActivity extends AppCompatActivity {
 
     private LinearLayout mIndicatorContainer;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

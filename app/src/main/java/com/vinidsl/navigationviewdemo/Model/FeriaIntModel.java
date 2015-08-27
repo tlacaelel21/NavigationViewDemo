@@ -8,29 +8,26 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class FeriaIntModel implements Parcelable {
-
-    private long mId;
+    private long int_id;
     private String mFechaInicio;
     private String mFechaFin;
     private String mNombre;
-    private String mSala;
-    private String mPonNombre;
-    private String mPonEmpresa;
-    private String mPonPuesto;
+    private String int_lugar;
+    private String pais_desc;
+    private String mFoto;
 
-    public FeriaIntModel(long id,String pais_desc, String int_lugar, String int_titulo, String foto, String int_final, String int_inicio) {
-        this.mId = id;
+    public FeriaIntModel(long int_id,String int_titulo, String int_lugar, String pais_desc, String foto, String int_inicio, String int_final) {
+        this.int_id = int_id;
+        this.mNombre = int_titulo;
+        this.int_lugar = int_lugar;
+        this.pais_desc = pais_desc;
         this.mFechaInicio = int_inicio;
         this.mFechaFin = int_final;
-        this.mNombre = pais_desc;
-        this.mSala = int_lugar;
-        this.mPonNombre = pais_desc;
-        this.mPonEmpresa = int_lugar;
-        this.mPonPuesto = foto;
+        this.mFoto = foto;
     }
 
     public long getId() {
-        return mId;
+        return int_id;
     }
 
     public String getFechaInicio() {
@@ -44,39 +41,30 @@ public class FeriaIntModel implements Parcelable {
     public String getNombre() {
         return mNombre;
     }
-    public String getUbicacion() {
-        return mPonEmpresa;
+
+    public String getInt_lugar() {
+        return int_lugar;
     }
 
-    public String getSala() {
-        return mSala;
+    public String getPais_desc() {
+        return pais_desc;
     }
 
-    public String getPonNombre() {
-        return mPonNombre;
+    public String getFotoInt() {
+        return mFoto;
     }
-
-    public String getPonEmpresa() {
-        return mPonEmpresa;
-    }
-
-    public String getPonPuesto() {
-        return mPonPuesto;
-    }
-
     // Parcelling part
     public FeriaIntModel(Parcel in){
         String[] data = new String[3];
         long idValue = in.readLong();
         in.readStringArray(data);
-        this.mId = idValue;
+        this.int_id = idValue;
         this.mFechaInicio = data[0];
         this.mFechaFin = data[1];
         this.mNombre = data[2];
-        this.mSala = data[3];
-        this.mPonNombre = data[4];
-        this.mPonEmpresa = data[5];
-        this.mPonPuesto = data[6];
+        this.int_lugar = data[3];
+        this.pais_desc = data[4];
+        this.mFoto = data[5];
     }
 
     public int describeContents(){
@@ -85,15 +73,14 @@ public class FeriaIntModel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeLong(this.mId);
+        dest.writeLong(this.int_id);
         dest.writeStringArray(new String[] {
                 this.mFechaInicio,
                 this.mFechaFin,
                 this.mNombre,
-                this.mSala,
-                this.mPonNombre,
-                this.mPonEmpresa,
-                this.mPonPuesto});
+                this.int_lugar,
+                this.pais_desc,
+                this.mFoto});
     }
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
         public FeriaIntModel createFromParcel(Parcel in) {

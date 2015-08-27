@@ -3,8 +3,10 @@ package com.vinidsl.navigationviewdemo;
 /**
  * Created by root on 24/07/15.
  */
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.text.Html;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -12,11 +14,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.vinidsl.navigationviewdemo.Adapter.FeriasIntAdapter;
+import com.vinidsl.navigationviewdemo.Model.CarruselModel;
 import com.vinidsl.navigationviewdemo.Model.FeriaIntModel;
+import com.vinidsl.navigationviewdemo.Tasks.CarruselTask;
 import com.vinidsl.navigationviewdemo.Tasks.FeriaInterTask;
 
 import java.util.ArrayList;
@@ -24,6 +30,10 @@ import java.util.List;
 
 public class Pantalla_Princi extends Fragment {
     EditText edittext;
+    private LinearLayout mIndicatorContainer;
+    View rootView;
+    Context context;
+
     public Pantalla_Princi() {
         // Required empty public constructor
     }
@@ -33,7 +43,7 @@ public class Pantalla_Princi extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View rootView = inflater.inflate(R.layout.vista_principal, container, false);
+       rootView = inflater.inflate(R.layout.vista_principal, container, false);
         /*String[][] ferias = {
                 {"feria 1","Paris"},
                 {"feria 2","Tokio"},
@@ -61,14 +71,66 @@ public class Pantalla_Princi extends Fragment {
         lista.setAdapter(adapter);
 
 */
-        FeriaInterTask feriasTask= new FeriaInterTask(getActivity());
-        feriasTask.execute("");
+        ViewPager pager = (ViewPager) rootView.findViewById(R.id.fotos_contenedor);
+        pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                // dibujarSeleccion(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        CarruselTask principalTask= new CarruselTask(getActivity());
+        principalTask.execute("");
+
         return rootView;
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //TextInputLayout
+    }
+    public void dibujarPaginas(int totalPages) {
+        for(int i = 0; i<totalPages; i++) {
+            ImageView indicador = new ImageView(getActivity());
+            indicador.setImageResource(R.drawable.pager_indicator);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(20, 20);
+            params.leftMargin = 5;
+            params.rightMargin = 5;
+            indicador.setLayoutParams(params);
+            mIndicatorContainer.addView(indicador);
+        }
+        dibujarSeleccion(0);
+    }
+
+    public void dibujarSeleccion(int seleccion) {
+        for(int i = 0; i< mIndicatorContainer.getChildCount() ; i++) {
+            ImageView indicador = (ImageView) mIndicatorContainer.getChildAt(i);
+            indicador.setImageResource(R.drawable.pager_indicator);
+            if(i ==  seleccion)
+                indicador.setImageResource(R.drawable.pager_indicator_active);
+        }
+        /*((TextView) findViewById(R.id.programa_cab_indicador_dia))
+                .setText(String.format(getString(R.string.programa_list_cab_dia), seleccion + 1));*/
+    }
+
+
+    public static ProgramaFragment newInstance(ArrayList<CarruselModel> lista) {
+
+        ProgramaFragment f = new ProgramaFragment();
+        Bundle b = new Bundle();
+        b.putParcelableArrayList("valores", lista);
+        f.setArguments(b);
+
+        return f;
     }
 
 }

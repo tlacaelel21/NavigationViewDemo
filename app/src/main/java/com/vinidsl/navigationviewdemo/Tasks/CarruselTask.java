@@ -1,9 +1,5 @@
 package com.vinidsl.navigationviewdemo.Tasks;
 
-/**
- * Created by root on 24/08/15.
- */
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -15,12 +11,13 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.vinidsl.navigationviewdemo.Adapter.CarruselAdapter;
 import com.vinidsl.navigationviewdemo.Adapter.FeriasIntAdapter;
-import com.vinidsl.navigationviewdemo.Adapter.ProgramasAdapter;
 import com.vinidsl.navigationviewdemo.Cifrado;
+import com.vinidsl.navigationviewdemo.Model.CarruselModel;
 import com.vinidsl.navigationviewdemo.Model.FeriaIntModel;
 import com.vinidsl.navigationviewdemo.Model.Horario;
-import com.vinidsl.navigationviewdemo.ProgramaActivity;
+import com.vinidsl.navigationviewdemo.Pantalla_Princi;
 import com.vinidsl.navigationviewdemo.R;
 
 import org.json.JSONArray;
@@ -34,19 +31,22 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+/**
+ * Created by root on 24/08/15.
+ */
 
+public class CarruselTask extends AsyncTask<String, Void, Void> {
 
-public class FeriaInterTask extends AsyncTask<String, Void, Void> {
-
-    private final String LOG_TAG = FeriaInterTask.class.getSimpleName();
+    private final String LOG_TAG = CarruselTask.class.getSimpleName();
     private final String SERVICE_ID = "301";
 
     private final Context mContext;
     private ProgressDialog mDialog;
     private ArrayList<FeriaIntModel> feriaListado;
     private int insertados;
+    private ArrayList<ArrayList<CarruselModel>> carrusel;
 
-    public FeriaInterTask(Context context) {
+    public CarruselTask(Context context) {
         mContext = context;
     }
 
@@ -56,29 +56,64 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
             feriaListado = new ArrayList<FeriaIntModel>();
             JSONObject mainNode = new JSONObject(JsonStr);
             JSONArray mainArray = mainNode.getJSONArray("abajo"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
+            JSONArray carruselArray = mainNode.getJSONArray("carrusel"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
 
             for(int i = 0; i < mainArray.length(); i++) {
 
-                    JSONObject node = mainArray.getJSONObject(i);
-                    long id = node.getLong("int_id");
-                   // String int_foto = node.getString("int_foto");
-                    String pais_desc = node.getString("pais_desc");
-                    String int_lugar = node.getString("int_lugar");
-                    String int_titulo = node.getString("int_titulo");
-                    String foto = node.getString("int_foto");
-                    String int_final = node.getString("int_final");
-                    String int_inicio = node.getString("int_inicio");
+                JSONObject node = mainArray.getJSONObject(i);
+                long id = node.getLong("int_id");
+                // String int_foto = node.getString("int_foto");
+                String pais_desc = node.getString("pais_desc");
+                String int_lugar = node.getString("int_lugar");
+                String int_titulo = node.getString("int_titulo");
+                String foto = node.getString("int_foto");
+                String int_final = node.getString("int_final");
+                String int_inicio = node.getString("int_inicio");
 
-                    FeriaIntModel feriasIntM =
-                            new FeriaIntModel(id,int_titulo,int_lugar,pais_desc,foto,int_inicio,int_final);
+                FeriaIntModel feriasIntM =
+                        new FeriaIntModel(id,int_titulo,int_lugar,pais_desc,foto,int_inicio,int_final);
                 feriaListado.add(feriasIntM);
             }
-
             insertados = 0;
 
             if ( feriaListado.size() > 0 ) {
                 insertados = feriaListado.size();
             }
+
+            for(int i = 0; i < carruselArray.length(); i++) {
+
+                // programa:[[{pro_id, pro_nombre, pro_fecha_ini, pro_fecha_fin, pro_fecha_ini, pro_fecha_fin, pro_lugar, pro_foto, pon_nombre,
+                //pon_empresa, pon_puesto}, {}, {}], [dia2], [dia3]]
+
+                JSONArray innerArray2 = mainArray.getJSONArray(i);
+
+                ArrayList<CarruselModel> imagenesCarrusel = new ArrayList<CarruselModel>();
+
+                for(int j = 0; j < innerArray2.length(); j++) {
+                    JSONObject node = mainArray.getJSONObject(j);
+
+                    long id = node.getLong("pro_id");
+                    String nombre = node.getString("pro_nombre");
+                    String fechaIni = node.getString("pro_fecha_ini");
+                    String fechaFin = node.getString("pro_fecha_fin");
+                    String lugar = node.getString("pro_lugar");
+                    String foto = node.getString("pro_foto");
+                    String ponenteNom = node.getString("pon_nombre");
+                    String ponenteEmp = node.getString("pon_empresa");
+                    String ponentePues = node.getString("pon_puesto");
+
+                    CarruselModel h =
+                            new CarruselModel(id, fechaIni, fechaFin, lugar, foto,
+                                    ponenteNom, ponenteEmp, ponentePues);
+
+                    imagenesCarrusel.add(h);
+                }
+
+                carrusel.add(imagenesCarrusel);
+
+            }
+
+
 
         } catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage(), e);
@@ -189,20 +224,18 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
             FeriasIntAdapter adapter = new FeriasIntAdapter(acitividad, R.layout.ferias_item,
                     feriaListado);
             lista.setAdapter(adapter);
-            /*FeriasIntAdapter adapter =
-                    new FeriasIntAdapter(mContext, );*/
-            //paginador.setAdapter(adapter);
+
+            /************ Para el carrusel ******************/
             /*ViewPager paginador = (ViewPager)
-                    ((Activity) mContext).findViewById(R.id.feriaListado_contenedor); // id del ViewPager
-            ProgramasAdapter adapter =
-                    new ProgramasAdapter((
-                            (AppCompatActivity) mContext).getSupportFragmentManager(), feriaListado);
-            paginador.setAdapter(adapter);
-
-
-            ProgramaActivity activity = (ProgramaActivity) mContext;
-            activity.dibujarPaginas(feriaListado.size());*/
-
+                    ((Activity) mContext).findViewById(R.id.programa_contenedor); // id del ViewPager
+            CarruselAdapter adapterCarrusel =
+                    new CarruselAdapter((
+                            (AppCompatActivity) mContext).getSupportFragmentManager(), carrusel);
+            paginador.setAdapter(adapterCarrusel);
+*/
+            /*Pantalla_Princi activity = (Pantalla_Princi) mContext;
+            activity.dibujarPaginas(carrusel.size());
+*/
         }
 
     }
