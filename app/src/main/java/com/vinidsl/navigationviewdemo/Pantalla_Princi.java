@@ -104,16 +104,16 @@ public class Pantalla_Princi extends Fragment {
         super.onCreate(savedInstanceState);
         //TextInputLayout
     }
-    public void dibujarPaginas(int totalPages) {
+    //public void dibujarPaginas(int totalPages) {
+    public void dibujarPaginas(int totalPages, Context c){
         for(int i = 0; i<totalPages; i++) {
-            //ImageView indicador = new ImageView((AppCompatActivity) getActivity());
-            //ImageView indicador = new ImageView(getActivity());
-            /*indicador.setImageResource(R.drawable.pager_indicator);
+            ImageView indicador = new ImageView(c);
+            indicador.setImageResource(R.drawable.pager_indicator);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(20, 20);
             params.leftMargin = 5;
             params.rightMargin = 5;
             indicador.setLayoutParams(params);
-            mIndicatorContainer.addView(indicador);*/
+            mIndicatorContainer.addView(indicador);
         }
         dibujarSeleccion(0);
     }

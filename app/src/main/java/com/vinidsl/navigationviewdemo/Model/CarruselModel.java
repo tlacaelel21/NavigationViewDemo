@@ -61,6 +61,8 @@ public class CarruselModel implements Parcelable {
         return mPonPuesto;
     }
 
+    /*long id, String fechaInicio, String fechaFin, String nombre, String foto,
+                   String ponNombre, String ponEmpresa, String ponPuesto*/
     // Parcelling part
     public CarruselModel(Parcel in){
         String[] data = new String[7];

@@ -110,7 +110,7 @@ public class CarruselTask extends AsyncTask<String, Void, Void> {
                     String fechaIni = "inicio";
                     String fechaFin = "fin";
                     String lugar = "lugar";
-                    String foto = "foto";
+                    String foto = node.getString("int_foto");
                     String ponenteNom = "ponente";
                     String ponenteEmp = "empresa";
                     String ponentePues = "puesto";
@@ -234,9 +234,9 @@ public class CarruselTask extends AsyncTask<String, Void, Void> {
 
             ListView lista = (ListView)actividad.findViewById(R.id.listadoFerias);
 
-            FeriasIntAdapter adapter = new FeriasIntAdapter(actividad, R.layout.ferias_item,
+            /*FeriasIntAdapter adapter = new FeriasIntAdapter(actividad, R.layout.ferias_item,
                     feriaListado);
-            lista.setAdapter(adapter);
+            lista.setAdapter(adapter);*/
 
             /************ Para el carrusel ******************/
             ViewPager paginador = (ViewPager)
@@ -247,7 +247,8 @@ public class CarruselTask extends AsyncTask<String, Void, Void> {
             paginador.setAdapter(adapterCarrusel);
 
             Pantalla_Princi activity = (Pantalla_Princi) fragmento;
-            activity.dibujarPaginas(carrusel.size());
+            //activity.dibujarPaginas(carrusel.size());
+            activity.dibujarPaginas(carrusel.size(), mContext);
 
         }
 

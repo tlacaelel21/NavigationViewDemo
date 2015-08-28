@@ -130,7 +130,13 @@
     <string name="programa_item_horario"><xliff:g id="hora">%d</xliff:g>:<xliff:g id="minutos">%d</xliff:g></string>
     <string name="programa_item_nombre">Nombre del evento</string>
     <string name="programa_item_sala">Sala (opcional)</string>
-
+    <!-- ferias int -->
+    <string name="fi_item_titulo">Titulo feria</string>
+    <string name="fi_item_subtitulo">Agosto 15, 2015</string>
+    <string name="fi_item_cd_foto">Foto de feria</string>
+    <string name="fi_item_cd_boton">Fecha</string>
+    <string name="fi_cab_item_titulo">Agosto, 2015</string>
+    <string name="fi_cab_item_subtitulo">Fecha sitio</string>
     <string-array name="valores_array">
         <item>Elem1</item>
         <item>Elem2</item>

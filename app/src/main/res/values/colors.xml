@@ -24,6 +24,7 @@
     <color name="cab_programa">#cb0520</color>
     <color name="cab_ponentes">#5498bd</color>
     <color name="cab_encuesta">#9c036d</color>
+    <color name="cab_ferias_int">#ccc</color>
 
     <color name="default_fondo_img">#ccc</color>
     <color name="texto_separador">#777</color>

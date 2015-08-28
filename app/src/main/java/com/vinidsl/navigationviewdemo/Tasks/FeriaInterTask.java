@@ -7,19 +7,26 @@ package com.vinidsl.navigationviewdemo.Tasks;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.vinidsl.navigationviewdemo.Adapter.FeriasIntAdapter;
+import com.vinidsl.navigationviewdemo.Adapter.NoticiasAdapter;
 import com.vinidsl.navigationviewdemo.Adapter.ProgramasAdapter;
 import com.vinidsl.navigationviewdemo.Cifrado;
+import com.vinidsl.navigationviewdemo.Ferias_Int;
 import com.vinidsl.navigationviewdemo.Model.FeriaIntModel;
 import com.vinidsl.navigationviewdemo.Model.Horario;
+import com.vinidsl.navigationviewdemo.Model.Noticia;
+import com.vinidsl.navigationviewdemo.NoticiaActivity;
 import com.vinidsl.navigationviewdemo.ProgramaActivity;
 import com.vinidsl.navigationviewdemo.R;
 
@@ -182,13 +189,35 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
             // ejecución para un caso ideal donde todo resulto exitoso
         } else {
 
-            Activity acitividad= (Activity)mContext;
+            ListView lista = (ListView)
+                    ((Activity) mContext).findViewById(R.id.listadoFerias); // id del ListView
+            final FeriasIntAdapter adapter =
+                    new FeriasIntAdapter((Activity) mContext, feriaListado);
+            lista.setAdapter(adapter);
+
+            lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    FeriaIntModel n = adapter.getItem(position);
+
+                    Intent activity = new Intent(mContext, Ferias_Int.class);
+                    activity.putExtra("id", n.getId());
+                    activity.putExtra("titulo", n.getNombre());
+                    activity.putExtra("desc", n.getPais_desc());
+                    activity.putExtra("fecha_ini", n.getFechaInicio());
+                    activity.putExtra("fecha_fin", n.getFechaFin());
+                    activity.putExtra("pathFoto", n.getFotoInt());
+
+                    mContext.startActivity(activity);
+                }
+            });
+            /*Activity acitividad= (Activity)mContext;
 
             ListView lista = (ListView)acitividad.findViewById(R.id.listadoFerias);
 
             FeriasIntAdapter adapter = new FeriasIntAdapter(acitividad, R.layout.ferias_item,
                     feriaListado);
-            lista.setAdapter(adapter);
+            lista.setAdapter(adapter);*/
             /*FeriasIntAdapter adapter =
                     new FeriasIntAdapter(mContext, );*/
             //paginador.setAdapter(adapter);
