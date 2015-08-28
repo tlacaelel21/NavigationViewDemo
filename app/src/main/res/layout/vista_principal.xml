@@ -18,27 +18,12 @@
             android:scaleType="center"/>
 
         <RelativeLayout
-            android:background="#9000"
+
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/carrusel_evento_nombre"
-                android:text="NOMBRE DEL EVENTO"
-                android:textSize="18sp"
-                android:textColor="@android:color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
-            <TextView
-                android:layout_below="@id/carrusel_evento_nombre"
-                android:id="@+id/carrusel_evento_lugar"
-                android:text="Lugar del evento"
-                android:textSize="14sp"
-                android:textColor="@android:color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
             <ScrollView
                 android:layout_alignParentRight="true"
