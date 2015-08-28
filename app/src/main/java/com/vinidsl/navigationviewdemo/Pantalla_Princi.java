@@ -52,6 +52,7 @@ public class Pantalla_Princi extends Fragment {
                 {"feria 5","Argentina"},
         };
 
+
         List<FeriaIntModel> listaM = new ArrayList<FeriaIntModel>();
 
         for (int i=0; i< ferias.length; i++) {
@@ -71,6 +72,9 @@ public class Pantalla_Princi extends Fragment {
         lista.setAdapter(adapter);
 
 */
+
+        mIndicatorContainer = (LinearLayout) rootView.findViewById(R.id.carrucel_paginador);
+
         ViewPager pager = (ViewPager) rootView.findViewById(R.id.fotos_contenedor);
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -79,7 +83,7 @@ public class Pantalla_Princi extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
-                // dibujarSeleccion(position);
+                dibujarSeleccion(position);
             }
 
             @Override

@@ -17,8 +17,6 @@ import java.util.ArrayList;
  */
 public class ProgramaFragment extends Fragment {
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater,
                  ViewGroup container, Bundle savedInstanceState) {
@@ -31,8 +29,6 @@ public class ProgramaFragment extends Fragment {
 
         return v;
     }
-
-
 
     public static ProgramaFragment newInstance(ArrayList<Horario> lista) {
 

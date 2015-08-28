@@ -45,7 +45,7 @@ public class CarruselTask extends AsyncTask<String, Void, Void> {
     private ProgressDialog mDialog;
     private ArrayList<FeriaIntModel> feriaListado;
     private int insertados;
-    private ArrayList<ArrayList<CarruselModel>> carrusel;
+    private ArrayList<CarruselModel> carrusel;
     private Fragment fragmento;
 
     public CarruselTask(Context context) {
@@ -56,6 +56,7 @@ public class CarruselTask extends AsyncTask<String, Void, Void> {
             throws JSONException {
         try {
             feriaListado = new ArrayList<FeriaIntModel>();
+            carrusel = new ArrayList<CarruselModel>();
             JSONObject mainNode = new JSONObject(JsonStr);
             JSONArray mainArray = mainNode.getJSONArray("abajo"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
             JSONArray carruselArray = mainNode.getJSONArray("carrusel"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
@@ -87,14 +88,14 @@ public class CarruselTask extends AsyncTask<String, Void, Void> {
                 // programa:[[{pro_id, pro_nombre, pro_fecha_ini, pro_fecha_fin, pro_fecha_ini, pro_fecha_fin, pro_lugar, pro_foto, pon_nombre,
                 //pon_empresa, pon_puesto}, {}, {}], [dia2], [dia3]]
 
-                JSONArray innerArray2 = mainArray.getJSONArray(i);
+                /*JSONArray innerArray2 = mainArray.getJSONArray(i);
 
                 ArrayList<CarruselModel> imagenesCarrusel = new ArrayList<CarruselModel>();
 
-                for(int j = 0; j < innerArray2.length(); j++) {
-                    JSONObject node = mainArray.getJSONObject(j);
+                for(int j = 0; j < innerArray2.length(); j++) {*/
+                    JSONObject node = carruselArray.getJSONObject(i);
 
-                    long id = node.getLong("pro_id");
+                    /*long id = node.getLong("pro_id");
                     String nombre = node.getString("pro_nombre");
                     String fechaIni = node.getString("pro_fecha_ini");
                     String fechaFin = node.getString("pro_fecha_fin");
@@ -102,16 +103,26 @@ public class CarruselTask extends AsyncTask<String, Void, Void> {
                     String foto = node.getString("pro_foto");
                     String ponenteNom = node.getString("pon_nombre");
                     String ponenteEmp = node.getString("pon_empresa");
-                    String ponentePues = node.getString("pon_puesto");
+                    String ponentePues = node.getString("pon_puesto");*/
+
+                    long id = 1;
+                    String nombre = "nombre";
+                    String fechaIni = "inicio";
+                    String fechaFin = "fin";
+                    String lugar = "lugar";
+                    String foto = "foto";
+                    String ponenteNom = "ponente";
+                    String ponenteEmp = "empresa";
+                    String ponentePues = "puesto";
 
                     CarruselModel h =
                             new CarruselModel(id, fechaIni, fechaFin, lugar, foto,
                                     ponenteNom, ponenteEmp, ponentePues);
 
-                    imagenesCarrusel.add(h);
-                }
+                    //imagenesCarrusel.add(h);
+                //}
 
-                carrusel.add(imagenesCarrusel);
+                carrusel.add(h);
 
             }
 

@@ -63,7 +63,7 @@ public class CarruselModel implements Parcelable {
 
     // Parcelling part
     public CarruselModel(Parcel in){
-        String[] data = new String[3];
+        String[] data = new String[7];
         long idValue = in.readLong();
         in.readStringArray(data);
         this.mId = idValue;

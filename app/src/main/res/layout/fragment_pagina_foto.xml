@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fotos_lista"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:divider="@color/default_fondo_img"
-    android:dividerHeight="1dp"/>
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/pagina_foto_imagen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>
