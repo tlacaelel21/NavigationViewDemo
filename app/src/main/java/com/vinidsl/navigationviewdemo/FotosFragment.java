@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.androidquery.AQuery;
 import com.vinidsl.navigationviewdemo.Model.CarruselModel;
@@ -27,6 +28,8 @@ public class FotosFragment extends Fragment {
         CarruselModel horarios = getArguments().getParcelable("valor");
 
         ImageView fotoIV = (ImageView) v.findViewById(R.id.pagina_foto_imagen);
+        TextView pagina_foto_nombre = (TextView) v.findViewById(R.id.pagina_foto_nombre);
+        pagina_foto_nombre.setText(horarios.getPonNombre());
         aquery.id(fotoIV).image("http://desarrollo.smartthinking.com.mx:8080/Cptm/" +horarios.getmFoto());
         return v;
     }

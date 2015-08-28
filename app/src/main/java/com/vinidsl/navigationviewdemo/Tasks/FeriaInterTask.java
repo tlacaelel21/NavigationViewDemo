@@ -56,7 +56,7 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
     public FeriaInterTask(Context context) {
         mContext = context;
     }
-
+    int mes=0;
     private void populateList(String JsonStr)
             throws JSONException {
         try {
@@ -75,10 +75,26 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
                     String foto = node.getString("int_foto");
                     String int_final = node.getString("int_final");
                     String int_inicio = node.getString("int_inicio");
+                //Log.i("FECHA",int_inicio);
+                    mes=Integer.parseInt(int_inicio.substring(5,7));
+                //Log.i("MES",""+mes);
 
                     FeriaIntModel feriasIntM =
                             new FeriaIntModel(id,int_titulo,int_lugar,pais_desc,foto,int_inicio,int_final);
                 feriaListado.add(feriasIntM);
+            }
+
+            for(int i = 0; i < feriaListado.size(); i++) {
+                ArrayList<FeriaIntModel> aux = new ArrayList<FeriaIntModel>();
+                if(i == 0){
+                    FeriaIntModel cab = new FeriaIntModel(-1,"","","","",""+mes ,"");
+                    aux.add(cab);
+                }
+                if(Integer.parseInt(aux.get(i-1).getFechaInicio().substring(5, 7))!=mes){
+                    FeriaIntModel cab = new FeriaIntModel(-1,"","","","",""+mes,"");
+                    aux.add(cab);
+                }
+                //if(mes != messiguiente)
             }
 
             insertados = 0;
