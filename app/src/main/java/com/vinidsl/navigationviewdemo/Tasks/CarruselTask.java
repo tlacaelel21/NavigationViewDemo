@@ -106,7 +106,7 @@ public class CarruselTask extends AsyncTask<String, Void, Void> {
                     String ponentePues = node.getString("pon_puesto");*/
 
                     long id = 1;
-                    String nombre = "nombre";
+                    String nombre = "NOMBRE";
                     String fechaIni = "inicio";
                     String fechaFin = "fin";
                     String lugar = "lugar";

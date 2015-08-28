@@ -19,17 +19,19 @@ public class CarruselAdapter extends FragmentPagerAdapter {
     public CarruselAdapter(FragmentManager fm, ArrayList<CarruselModel> datos) {
         super(fm);
         programa = datos;
+
+        //aquery.id(holder.foto).image("http://desarrollo.smartthinking.com.mx:8080/Cptm/" +feriaIntModel.getFotoInt());
     }
 
     @Override
     public Fragment getItem(int position) {
-
         return FotosFragment.newInstance(programa.get(position));
-
     }
 
     @Override
     public int getCount() {
         return programa.size();
     }
+
+
 }

@@ -14,16 +14,16 @@ public class FeriaIntModel implements Parcelable {
     private String mNombre;
     private String int_lugar;
     private String pais_desc;
-    private String mFoto;
-
-    public FeriaIntModel(long int_id,String int_titulo, String int_lugar, String pais_desc, String foto, String int_inicio, String int_final) {
+    private String mFotoInt;
+                //new FeriaIntModel(id,int_titulo,int_lugar,pais_desc,foto,int_inicio,int_final);
+    public FeriaIntModel(long int_id,String int_titulo, String int_lugar, String pais_desc, String foto_int, String int_inicio, String int_final) {
         this.int_id = int_id;
         this.mNombre = int_titulo;
         this.int_lugar = int_lugar;
         this.pais_desc = pais_desc;
         this.mFechaInicio = int_inicio;
         this.mFechaFin = int_final;
-        this.mFoto = foto;
+        this.mFotoInt = foto_int;
     }
 
     public long getId() {
@@ -51,7 +51,7 @@ public class FeriaIntModel implements Parcelable {
     }
 
     public String getFotoInt() {
-        return mFoto;
+        return mFotoInt;
     }
     // Parcelling part
     public FeriaIntModel(Parcel in){
@@ -64,7 +64,7 @@ public class FeriaIntModel implements Parcelable {
         this.mNombre = data[2];
         this.int_lugar = data[3];
         this.pais_desc = data[4];
-        this.mFoto = data[5];
+        this.mFotoInt = data[5];
     }
 
     public int describeContents(){
@@ -80,7 +80,7 @@ public class FeriaIntModel implements Parcelable {
                 this.mNombre,
                 this.int_lugar,
                 this.pais_desc,
-                this.mFoto});
+                this.mFotoInt});
     }
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
         public FeriaIntModel createFromParcel(Parcel in) {

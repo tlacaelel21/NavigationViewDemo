@@ -18,11 +18,11 @@
 
 
             <ImageView
-                android:id="@+id/foto"
+                android:id="@+id/foto_feria_int"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:adjustViewBounds="true"
-                android:background="@drawable/company"
+
                 android:cropToPadding="true"
                 android:scaleType="center"
                 android:layout_alignParentLeft="true"

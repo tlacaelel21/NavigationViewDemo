@@ -104,27 +104,28 @@ public class Pantalla_Princi extends Fragment {
         //TextInputLayout
     }
     public void dibujarPaginas(int totalPages) {
-        for(int i = 0; i<totalPages; i++) {
+        /*for(int i = 0; i<totalPages; i++) {
             ImageView indicador = new ImageView(getActivity());
             indicador.setImageResource(R.drawable.pager_indicator);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(20, 20);
-            params.leftMargin = 5;
-            params.rightMargin = 5;
+            params.leftMargin = 3;
+            params.rightMargin = 3;
             indicador.setLayoutParams(params);
             mIndicatorContainer.addView(indicador);
-        }
+        }*/
         dibujarSeleccion(0);
     }
 
     public void dibujarSeleccion(int seleccion) {
+        //FeriaIntModel feriaIntModel = getItem(position);
         for(int i = 0; i< mIndicatorContainer.getChildCount() ; i++) {
             ImageView indicador = (ImageView) mIndicatorContainer.getChildAt(i);
             indicador.setImageResource(R.drawable.pager_indicator);
             if(i ==  seleccion)
                 indicador.setImageResource(R.drawable.pager_indicator_active);
         }
-        /*((TextView) findViewById(R.id.programa_cab_indicador_dia))
-                .setText(String.format(getString(R.string.programa_list_cab_dia), seleccion + 1));*/
+        /*((TextView) rootView.findViewById(R.id.carrusel_evento_nombre))
+                .setText("");*/
     }
 
 

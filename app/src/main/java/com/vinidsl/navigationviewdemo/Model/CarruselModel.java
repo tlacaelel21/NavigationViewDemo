@@ -12,18 +12,18 @@ public class CarruselModel implements Parcelable {
     private String mFechaInicio;
     private String mFechaFin;
     private String mNombre;
-    private String mSala;
+    private String mFoto;
     private String mPonNombre;
     private String mPonEmpresa;
     private String mPonPuesto;
 
-    public CarruselModel(long id, String fechaInicio, String fechaFin, String nombre, String sala,
+    public CarruselModel(long id, String fechaInicio, String fechaFin, String nombre, String foto,
                    String ponNombre, String ponEmpresa, String ponPuesto) {
         this.mId = id;
         this.mFechaInicio = fechaInicio;
         this.mFechaFin = fechaFin;
         this.mNombre = nombre;
-        this.mSala = sala;
+        this.mFoto = foto;
         this.mPonNombre = ponNombre;
         this.mPonEmpresa = ponEmpresa;
         this.mPonPuesto = ponPuesto;
@@ -41,12 +41,12 @@ public class CarruselModel implements Parcelable {
         return mFechaFin;
     }
 
-    public String getNombre() {
+    public String getNombreL() {
         return mNombre;
     }
 
-    public String getSala() {
-        return mSala;
+    public String getmFoto() {
+        return mFoto;
     }
 
     public String getPonNombre() {
@@ -70,7 +70,7 @@ public class CarruselModel implements Parcelable {
         this.mFechaInicio = data[0];
         this.mFechaFin = data[1];
         this.mNombre = data[2];
-        this.mSala = data[3];
+        this.mFoto = data[3];
         this.mPonNombre = data[4];
         this.mPonEmpresa = data[5];
         this.mPonPuesto = data[6];
@@ -87,7 +87,7 @@ public class CarruselModel implements Parcelable {
                 this.mFechaInicio,
                 this.mFechaFin,
                 this.mNombre,
-                this.mSala,
+                this.mFoto,
                 this.mPonNombre,
                 this.mPonEmpresa,
                 this.mPonPuesto});

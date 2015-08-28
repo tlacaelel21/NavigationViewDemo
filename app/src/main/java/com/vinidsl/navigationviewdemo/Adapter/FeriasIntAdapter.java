@@ -1,6 +1,7 @@
 package com.vinidsl.navigationviewdemo.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,7 @@ public class FeriasIntAdapter extends ArrayAdapter<FeriaIntModel> {
         public ViewHolder(View v) {
             nombreFI = (TextView) v.findViewById(R.id.nombre);
             ubicacionFI = (TextView) v.findViewById(R.id.ubicacion);
-            foto = (ImageView) v.findViewById(R.id.foto);
+            foto = (ImageView) v.findViewById(R.id.foto_unica);
             fecha_inicio_fi = (TextView) v.findViewById(R.id.fecha_inicio_fi);
             fecha_fin_fi = (TextView) v.findViewById(R.id.fecha_fin_fi);
         }
@@ -63,6 +64,8 @@ public class FeriasIntAdapter extends ArrayAdapter<FeriaIntModel> {
             holder.fecha_inicio_fi.setText(feriaIntModel.getFechaInicio());
             holder.fecha_fin_fi.setText(feriaIntModel.getFechaFin());
             aquery.id(holder.foto).image("http://desarrollo.smartthinking.com.mx:8080/Cptm/" +feriaIntModel.getFotoInt());
+            //Log.i("FOTO", feriaIntModel.getFotoInt());
+           // aquery.id(holder.foto).image("http://desarrollo.smartthinking.com.mx:8080/Cptm/"+"media/FerInt/5_20150827115636.jpg");
         }
         return v;
     }
