@@ -93,9 +93,14 @@ public class Pantalla_Princi extends Fragment {
             }
         });
 
+        FeriaInterTask feriasTask= new FeriaInterTask(getActivity());
+        feriasTask.execute("");
+
+
         CarruselTask principalTask= new CarruselTask(getActivity());
         principalTask.setFragment(this);
         principalTask.execute("");
+
 
         return rootView;
     }
