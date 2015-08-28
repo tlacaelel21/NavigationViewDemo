@@ -29,7 +29,9 @@ public class FotosFragment extends Fragment {
 
         ImageView fotoIV = (ImageView) v.findViewById(R.id.pagina_foto_imagen);
         TextView pagina_foto_nombre = (TextView) v.findViewById(R.id.pagina_foto_nombre);
+        TextView pagina_foto_lugar = (TextView) v.findViewById(R.id.pagina_foto_lugar);
         pagina_foto_nombre.setText(horarios.getPonNombre());
+        pagina_foto_lugar.setText(horarios.getPonEmpresa());
         aquery.id(fotoIV).image("http://desarrollo.smartthinking.com.mx:8080/Cptm/" +horarios.getmFoto());
         return v;
     }

@@ -111,8 +111,8 @@ public class CarruselTask extends AsyncTask<String, Void, Void> {
                     String fechaFin = "fin";
                     String lugar = "lugar";
                     String foto = node.getString("int_foto");
-                    String ponenteNom = node.getString("int_titulo");;
-                    String ponenteEmp = "empresa";
+                    String ponenteNom = node.getString("int_titulo");
+                    String ponenteEmp = node.getString("pais_desc")+" ,"+node.get("int_lugar");
                     String ponentePues = "puesto";
 
                     CarruselModel h =
