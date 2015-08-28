@@ -129,7 +129,7 @@ public class Pantalla_Princi extends Fragment {
     }
 
 
-    public static ProgramaFragment newInstance(ArrayList<CarruselModel> lista) {
+    /*public static ProgramaFragment newInstance(ArrayList<CarruselModel> lista) {
 
         ProgramaFragment f = new ProgramaFragment();
         Bundle b = new Bundle();
@@ -137,6 +137,6 @@ public class Pantalla_Princi extends Fragment {
         f.setArguments(b);
 
         return f;
-    }
+    }*/
 
 }
