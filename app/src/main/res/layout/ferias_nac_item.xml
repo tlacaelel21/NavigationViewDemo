@@ -38,7 +38,6 @@
             android:layout_marginBottom="12dp"
             android:textSize="14dip"
             android:textColor="#000"
-            android:text="Proin gravida nibh vel velit auctor aliquet."
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_toLeftOf="@+id/ferias_nac_item_link"
             android:layout_toStartOf="@+id/ferias_nac_item_link" />

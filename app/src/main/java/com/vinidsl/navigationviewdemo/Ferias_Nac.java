@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.vinidsl.navigationviewdemo.Adapter.AdapterFeriasNac;
 import com.vinidsl.navigationviewdemo.Model.FeriasNacModel;
+import com.vinidsl.navigationviewdemo.Tasks.FeriaNacTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class Ferias_Nac extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.ferias_nac, container, false);
 
-        String[][] ferias_nac = {
+        /*String[][] ferias_nac = {
                 {"Tianguis Turistico","Proin gravida nibh vel velit auctor aliquet","http://desarrollo.smartthinking.com.mx:8080/Cptm/ferias_nacionales.jsp"},
                 {"Feria del turismo","Aenean sollicitudin, lorem quis bibendum auctor","http://desarrollo.smartthinking.com.mx:8080/Cptm/ferias_nacionales.jsp"},
 
@@ -50,7 +51,9 @@ public class Ferias_Nac extends Fragment {
         AdapterFeriasNac adapter = new AdapterFeriasNac(getActivity(), R.layout.ferias_nac_item,
                 listaM);
         lista.setAdapter(adapter);
-
+*/
+        FeriaNacTask feriaNacTask=new FeriaNacTask(getActivity());
+        feriaNacTask.execute("2");
 
 
         return rootView;

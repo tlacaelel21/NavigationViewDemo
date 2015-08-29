@@ -1,33 +1,24 @@
 package com.vinidsl.navigationviewdemo.Tasks;
 
-/**
- * Created by root on 24/08/15.
- */
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.vinidsl.navigationviewdemo.Adapter.AdapterFeriasNac;
 import com.vinidsl.navigationviewdemo.Adapter.FeriasIntAdapter;
-import com.vinidsl.navigationviewdemo.Adapter.NoticiasAdapter;
-import com.vinidsl.navigationviewdemo.Adapter.ProgramasAdapter;
 import com.vinidsl.navigationviewdemo.Cifrado;
 import com.vinidsl.navigationviewdemo.Ferias_Int;
-import com.vinidsl.navigationviewdemo.Model.FeriaIntModel;
-import com.vinidsl.navigationviewdemo.Model.Horario;
-import com.vinidsl.navigationviewdemo.Model.Noticia;
-import com.vinidsl.navigationviewdemo.NoticiaActivity;
-import com.vinidsl.navigationviewdemo.ProgramaActivity;
+import com.vinidsl.navigationviewdemo.Ferias_Nac;
+import com.vinidsl.navigationviewdemo.Model.FeriasNacModel;
+import com.vinidsl.navigationviewdemo.Model.FeriasNacModel;
 import com.vinidsl.navigationviewdemo.R;
 
 import org.json.JSONArray;
@@ -42,56 +33,58 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+/**
+ * Created by root on 28/08/15.
+ */
+public class FeriaNacTask extends AsyncTask<String, Void, Void> {
 
-public class FeriaInterTask extends AsyncTask<String, Void, Void> {
-
-    private final String LOG_TAG = FeriaInterTask.class.getSimpleName();
+    private final String LOG_TAG = FeriaNacTask.class.getSimpleName();
     private final String SERVICE_ID = "302";
 
     private final Context mContext;
     private ProgressDialog mDialog;
-    private ArrayList<FeriaIntModel> feriaListado;
+    private ArrayList<FeriasNacModel> feriaListado;
     private int insertados;
 
-    public FeriaInterTask(Context context) {
+    public FeriaNacTask(Context context) {
         mContext = context;
     }
     int mes=0;
     private void populateList(String JsonStr)
             throws JSONException {
         try {
-            feriaListado = new ArrayList<FeriaIntModel>();
+            feriaListado = new ArrayList<FeriasNacModel>();
             JSONObject mainNode = new JSONObject(JsonStr);
             JSONArray mainArray = mainNode.getJSONArray("calendario"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
 
             for(int i = 0; i < mainArray.length(); i++) {
 
-                    JSONObject node = mainArray.getJSONObject(i);
-                    long id = node.getLong("int_id");
-                   // String int_foto = node.getString("int_foto");
-                    String pais_desc = node.getString("pais_desc");
-                    String int_lugar = node.getString("int_lugar");
-                    String int_titulo = node.getString("int_titulo");
-                    String foto = node.getString("int_foto");
-                    String int_final = node.getString("int_final");
-                    String int_inicio = node.getString("int_inicio");
+                JSONObject node = mainArray.getJSONObject(i);
+                long id = node.getLong("nac_id");
+                // String int_foto = node.getString("int_foto");
+                //String pais_desc = node.getString("pais_desc");
+                String int_lugar = node.getString("nac_url");
+                String int_titulo = node.getString("nac_titulo");
+                String foto = node.getString("nac_foto");
+                /*String int_final = node.getString("int_final");
+                String int_inicio = node.getString("int_inicio");*/
                 //Log.i("FECHA",int_inicio);
-                    //mes=Integer.parseInt(int_inicio.substring(5,7));
+                //mes=Integer.parseInt(int_inicio.substring(5,7));
                 //Log.i("MES",""+mes);
-
-                    FeriaIntModel feriasIntM =
-                            new FeriaIntModel(id,int_titulo,int_lugar,pais_desc,foto,int_inicio,int_final);
+                //FeriasNacModel(long nac_id,String nac_titulo,String nac_foto,String nac_url)
+                FeriasNacModel feriasIntM =
+                        new FeriasNacModel(id,int_titulo,foto,int_lugar);
                 feriaListado.add(feriasIntM);
             }
-            /*ArrayList<FeriaIntModel> aux = new ArrayList<FeriaIntModel>();
+            /*ArrayList<FeriasNacModel> aux = new ArrayList<FeriasNacModel>();
             for(int i = 0; i < feriaListado.size(); i++) {
                 if(i == 0){
 
-                    FeriaIntModel cab = new FeriaIntModel(-1,"","","","",""+mes ,"");
+                    FeriasNacModel cab = new FeriasNacModel(-1,"","","","",""+mes ,"");
                     aux.add(cab);
                 }else if(Integer.parseInt(aux.get(i-1).getFechaInicio().substring(5,7))!=mes){
                 //Log.i("FECHA",aux.get(i-1).getFechaInicio());
-                    FeriaIntModel cab = new FeriaIntModel(-1,"","","","",""+mes,"");
+                    FeriasNacModel cab = new FeriasNacModel(-1,"","","","",""+mes,"");
                     aux.add(cab);
                 }
                 aux.add(feriaListado.get(i));
@@ -131,14 +124,16 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
             final String BASE_URL =
                     mContext.getString(R.string.base_url);
             final String QUERY_PARAM = "cod";
-            String parametro = c.encriptar(SERVICE_ID + "|" + "1");
+            //String parametro = c.encriptar(SERVICE_ID + "|" + params[0]);
+            String parametro = c.encriptar(SERVICE_ID + "|" + "2");
             parametro=parametro.replaceAll("\\+", "%2B");
-            //Log.i("SERV",parametro);
-            //String parametro = c.encriptar(SERVICE_ID);
+            parametro=parametro.replaceAll("\\/", "%2F");
+            Log.i("SERV",parametro);
 
-            Uri builtUri = Uri.parse(BASE_URL).buildUpon()
-                    .appendQueryParameter(QUERY_PARAM, parametro).build();
+            /*Uri builtUri = Uri.parse(BASE_URL).buildUpon()
+                    .appendQueryParameter(QUERY_PARAM, "Lk%2B7p%2FCuWuhh5u58dn6nUQ==").build();*/
 
+            Uri builtUri=Uri.parse(BASE_URL+"cod="+parametro);
             // Inicializando conexión
             URL url = new URL(builtUri.toString());
             // Estableciendo parametros de petición
@@ -209,23 +204,23 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
         } else {
 
             ListView lista = (ListView)
-                    ((Activity) mContext).findViewById(R.id.listadoFerias); // id del ListView
-            final FeriasIntAdapter adapter =
-                    new FeriasIntAdapter((Activity) mContext, feriaListado);
+                    ((Activity) mContext).findViewById(R.id.listadoTianguis); // id del ListView
+            final AdapterFeriasNac adapter =
+                    new AdapterFeriasNac((Activity) mContext, feriaListado);
             lista.setAdapter(adapter);
 
             lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    FeriaIntModel n = adapter.getItem(position);
+                    FeriasNacModel n = adapter.getItem(position);
 
-                    Intent activity = new Intent(mContext, Ferias_Int.class);
+                    Intent activity = new Intent(mContext, Ferias_Nac.class);
                     activity.putExtra("id", n.getId());
-                    activity.putExtra("titulo", n.getNombre());
-                    activity.putExtra("desc", n.getPais_desc());
-                    activity.putExtra("fecha_ini", n.getFechaInicio());
-                    activity.putExtra("fecha_fin", n.getFechaFin());
-                    activity.putExtra("pathFoto", n.getFotoInt());
+                    activity.putExtra("titulo", n.getTitulo());
+                    activity.putExtra("desc", n.getUrlExterno());
+                    /*activity.putExtra("fecha_ini", n.getFechaInicio());
+                    activity.putExtra("fecha_fin", n.getFechaFin());*/
+                    activity.putExtra("pathFoto", n.getNac_foto());
 
                     mContext.startActivity(activity);
                 }

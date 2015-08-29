@@ -5,6 +5,8 @@
 
 
     <string name="base_url">http://www.smartthinking.com.mx:8080/Cptm/DataSMobile?</string>
+    <string name="base_img">http://www.smartthinking.com.mx:8080/Cptm/</string>
+    <string name="base_img_carrusel">http://www.smartthinking.com.mx:8080/Cptm</string>
 
     <!-- Textos para parametros -->
     <string name="espacio_prefs">CPTM PrefSpace</string>
