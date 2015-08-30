@@ -166,6 +166,8 @@ public class ConsultaPerfilTask extends AsyncTask<String, Void, Void> {
             final String QUERY_PARAM = "cod";
             String parametro = c.encriptar(SERVICE_ID + "|" + params[0]);
 
+            Log.i(LOG_TAG, parametro);
+
             Uri builtUri = Uri.parse(BASE_URL).buildUpon()
                     .appendQueryParameter(QUERY_PARAM, parametro).build();
 

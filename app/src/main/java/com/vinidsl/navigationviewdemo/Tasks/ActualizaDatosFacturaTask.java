@@ -78,6 +78,8 @@ public class ActualizaDatosFacturaTask extends AsyncTask<String, Void, Void> {
             final String QUERY_PARAM = "cod";
             String parametro = c.encriptar(SERVICE_ID + "|" + params[0]);
 
+            Log.i(LOG_TAG, parametro);
+
             Uri builtUri = Uri.parse(BASE_URL).buildUpon()
             .appendQueryParameter(QUERY_PARAM, parametro).build();
 
@@ -157,6 +159,11 @@ public class ActualizaDatosFacturaTask extends AsyncTask<String, Void, Void> {
         // ejecución para un caso ideal donde todo resulto exitoso
         } else {
 
+            if(resultado == 0) {
+                Toast.makeText(mContext, "Error al actualizar datos" , Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(mContext, "Datos actualizados correctamente", Toast.LENGTH_SHORT).show();
+            }
 
         }
 

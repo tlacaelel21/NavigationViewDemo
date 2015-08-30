@@ -20,6 +20,14 @@ public class DatosFacturaAdapter extends FragmentPagerAdapter {
         datosFac = datos;
     }
 
+    public ArrayList<DatosFactura> getValues() {
+        return datosFac;
+    }
+
+    public void setValues(ArrayList<DatosFactura> values) {
+        this.datosFac = values;
+    }
+
     @Override
     public Fragment getItem(int position) {
         return DatosFacturaFragment.newInstance(datosFac.get(position));

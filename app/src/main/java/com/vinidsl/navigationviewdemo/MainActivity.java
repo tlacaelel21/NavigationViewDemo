@@ -39,6 +39,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.vinidsl.navigationviewdemo.Model.DatosFactura;
 import com.vinidsl.navigationviewdemo.Tasks.GuardarDatosFacturaTask;
 
 
@@ -264,13 +265,13 @@ public class MainActivity extends AppCompatActivity
 
         /*
 
-            id_usuario|rfc|razon_social|calle|noext|noint|colonia|cp
-
-            |municipio|estado
+            id_usuario|rfc|razon_social|calle|noext|
+            noint|colonia|cp|municipio|poblacion|
+            estado
 
          */
 
-        String idPerfil = "1";
+        String idPerfil = "17";
         String parametro;
 
         String rfc = rfcTV.getText().toString();
@@ -282,12 +283,20 @@ public class MainActivity extends AppCompatActivity
         String cp = cpFacTV.getText().toString();
         String municipio = delegacionFacTV.getText().toString();
         String estado = estadoTV.getText().toString();
+        String poblacion =  "";
 
         parametro = idPerfil + "|" + rfc + "|" + rs + "|" + calle + "|" + numExt + "|" +
-                numInt + "|" + colonia + "|" + cp + "|" + municipio + "|" + estado;
+                numInt + "|" + colonia + "|" + cp + "|" + municipio + "|" +poblacion + "|"
+                + estado;
+
+        DatosFactura df = new DatosFactura(0, rfc, rs, calle, numInt, numExt, colonia,
+                cp, municipio, estado);
 
         GuardarDatosFacturaTask task = new GuardarDatosFacturaTask(this);
+        task.setDatoFactura(df);
         task.execute(parametro);
+
+        dialog.dismiss();
 
     }
 

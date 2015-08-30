@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -25,7 +26,7 @@ import java.net.URL;
  */
 public class ActualizarPerfilTask extends AsyncTask<String, Void, Void> {
 
-    private final String LOG_TAG = ConsultaPerfilTask.class.getSimpleName();
+    private final String LOG_TAG = ActualizarPerfilTask.class.getSimpleName();
     private final String SERVICE_ID = "308";
 
     private final Context mContext;
@@ -77,6 +78,8 @@ public class ActualizarPerfilTask extends AsyncTask<String, Void, Void> {
                     mContext.getString(R.string.base_url);
             final String QUERY_PARAM = "cod";
             String parametro = c.encriptar(SERVICE_ID + "|" + params[0]);
+
+            Log.i(LOG_TAG, parametro);
 
             Uri builtUri = Uri.parse(BASE_URL).buildUpon()
             .appendQueryParameter(QUERY_PARAM, parametro).build();
@@ -154,6 +157,12 @@ public class ActualizarPerfilTask extends AsyncTask<String, Void, Void> {
 
         // ejecución para un caso ideal donde todo resulto exitoso
         } else {
+
+            if(resultado == 0) {
+                Toast.makeText(mContext, "Error al actualizar perfil" , Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(mContext, "Perfil actualizado correctamente", Toast.LENGTH_SHORT).show();
+            }
 
 
         }

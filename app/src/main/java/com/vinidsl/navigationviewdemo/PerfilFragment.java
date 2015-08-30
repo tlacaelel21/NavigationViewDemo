@@ -94,11 +94,6 @@ public class PerfilFragment extends Fragment  {
         TextView paisComTV = (TextView) a.findViewById(R.id.perfil_pais);
         TextView sitioComTV = (TextView) a.findViewById(R.id.perfil_pagina);
         TextView actComTV = (TextView) a.findViewById(R.id.perfil_actividad);
-        TextView rfcTV = (TextView) a.findViewById(R.id.perfil_rfc);
-        TextView calleFacTV = (TextView) a.findViewById(R.id.perfil_calle_fac);
-        TextView coloniaFacTV = (TextView) a.findViewById(R.id.perfil_colonia_fac);
-        TextView delegacionFacTV = (TextView) a.findViewById(R.id.perfil_delegacion_fac);
-        TextView cpFacTV = (TextView) a.findViewById(R.id.perfil_codigo_postal_fac);
 
         String idPerfil = "17";
         String idPais = "1";
@@ -125,17 +120,25 @@ public class PerfilFragment extends Fragment  {
 
         /*id_usuario|contraseña|nombre|cargo|tel_usu|compañía|
 
-                calle|noext|noint|colonia|cp|municipio|estado|id_pais|t
+                calle|noext|noint|colonia|cp|municipio|estado|id_pais|
 
-        el_oficina|pagina_web|email_contacto|id_actividad*/
+            tel_oficina|pagina_web|email_contacto|id_actividad*/
+
+        /*
+            id_usuario|contraseña|nombre|
+            cargo|tel_usu|compañía|
+            calle|noext|noint|
+            colonia|cp|municipio|
+            estado|id_pais|tel_oficina|
+            pagina_web|email_contacto|id_actividad
+        */
 
         parametro = idPerfil + "|" + contrasenia + "|" + nombre + "|"
                 + cargo + "|" + telefono + "|" + nombreCom + "|"
                 + calleCom + "|" + numExt + "|" + numInt + "|"
                 + coloniaCom + "|" + cpCom + "|" + munCom + "|"
-                + estadoCom + "|" + estadoCom + "|" + idPais + "|"
-                + telCom + "|" + sitioCom + "|" + correo + "|"
-                + idActividad;
+                + estadoCom  + "|" + idPais + "|" + telCom + "|"
+                + sitioCom + "|" + correo + "|" + idActividad;
 
 
         ActualizarPerfilTask task = new ActualizarPerfilTask(getActivity());
@@ -146,6 +149,12 @@ public class PerfilFragment extends Fragment  {
         // Create an instance of the dialog fragment and show it
         DialogFragment dialog = new DatosFacturaDialog();
         dialog.show(getFragmentManager(), "DatosFacturaDialog");
+    }
+
+    public void validaDatos() {
+        // numerico ^[0-9]+$
+
+        //^(([\w]+)[\s]*)+$
     }
 
 

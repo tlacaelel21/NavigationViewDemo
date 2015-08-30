@@ -13,6 +13,7 @@ import com.vinidsl.navigationviewdemo.Adapter.HorarioAdapter;
 import com.vinidsl.navigationviewdemo.Model.DatosFactura;
 import com.vinidsl.navigationviewdemo.Model.Horario;
 import com.vinidsl.navigationviewdemo.Tasks.ActualizaDatosFacturaTask;
+import com.vinidsl.navigationviewdemo.Tasks.EliminaDatosFacturaTask;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ import java.util.ArrayList;
  */
 public class DatosFacturaFragment extends Fragment {
 
-
+    Long id;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -38,9 +39,10 @@ public class DatosFacturaFragment extends Fragment {
         TextView delegacionFacTV = (TextView) v.findViewById(R.id.perfil_delegacion_fac);
         TextView cpFacTV = (TextView) v.findViewById(R.id.perfil_codigo_postal_fac);
         TextView estadoTV = (TextView) v.findViewById(R.id.perfil_estado_fac);
-        Button boton = (Button) v.findViewById(R.id.datos_fiscales_boton_actualizar);
+        Button botonGuardar = (Button) v.findViewById(R.id.datos_fiscales_boton_actualizar);
+        Button botonEliminar = (Button) v.findViewById(R.id.datos_fiscales_boton_eliminar);
 
-        boton.setOnClickListener(new View.OnClickListener() {
+        botonGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 View vp = (View) v.getParent();
@@ -48,6 +50,14 @@ public class DatosFacturaFragment extends Fragment {
             }
         });
 
+        botonEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callDelete();
+            }
+        });
+
+        id = args.getLong("id");
         rfcTV.setText(args.getString("rfc"));
         rsTV.setText(args.getString("rs"));
         calleFacTV.setText(args.getString("calle"));
@@ -92,7 +102,7 @@ public class DatosFacturaFragment extends Fragment {
         TextView cpFacTV = (TextView) v.findViewById(R.id.perfil_codigo_postal_fac);
         TextView estadoTV = (TextView) v.findViewById(R.id.perfil_estado_fac);
 
-        String idDatosFactura = "1";
+        String idDatosFactura = "" + id;
 
         String rfc = rfcTV.getText().toString();
         String rs= rsTV.getText().toString();
@@ -103,16 +113,25 @@ public class DatosFacturaFragment extends Fragment {
         String cp = cpFacTV.getText().toString();
         String municipio = delegacionFacTV.getText().toString();
         String estado = estadoTV.getText().toString();
+        String poblacion = "";
 
         /*
-                id_datosfactura|rfc|razon_social|calle|noext|noint|colonia|cp|municipio|estado
+
+                id_datosfactura|rfc|razon_social|calle|noext|noint|colonia|cp|municipio|
+                poblacion|estado
          */
         String parametro = idDatosFactura + "|" + rfc + "|" + rs + "|" + calle + "|" +
                 numExt + "|" + numInt + "|" + colonia + "|" + cp + "|" + municipio + "|" +
-                estado;
+                "|" + poblacion + "|" + estado;
 
         ActualizaDatosFacturaTask task = new ActualizaDatosFacturaTask(getActivity());
         task.execute(parametro);
 
+    }
+
+    public void callDelete() {
+        String parametro = "" + id;
+        EliminaDatosFacturaTask task = new EliminaDatosFacturaTask(getActivity());
+        task.execute(parametro);
     }
 }

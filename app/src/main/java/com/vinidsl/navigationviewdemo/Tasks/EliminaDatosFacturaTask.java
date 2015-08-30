@@ -3,24 +3,18 @@ package com.vinidsl.navigationviewdemo.Tasks;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import com.vinidsl.navigationviewdemo.Adapter.PatrocinadoresAdapter;
-import com.vinidsl.navigationviewdemo.Adapter.PonentesAdapter;
+import com.vinidsl.navigationviewdemo.Adapter.DatosFacturaAdapter;
 import com.vinidsl.navigationviewdemo.Cifrado;
-import com.vinidsl.navigationviewdemo.Model.Patrocinador;
-import com.vinidsl.navigationviewdemo.Model.Ponente;
-import com.vinidsl.navigationviewdemo.PonenteActivity;
+import com.vinidsl.navigationviewdemo.Model.DatosFactura;
 import com.vinidsl.navigationviewdemo.R;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,70 +25,46 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 /**
- * Created by JoseRogelio on 15/08/2015.
+ * Created by JoseRogelio on 19/08/2015.
  */
-public class PonentesTask extends AsyncTask<String, Void, Void> {
+public class EliminaDatosFacturaTask extends AsyncTask<String, Void, Void> {
 
-    private final String LOG_TAG = PonentesTask.class.getSimpleName();
-    private final String SERVICE_ID = "319";
+    private final String LOG_TAG = ConsultaPerfilTask.class.getSimpleName();
+    private final String SERVICE_ID = "336";
 
     private final Context mContext;
     private ProgressDialog mDialog;
-    private ArrayList<Ponente> ponentes;
-    private int insertados;
+    private int resultado;
+    private long id;
 
-    public PonentesTask(Context context) {
+    public EliminaDatosFacturaTask(Context context) {
         mContext = context;
     }
 
-    private void populateList(String JsonStr)
-            throws JSONException {
+    private void readResult(String JsonStr) throws JSONException {
 
         try {
-            ponentes = new ArrayList<Ponente>();
+
             JSONObject mainNode = new JSONObject(JsonStr);
-            JSONArray mainArray = mainNode.getJSONArray("ponentes"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
 
-            for(int i = 0; i < mainArray.length(); i++) {
+            // delete_df:{0/1}
 
-                // ponente:{pon_id, pon_nombre, pon_foto, pon_empresa}
+            Log.i(LOG_TAG, JsonStr);
 
-                JSONObject node = mainArray.getJSONObject(i);
-
-                long id = node.getLong("pon_id");
-                String nombre = node.getString("pon_nombre");
-                String numero = node.getString("pon_empresa");
-                String pathFoto = node.getString("pon_foto");
-                String correo = "";
-                String calificacion = "";
-                //String url = node.getString("pat_url");
-                int estado = 0; //node.getInt("tipo");
-
-                Ponente p =
-                        new Ponente(id, estado, nombre, numero, pathFoto, correo, calificacion);
-
-                ponentes.add(p);
-
-            }
-
-            insertados = 0;
-
-            if ( ponentes.size() > 0 ) {
-                insertados = ponentes.size();
-            }
+            resultado = mainNode.getInt("delete_df");
 
         } catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage(), e);
             e.printStackTrace();
+            resultado = -1;
         }
     }
 
     protected void onPreExecute() {
         mDialog = ProgressDialog
-                .show(mContext, "Espera", "Cargando...");
+            .show(mContext, "Espera", "Cargando...");
     }
 
     @Override
@@ -115,21 +85,15 @@ public class PonentesTask extends AsyncTask<String, Void, Void> {
             final String QUERY_PARAM = "cod";
             String parametro = c.encriptar(SERVICE_ID + "|" + params[0]);
 
-            parametro = parametro.replaceAll(Pattern.quote("+"), "%2B");
+            id = Long.parseLong(params[0]);
 
             Log.i(LOG_TAG, parametro);
 
-            /*Uri builtUri = Uri.parse(BASE_URL).buildUpon()
-                    .appendQueryParameter(QUERY_PARAM, parametro).build();*/
-
-            //Log.i(LOG_TAG, builtUri.toString());
-
-            String uri = BASE_URL + QUERY_PARAM + "=" + parametro;
-
-            Log.i(LOG_TAG, uri);
+            Uri builtUri = Uri.parse(BASE_URL).buildUpon()
+            .appendQueryParameter(QUERY_PARAM, parametro).build();
 
             // Inicializando conexión
-            URL url = new URL(uri);
+            URL url = new URL(builtUri.toString());
             // Estableciendo parametros de petición
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
@@ -140,6 +104,8 @@ public class PonentesTask extends AsyncTask<String, Void, Void> {
             InputStream inputStream = urlConnection.getInputStream();
             StringBuffer buffer = new StringBuffer();
             if (inputStream == null) {
+                Log.i("ERROR","INPUT NULL");
+                resultado = -2;
                 return null;
             }
             reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -150,19 +116,23 @@ public class PonentesTask extends AsyncTask<String, Void, Void> {
             }
 
             if (buffer.length() == 0) {
+                Log.i("ERROR","EMPTY BUFFER");
+                resultado = -2;
                 return null;
             }
 
             // conversion del JSON a una lista de objetos
             forecastJsonStr = buffer.toString();
-            populateList(forecastJsonStr);
+            readResult(forecastJsonStr);
 
         } catch (IOException e) {
             Log.e(LOG_TAG, "Error ", e);
+            resultado = -2;
             return null;
         } catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage(), e);
             e.printStackTrace();
+            resultado = -1;
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -171,6 +141,7 @@ public class PonentesTask extends AsyncTask<String, Void, Void> {
                 try {
                     reader.close();
                 } catch (final IOException e) {
+                    resultado = -2;
                     Log.e(LOG_TAG, "Error closing stream", e);
                 }
             }
@@ -181,37 +152,48 @@ public class PonentesTask extends AsyncTask<String, Void, Void> {
 
     @Override
     protected void onPostExecute(Void result) {
-        // quitar dialogo de carga
+    // quitar dialogo de carga
         if ((mDialog != null) && mDialog.isShowing()) {
             mDialog.dismiss();
         }
 
         // validaciones correspondientes
-        if(ponentes == null) {
+        if(resultado == -2) {
             Toast.makeText(mContext, "Sin conexión a Internet", Toast.LENGTH_LONG).show();
             Log.i("DESCARGA", "SIN INTERNET");
-        } else if(insertados == 0) {
+        } else if(resultado == -1) {
             Toast.makeText(mContext, "No hay datos", Toast.LENGTH_LONG).show();
             Log.i("DESCARGA", "SIN DATOS");
 
-            // ejecución para un caso ideal donde todo resulto exitoso
+        // ejecución para un caso ideal donde todo resulto exitoso
         } else {
 
-            ListView lista = (ListView)
-                    ((Activity) mContext).findViewById(R.id.ponentes_lista); // id del ListView
-            final PonentesAdapter adapter =
-                    new PonentesAdapter((Activity) mContext, ponentes);
-            lista.setAdapter(adapter);
+            if(resultado == 0) {
+                Toast.makeText(mContext, "Error al eliminar datos" , Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(mContext, "Datos eliminados correctamente",
+                        Toast.LENGTH_SHORT).show();
 
-            lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Ponente p = adapter.getItem(position);
-                    Intent intent = new Intent(mContext, PonenteActivity.class);
-                    intent.putExtra("id", p.getId());
-                    mContext.startActivity(intent);
+                Activity a = (Activity) mContext;
+                ViewPager pager = (ViewPager) a.findViewById(R.id.perfil_df_contenedor);
+
+                if(!pager.isShown()) {
+                    pager.setVisibility(View.VISIBLE);
                 }
-            });
+
+                DatosFacturaAdapter adapter = (DatosFacturaAdapter) pager.getAdapter();
+                ArrayList<DatosFactura> lista = adapter.getValues();
+
+                for(int i = 0 ; i <lista.size(); i++) {
+                    if(lista.get(i).getId() == id) {
+                        lista.remove(i);
+                    }
+                }
+
+                adapter.setValues(lista);
+                adapter.notifyDataSetChanged();
+
+            }
 
         }
 

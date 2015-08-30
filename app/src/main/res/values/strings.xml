@@ -73,6 +73,7 @@
     <string name="perfil_d_fiscales">Datos de facturación</string>
     <string name="perfil_act">Actualizar perfil</string>
     <string name="perfil_guardar">Guardar datos</string>
+    <string name="perfil_eliminar">Eliminar datos</string>
     <string name="perfil_term">Condiciones del Servicio y Politica de Privacidad</string>
 
     <!-- Textos de la UI Noticias -->

@@ -1,13 +1,19 @@
 package com.vinidsl.navigationviewdemo.Tasks;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
+import com.vinidsl.navigationviewdemo.Adapter.DatosFacturaAdapter;
+import com.vinidsl.navigationviewdemo.Adapter.ProgramasAdapter;
 import com.vinidsl.navigationviewdemo.Cifrado;
+import com.vinidsl.navigationviewdemo.Model.DatosFactura;
 import com.vinidsl.navigationviewdemo.R;
 
 import org.json.JSONException;
@@ -19,6 +25,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 /**
  * Created by JoseRogelio on 19/08/2015.
@@ -30,10 +37,15 @@ public class GuardarDatosFacturaTask extends AsyncTask<String, Void, Void> {
 
     private final Context mContext;
     private ProgressDialog mDialog;
+    private DatosFactura df;
     private int resultado;
 
     public GuardarDatosFacturaTask(Context context) {
         mContext = context;
+    }
+
+    public void setDatoFactura(DatosFactura valores) {
+        this.df = valores;
     }
 
     private void readResult(String JsonStr) throws JSONException {
@@ -77,6 +89,8 @@ public class GuardarDatosFacturaTask extends AsyncTask<String, Void, Void> {
                     mContext.getString(R.string.base_url);
             final String QUERY_PARAM = "cod";
             String parametro = c.encriptar(SERVICE_ID + "|" + params[0]);
+
+            Log.i(LOG_TAG, parametro);
 
             Uri builtUri = Uri.parse(BASE_URL).buildUpon()
             .appendQueryParameter(QUERY_PARAM, parametro).build();
@@ -157,6 +171,26 @@ public class GuardarDatosFacturaTask extends AsyncTask<String, Void, Void> {
         // ejecución para un caso ideal donde todo resulto exitoso
         } else {
 
+
+            if(resultado == 0) {
+                Toast.makeText(mContext, "Error al guardar datos" , Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(mContext, "Datos guardados correctamente", Toast.LENGTH_SHORT).show();
+
+                Activity a = (Activity) mContext;
+                ViewPager pager = (ViewPager) a.findViewById(R.id.perfil_df_contenedor);
+
+                if(!pager.isShown()) {
+                    pager.setVisibility(View.VISIBLE);
+                }
+
+                DatosFacturaAdapter adapter = (DatosFacturaAdapter) pager.getAdapter();
+                ArrayList<DatosFactura> lista = adapter.getValues();
+                lista.add(df);
+                adapter.setValues(lista);
+                adapter.notifyDataSetChanged();
+
+            }
 
         }
 
