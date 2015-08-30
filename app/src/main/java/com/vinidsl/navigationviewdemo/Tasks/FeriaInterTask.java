@@ -22,6 +22,7 @@ import com.vinidsl.navigationviewdemo.Adapter.FeriasIntAdapter;
 import com.vinidsl.navigationviewdemo.Adapter.NoticiasAdapter;
 import com.vinidsl.navigationviewdemo.Adapter.ProgramasAdapter;
 import com.vinidsl.navigationviewdemo.Cifrado;
+import com.vinidsl.navigationviewdemo.Evento;
 import com.vinidsl.navigationviewdemo.Ferias_Int;
 import com.vinidsl.navigationviewdemo.Model.FeriaIntModel;
 import com.vinidsl.navigationviewdemo.Model.Horario;
@@ -217,7 +218,9 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
             lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    FeriaIntModel n = adapter.getItem(position);
+                    Intent activity = new Intent(mContext, Evento.class);
+                    //mContext.startActivity(activity);
+                    /*FeriaIntModel n = adapter.getItem(position);
 
                     Intent activity = new Intent(mContext, Ferias_Int.class);
                     activity.putExtra("id", n.getId());
@@ -227,7 +230,8 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
                     activity.putExtra("fecha_fin", n.getFechaFin());
                     activity.putExtra("pathFoto", n.getFotoInt());
 
-                    mContext.startActivity(activity);
+                    mContext.startActivity(activity);*/
+                    //Log.i("CLIC","123123");
                 }
             });
             /*Activity acitividad= (Activity)mContext;

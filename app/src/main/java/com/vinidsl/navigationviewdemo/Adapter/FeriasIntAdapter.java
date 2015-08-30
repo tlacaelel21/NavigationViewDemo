@@ -103,7 +103,7 @@ public class FeriasIntAdapter extends BaseAdapter {
                 String pathFoto = feriaIntModel.getFotoInt();
                 if(!pathFoto.isEmpty()) {
                     //aquery.id(holder.fotoIV).image(pathFoto);
-                    aquery.id(holder.fotoIV).image("http://desarrollo.smartthinking.com.mx:8080/Cptm/" +feriaIntModel.getFotoInt());
+                    aquery.id(holder.fotoIV).image(activityRef.getApplicationContext().getString(R.string.base_img)+feriaIntModel.getFotoInt());
                 }
             } else if(tipoItem == TIPO_ITEM_CABECERA) {
                 holder.nombreFI.setText(feriaIntModel.getNombre());
