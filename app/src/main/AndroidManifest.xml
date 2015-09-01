@@ -24,12 +24,14 @@
         android:name="GlobalClass"
         android:icon="@drawable/ico57"
         android:label="@string/app_name"
-        android:theme="@style/Theme.NavigationViewDemo" >
+        android:theme="@style/Theme.NavigationViewDemo"
+        >
 
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance"
+            android:screenOrientation="nosensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -83,6 +85,16 @@
 
         <activity
             android:name=".ProgramaActivity"
+            android:label="@string/programa_cab"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".Evento"
+            android:screenOrientation="nosensor"
             android:label="@string/programa_cab"
             android:parentActivityName=".MainActivity" >
             <meta-data

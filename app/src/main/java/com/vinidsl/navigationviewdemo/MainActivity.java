@@ -63,10 +63,10 @@ public class MainActivity extends AppCompatActivity
         act = this;
 
 
-        /*Cifrado obj=new Cifrado();
-        String valorEnc=obj.encriptar("300|admin@s-t.mx|admin");
-        String valorEnc=obj.encriptar("302|2");
-        Log.i("ENC",valorEnc);*/
+        Cifrado obj=new Cifrado();
+        //String valorEnc=obj.encriptar("300|admin@s-t.mx|admin");
+        String valorEnc=obj.encriptar("322|1");
+        Log.i("ENC",valorEnc);
 
         PonentesTask objeto=new PonentesTask(this.getBaseContext());
 
