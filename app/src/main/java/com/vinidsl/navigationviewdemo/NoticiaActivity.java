@@ -30,6 +30,7 @@ public class NoticiaActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
+
         if(extras != null) {
 
             aQuery = new AQuery(this);

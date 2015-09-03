@@ -147,6 +147,7 @@ public class NoticiasAdapter extends BaseAdapter {
                             aquery.getContext().startActivity(activity);
                         }
 
+
                     }
                 });
 

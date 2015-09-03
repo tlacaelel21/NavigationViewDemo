@@ -53,7 +53,6 @@ public class NoticiasTask extends AsyncTask<String, Void, Void> {
     private void populateList(String JsonStr)
             throws JSONException {
 
-        Log.i(LOG_TAG, JsonStr);
 
         try {
             noticias = new ArrayList<Noticia>();
