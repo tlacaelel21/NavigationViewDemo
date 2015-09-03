@@ -31,6 +31,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 /**
  * Created by JoseRogelio on 15/08/2015.
@@ -52,6 +53,8 @@ public class NoticiasTask extends AsyncTask<String, Void, Void> {
     private void populateList(String JsonStr)
             throws JSONException {
 
+        Log.i(LOG_TAG, JsonStr);
+
         try {
             noticias = new ArrayList<Noticia>();
             JSONObject mainNode = new JSONObject(JsonStr);
@@ -67,7 +70,7 @@ public class NoticiasTask extends AsyncTask<String, Void, Void> {
                 String titulo = node.getString("not_titulo");
                 String desc = node.getString("not_desc");
                 String pathFoto = node.getString("not_imagen");
-                String fecha = "";
+                String fecha = node.getString("not_insert");
 
                 Noticia n =
                         new Noticia(id, titulo, fecha, pathFoto, desc);
@@ -75,6 +78,8 @@ public class NoticiasTask extends AsyncTask<String, Void, Void> {
                 noticias.add(n);
 
             }
+
+            noticias =  arreglarLista(noticias);
 
             insertados = 0;
 
@@ -194,21 +199,121 @@ public class NoticiasTask extends AsyncTask<String, Void, Void> {
             lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Noticia n = adapter.getItem(position);
+                    /*Noticia n = adapter.getItem(position);
 
-                    Intent activity = new Intent(mContext, NoticiaActivity.class);
-                    activity.putExtra("id", n.getId());
-                    activity.putExtra("titulo", n.getTitulo());
-                    activity.putExtra("desc", n.getContenido());
-                    activity.putExtra("fecha", n.getFecha());
-                    activity.putExtra("pathFoto", n.getPathFoto());
+                    Log.i(LOG_TAG, "id -> " + n.getId());
 
-                    mContext.startActivity(activity);
+                    if(n.getId() != -1) {
+
+                        Intent activity = new Intent(mContext, NoticiaActivity.class);
+                        activity.putExtra("id", n.getId());
+                        activity.putExtra("titulo", n.getTitulo());
+                        activity.putExtra("desc", n.getContenido());
+                        activity.putExtra("fecha", n.getFecha());
+                        activity.putExtra("pathFoto", n.getPathFoto());
+
+                        mContext.startActivity(activity);
+                    }*/
                 }
             });
 
         }
 
+    }
+
+    /**
+     * metodo para ordenar la lista añadiendo  cabeceras
+     * @param lista lista original
+     * @return lista ordenada con cabeceras
+     */
+    private ArrayList<Noticia> arreglarLista(ArrayList<Noticia> lista) {
+        ArrayList<Noticia> listaOrden = new ArrayList<Noticia>();
+        ArrayList<Noticia> listaSNOrden = lista;
+
+        int indiceListaOrdenada = 0;
+        for(int i = 0; i < listaSNOrden.size() ; i++) {
+            if(i == 0) {
+
+                // se agrega la cabecera
+                Noticia n = new Noticia(-1 ,
+                        obtNombreMes(listaSNOrden.get(i).getFecha()),
+                        "Ir a sitio",
+                        "", "");
+                listaOrden.add(n);
+                indiceListaOrdenada = 0;
+
+            } else {
+
+                if(obtMes(listaSNOrden.get(i).getFecha())
+                        < obtMes(listaOrden.get(indiceListaOrdenada).getFecha())) {
+
+                    // se agrega la cabecera
+                    Noticia n = new Noticia(-1 ,
+                            obtNombreMes(listaSNOrden.get(i).getFecha()),
+                            "Ir a sitio",
+                            "", "");
+                    listaOrden.add(n);
+
+                }
+            }
+
+            listaOrden.add(listaSNOrden.get(i));
+            indiceListaOrdenada++;
+
+        }
+        return listaOrden;
+    }
+
+    private String obtNombreMes(String fechaStr) {
+        int mes = 1;
+        // fechaYHORA = [{2015-09-01}, {14:16:01.0}]
+        String[] fechaYHora = fechaStr.split(Pattern.quote(" "));
+        // fecha = [{2015}, {09}, {01}]
+        String[] fecha = fechaYHora[0].split(Pattern.quote("-"));
+        mes = Integer.parseInt(fecha[1]);
+        switch(mes) {
+            case 1:
+                return "Enero " + fecha[0];
+            case 2:
+                return "Febrero " + fecha[0];
+            case 3:
+                return "Marzo " + fecha[0];
+            case 4:
+                return "Abril " + fecha[0];
+            case 5:
+                return "Mayo " + fecha[0];
+            case 6:
+                return "Junio " + fecha[0];
+            case 7:
+                return "Julio " + fecha[0];
+            case 8:
+                return "Agosto " + fecha[0];
+            case 9:
+                return "Septiembre " + fecha[0];
+            case 10:
+                return "Octubre " + fecha[0];
+            case 11:
+                return "Noviembre " + fecha[0];
+            case 12:
+                return "Diciembre " + fecha[0];
+            default:
+                return "Enero 2015";
+        }
+    }
+
+    /**
+     * metodo para obtener el mes de una fecha con el formato 2015-09-01 14:16:01.0
+     * @param fechaStr cadena que contiene la fecha
+     * @return valor del mes (1-12)
+     */
+    private int obtMes(String fechaStr) {
+        int mes = 1;
+        // fechaYHORA = [{2015-09-01}, {14:16:01.0}]
+        String[] fechaYHora = fechaStr.split(Pattern.quote(" "));
+        // fecha = [{2015}, {09}, {01}]
+        String[] fecha = fechaYHora[0].split(Pattern.quote("-"));
+        mes = Integer.parseInt(fecha[1]);
+        return mes;
     }
 
 }

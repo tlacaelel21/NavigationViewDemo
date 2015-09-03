@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:paddingBottom="6dp"
     android:paddingLeft="10dp"
+    android:clickable="true"
     android:paddingRight="15dp"
     android:paddingTop="6dp">
     

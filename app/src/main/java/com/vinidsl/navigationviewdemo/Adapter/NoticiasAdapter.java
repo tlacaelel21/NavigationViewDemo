@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ import com.vinidsl.navigationviewdemo.R;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class NoticiasAdapter extends BaseAdapter {
 
@@ -105,7 +107,14 @@ public class NoticiasAdapter extends BaseAdapter {
 
             if(tipoItem == TIPO_ITEM_CONTENIDO) {
                 holder.tituloTV.setText(not.getTitulo());
-                holder.fechaTV.setText(not.getFecha());
+
+
+                String fecha = obtNombreMes(not.getFecha()) + obtDia(not.getFecha()) +
+                        ", " + obtAnio(not.getFecha());
+
+
+                holder.fechaTV.setText(fecha);
+                final int pos = position;
 
                 holder.boton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -118,17 +127,34 @@ public class NoticiasAdapter extends BaseAdapter {
                                 new com.vinidsl.navigationviewdemo.Noticia();
                         ft.addToBackStack("noticias");
                         ft.replace(R.id.content_frame, fragment);
-                        ft.commit();*/
+                        ft.commit();
 
                         Intent noticia = new Intent(activityRef, NoticiaActivity.class);
-                        activityRef.startActivity(noticia);
+                        activityRef.startActivity(noticia);*/
+
+                        Noticia n = getItem(pos);
+
+                        if(n.getId() != -1) {
+
+                            Intent activity = new Intent(aquery.getContext()
+                                    , NoticiaActivity.class);
+                            activity.putExtra("id", n.getId());
+                            activity.putExtra("titulo", n.getTitulo());
+                            activity.putExtra("desc", n.getContenido());
+                            activity.putExtra("fecha", n.getFecha());
+                            activity.putExtra("pathFoto", n.getPathFoto());
+
+                            aquery.getContext().startActivity(activity);
+                        }
 
                     }
                 });
 
                 String pathFoto = not.getPathFoto();
                 if(!pathFoto.isEmpty()) {
-                    aquery.id(holder.fotoIV).image(pathFoto);
+                    aquery.id(holder.fotoIV).image(
+                            aquery.getContext().getString(R.string.base_img_carrusel) + "/" +
+                            pathFoto.replace("\\", ""));
                 }
             } else if(tipoItem == TIPO_ITEM_CABECERA) {
                 holder.tituloTV.setText(not.getTitulo());
@@ -167,6 +193,63 @@ public class NoticiasAdapter extends BaseAdapter {
                 separadorV = null;
             }
         }
+    }
+
+    private String obtNombreMes(String fechaStr) {
+        int mes = 1;
+        // fechaYHORA = [{2015-09-01}, {14:16:01.0}]
+        String[] fechaYHora = fechaStr.split(Pattern.quote(" "));
+        // fecha = [{2015}, {09}, {01}]
+        String[] fecha = fechaYHora[0].split(Pattern.quote("-"));
+        mes = Integer.parseInt(fecha[1]);
+        switch(mes) {
+            case 1:
+                return "Enero ";
+            case 2:
+                return "Febrero ";
+            case 3:
+                return "Marzo ";
+            case 4:
+                return "Abril ";
+            case 5:
+                return "Mayo ";
+            case 6:
+                return "Junio ";
+            case 7:
+                return "Julio ";
+            case 8:
+                return "Agosto ";
+            case 9:
+                return "Septiembre ";
+            case 10:
+                return "Octubre ";
+            case 11:
+                return "Noviembre ";
+            case 12:
+                return "Diciembre ";
+            default:
+                return "Enero ";
+        }
+    }
+
+    private int obtDia(String fechaStr) {
+        int dia = 1;
+        // fechaYHORA = [{2015-09-01}, {14:16:01.0}]
+        String[] fechaYHora = fechaStr.split(Pattern.quote(" "));
+        // fecha = [{2015}, {09}, {01}]
+        String[] fecha = fechaYHora[0].split(Pattern.quote("-"));
+        dia = Integer.parseInt(fecha[2]);
+        return dia;
+    }
+
+    private int obtAnio(String fechaStr) {
+        int anio = 1;
+        // fechaYHORA = [{2015-09-01}, {14:16:01.0}]
+        String[] fechaYHora = fechaStr.split(Pattern.quote(" "));
+        // fecha = [{2015}, {09}, {01}]
+        String[] fecha = fechaYHora[0].split(Pattern.quote("-"));
+        anio = Integer.parseInt(fecha[0]);
+        return anio;
     }
 
 }
