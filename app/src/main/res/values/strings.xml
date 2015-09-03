@@ -112,6 +112,7 @@
     <string name="programa_list_cab_dia_nf">Día</string>
     <string name="programa_list_cab_horario">Horario</string>
     <string name="programa_list_cab_dia">Día: <xliff:g id="dia">%d</xliff:g></string>
+    <string name="evento_cab">Evento</string>
 
     <!-- Textos de la UI de los items de las listas -->
     <!-- noticias -->

@@ -53,7 +53,7 @@
         android:background="@color/liston_main">
 
         <TextView
-            android:id="@+id/nombre"
+            android:id="@+id/nombre_evento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -66,7 +66,7 @@
             android:paddingTop="10dp" />
 
         <TextView
-            android:id="@+id/ubicacion"
+            android:id="@+id/ubicacion_evento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12dip"
@@ -75,12 +75,12 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:paddingLeft="20dp"
             android:paddingTop="5dp"
-            android:layout_below="@+id/nombre"
+            android:layout_below="@+id/nombre_evento"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
         <TextView
-            android:id="@+id/cargo2"
+            android:id="@+id/cat_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12dip"
@@ -88,7 +88,7 @@
             android:text="Aventura"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:paddingLeft="20dp"
-            android:layout_below="@+id/ubicacion"
+            android:layout_below="@+id/ubicacion_evento"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -113,7 +113,7 @@
                 android:textSize="10dip"
                 android:text="27 JUL"
                 android:gravity="center"
-                android:id="@+id/textView23" />
+                android:id="@+id/fecha_inicio_evento" />
             <TextView
                 android:layout_width="54dp"
                 android:layout_height="wrap_content"
@@ -122,31 +122,39 @@
                 android:textSize="10dip"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="31 JUL"
-                android:id="@+id/textView6" />
+                android:id="@+id/fecha_fin_evento" />
         </LinearLayout>
     </RelativeLayout>
     </LinearLayout>
-
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="14dip"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:text="Información"
-        android:paddingLeft="20dp"
-        android:paddingTop="15dp"
-        android:id="@+id/textView11" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="14dip"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="Información"
+                android:paddingLeft="20dp"
+                android:paddingTop="15dp"
+                android:id="@+id/titulo_evento" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="14dip"
-        android:textColor="#000"
-        android:paddingLeft="20dp"
-        android:paddingTop="5dp"
-        android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
-        android:id="@+id/textView12" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="14dip"
+                android:textColor="#000"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. "
+                android:id="@+id/desc_evento" />
+        </LinearLayout>
 
+    </ScrollView>
 </LinearLayout>
