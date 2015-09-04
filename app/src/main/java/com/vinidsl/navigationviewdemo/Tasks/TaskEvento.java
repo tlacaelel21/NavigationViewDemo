@@ -186,12 +186,12 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
             TextView fecha_fin_evento= (TextView) a.findViewById(R.id.fecha_fin_evento);
             TextView titulo_evento= (TextView) a.findViewById(R.id.titulo_evento);
             TextView desc_evento= (TextView) a.findViewById(R.id.desc_evento);
-            String pathFoto = evento.getImageEvento();
+            /*String pathFoto = evento.getImageEvento();
 
 
             if(pathFoto != null && !pathFoto.isEmpty()) {
                 aquery.id(R.id.imageEvento).image(evento.getImageEvento());
-            }
+            }*/
 
             nombre_evento.setText(evento.getNombre_evento());
             ubicacion_evento.setText(evento.getUbicacion_evento());
@@ -200,6 +200,9 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
             fecha_fin_evento.setText(evento.getFecha_fin_evento());
             titulo_evento.setText(evento.getTitulo_evento());
             desc_evento.setText(evento.getDesc_evento());
+            //aquery.id(holder.fotoIV).image(activityRef.getApplicationContext().getString(R.string.base_img)+feriaIntModel.getFotoInt());
+            //Log.i("FOTO",""+evento.getImageEvento());
+            aquery.id(imageEvento).image(a.getApplicationContext().getString(R.string.base_img)+evento.getImageEvento());
 
         }
 

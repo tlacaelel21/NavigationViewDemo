@@ -17,6 +17,7 @@ package com.vinidsl.navigationviewdemo;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -63,10 +64,10 @@ public class MainActivity extends AppCompatActivity
         act = this;
 
 
-        Cifrado obj=new Cifrado();
-        //String valorEnc=obj.encriptar("300|admin@s-t.mx|admin");
-        String valorEnc=obj.encriptar("322|1");
-        Log.i("ENC",valorEnc);
+/*        Cifrado obj=new Cifrado();
+        String valorEnc=obj.encriptar("305|prueba@cptm.gob|1234|(null)");
+        //String valorEnc=obj.encriptar("322|1");
+        Log.i("ENC",valorEnc);*/
 
         PonentesTask objeto=new PonentesTask(this.getBaseContext());
 
@@ -183,7 +184,7 @@ public class MainActivity extends AppCompatActivity
                             case R.id.nav_mis_eventos:
                                 /*NoticiasFragment noticias = new NoticiasFragment();
                                 MuestraFragment(noticias);*/
-                                /*Intent prog = new Intent(act, ProgramaActivity.class);
+                                /*Intent prog = new Intent(act, Eventos.class);
                                 startActivity(prog);*/
                                 Eventos fragMisEventos = new Eventos();
                                 MuestraFragment(fragMisEventos);

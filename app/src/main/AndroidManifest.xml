@@ -95,12 +95,13 @@
         <activity
             android:name=".Evento"
             android:screenOrientation="nosensor"
-            android:label="@string/programa_cab"
+            android:label="@string/evento_cab"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+
 
     </application>
 

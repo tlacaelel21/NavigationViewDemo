@@ -23,6 +23,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.vinidsl.navigationviewdemo.Tasks.TaskIngreso;
+
 public class Login extends Fragment {
     EditText edittext;
     Button aButton;
@@ -70,9 +72,11 @@ public class Login extends Fragment {
                 //new AlertDialog.Builder(rootView.getContext()).setTitle("Argh").setMessage("Watch out!").setNeutralButton("Close", null).show();
                 TextView e_mail=(TextView)rootView.findViewById(R.id.correo_electronico);
                 TextView psw=(TextView)rootView.findViewById(R.id.psw);
+                String email=e_mail.getText().toString();
+                String pass=psw.getText().toString();
                 boolean paso=false;
 
-                if(e_mail.getText().length()>0&&psw.getText().length()>0){
+                if(email.length()>0&&pass.length()>0){
                     paso=true;
 
                     //((GlobalClass)(rootView.getContext())).setSomeVariable("foo");
@@ -82,20 +86,20 @@ public class Login extends Fragment {
                             setMessage("Ingrese datos").setNeutralButton("Cerrar", null).show();
                 }
                 if(paso){
-                    /*GlobalClass varGlobal= new GlobalClass();
-                    varGlobal.setSomeVariable("foo");*/
 
+                    TaskIngreso taskIngreso= new TaskIngreso(rootView.getContext());
+                    taskIngreso.execute(email,pass);
 
-                    SharedPreferences preferencias =
+                   /*SharedPreferences preferencias =
                             getActivity().getSharedPreferences(getString(R.string.espacio_prefs), Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferencias.edit();
                     editor.putString(getString(R.string.pref_idusuario), "1");
                     editor.commit();
                     MainActivity mainActivity= (MainActivity) getActivity();
                     mainActivity.buscaUsuario();
-                    mainActivity.cambiarMenu();
+                    mainActivity.cambiarMenu();*/
 
-                    FragmentManager manager=getActivity().getSupportFragmentManager();
+                   /* FragmentManager manager=getActivity().getSupportFragmentManager();
                     FragmentTransaction ft = manager.beginTransaction();
                     Eventos mis_eventos= new Eventos();
                     Fragment newFragment = mis_eventos;
@@ -105,9 +109,8 @@ public class Login extends Fragment {
                     ft.replace(container.getId(),newFragment);
                     //container is the ViewGroup of current fragment
                     ft.addToBackStack(null);
-                    ft.commit();
-                    //Ingresar ingresa = new Ingresar();
-                    //ingresa.Ingresar();
+                    ft.commit();*/
+
                 }
             }
         });

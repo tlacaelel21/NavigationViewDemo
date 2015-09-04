@@ -101,10 +101,11 @@ public class FeriasIntAdapter extends BaseAdapter {
                 holder.fecha_inicio_fi.setText(feriaIntModel.getFechaInicio());
                 holder.fecha_fin_fi.setText(feriaIntModel.getFechaFin());
                 String pathFoto = feriaIntModel.getFotoInt();
-                if(!pathFoto.isEmpty()) {
+                //if(!pathFoto.isEmpty()) {
                     //aquery.id(holder.fotoIV).image(pathFoto);
+                    //Log.i("FOTO",pathFoto);
                     aquery.id(holder.fotoIV).image(activityRef.getApplicationContext().getString(R.string.base_img)+feriaIntModel.getFotoInt());
-                }
+                //}
             } else if(tipoItem == TIPO_ITEM_CABECERA) {
                 holder.nombreFI.setText(feriaIntModel.getNombre());
                 holder.fecha_inicio_fi.setText(feriaIntModel.getFechaInicio());
