@@ -40,7 +40,7 @@
         android:layout_height="454dp"
         android:layout_gravity="center"
         android:weightSum="1">
-        <EditText android:id="@+id/nombre"
+        <EditText android:id="@+id/nombre_usr_reg"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:hint="Nombre"
@@ -49,7 +49,7 @@
             android:inputType="textCapWords"/>
 
         <EditText
-            android:id="@+id/compania"
+            android:id="@+id/compania_usr_reg"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:hint="Compañia"
@@ -58,7 +58,7 @@
             android:inputType="textCapWords"/>
 
         <EditText
-            android:id="@+id/ubicacion"
+            android:id="@+id/puesto_usr_reg"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:hint="Cargo"
@@ -67,7 +67,7 @@
             android:inputType="textCapWords"/>
 
         <EditText
-            android:id="@+id/telefono"
+            android:id="@+id/telefono_usr_reg"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:numeric="integer"
@@ -76,12 +76,12 @@
             android:hint="Teléfono"/>
 
         <EditText
-            android:id="@+id/correo"
+            android:id="@+id/correo_usr_reg"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="julian@mob-tk.com"
             android:inputType="textEmailAddress"
-            android:hint="Correo electrónico"
+            android:hint="correo_usr_reg electrónico"
             android:singleLine="true"/>
 
         <TextView

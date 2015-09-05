@@ -3,10 +3,12 @@ package com.vinidsl.navigationviewdemo.Adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 
 import com.androidquery.AQuery;
 import com.vinidsl.navigationviewdemo.EncuestaActivity;
+import com.vinidsl.navigationviewdemo.MainActivity;
 import com.vinidsl.navigationviewdemo.Model.MisEventosModel;
 import com.vinidsl.navigationviewdemo.NoticiaActivity;
 import com.vinidsl.navigationviewdemo.NoticiasActivity;
@@ -92,6 +95,12 @@ public class MisEventosAdapter extends ArrayAdapter<MisEventosModel> {
 
 
         MisEventosModel p = getItem(position);
+
+        //act
+        SharedPreferences preferencias =
+                act.getSharedPreferences(act.getString(R.string.espacio_prefs), Context.MODE_PRIVATE);
+        String idUsuario = preferencias.getString(act.getString(R.string.pref_idusuario), "0");
+        //Log.i("USR", "" + idUsuario);
 
         if (p != null) {
             //final String urlLink=p.getUrlExterno();

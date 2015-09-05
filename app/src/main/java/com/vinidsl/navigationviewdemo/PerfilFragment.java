@@ -1,6 +1,8 @@
 package com.vinidsl.navigationviewdemo;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -60,8 +62,12 @@ public class PerfilFragment extends Fragment  {
 
             }
         });
+        Activity a=getActivity();
+        //lee el idUsuario de la session
+        SharedPreferences preferencias =
+                a.getSharedPreferences(a.getString(R.string.espacio_prefs), Context.MODE_PRIVATE);
+        String idPerfil = preferencias.getString(a.getString(R.string.pref_idusuario), "0");
 
-        String idPerfil = "17";
 
         ConsultaPerfilTask task = new ConsultaPerfilTask(getActivity());
         task.execute(idPerfil);
@@ -95,7 +101,12 @@ public class PerfilFragment extends Fragment  {
         TextView sitioComTV = (TextView) a.findViewById(R.id.perfil_pagina);
         TextView actComTV = (TextView) a.findViewById(R.id.perfil_actividad);
 
-        String idPerfil = "17";
+        //lee el idUsuario de la session
+        SharedPreferences preferencias =
+                a.getSharedPreferences(a.getString(R.string.espacio_prefs), Context.MODE_PRIVATE);
+        String idPerfil = preferencias.getString(a.getString(R.string.pref_idusuario), "0");
+
+        //String idPerfil = "17";
         String idPais = "1";
         String idActividad = "1";
         String parametro;

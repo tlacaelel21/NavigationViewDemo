@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.vinidsl.navigationviewdemo.Adapter.MisEventosAdapter;
 import com.vinidsl.navigationviewdemo.Model.MisEventosModel;
+import com.vinidsl.navigationviewdemo.Tasks.MisEventosTask;
+import com.vinidsl.navigationviewdemo.Tasks.TaskEvento;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +32,7 @@ public class Eventos extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.mis_eventos, container, false);
 
-        String[][] mis_eventos = {
+       /* String[][] mis_eventos = {
                 {"Nombre Evento I","Ubicación del evento, Paris","Solicitado"},
                 {"Nombre Evento II","Ubicación del evento, China","Aceptado"},
                 {"Nombre Evento III","Ubicación del evento, España","Pagado"}
@@ -49,8 +51,10 @@ public class Eventos extends Fragment {
 
         MisEventosAdapter adapter = new MisEventosAdapter(getActivity(), R.layout.mis_eventos_item,
                 listaM);
-        lista.setAdapter(adapter);
+        lista.setAdapter(adapter);*/
 
+        MisEventosTask misEventosTask= new MisEventosTask(getActivity());
+        misEventosTask.execute("");
 
 
         return rootView;

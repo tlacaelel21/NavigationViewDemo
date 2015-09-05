@@ -78,7 +78,8 @@
             android:layout_alignTop="@+id/textSeparator2"
             android:layout_alignLeft="@+id/linearLayout"
             android:layout_alignStart="@+id/linearLayout"
-            android:layout_weight="0.09" />
+            android:layout_weight="0.09"
+            android:layout_marginRight="50dp"/>
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
