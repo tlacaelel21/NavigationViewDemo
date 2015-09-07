@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.vinidsl.navigationviewdemo.Tasks.RegistroUsuarioMailTask;
 import com.vinidsl.navigationviewdemo.Tasks.RegistroUsuarioTask;
 
 public class Registro extends Fragment {
@@ -63,8 +64,11 @@ public class Registro extends Fragment {
                                 "|"+"pais"+"|"+"tel_of"+"|"+"pag_web"+"|"+"email_contacto"+"|"+"1";
 
 
-                        RegistroUsuarioTask registroUsuarioTask=new RegistroUsuarioTask(getActivity());
-                        registroUsuarioTask.execute(parametro);
+                        /*RegistroUsuarioTask registroUsuarioTask=new RegistroUsuarioTask(getActivity());
+                        registroUsuarioTask.execute(parametro);*/
+                        RegistroUsuarioMailTask registroUsuarioMailTask=new RegistroUsuarioMailTask(getActivity());
+                        registroUsuarioMailTask.execute(parametro,usr_correo);
+
 
                         //Log.i("USRN", usr_nombre);
 

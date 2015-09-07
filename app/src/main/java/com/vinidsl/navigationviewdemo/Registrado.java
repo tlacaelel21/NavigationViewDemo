@@ -34,6 +34,7 @@ public class Registrado extends Fragment {
                 FragmentManager manager=getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = manager.beginTransaction();
                 PerfilFragment perfil= new PerfilFragment();
+                //Eventos perfil= new Eventos();
                 Fragment newFragment = perfil;
                 Fragment actual= visualiza();
                 actual.onDestroy();

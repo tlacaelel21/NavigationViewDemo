@@ -1,25 +1,16 @@
 package com.vinidsl.navigationviewdemo.Tasks;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.vinidsl.navigationviewdemo.Cifrado;
-import com.vinidsl.navigationviewdemo.MainActivity;
 import com.vinidsl.navigationviewdemo.R;
-import com.vinidsl.navigationviewdemo.Registrado;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,34 +22,27 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by tlacaelel21 on 4/09/15.
+ * Created by tlacaelel21 on 5/09/15.
  */
-public class RegistroUsuarioTask extends AsyncTask<String, Void, Void> {
+public class RegistroUsuarioMailTask extends AsyncTask<String, Void, Void> {
 
-    private final String LOG_TAG = RegistroUsuarioTask.class.getSimpleName();
-    private final String SERVICE_ID = "306";
+    private final String LOG_TAG = RegistroUsuarioMailTask.class.getSimpleName();
+    private final String SERVICE_ID = "328";
 
     private final Context mContext;
     private ProgressDialog mDialog;
     private int resultado;
-    private String usr_id;
+    private String parametro;
 
-    public RegistroUsuarioTask(Context context) {
+    public RegistroUsuarioMailTask(Context context) {
         mContext = context;
     }
 
     private void readResult(String JsonStr) throws JSONException {
 
         try {
-
-            JSONObject mainArray = new JSONObject(JsonStr);
-            JSONObject mainNode = mainArray.getJSONObject("registro");
-            resultado=mainNode.getInt("valido");
-            usr_id=mainNode.getString("id_usuario");
-
-            Log.i("ALTA", ""+mainNode);
-
-
+            JSONObject mainNode =  new JSONObject(JsonStr);
+            resultado=mainNode.getInt("existe");
         } catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage(), e);
             e.printStackTrace();
@@ -82,18 +66,19 @@ public class RegistroUsuarioTask extends AsyncTask<String, Void, Void> {
         try {
 
             Cifrado c = new Cifrado();
-
             // Configurando parametros de conexión
             final String BASE_URL =
                     mContext.getString(R.string.base_url);
             final String QUERY_PARAM = "cod";
+            parametro=params[0];
 
-            String parametro = c.encriptar(SERVICE_ID + "|" + params[0]);
+            String parametro = c.encriptar(SERVICE_ID + "|" + params[1]);
+            parametro=parametro.replaceAll("\\+", "%2B");
+            parametro=parametro.replaceAll("\\/", "%2F");
 
-            //Log.i("ALTA", parametro);
-
-            Uri builtUri = Uri.parse(BASE_URL).buildUpon()
-                    .appendQueryParameter(QUERY_PARAM, parametro).build();
+            /*Uri builtUri = Uri.parse(BASE_URL).buildUpon()
+                    .appendQueryParameter(QUERY_PARAM, parametro).build();*/
+            Uri builtUri=Uri.parse(BASE_URL+"cod="+parametro);
 
             // Inicializando conexión
             URL url = new URL(builtUri.toString());
@@ -169,32 +154,17 @@ public class RegistroUsuarioTask extends AsyncTask<String, Void, Void> {
             // ejecución para un caso ideal donde todo resulto exitoso
         } else {
 
-            if(resultado == 0) {
-                Toast.makeText(mContext, "Error al dar de alta" , Toast.LENGTH_SHORT).show();
+            if(resultado == 1) {
+                Toast.makeText(mContext, "El correo ya existe para otro usuario" , Toast.LENGTH_SHORT).show();
             } else {
-                //Toast.makeText(mContext, "Alta correctamente", Toast.LENGTH_SHORT).show();
-                Activity activity = (Activity) mContext;
-                SharedPreferences preferencias =
-                        activity.getSharedPreferences(activity.getString(R.string.espacio_prefs) , Context.MODE_PRIVATE);
-
-                SharedPreferences.Editor editor = preferencias.edit();
-                editor.putString(activity.getString(R.string.pref_idusuario), usr_id);
-                editor.commit();
-
-                MainActivity mainActivity= (MainActivity) activity;
-                mainActivity.buscaUsuario();
-                mainActivity.cambiarMenu();
-
-                Registrado registrado= new Registrado();
-                mainActivity.MuestraFragment(registrado);
-
-
+                Activity activity= (Activity)mContext;
+                RegistroUsuarioTask registroUsuarioTask=new RegistroUsuarioTask(activity);
+                registroUsuarioTask.execute(parametro);
             }
-
-
         }
 
     }
 
 }
+
 
