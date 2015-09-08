@@ -3,10 +3,14 @@ package com.vinidsl.navigationviewdemo.Tasks;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -99,7 +103,7 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
             final String BASE_URL =
                     mContext.getString(R.string.base_url);
             final String QUERY_PARAM = "cod";
-            String parametro = c.encriptar(SERVICE_ID + "|" + params[0]);
+            String parametro = c.encriptar(SERVICE_ID + "|" + params[0]+"|17");
 
             Log.i(LOG_TAG, parametro);
 
@@ -186,6 +190,8 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
             TextView fecha_fin_evento= (TextView) a.findViewById(R.id.fecha_fin_evento);
             TextView titulo_evento= (TextView) a.findViewById(R.id.titulo_evento);
             TextView desc_evento= (TextView) a.findViewById(R.id.desc_evento);
+            final ImageButton inscribete=(ImageButton) a.findViewById(R.id.boton_registro_eve);
+
             /*String pathFoto = evento.getImageEvento();
 
 
@@ -203,6 +209,24 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
             //aquery.id(holder.fotoIV).image(activityRef.getApplicationContext().getString(R.string.base_img)+feriaIntModel.getFotoInt());
             //Log.i("FOTO",""+evento.getImageEvento());
             aquery.id(imageEvento).image(a.getApplicationContext().getString(R.string.base_img)+evento.getImageEvento());
+
+            final ImageButton button1=inscribete;
+            inscribete.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    Log.i("REG", "CLIC REG****");
+
+                    //Creating the instance of PopupMenu
+                    PopupMenu popup = new PopupMenu(aquery.getContext(), button1);
+                    //Inflating the Popup using xml file
+                    popup.getMenuInflater().inflate(R.menu.popup_menu_ok, popup.getMenu());
+
+
+
+
+
+                    popup.show();//showing popup menu
+                }
+            });
 
         }
 

@@ -30,12 +30,14 @@
             android:textColor="#FFFFFF"
             android:layout_weight="0.91"
             android:gravity="center_vertical"/>
-        <ImageView
+
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView2"
-            android:src="@drawable/action_eventadd_st" />
-
+            android:id="@+id/boton_registro_eve"
+            android:scaleType="centerInside"
+            android:background="@drawable/action_eventadd_st"
+            />
     </LinearLayout>
     <ImageView
         android:layout_width="match_parent"
