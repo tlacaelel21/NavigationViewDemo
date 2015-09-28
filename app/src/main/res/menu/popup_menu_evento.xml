@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_inscribirse"
+        android:title="Inscribirse"/>
+
+    <item
+        android:id="@+id/item_recinto"
+        android:title="Recinto"/>
+
+    <item
+        android:id="@+id/item_programa"
+        android:title="Programa"/>
+    <item
+        android:id="@+id/item_ponentes"
+        android:title="Ponentes"/>
+    <item
+        android:id="@+id/item_noticias"
+        android:title="Noticias"/>
+    <item
+        android:id="@+id/item_patrocinador"
+        android:title="Patrocinadores"/>
+    <item
+        android:id="@+id/item_expositores"
+        android:title="Expositores"/>
+</menu>

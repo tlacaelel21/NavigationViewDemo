@@ -135,12 +135,12 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
             final String QUERY_PARAM = "cod";
             String parametro = c.encriptar(SERVICE_ID + "|" + "1");
             parametro=parametro.replaceAll("\\+", "%2B");
-            //Log.i("SERV",parametro);
+
             //String parametro = c.encriptar(SERVICE_ID);
 
             Uri builtUri = Uri.parse(BASE_URL).buildUpon()
                     .appendQueryParameter(QUERY_PARAM, parametro).build();
-
+            //Log.i("SERV",""+builtUri);
             // Inicializando conexión
             URL url = new URL(builtUri.toString());
             // Estableciendo parametros de petición

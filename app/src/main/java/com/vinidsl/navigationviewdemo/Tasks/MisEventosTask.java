@@ -101,6 +101,7 @@ public class MisEventosTask extends AsyncTask<String, Void, Void> {
         SharedPreferences preferencias =
                 act.getSharedPreferences(act.getString(R.string.espacio_prefs), Context.MODE_PRIVATE);
         String idUsuario = preferencias.getString(act.getString(R.string.pref_idusuario), "0");
+        //String sts_id = preferencias.getString(act.getString(R.string.sts_id), "0");
         //Log.i("USR", "" + idUsuario);
 
         try {

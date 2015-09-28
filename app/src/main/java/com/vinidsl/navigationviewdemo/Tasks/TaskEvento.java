@@ -3,10 +3,13 @@ package com.vinidsl.navigationviewdemo.Tasks;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -18,6 +21,10 @@ import com.androidquery.AQuery;
 import com.vinidsl.navigationviewdemo.Cifrado;
 import com.vinidsl.navigationviewdemo.Model.EventoModel;
 import com.vinidsl.navigationviewdemo.Model.Ponencia;
+import com.vinidsl.navigationviewdemo.NoticiasActivity;
+import com.vinidsl.navigationviewdemo.PatrocinadoresActivity;
+import com.vinidsl.navigationviewdemo.PonentesActivity;
+import com.vinidsl.navigationviewdemo.ProgramaActivity;
 import com.vinidsl.navigationviewdemo.R;
 
 import org.json.JSONArray;
@@ -46,13 +53,17 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
     private ArrayList<Ponencia> eventos;
     private int insertados;
     private AQuery aquery;
+    Activity act;
+    String sts_id="";
 
     public TaskEvento(Context context) {
+        act=(Activity)context;
         mContext = context;
     }
 
     private void populateList(String JsonStr)
             throws JSONException {
+
 
         try {
 
@@ -67,8 +78,10 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
             String fecha_inicio_evento = mainNode.getString("int_inicio");
             String fecha_fin_evento= mainNode.getString("int_final");
             String int_desc=mainNode.getString("int_desc");
+            String inscrito=mainNode.getString("inscrito");
+            String disponibles =mainNode.getString("disponibles");
 
-            evento = new EventoModel( int_id,rec_id,imageEvento,ubicacion_evento,cat_desc,fecha_inicio_evento,fecha_fin_evento,int_titulo,int_desc);
+            evento = new EventoModel(int_id,rec_id,imageEvento,ubicacion_evento,cat_desc,fecha_inicio_evento,fecha_fin_evento,int_titulo,int_desc, disponibles);
 
             insertados = 0;
 
@@ -97,13 +110,23 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
 
         try {
 
+
+            Activity activity = (Activity) mContext;
+            SharedPreferences preferencias =
+                    activity.getSharedPreferences(activity.getString(R.string.espacio_prefs), Context.MODE_PRIVATE);
+            String idUsuario = preferencias.getString(activity.getString(R.string.pref_idusuario), "0");
+            sts_id = preferencias.getString(act.getString(R.string.sts_id), "0");
+
+            //Log.i("ID_USR",""+idUsuario);
+
+
             Cifrado c = new Cifrado();
 
             // Configurando parametros de conexión
             final String BASE_URL =
                     mContext.getString(R.string.base_url);
             final String QUERY_PARAM = "cod";
-            String parametro = c.encriptar(SERVICE_ID + "|" + params[0]+"|17");
+            String parametro = c.encriptar(SERVICE_ID + "|" + params[0]+"|"+idUsuario);
 
             Log.i(LOG_TAG, parametro);
 
@@ -190,6 +213,7 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
             TextView fecha_fin_evento= (TextView) a.findViewById(R.id.fecha_fin_evento);
             TextView titulo_evento= (TextView) a.findViewById(R.id.titulo_evento);
             TextView desc_evento= (TextView) a.findViewById(R.id.desc_evento);
+            TextView disponibles= (TextView) a.findViewById(R.id.disponibles);
             final ImageButton inscribete=(ImageButton) a.findViewById(R.id.boton_registro_eve);
 
             /*String pathFoto = evento.getImageEvento();
@@ -206,6 +230,7 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
             fecha_fin_evento.setText(evento.getFecha_fin_evento());
             titulo_evento.setText(evento.getTitulo_evento());
             desc_evento.setText(evento.getDesc_evento());
+            disponibles.setText(" "+evento.getDisponibles());
             //aquery.id(holder.fotoIV).image(activityRef.getApplicationContext().getString(R.string.base_img)+feriaIntModel.getFotoInt());
             //Log.i("FOTO",""+evento.getImageEvento());
             aquery.id(imageEvento).image(a.getApplicationContext().getString(R.string.base_img)+evento.getImageEvento());
@@ -218,8 +243,46 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
                     //Creating the instance of PopupMenu
                     PopupMenu popup = new PopupMenu(aquery.getContext(), button1);
                     //Inflating the Popup using xml file
-                    popup.getMenuInflater().inflate(R.menu.popup_menu_ok, popup.getMenu());
+                    popup.getMenuInflater().inflate(R.menu.popup_menu_evento, popup.getMenu());
 
+                    popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        public boolean onMenuItemClick(MenuItem item) {
+                            String tituloItem = (String) item.getTitle();
+                            if (item.getItemId() == R.id.item_inscribirse) {
+                                if(Integer.parseInt(sts_id)==2)
+                                    Toast.makeText(mContext, "Aún no ha sido validado por el sistema de CPTM", Toast.LENGTH_LONG).show();
+                                else
+                                    Toast.makeText(aquery.getContext(), "*** INSCRIBIRSE *** " + tituloItem, Toast.LENGTH_SHORT).show();
+                            }
+                            if (item.getItemId() == R.id.item_recinto) {
+                                Toast.makeText(aquery.getContext(), "*** RECINTO *** " + tituloItem, Toast.LENGTH_SHORT).show();
+                            }
+                            if (item.getItemId() == R.id.item_programa){
+                                Intent prog = new Intent(act, ProgramaActivity.class);
+                                act.startActivity(prog);
+                            }
+                            if (item.getItemId() == R.id.item_ponentes){
+                                Intent prog = new Intent(act, PonentesActivity.class);
+                                act.startActivity(prog);
+                            }
+                            if (item.getItemId() == R.id.item_noticias){
+                                Intent prog = new Intent(act, NoticiasActivity.class);
+                                act.startActivity(prog);
+                            }
+                            if (item.getItemId() == R.id.item_patrocinador){
+                                Intent prog = new Intent(act, PatrocinadoresActivity.class);
+                                act.startActivity(prog);
+                                //Toast.makeText(aquery.getContext(), "** "+tituloItem, Toast.LENGTH_SHORT).show();
+                            }
+                            if (item.getItemId() == R.id.item_expositores){
+                                /*Intent prog = new Intent(act, PatrocinadoresActivity.class);
+                                act.startActivity(prog);*/
+                                Toast.makeText(aquery.getContext(), "*EXPOSITORES* "+tituloItem, Toast.LENGTH_SHORT).show();
+                            }
+
+                            return true;
+                        }
+                    });
 
 
 

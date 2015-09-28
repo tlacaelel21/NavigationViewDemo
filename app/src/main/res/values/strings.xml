@@ -9,8 +9,9 @@
     <string name="base_img_carrusel">http://www.smartthinking.com.mx:8080/Cptm</string>
 
     <!-- Textos para parametros -->
-    <string name="espacio_prefs">CPTM PrefSpace</string>
+    <string name="espacio_prefs">CPTM_PrefSpace</string>
     <string name="pref_idusuario">i_u_act</string>
+    <string name="sts_id">sts_id</string>
 
     <!-- Textos para la NavigationView -->
     <string name="nav_item_ferias_int">Ferias Internacionales</string>

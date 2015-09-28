@@ -77,6 +77,8 @@ public class TaskIngreso extends AsyncTask<String, Void, Void> {
                 id_usuario=mainNode.getString("id_usuario");
                 usu_nom=mainNode.getString("usu_nom");
                 sts_id=mainNode.getString("sts_id");
+            }else{
+                Toast.makeText(mContext, "CPTM debe de validar su usuario", Toast.LENGTH_LONG).show();
             }
 
 
@@ -192,13 +194,20 @@ public class TaskIngreso extends AsyncTask<String, Void, Void> {
 
             // ejecución para un caso ideal donde todo resulto exitoso
         } else {
-            //Log.i("ENC", "" + valido);
+            //Log.i("USR", "" + id_usuario);
+            if(Integer.parseInt(sts_id)==2){
+                Toast.makeText(mContext, "Aún no ha sido validado por el sistema de CPTM", Toast.LENGTH_LONG).show();
+            }
             Activity activity = (Activity) mContext;
             SharedPreferences preferencias =
-                    activity.getSharedPreferences(activity.getString(R.string.espacio_prefs) , Context.MODE_PRIVATE);
+                    activity.getSharedPreferences(activity.getString(R.string.espacio_prefs), Context.MODE_PRIVATE);
+                    //activity.getSharedPreferences("CPTM_PrefSpace", Context.MODE_PRIVATE);
 
             SharedPreferences.Editor editor = preferencias.edit();
             editor.putString(activity.getString(R.string.pref_idusuario), id_usuario);
+            editor.putString(activity.getString(R.string.sts_id), sts_id);
+
+            //editor.putString("i_u_act", id_usuario);
             editor.commit();
             MainActivity mainActivity= (MainActivity) activity;
             mainActivity.buscaUsuario();
