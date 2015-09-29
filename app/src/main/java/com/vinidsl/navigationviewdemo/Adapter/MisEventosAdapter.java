@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
+import com.vinidsl.navigationviewdemo.Documentos;
 import com.vinidsl.navigationviewdemo.EncuestaActivity;
 import com.vinidsl.navigationviewdemo.MainActivity;
 import com.vinidsl.navigationviewdemo.Model.MisEventosModel;
@@ -108,6 +109,7 @@ public class MisEventosAdapter extends ArrayAdapter<MisEventosModel> {
             holder.ubicacion_evento.setText(p.getUbicacion_evento());
             holder.status_evento.setText(p.getStatus_evento());
             final ImageButton button1=holder.menu_mi_evento;
+            final long reg_id=p.getReg_id();
             holder.menu_mi_evento.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -126,9 +128,9 @@ public class MisEventosAdapter extends ArrayAdapter<MisEventosModel> {
                         public boolean onMenuItemClick(MenuItem item) {
                             String tituloItem= (String) item.getTitle();
                             if (item.getItemId() == R.id.item_documentos){
-                                //Intent prog = new Intent(act, EncuestaActivity.class);
-                                //act.startActivity(prog);
-                                Toast.makeText(aquery.getContext(), "*Documentos* "+tituloItem, Toast.LENGTH_SHORT).show();
+                                Intent prog = new Intent(act, Documentos.class);
+                                prog.putExtra("reg_id", ""+reg_id);
+                                act.startActivity(prog);
                             }
                             if (item.getItemId() == R.id.item_agenda){
                                 //Intent prog = new Intent(act, EncuestaActivity.class);

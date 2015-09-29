@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/liston_main"
+        android:weightSum="1">
+        <TextView
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textView9" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/head_event_st" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Expositores"
+            android:id="@+id/textView"
+            android:textSize="24dip"
+            android:textColor="#FFFFFF"
+            android:layout_weight="0.91"
+            android:gravity="center_vertical"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@drawable/event_list">
+
+        <TextView
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=""
+            android:id="@+id/textView5" />
+
+        <TextView
+            android:id="@+id/textSeparator"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:text="Expositor"
+            android:textSize="18dp"
+            android:visibility="visible"
+            android:layout_width="130dp"
+            android:textColor="#898989"
+            android:background="#EEEEEE"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/textSeparator"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="0.58" />
+
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=""
+        android:background="@color/liston_main"
+        android:id="@+id/textView8" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listado_expositores" />
+
+</LinearLayout>

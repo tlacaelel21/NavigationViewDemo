@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import com.androidquery.AQuery;
 import com.vinidsl.navigationviewdemo.Cifrado;
+import com.vinidsl.navigationviewdemo.Documentos;
+import com.vinidsl.navigationviewdemo.Expositores;
 import com.vinidsl.navigationviewdemo.Model.EventoModel;
 import com.vinidsl.navigationviewdemo.Model.Ponencia;
 import com.vinidsl.navigationviewdemo.NoticiasActivity;
@@ -55,6 +57,7 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
     private AQuery aquery;
     Activity act;
     String sts_id="";
+    long int_id;
 
     public TaskEvento(Context context) {
         act=(Activity)context;
@@ -69,7 +72,7 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
 
             JSONObject mainArray = new JSONObject(JsonStr);
             JSONObject mainNode = mainArray.getJSONObject("detalle");
-            long int_id=Long.parseLong(mainNode.getString("int_id"));
+            int_id=Long.parseLong(mainNode.getString("int_id"));
             String rec_id=mainNode.getString("rec_id");
             String imageEvento = mainNode.getString("int_foto");
             String int_titulo=mainNode.getString("int_titulo");
@@ -259,14 +262,17 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
                             }
                             if (item.getItemId() == R.id.item_programa){
                                 Intent prog = new Intent(act, ProgramaActivity.class);
+                                prog.putExtra("id_evento", ""+int_id);
                                 act.startActivity(prog);
                             }
                             if (item.getItemId() == R.id.item_ponentes){
                                 Intent prog = new Intent(act, PonentesActivity.class);
+                                prog.putExtra("id_evento", ""+int_id);
                                 act.startActivity(prog);
                             }
                             if (item.getItemId() == R.id.item_noticias){
                                 Intent prog = new Intent(act, NoticiasActivity.class);
+                                prog.putExtra("id_evento", ""+int_id);
                                 act.startActivity(prog);
                             }
                             if (item.getItemId() == R.id.item_patrocinador){
@@ -275,9 +281,10 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
                                 //Toast.makeText(aquery.getContext(), "** "+tituloItem, Toast.LENGTH_SHORT).show();
                             }
                             if (item.getItemId() == R.id.item_expositores){
-                                /*Intent prog = new Intent(act, PatrocinadoresActivity.class);
-                                act.startActivity(prog);*/
-                                Toast.makeText(aquery.getContext(), "*EXPOSITORES* "+tituloItem, Toast.LENGTH_SHORT).show();
+                                Intent prog = new Intent(act, Expositores.class);
+                                prog.putExtra("id_evento", "" + int_id);
+                                act.startActivity(prog);
+                                //Toast.makeText(aquery.getContext(), "*EXPOSITORES* "+tituloItem, Toast.LENGTH_SHORT).show();
                             }
 
                             return true;
