@@ -125,39 +125,23 @@ public class MisEventosAdapter extends ArrayAdapter<MisEventosModel> {
                     popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                         public boolean onMenuItemClick(MenuItem item) {
                             String tituloItem= (String) item.getTitle();
-                            if (item.getItemId() == R.id.item_subir_doc){
-                                Toast.makeText(aquery.getContext(), "*** Demo Subir Documento *** "+tituloItem, Toast.LENGTH_SHORT).show();
-                            }
-                            if (item.getItemId() == R.id.item_patrocinador){
-                                Intent prog = new Intent(act, PatrocinadoresActivity.class);
-                                act.startActivity(prog);
-                                //Toast.makeText(aquery.getContext(), "** "+tituloItem, Toast.LENGTH_SHORT).show();
-                            }
-                            if (item.getItemId() == R.id.item_programa){
-                                Intent prog = new Intent(act, ProgramaActivity.class);
-                                act.startActivity(prog);
-                                //Toast.makeText(aquery.getContext(), "** "+tituloItem, Toast.LENGTH_SHORT).show();
-                            }
-                            if (item.getItemId() == R.id.item_ponentes){
-                                Intent prog = new Intent(act, PonentesActivity.class);
-                                act.startActivity(prog);
-                                //Toast.makeText(aquery.getContext(), "** "+tituloItem, Toast.LENGTH_SHORT).show();
-                            }
-                            if (item.getItemId() == R.id.item_noticias){
-                                //Intent prog = new Intent(act, NoticiaActivity.class);
+                            if (item.getItemId() == R.id.item_documentos){
+                                //Intent prog = new Intent(act, EncuestaActivity.class);
                                 //act.startActivity(prog);
-                                Intent prog = new Intent(act, NoticiasActivity.class);
-                                act.startActivity(prog);
-                                //Toast.makeText(aquery.getContext(), "** "+tituloItem, Toast.LENGTH_SHORT).show();
-
+                                Toast.makeText(aquery.getContext(), "*Documentos* "+tituloItem, Toast.LENGTH_SHORT).show();
+                            }
+                            if (item.getItemId() == R.id.item_agenda){
+                                //Intent prog = new Intent(act, EncuestaActivity.class);
+                                //act.startActivity(prog);
+                                Toast.makeText(aquery.getContext(), "*Agenda* "+tituloItem, Toast.LENGTH_SHORT).show();
                             }
                             if (item.getItemId() == R.id.item_encuesta){
                                 Intent prog = new Intent(act, EncuestaActivity.class);
                                 act.startActivity(prog);
                                 //Toast.makeText(aquery.getContext(), "** "+tituloItem, Toast.LENGTH_SHORT).show();
                             }
-                            if (item.getItemId() == R.id.item_escanear_qr){
-                                Toast.makeText(aquery.getContext(), "*** Demo Escaner QR *** "+tituloItem, Toast.LENGTH_SHORT).show();
+                            if (item.getItemId() == R.id.item_subir_doc){
+                                Toast.makeText(aquery.getContext(), "*** Adjuntar documento *** "+tituloItem, Toast.LENGTH_SHORT).show();
                             }
                             return true;
                         }

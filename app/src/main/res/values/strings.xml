@@ -13,6 +13,7 @@
     <string name="pref_idusuario">i_u_act</string>
     <string name="sts_id">sts_id</string>
 
+
     <!-- Textos para la NavigationView -->
     <string name="nav_item_ferias_int">Ferias Internacionales</string>
     <string name="nav_item_ferias_nac">Ferias Nacionales</string>
