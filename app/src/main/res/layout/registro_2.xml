@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <TextView
+        android:background="@color/accent"
+        android:drawableLeft="@drawable/head_register_st"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:text="REGISTRO"
+        android:textSize="24dip"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"/>
+
+    <ScrollView
+        android:background="@android:color/white"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Separador de sección -->
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:text="Datos de la compañia"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <!-- -->
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/calle"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="@string/perfil_calle"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/num_ext"
+                android:inputType="phone|textAutoComplete"
+                android:hint="@string/perfil_num_ext"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/num_int"
+                android:inputType="phone|textAutoComplete"
+                android:hint="@string/perfil_num_int"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/codigo_postal"
+                android:inputType="phone|textAutoComplete"
+                android:hint="@string/perfil_codigo_post"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/colonia"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="@string/perfil_colonia"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/municipio"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="@string/perfil_municipio"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/estado"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="@string/perfil_estado"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/pais"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="@string/perfil_pais"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/tel_oficina"
+                android:inputType="number"
+                android:hint="Teléfono contacto"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/pagina"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="@string/perfil_pagina"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/email_contacto"
+                android:inputType="textEmailAddress|textAutoComplete"
+                android:hint="@string/perfil_actividad"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/actividad"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="@string/perfil_actividad"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <Button
+                android:background="@drawable/botonpulsado"
+                android:id="@+id/registro_completo"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:text="REGISTRAR"
+                android:textColor="#FFF"
+                android:textStyle="bold"
+                android:textSize="20dip"
+                />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

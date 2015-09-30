@@ -96,7 +96,7 @@
             android:id="@+id/textSeparator"
             android:layout_height="30dp"
             android:gravity="center_vertical"
-            android:text="Julio, 2015"
+            android:text="Evento"
             android:visibility="visible"
             android:layout_width="130dp"
             android:textColor="#898989"

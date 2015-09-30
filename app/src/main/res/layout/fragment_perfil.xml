@@ -16,6 +16,7 @@
         android:textSize="20sp"
         android:textColor="@android:color/white" />
 
+
     <ScrollView
         android:background="@android:color/white"
         android:layout_height="match_parent"

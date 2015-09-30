@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <TextView
+        android:background="@color/liston_main"
+        android:drawableLeft="@drawable/head_eventinfo_st"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:text="Registro evento"
+        android:textSize="24dip"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"/>
+
+    <ScrollView
+        android:background="@android:color/white"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Separador de sección -->
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:text="@string/inscri_eve"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+            <!-- -->
+
+            <EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/nombre_usr_fi"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="Nombre"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/compania_usr_fi"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="Compañia"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/telefono_usr_fi"
+                android:inputType="phone"
+                android:hint="Teléfono"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/correo_usr_fi"
+                android:inputType="textEmailAddress"
+                android:hint="E-Mail"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/rotulo_usr_fi"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="Rótulo"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <!-- Separador de sección -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="center_horizontal"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_width="145dp"
+                    android:text="Número de stands"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+                <EditText
+                    android:background="@drawable/field_inscrip"
+                    android:id="@+id/num_stands_usr_fi"
+                    android:inputType="number"
+                    android:hint=""
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_width="wrap_content"
+                    android:padding="15dp"
+                    android:textSize="16dp"
+                    android:layout_gravity="right" />
+            </LinearLayout>
+            <!-- -->
+
+            <!-- Separador de sección -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="center_horizontal"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_width="145dp"
+                    android:text="Costo unitario Stand"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:background="@drawable/field_inscrip"
+                    android:id="@+id/costo_stands"
+                    android:inputType="number"
+                    android:hint=""
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_width="wrap_content"
+                    android:padding="15dp"
+                    android:textSize="16dp"
+                    android:layout_gravity="right" />
+            </LinearLayout>
+            <!-- -->
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:text="Seleccione los datos de Facturación"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Facturación 1"
+                android:id="@+id/checkBox1" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Facturación 2"
+                android:id="@+id/checkBox2" />
+            <!--EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/contacto_nombre_fi"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="Nombre"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+            <EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/contacto_cargo_fi"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="Cargo del contacto"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+            <EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/contacto_tel_fi"
+                android:inputType="number"
+                android:hint="Correo facturación"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/contacto_mail_fi"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="Correo facturación"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/tel_oficina"
+                android:inputType="number"
+                android:hint="Teléfono contacto"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/-->
+            <EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/contacto_fac"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="Contacto facturación"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+            <EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/contacto_mail_fac"
+                android:inputType="textEmailAddress"
+                android:hint="Correo facturación"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:text="Personas que asistiran a la feria"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+            <EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/resp1"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="Persona 1"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+            <EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/cargo_resp1"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="Cargo persona 1"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/resp2"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="Persona 2"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+            <EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/cargo_resp2"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="Cargo persona 2"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+            <EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/resp3"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="Persona 3"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+            <EditText
+                android:background="@drawable/field_inscrip"
+                android:id="@+id/cargo_resp3"
+                android:inputType="textCapSentences|textAutoComplete"
+                android:hint="Cargo persona 3"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+
+            <Button
+                android:background="@drawable/button_reg_fi"
+                android:id="@+id/registro_fi"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:text="INSCRIBIRME"
+                android:textColor="#FFF"
+                android:textStyle="bold"
+                android:textSize="20dip"
+                />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

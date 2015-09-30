@@ -48,7 +48,6 @@
             android:layout_marginTop="35dp"
             android:background="@color/window_background"
             android:inputType="textEmailAddress"
-            android:text="prueba@cptm.gob"
             android:hint="Correo Electrónico"
             android:paddingLeft="10dp"
             android:textSize="17dip"
@@ -77,6 +76,15 @@
             android:background="@drawable/boton_login"
             android:id="@+id/boton_ingresar"
             android:layout_weight="0.11" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/espacio"
+            android:text="" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="40dp"

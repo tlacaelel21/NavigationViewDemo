@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
+import com.vinidsl.navigationviewdemo.Documentos;
 import com.vinidsl.navigationviewdemo.EncuestaActivity;
 import com.vinidsl.navigationviewdemo.MainActivity;
 import com.vinidsl.navigationviewdemo.Model.MisEventosModel;
@@ -108,6 +109,7 @@ public class MisEventosAdapter extends ArrayAdapter<MisEventosModel> {
             holder.ubicacion_evento.setText(p.getUbicacion_evento());
             holder.status_evento.setText(p.getStatus_evento());
             final ImageButton button1=holder.menu_mi_evento;
+            final long reg_id=p.getReg_id();
             holder.menu_mi_evento.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -125,39 +127,23 @@ public class MisEventosAdapter extends ArrayAdapter<MisEventosModel> {
                     popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                         public boolean onMenuItemClick(MenuItem item) {
                             String tituloItem= (String) item.getTitle();
-                            if (item.getItemId() == R.id.item_subir_doc){
-                                Toast.makeText(aquery.getContext(), "*** Demo Subir Documento *** "+tituloItem, Toast.LENGTH_SHORT).show();
-                            }
-                            if (item.getItemId() == R.id.item_patrocinador){
-                                Intent prog = new Intent(act, PatrocinadoresActivity.class);
+                            if (item.getItemId() == R.id.item_documentos){
+                                Intent prog = new Intent(act, Documentos.class);
+                                prog.putExtra("reg_id", ""+reg_id);
                                 act.startActivity(prog);
-                                //Toast.makeText(aquery.getContext(), "** "+tituloItem, Toast.LENGTH_SHORT).show();
                             }
-                            if (item.getItemId() == R.id.item_programa){
-                                Intent prog = new Intent(act, ProgramaActivity.class);
-                                act.startActivity(prog);
-                                //Toast.makeText(aquery.getContext(), "** "+tituloItem, Toast.LENGTH_SHORT).show();
-                            }
-                            if (item.getItemId() == R.id.item_ponentes){
-                                Intent prog = new Intent(act, PonentesActivity.class);
-                                act.startActivity(prog);
-                                //Toast.makeText(aquery.getContext(), "** "+tituloItem, Toast.LENGTH_SHORT).show();
-                            }
-                            if (item.getItemId() == R.id.item_noticias){
-                                //Intent prog = new Intent(act, NoticiaActivity.class);
+                            if (item.getItemId() == R.id.item_agenda){
+                                //Intent prog = new Intent(act, EncuestaActivity.class);
                                 //act.startActivity(prog);
-                                Intent prog = new Intent(act, NoticiasActivity.class);
-                                act.startActivity(prog);
-                                //Toast.makeText(aquery.getContext(), "** "+tituloItem, Toast.LENGTH_SHORT).show();
-
+                                Toast.makeText(aquery.getContext(), "*Agenda* "+tituloItem, Toast.LENGTH_SHORT).show();
                             }
                             if (item.getItemId() == R.id.item_encuesta){
                                 Intent prog = new Intent(act, EncuestaActivity.class);
                                 act.startActivity(prog);
                                 //Toast.makeText(aquery.getContext(), "** "+tituloItem, Toast.LENGTH_SHORT).show();
                             }
-                            if (item.getItemId() == R.id.item_escanear_qr){
-                                Toast.makeText(aquery.getContext(), "*** Demo Escaner QR *** "+tituloItem, Toast.LENGTH_SHORT).show();
+                            if (item.getItemId() == R.id.item_subir_doc){
+                                Toast.makeText(aquery.getContext(), "*** Adjuntar documento *** "+tituloItem, Toast.LENGTH_SHORT).show();
                             }
                             return true;
                         }

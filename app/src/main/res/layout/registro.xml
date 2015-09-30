@@ -34,67 +34,105 @@
             android:gravity="center_vertical"/>
     </LinearLayout>
 
+    <ScrollView
+        android:background="@android:color/white"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="295dp"
-        android:layout_height="454dp"
+        android:layout_height="fill_parent"
         android:layout_gravity="center"
         android:weightSum="1">
-        <EditText android:id="@+id/nombre_usr_reg"
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"/>
+
+        <EditText android:id="@+id/correo_usr_reg"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:hint="Nombre"
-            android:text="Julian Robles"
+            android:background="@drawable/field_profile"
+            android:inputType="textEmailAddress|textAutoComplete"
+            android:hint="Correo electrónico"
             android:singleLine="true"
-            android:inputType="textCapWords"/>
+            android:layout_marginTop="45dp"
+            android:layout_marginBottom="10dp"
+            />
+
+        <EditText android:id="@+id/nombre_usr_reg"
+            android:layout_width="match_parent"
+            android:background="@drawable/field_profile"
+            android:layout_height="55dp"
+            android:hint="Nombre"
+            android:singleLine="true"
+            android:inputType="textCapWords"
+            android:layout_marginBottom="10dp"/>
 
         <EditText
             android:id="@+id/compania_usr_reg"
             android:layout_width="match_parent"
+            android:background="@drawable/field_profile"
             android:layout_height="55dp"
             android:hint="Compañia"
-            android:text="mob-tk"
             android:singleLine="true"
-            android:inputType="textCapWords"/>
-
+            android:inputType="textCapWords"
+            android:layout_marginBottom="10dp"/>
         <EditText
             android:id="@+id/puesto_usr_reg"
             android:layout_width="match_parent"
+            android:background="@drawable/field_profile"
             android:layout_height="55dp"
             android:hint="Cargo"
-            android:text="Gerente Administrativo"
             android:singleLine="true"
-            android:inputType="textCapWords"/>
+            android:inputType="textCapWords"
+            android:layout_marginBottom="10dp"/>
 
         <EditText
             android:id="@+id/telefono_usr_reg"
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:background="@drawable/field_profile"
             android:numeric="integer"
-            android:text="5555555555"
             android:inputType="number"
-            android:hint="Teléfono"/>
-
+            android:hint="Teléfono"
+            android:layout_marginBottom="10dp"/>
         <EditText
-            android:id="@+id/correo_usr_reg"
+            android:id="@+id/password1"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:text="julian@mob-tk.com"
-            android:inputType="textEmailAddress"
-            android:hint="correo_usr_reg electrónico"
-            android:singleLine="true"/>
-
+            android:background="@drawable/field_profile"
+            android:inputType="textPassword"
+            android:hint="Contraseña"
+            android:singleLine="true"
+            android:layout_marginBottom="10dp"/>
+        <EditText
+            android:id="@+id/password2"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/field_profile"
+            android:inputType="textPassword"
+            android:hint="Confirma contraseña"
+            android:singleLine="true"
+            android:layout_marginBottom="10dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:id="@+id/textView2"
-            android:layout_weight="0.42" />
+            android:layout_weight="0.42"
+            android:paddingTop="25px"
+            android:paddingBottom="25px"
+            android:layout_marginBottom="10dp"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="REGISTRAR"
+            android:text="CONTINUAR"
             android:textColor="#FFF"
             android:textStyle="bold"
             android:textSize="20dip"
@@ -102,6 +140,8 @@
             android:id="@+id/button"
             android:layout_weight="0.11" />
     </LinearLayout>
+
+    </ScrollView>
 
 
 </LinearLayout>

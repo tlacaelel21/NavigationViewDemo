@@ -44,6 +44,7 @@ public class MisEventosTask extends AsyncTask<String, Void, Void> {
     private ProgressDialog mDialog;
     private ArrayList<MisEventosModel> misEventosListado;
     private int insertados;
+    long reg_id;
 
     //String valorEnc=obj.encriptar("315|17");
     public MisEventosTask(Context context) {
@@ -60,14 +61,14 @@ public class MisEventosTask extends AsyncTask<String, Void, Void> {
             for(int i = 0; i < mainArray.length(); i++) {
 
                 JSONObject node = mainArray.getJSONObject(i);
-                long id = node.getLong("reg_id");
+                reg_id = node.getLong("reg_id");
                 // String int_foto = node.getString("int_foto");
                 String ubicacion_evento = node.getString("int_titulo");
                 String status_evento = node.getString("sr_desc");
                 String nombre_evento = node.getString("int_titulo");
                
                 MisEventosModel misEventosModel =
-                        new MisEventosModel(nombre_evento,"",status_evento);
+                        new MisEventosModel(nombre_evento,"",status_evento,reg_id);
                 misEventosListado.add(misEventosModel);
             }
 
@@ -101,6 +102,7 @@ public class MisEventosTask extends AsyncTask<String, Void, Void> {
         SharedPreferences preferencias =
                 act.getSharedPreferences(act.getString(R.string.espacio_prefs), Context.MODE_PRIVATE);
         String idUsuario = preferencias.getString(act.getString(R.string.pref_idusuario), "0");
+        //String sts_id = preferencias.getString(act.getString(R.string.sts_id), "0");
         //Log.i("USR", "" + idUsuario);
 
         try {
@@ -187,57 +189,12 @@ public class MisEventosTask extends AsyncTask<String, Void, Void> {
 
             // ejecución para un caso ideal donde todo resulto exitoso
         } else {
-
             ListView lista = (ListView)
                     ((Activity) mContext).findViewById(R.id.listado_mis_eventos); // id del ListView
             Activity activity= (Activity) mContext;
             final MisEventosAdapter adapter =
                     new MisEventosAdapter(activity,1,misEventosListado);
             lista.setAdapter(adapter);
-
-           /* lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    //Intent activity = new Intent(mContext, Evento.class);
-                    //mContext.startActivity(activity);
-                    *//*MisEventosModel n = adapter.getItem(position);
-
-                    Intent activity/ = new Intent(mContext, Ferias_Int.class);
-                    activity.putExtra("id", n.getId());
-                    activity.putExtra("titulo", n.getNombre());
-                    activity.putExtra("desc", n.getubicacion_evento());
-                    activity.putExtra("fecha_ini", n.getFechaInicio());
-                    activity.putExtra("fecha_fin", n.getFechaFin());
-                    activity.putExtra("pathFoto", n.getFotoInt());
-
-                    mContext.startActivity(activity);*//*
-                    MisEventosModel n = adapter.getItem(position);
-                    Intent activity = new Intent(mContext, Evento.class);
-                    //activity.putExtra("idEvento", ""+n.getId() );
-                    mContext.startActivity(activity);
-                    //Log.i("CLIC","123123");
-                }
-            });*/
-            /*Activity acitividad= (Activity)mContext;
-
-            ListView lista = (ListView)acitividad.findViewById(R.id.listadoFerias);
-
-            FeriasIntAdapter adapter = new FeriasIntAdapter(acitividad, R.layout.ferias_item,
-                    misEventosListado);
-            lista.setAdapter(adapter);*/
-            /*FeriasIntAdapter adapter =
-                    new FeriasIntAdapter(mContext, );*/
-            //paginador.setAdapter(adapter);
-            /*ViewPager paginador = (ViewPager)
-                    ((Activity) mContext).findViewById(R.id.misEventosListado_contenedor); // id del ViewPager
-            ProgramasAdapter adapter =
-                    new ProgramasAdapter((
-                            (AppCompatActivity) mContext).getSupportFragmentManager(), misEventosListado);
-            paginador.setAdapter(adapter);
-
-
-            ProgramaActivity activity = (ProgramaActivity) mContext;
-            activity.dibujarPaginas(misEventosListado.size());*/
 
         }
 

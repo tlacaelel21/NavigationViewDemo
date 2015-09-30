@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@color/fondo_blanco">
+
+    <TextView
+        android:background="@color/cab_perfil"
+        android:drawableLeft="@drawable/head_profile_st"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:text="Recuperar contraseña"
+        android:textSize="24dip"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Separador de sección -->
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:text="@string/recupera_psw"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <!-- -->
+
+            <EditText
+                android:background="@drawable/field_profile"
+                android:id="@+id/correo_electronico_rec"
+                android:inputType="textEmailAddress"
+                android:hint="Correo electrónico"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"/>
+
+        <TextView
+            android:gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:text=""
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+            <Button
+                android:background="@drawable/boton_perfil"
+                android:id="@+id/registro_completo"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:text="ENVIAR"
+                android:textColor="#FFF"
+                android:textStyle="bold"
+                android:textSize="20dip"
+                />
+        </LinearLayout>
+
+</LinearLayout>

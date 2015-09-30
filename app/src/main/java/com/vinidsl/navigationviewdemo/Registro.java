@@ -3,6 +3,9 @@ package com.vinidsl.navigationviewdemo;
 /**
  * Created by root on 23/07/15.
  */
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.vinidsl.navigationviewdemo.Tasks.RegistroUsuarioMailTask;
 import com.vinidsl.navigationviewdemo.Tasks.RegistroUsuarioTask;
@@ -26,6 +30,9 @@ public class Registro extends Fragment {
     TextView puesto_usr_reg;
     TextView telefono_usr_reg;
     TextView correo_usr_reg;
+    TextView pass1;
+    TextView pass2;
+
     public Registro() {
         // Required empty public constructor
     }
@@ -35,7 +42,7 @@ public class Registro extends Fragment {
                              Bundle savedInstanceState) {
         //Log.d("ENTRO", "ENTRAAAAAA***************************************************7777777");
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.registro, container, false);
+        final View rootView = inflater.inflate(R.layout.registro, container, false);
         TextView username=(TextView)rootView.findViewById(R.id.textView2);
         username.setText(Html.fromHtml(getString(R.string.term_cond)));
 
@@ -44,6 +51,8 @@ public class Registro extends Fragment {
         puesto_usr_reg=(TextView)rootView.findViewById(R.id.puesto_usr_reg);
         telefono_usr_reg=(TextView)rootView.findViewById(R.id.telefono_usr_reg);
         correo_usr_reg=(TextView)rootView.findViewById(R.id.correo_usr_reg);
+        pass1=(TextView)rootView.findViewById(R.id.password1);
+        pass2=(TextView)rootView.findViewById(R.id.password2);
 
 
         //aButton = (Button)rootView.findViewById(R.id.button);
@@ -56,18 +65,49 @@ public class Registro extends Fragment {
                         String usr_puesto = puesto_usr_reg.getText().toString();
                         String usr_tel = telefono_usr_reg.getText().toString();
                         String usr_correo = correo_usr_reg.getText().toString();
+                        String usr_psw1= pass1.getText().toString();
+                        String usr_psw2= pass2.getText().toString();
+
+                        if(usr_psw1.equals(usr_psw2)){
 
                         //nombre|cargo|telefono|email|password|compañía|calle|noext|noint|colonia|cp|municipio|estado|
                         //id_pais|tel_oficina|pagina_web|email_contacto|id_actividad
-                        String parametro = usr_nombre + "|"+usr_puesto+"|"+usr_tel+"|"+usr_correo+"|"+"mail@mail.com"+"|"+"1234"+
-                                "|"+usr_comp+"|"+"calle"+"|"+"7"+"|"+" "+"|"+"colonia"+"|"+"cp"+"|"+"municipio"+"|"+"edo"+
-                                "|"+"pais"+"|"+"tel_of"+"|"+"pag_web"+"|"+"email_contacto"+"|"+"1";
+                        String parametro = usr_nombre + "|"+usr_puesto+"|"+usr_tel+"|"+usr_correo+"|"+usr_correo+"|"+pass1+
+                                "|"+usr_comp;
 
 
                         /*RegistroUsuarioTask registroUsuarioTask=new RegistroUsuarioTask(getActivity());
                         registroUsuarioTask.execute(parametro);*/
-                        RegistroUsuarioMailTask registroUsuarioMailTask=new RegistroUsuarioMailTask(getActivity());
-                        registroUsuarioMailTask.execute(parametro,usr_correo);
+                        /*RegistroUsuarioMailTask registroUsuarioMailTask=new RegistroUsuarioMailTask(getActivity());
+                        registroUsuarioMailTask.execute(parametro,usr_correo);*/
+                          /*  Activity activity = (Activity) rootView.getContext();
+                            SharedPreferences preferencias =
+                                    activity.getSharedPreferences(activity.getString(R.string.espacio_prefs) , Context.MODE_PRIVATE);
+
+                            SharedPreferences.Editor editor = preferencias.edit();
+                            editor.putString(activity.getString(R.string.pref_idusuario), usr_id);
+                            editor.commit();*/
+                            Bundle bundle = new Bundle();
+                            bundle.putString("message", parametro);
+                            bundle.putString("usr_correo", usr_correo);
+
+                            Registro2 fragInfo = new Registro2();
+                            fragInfo.setArguments(bundle);
+                            FragmentManager manager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction ft = manager.beginTransaction();
+                            Fragment newFragment = fragInfo;
+                            Fragment actual = visualiza();
+                            actual.onDestroy();
+                            ft.remove(actual);
+                            ft.replace(container.getId(), newFragment);
+                            //container is the ViewGroup of current fragment
+                            ft.addToBackStack(null);
+                            ft.commit();
+
+                        }else{
+                            Context mContext=rootView.getContext();
+                            Toast.makeText(mContext, "Las contreñas no coinciden", Toast.LENGTH_LONG).show();
+                        }
 
 
                         //Log.i("USRN", usr_nombre);

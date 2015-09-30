@@ -17,8 +17,9 @@ public class EventoModel implements Parcelable {
     private String fecha_fin_evento;
     private String titulo_evento;
     private String desc_evento;
+    private String disponibles;
 
-    public EventoModel(long int_id, String rec_id, String imageEvento, String ubicacion_evento, String cat_desc, String fecha_inicio_evento, String fecha_fin_evento, String titulo_evento, String desc_evento) {
+    public EventoModel(long int_id, String rec_id, String imageEvento, String ubicacion_evento, String cat_desc, String fecha_inicio_evento, String fecha_fin_evento, String titulo_evento, String desc_evento, String disponibles) {
         this.int_id = int_id;
         this.rec_id=rec_id;
         this.imageEvento=imageEvento;
@@ -28,6 +29,7 @@ public class EventoModel implements Parcelable {
         this.fecha_fin_evento=fecha_fin_evento;
         this.titulo_evento=titulo_evento;
         this.desc_evento=desc_evento;
+        this.disponibles=disponibles;
     }
 
     public long getId() {
@@ -70,6 +72,10 @@ public class EventoModel implements Parcelable {
         return desc_evento;
     }
 
+    public String getDisponibles() {
+        return disponibles;
+    }
+
     // Parcelling part
     public EventoModel(Parcel in){
         String[] data = new String[3];
@@ -85,6 +91,7 @@ public class EventoModel implements Parcelable {
         this.fecha_fin_evento=data[6];
         this.titulo_evento=data[7];
         this.desc_evento=data[8];
+        this.disponibles=data[9];
     }
 
     public int describeContents(){
@@ -103,7 +110,8 @@ public class EventoModel implements Parcelable {
                 this.fecha_inicio_evento,
                 this.fecha_fin_evento,
                 this.titulo_evento,
-                this.desc_evento});
+                this.desc_evento,
+                this.disponibles});
     }
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
         public EventoModel createFromParcel(Parcel in) {
