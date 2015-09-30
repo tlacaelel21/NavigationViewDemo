@@ -27,6 +27,7 @@ public class PonentesAdapter extends BaseAdapter {
     private AQuery aquery;
 
     public PonentesAdapter(Activity activity, ArrayList<Ponente> items) {
+
         this.activityRef = activity;
         this.items = items;
         aquery = new AQuery(activity);
