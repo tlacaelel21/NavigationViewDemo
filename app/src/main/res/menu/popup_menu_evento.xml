@@ -23,4 +23,7 @@
     <item
         android:id="@+id/item_expositores"
         android:title="Expositores"/>
+    <item
+        android:id="@+id/item_lector"
+        android:title="Lecotr QR"/>
 </menu>

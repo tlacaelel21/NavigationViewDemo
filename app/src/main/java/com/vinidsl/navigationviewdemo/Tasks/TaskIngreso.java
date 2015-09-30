@@ -73,14 +73,13 @@ public class TaskIngreso extends AsyncTask<String, Void, Void> {
 
             //resultado = mainNode.getString("login");
            valido=mainNode.getString("valido");
-            if(Integer.parseInt(valido)==1){
-                id_usuario=mainNode.getString("id_usuario");
-                usu_nom=mainNode.getString("usu_nom");
-                sts_id=mainNode.getString("sts_id");
-            }else{
-                Toast.makeText(mContext, "CPTM debe de validar su usuario", Toast.LENGTH_LONG).show();
-            }
-
+                if(null!=valido) {
+                    if (Integer.parseInt(valido) == 1) {
+                        id_usuario = mainNode.getString("id_usuario");
+                        usu_nom = mainNode.getString("usu_nom");
+                        sts_id = mainNode.getString("sts_id");
+                    }
+                }
 
         } catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage(), e);
@@ -188,55 +187,57 @@ public class TaskIngreso extends AsyncTask<String, Void, Void> {
             Toast.makeText(mContext, "Sin conexión a Internet", Toast.LENGTH_LONG).show();
             Log.i("DESCARGA", "SIN INTERNET");
         } else*/
-        if(Integer.parseInt(valido)!=1){
-            Toast.makeText(mContext, "Datos incorrectos", Toast.LENGTH_LONG).show();
-            Log.i("DESCARGA", "SIN DATOS");
+        if(null!=valido){
+            if(Integer.parseInt(valido)!=1){
+                Toast.makeText(mContext, "Datos incorrectos", Toast.LENGTH_LONG).show();
+                Log.i("DESCARGA", "SIN DATOS");
 
-            // ejecución para un caso ideal donde todo resulto exitoso
-        } else {
-            //Log.i("USR", "" + id_usuario);
-            if(Integer.parseInt(sts_id)==2){
-                Toast.makeText(mContext, "Aún no ha sido validado por el sistema de CPTM", Toast.LENGTH_LONG).show();
-            }
-            Activity activity = (Activity) mContext;
-            SharedPreferences preferencias =
-                    activity.getSharedPreferences(activity.getString(R.string.espacio_prefs), Context.MODE_PRIVATE);
-                    //activity.getSharedPreferences("CPTM_PrefSpace", Context.MODE_PRIVATE);
-
-            SharedPreferences.Editor editor = preferencias.edit();
-            editor.putString(activity.getString(R.string.pref_idusuario), id_usuario);
-            editor.putString(activity.getString(R.string.sts_id), sts_id);
-
-            //editor.putString("i_u_act", id_usuario);
-            editor.commit();
-            MainActivity mainActivity= (MainActivity) activity;
-            mainActivity.buscaUsuario();
-            mainActivity.cambiarMenu();
-
-            Eventos eventos=new Eventos();
-            mainActivity.MuestraFragment(eventos);
-            //MuestraFragment(eventos);
-
-           /*if(resultado == "") {
-                Toast.makeText(mContext, "Error al guardar datos" , Toast.LENGTH_SHORT).show();
+                // ejecución para un caso ideal donde todo resulto exitoso
             } else {
-                Toast.makeText(mContext, "Datos guardados correctamente", Toast.LENGTH_SHORT).show();
-
-                Activity a = (Activity) mContext;
-                ViewPager pager = (ViewPager) a.findViewById(R.id.perfil_df_contenedor);
-
-                if(!pager.isShown()) {
-                    pager.setVisibility(View.VISIBLE);
+                //Log.i("USR", "" + id_usuario);
+                if(Integer.parseInt(sts_id)==2){
+                    Toast.makeText(mContext, "Aún no ha sido validado por el sistema de CPTM", Toast.LENGTH_LONG).show();
                 }
+                Activity activity = (Activity) mContext;
+                SharedPreferences preferencias =
+                        activity.getSharedPreferences(activity.getString(R.string.espacio_prefs), Context.MODE_PRIVATE);
+                        //activity.getSharedPreferences("CPTM_PrefSpace", Context.MODE_PRIVATE);
 
-                DatosFacturaAdapter adapter = (DatosFacturaAdapter) pager.getAdapter();
-                ArrayList<DatosFactura> lista = adapter.getValues();
-                lista.add(df);
-                adapter.setValues(lista);
-                adapter.notifyDataSetChanged();
+                SharedPreferences.Editor editor = preferencias.edit();
+                editor.putString(activity.getString(R.string.pref_idusuario), id_usuario);
+                editor.putString(activity.getString(R.string.sts_id), sts_id);
 
+                //editor.putString("i_u_act", id_usuario);
+                editor.commit();
+                MainActivity mainActivity= (MainActivity) activity;
+                mainActivity.buscaUsuario();
+                mainActivity.cambiarMenu();
+
+                Eventos eventos=new Eventos();
+                mainActivity.MuestraFragment(eventos);
+                //MuestraFragment(eventos);
+
+               /*if(resultado == "") {
+                    Toast.makeText(mContext, "Error al guardar datos" , Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mContext, "Datos guardados correctamente", Toast.LENGTH_SHORT).show();
+
+                    Activity a = (Activity) mContext;
+                    ViewPager pager = (ViewPager) a.findViewById(R.id.perfil_df_contenedor);
+
+                    if(!pager.isShown()) {
+                        pager.setVisibility(View.VISIBLE);
+                    }
+
+                    DatosFacturaAdapter adapter = (DatosFacturaAdapter) pager.getAdapter();
+                    ArrayList<DatosFactura> lista = adapter.getValues();
+                    lista.add(df);
+                    adapter.setValues(lista);
+                    adapter.notifyDataSetChanged();
+
+                }
+    */
             }
-*/
         }
 
     }

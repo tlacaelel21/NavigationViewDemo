@@ -20,7 +20,12 @@ import android.widget.Toast;
 import com.androidquery.AQuery;
 import com.vinidsl.navigationviewdemo.Cifrado;
 import com.vinidsl.navigationviewdemo.Documentos;
+import com.vinidsl.navigationviewdemo.Eventos;
 import com.vinidsl.navigationviewdemo.Expositores;
+import com.vinidsl.navigationviewdemo.Ferias_Int;
+import com.vinidsl.navigationviewdemo.InscripcionFI;
+import com.vinidsl.navigationviewdemo.Login;
+import com.vinidsl.navigationviewdemo.MainActivity;
 import com.vinidsl.navigationviewdemo.Model.EventoModel;
 import com.vinidsl.navigationviewdemo.Model.Ponencia;
 import com.vinidsl.navigationviewdemo.NoticiasActivity;
@@ -58,6 +63,7 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
     Activity act;
     String sts_id="";
     long int_id;
+    String idUsuario;
 
     public TaskEvento(Context context) {
         act=(Activity)context;
@@ -117,7 +123,7 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
             Activity activity = (Activity) mContext;
             SharedPreferences preferencias =
                     activity.getSharedPreferences(activity.getString(R.string.espacio_prefs), Context.MODE_PRIVATE);
-            String idUsuario = preferencias.getString(activity.getString(R.string.pref_idusuario), "0");
+            idUsuario = preferencias.getString(activity.getString(R.string.pref_idusuario), "0");
             sts_id = preferencias.getString(act.getString(R.string.sts_id), "0");
 
             //Log.i("ID_USR",""+idUsuario);
@@ -252,39 +258,57 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
                         public boolean onMenuItemClick(MenuItem item) {
                             String tituloItem = (String) item.getTitle();
                             if (item.getItemId() == R.id.item_inscribirse) {
-                                if(Integer.parseInt(sts_id)==2)
-                                    Toast.makeText(mContext, "Aún no ha sido validado por el sistema de CPTM", Toast.LENGTH_LONG).show();
-                                else
-                                    Toast.makeText(aquery.getContext(), "*** INSCRIBIRSE *** " + tituloItem, Toast.LENGTH_SHORT).show();
+
+                                if (Integer.parseInt(idUsuario) > 0) {
+                                    if (Integer.parseInt(sts_id) == 2)
+                                        Toast.makeText(mContext, "Aún no ha sido validado por el sistema de CPTM", Toast.LENGTH_LONG).show();
+                                    else {
+                                        //Toast.makeText(aquery.getContext(), "*** INSCRIBIRSE *** " + tituloItem, Toast.LENGTH_SHORT).show();
+                                        Intent prog = new Intent(act, InscripcionFI.class);
+                                        prog.putExtra("id_evento", "" + int_id);
+                                        prog.putExtra("id_usr", "" + idUsuario);
+                                        act.startActivity(prog);
+                                    }
+                                } else {
+                                    Toast.makeText(aquery.getContext(), "*** DEBE DE REGISTRARSE O INICIAR SESION *** ", Toast.LENGTH_SHORT).show();
+                                    /*MainActivity mainActivity= (MainActivity) act;
+                                    Login login=new Login();
+                                    mainActivity.MuestraFragment(login);*/
+                                }
                             }
                             if (item.getItemId() == R.id.item_recinto) {
-                                Toast.makeText(aquery.getContext(), "*** RECINTO *** " + tituloItem, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(aquery.getContext(), "*** RECINTO *** ", Toast.LENGTH_SHORT).show();
                             }
-                            if (item.getItemId() == R.id.item_programa){
+                            if (item.getItemId() == R.id.item_programa) {
                                 Intent prog = new Intent(act, ProgramaActivity.class);
-                                prog.putExtra("id_evento", ""+int_id);
+                                prog.putExtra("id_evento", "" + int_id);
                                 act.startActivity(prog);
                             }
-                            if (item.getItemId() == R.id.item_ponentes){
+                            if (item.getItemId() == R.id.item_ponentes) {
                                 Intent prog = new Intent(act, PonentesActivity.class);
-                                prog.putExtra("id_evento", ""+int_id);
+                                prog.putExtra("id_evento", "" + int_id);
                                 act.startActivity(prog);
                             }
-                            if (item.getItemId() == R.id.item_noticias){
+                            if (item.getItemId() == R.id.item_noticias) {
                                 Intent prog = new Intent(act, NoticiasActivity.class);
-                                prog.putExtra("id_evento", ""+int_id);
+                                prog.putExtra("id_evento", "" + int_id);
                                 act.startActivity(prog);
                             }
-                            if (item.getItemId() == R.id.item_patrocinador){
+                            if (item.getItemId() == R.id.item_patrocinador) {
                                 Intent prog = new Intent(act, PatrocinadoresActivity.class);
                                 act.startActivity(prog);
                                 //Toast.makeText(aquery.getContext(), "** "+tituloItem, Toast.LENGTH_SHORT).show();
                             }
-                            if (item.getItemId() == R.id.item_expositores){
+                            if (item.getItemId() == R.id.item_expositores) {
                                 Intent prog = new Intent(act, Expositores.class);
                                 prog.putExtra("id_evento", "" + int_id);
                                 act.startActivity(prog);
                                 //Toast.makeText(aquery.getContext(), "*EXPOSITORES* "+tituloItem, Toast.LENGTH_SHORT).show();
+                            }
+                            if (item.getItemId() == R.id.item_lector) {
+                                Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+                                intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+                                act.startActivity(intent);
                             }
 
                             return true;

@@ -108,11 +108,9 @@ public class ExpositoresTask extends AsyncTask<String, Void, Void> {
                     mContext.getString(R.string.base_url);
             final String QUERY_PARAM = "cod";
             String parametro = c.encriptar(SERVICE_ID + "|" + params[0]);
-            Log.i("SERV",parametro);
+            //Log.i("SERV",parametro);
             parametro=parametro.replaceAll("\\+", "%2B");
             parametro=parametro.replaceAll("\\/", "%2F");
-            Log.i("SERV",parametro);
-            //String parametro = c.encriptar(SERVICE_ID);
 
            /* Uri builtUri = Uri.parse(BASE_URL).buildUpon()
                     .appendQueryParameter(QUERY_PARAM, parametro).build();*/

@@ -85,7 +85,7 @@ public class Registro2 extends Fragment {
                         "|" + municipio + "|" + estado +
                         "|" + pais + "|" + tel_oficina + "|" + pagina + "|" + email_contacto + "|" + actividad;
 
-                Log.i("VALOR", parametro);
+               // Log.i("VALOR", parametro);
                 RegistroUsuarioMailTask registroUsuarioMailTask = new RegistroUsuarioMailTask(getActivity());
                 registroUsuarioMailTask.execute(parametro, usr_correo);
             }
