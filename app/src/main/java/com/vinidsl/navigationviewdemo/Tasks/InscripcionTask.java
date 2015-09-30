@@ -7,8 +7,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -21,6 +24,7 @@ import com.androidquery.AQuery;
 import com.vinidsl.navigationviewdemo.Cifrado;
 import com.vinidsl.navigationviewdemo.Expositores;
 import com.vinidsl.navigationviewdemo.InscripcionFI;
+import com.vinidsl.navigationviewdemo.MainActivity;
 import com.vinidsl.navigationviewdemo.Model.EventoModel;
 import com.vinidsl.navigationviewdemo.Model.InscripcionModel;
 import com.vinidsl.navigationviewdemo.Model.Ponencia;
@@ -29,6 +33,7 @@ import com.vinidsl.navigationviewdemo.PatrocinadoresActivity;
 import com.vinidsl.navigationviewdemo.PonentesActivity;
 import com.vinidsl.navigationviewdemo.ProgramaActivity;
 import com.vinidsl.navigationviewdemo.R;
+import com.vinidsl.navigationviewdemo.Registrado;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -193,17 +198,54 @@ public class InscripcionTask extends AsyncTask<String, Void, Void> {
 
             aquery = new AQuery(mContext);
             Activity a = (Activity) mContext;
-            TextView costo_stands= (TextView) a.findViewById(R.id.costo_stands);
-            costo_stands.setText(inscripcionModel.getCosto());
+            final TextView costo_stands= (TextView) a.findViewById(R.id.costo_stands);
+            final TextView costo_stands_real= (TextView) a.findViewById(R.id.costo_stands_real);
+            final TextView num_stands_usr_fi= (TextView) a.findViewById(R.id.num_stands_usr_fi);
+            costo_stands_real.setText(inscripcionModel.getCosto());
             //Log.i("FOTO",""+evento.getImageEvento());
             final Button inscribete=(Button) a.findViewById(R.id.registro_fi);
 
-            inscribete.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View view) {
-                    Toast.makeText(aquery.getContext(), "*REGISTRADO* ", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
+             num_stands_usr_fi.addTextChangedListener(new TextWatcher() {
+
+                 public void afterTextChanged(Editable s) {
+                     //Toast.makeText(aquery.getContext(), "*EDITADO* ", Toast.LENGTH_SHORT).show();
+                     if(null!=num_stands_usr_fi.getText().toString()&&
+                             !num_stands_usr_fi.getText().toString().equals("")){
+                         if(!num_stands_usr_fi.getText().toString().equals("0")){
+                             Float num_stands=Float.parseFloat(num_stands_usr_fi.getText().toString());
+                             Float costo_st=Float.parseFloat(costo_stands_real.getText().toString());
+                             Float total_st=num_stands*costo_st;
+                             costo_stands.setText(""+total_st);
+                         }
+                     }
+                 }
+
+                 public void beforeTextChanged(CharSequence s, int start,
+                                               int count, int after) {
+                 }
+
+                 public void onTextChanged(CharSequence s, int start,
+                                           int before, int count) {
+                     //TextView myOutputBox = (TextView) findViewById(R.id.myOutputBox);
+                     ///myOutputBox.setText(s);
+                 }
+             });
+
+
+        inscribete.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Toast.makeText(aquery.getContext(), "*REGISTRADO* ", Toast.LENGTH_SHORT).show();
+
+                    /*Activity activity = (Activity) mContext;
+                    MainActivity mainActivity= (MainActivity) activity;
+                    mainActivity.buscaUsuario();
+                    mainActivity.cambiarMenu();
+
+                    Registrado registrado= new Registrado();
+                    mainActivity.MuestraFragment(registrado);*/
+            }
+        });
+    }
 
     }
 
