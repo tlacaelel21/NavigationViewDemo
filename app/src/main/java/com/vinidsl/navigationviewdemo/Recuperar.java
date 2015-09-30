@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,15 +35,15 @@ public class Recuperar extends Fragment {
                              final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.recuperar_psw, container, false);
-        TextView e_mail=(TextView)rootView.findViewById(R.id.correo_electronico_rec);
-        final String email=e_mail.getText().toString();
+
 
 
         //aButton = (Button)rootView.findViewById(R.id.registro_completo);
 
         ((Button) rootView.findViewById(R.id.registro_completo)).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                //Log.d("ENTRO", "ENTRAAAAAA***************************************************888888888");
+           public void onClick(View view) {
+               TextView e_mail=(TextView)rootView.findViewById(R.id.correo_electronico_rec);
+               final String email=e_mail.getText().toString();
                 RecuperaTask recuperaTask= new RecuperaTask(rootView.getContext());
                 recuperaTask.execute(email);
             }

@@ -11,8 +11,10 @@ import android.widget.Toast;
 
 import com.vinidsl.navigationviewdemo.Cifrado;
 import com.vinidsl.navigationviewdemo.Eventos;
+import com.vinidsl.navigationviewdemo.Ferias_Int;
 import com.vinidsl.navigationviewdemo.MainActivity;
 import com.vinidsl.navigationviewdemo.Model.DatosFactura;
+import com.vinidsl.navigationviewdemo.Pantalla_Princi;
 import com.vinidsl.navigationviewdemo.R;
 
 import org.json.JSONException;
@@ -46,15 +48,9 @@ public class RecuperaTask extends AsyncTask<String, Void, Void> {
     private void readResult(String JsonStr) throws JSONException {
 
         try {
-            JSONObject mainArray = new JSONObject(JsonStr);
-            JSONObject mainNode = mainArray.getJSONObject("recuperar");
-            recuperar=mainNode.getInt("recuperar");
-
-
-            Log.i("ALTA", ""+mainNode);
-
-
-
+            JSONObject mainNode = new JSONObject(JsonStr);
+            recuperar = mainNode.getInt("recuperar");
+            Log.i("REC", ""+recuperar);
         } catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage(), e);
             e.printStackTrace();
@@ -84,13 +80,15 @@ public class RecuperaTask extends AsyncTask<String, Void, Void> {
                     mContext.getString(R.string.base_url);
             final String QUERY_PARAM = "cod";
             // String valorEnc=obj.encriptar("305|prueba@cptm.gob|1234|(null)");
-            String parametro = c.encriptar(SERVICE_ID + "|"+params[0]);
-
+            String parametro = c.encriptar(SERVICE_ID + "|" + params[0]);
+            parametro=parametro.replaceAll("\\+", "%2B");
+            parametro=parametro.replaceAll("\\/", "%2F");
+            //Log.i("REC", ""+params[0]);
             Log.i("REC", ""+parametro);
 
-            Uri builtUri = Uri.parse(BASE_URL).buildUpon()
-                    .appendQueryParameter(QUERY_PARAM, parametro).build();
-
+            /*Uri builtUri = Uri.parse(BASE_URL).buildUpon()
+                    .appendQueryParameter(QUERY_PARAM, parametro).build();*/
+            Uri builtUri=Uri.parse(BASE_URL+"cod="+parametro);
             // Inicializando conexión
             URL url = new URL(builtUri.toString());
             // Estableciendo parametros de petición
@@ -166,7 +164,12 @@ public class RecuperaTask extends AsyncTask<String, Void, Void> {
             Log.i("DESCARGA", "SIN DATOS");
             // ejecución para un caso ideal donde todo resulto exitoso
         } else {
-            Toast.makeText(mContext, "Error al guardar datos" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Correo enviado con éxito" , Toast.LENGTH_SHORT).show();
+            Activity activity = (Activity) mContext;
+            MainActivity mainActivity= (MainActivity) activity;
+
+            Ferias_Int feriasInt=new Ferias_Int();
+            mainActivity.MuestraFragment(feriasInt);
         }
 
     }
