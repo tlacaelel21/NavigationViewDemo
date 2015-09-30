@@ -53,6 +53,7 @@ public class ProgramaTask extends AsyncTask<String, Void, Void> {
         try {
             programa = new ArrayList<ArrayList<Horario>>();
             JSONObject mainNode = new JSONObject(JsonStr);
+
             JSONArray mainArray = mainNode.getJSONArray("programa"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
 
             for(int i = 0; i < mainArray.length(); i++) {
@@ -61,11 +62,10 @@ public class ProgramaTask extends AsyncTask<String, Void, Void> {
                 //pon_empresa, pon_puesto}, {}, {}], [dia2], [dia3]]
 
                 JSONArray innerArray = mainArray.getJSONArray(i);
-
                 ArrayList<Horario> horario = new ArrayList<Horario>();
 
                 for(int j = 0; j < innerArray.length(); j++) {
-                    JSONObject node = mainArray.getJSONObject(j);
+                    JSONObject node = innerArray.getJSONObject(j);
 
                     long id = node.getLong("pro_id");
                     String nombre = node.getString("pro_nombre");

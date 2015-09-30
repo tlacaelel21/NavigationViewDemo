@@ -16,6 +16,7 @@ import com.vinidsl.navigationviewdemo.Model.Ponente;
 import com.vinidsl.navigationviewdemo.R;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 /**
  * Created by JoseRogelio on 11/08/2015.
@@ -69,9 +70,14 @@ public class HorarioAdapter extends BaseAdapter {
 
         if (hor != null) {
 
-            holder.mHorarioTV.setText(hor.getFechaInicio());
-            holder.mNombreTV.setText(hor.getNombre());
-            holder.mSalaTV.setText(hor.getSala());
+            String[] fechaP = hor.getFechaInicio().split(" ");
+            String[] horaP = fechaP[1].split(Pattern.quote(":"));
+            String hora = horaP[0] + ":" + horaP[1];
+            holder.mHorarioTV.setText(hora);
+            if(!hor.getNombre().isEmpty() || !hor.getNombre().equals("null"))
+                holder.mNombreTV.setText(hor.getNombre());
+            if(!hor.getSala().isEmpty() || !hor.getSala().equals("null"))
+                holder.mSalaTV.setText(hor.getSala());
 
         }
 

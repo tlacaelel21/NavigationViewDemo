@@ -140,6 +140,8 @@ public class EncuestasTask extends AsyncTask<String, Void, Void> {
             Uri builtUri = Uri.parse(BASE_URL).buildUpon()
                     .appendQueryParameter(QUERY_PARAM, parametro).build();
 
+            Log.i(LOG_TAG, builtUri.toString());
+
             // Inicializando conexión
             URL url = new URL(builtUri.toString());
             // Estableciendo parametros de petición

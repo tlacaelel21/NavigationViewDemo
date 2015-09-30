@@ -75,6 +75,15 @@
         </activity>
 
         <activity
+            android:name=".PonenteActivity"
+            android:label="@string/ponentes_cab"
+            android:parentActivityName=".PonentesActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PonentesActivity" />
+        </activity>
+
+        <activity
             android:name=".EncuestaActivity"
             android:label="@string/encuestas_cab"
             android:parentActivityName=".MainActivity" >
