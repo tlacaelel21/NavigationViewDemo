@@ -46,6 +46,8 @@
 
     <string name="consCebPaco">Directivos de Cebollas Paco:</string>
 
+    <string name="recupera_psw">Escribe la dirección con la cual te registraste, para enviarte un correo con tus datos.</string>
+
     <!-- Textos de la UI Mi Perfil -->
     <string name="perfil_cab">Mi Perfil</string>
     <string name="perfil_nombre">Nombre</string>

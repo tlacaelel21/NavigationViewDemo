@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.vinidsl.navigationviewdemo.Tasks.TaskIngreso;
 
@@ -48,6 +49,22 @@ public class Login extends Fragment {
         aButton = (Button)rootView.findViewById(R.id.buttonRegistrate);
 
         //return rootView;
+        ((TextView) rootView.findViewById(R.id.textViewLogin)).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                //Toast.makeText(rootView.getContext(), "Rec Contraseña", Toast.LENGTH_LONG).show();
+                FragmentManager manager=getActivity().getSupportFragmentManager();
+                FragmentTransaction ft = manager.beginTransaction();
+                Recuperar recuperar= new Recuperar();
+                Fragment newFragment = recuperar;
+                Fragment actual= visualiza();
+                actual.onDestroy();
+                ft.remove(actual);
+                ft.replace(container.getId(),newFragment);
+                //container is the ViewGroup of current fragment
+                ft.addToBackStack(null);
+                ft.commit();
+            }
+        });
 
         ((Button) rootView.findViewById(R.id.buttonRegistrate)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {

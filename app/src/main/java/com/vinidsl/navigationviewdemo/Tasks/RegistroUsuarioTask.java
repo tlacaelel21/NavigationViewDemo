@@ -54,9 +54,7 @@ public class RegistroUsuarioTask extends AsyncTask<String, Void, Void> {
             JSONObject mainArray = new JSONObject(JsonStr);
             JSONObject mainNode = mainArray.getJSONObject("registro");
             resultado=mainNode.getInt("valido");
-            usr_id=mainNode.getString("id_usuario");
-
-            Log.i("ALTA", ""+mainNode);
+            Log.i("REc", ""+mainNode);
 
 
         } catch (JSONException e) {
