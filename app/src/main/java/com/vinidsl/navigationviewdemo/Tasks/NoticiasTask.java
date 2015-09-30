@@ -122,6 +122,8 @@ public class NoticiasTask extends AsyncTask<String, Void, Void> {
 
             // Inicializando conexión
             URL url = new URL(builtUri.toString());
+
+
             // Estableciendo parametros de petición
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");

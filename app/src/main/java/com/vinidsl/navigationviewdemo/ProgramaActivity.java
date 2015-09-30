@@ -40,6 +40,8 @@ public class ProgramaActivity extends AppCompatActivity {
 
         ViewPager pager = (ViewPager) findViewById(R.id.programa_contenedor);
 
+        mIndicatorContainer = (LinearLayout) findViewById(R.id.programa_paginador);
+
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }

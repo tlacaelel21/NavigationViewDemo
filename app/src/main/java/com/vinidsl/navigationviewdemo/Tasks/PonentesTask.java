@@ -206,9 +206,11 @@ public class PonentesTask extends AsyncTask<String, Void, Void> {
             lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                     Ponente p = adapter.getItem(position);
                     Intent intent = new Intent(mContext, PonenteActivity.class);
                     intent.putExtra("id", p.getId());
+                    Log.i(LOG_TAG, " ------- " + p.getId());
                     mContext.startActivity(intent);
                 }
             });
