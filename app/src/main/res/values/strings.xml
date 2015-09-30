@@ -45,8 +45,8 @@
     </string>
 
     <string name="consCebPaco">Directivos de Cebollas Paco:</string>
-
     <string name="recupera_psw">Escribe la dirección con la cual te registraste, para enviarte un correo con tus datos.</string>
+    <string name="inscri_eve">Datos de contacto, para seguimiento de participación en la feria.</string>
 
     <!-- Textos de la UI Mi Perfil -->
     <string name="perfil_cab">Mi Perfil</string>
