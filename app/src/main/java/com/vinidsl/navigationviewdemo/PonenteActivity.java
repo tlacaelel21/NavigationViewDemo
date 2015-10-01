@@ -26,10 +26,11 @@ public class PonenteActivity extends AppCompatActivity {
         Bundle extras = intent.getExtras();
 
         if(extras != null) {
-            String idPonente = "" + extras.getLong("1");
+            //String idPonente = "" + extras.getLong("3");
+            long id=extras.getLong("id");
 
             DetallePonenteTask task = new DetallePonenteTask(this);
-            task.execute(idPonente);
+            task.execute(""+id);
         }
 
     }

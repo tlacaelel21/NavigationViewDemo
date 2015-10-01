@@ -65,6 +65,7 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
     String sts_id="";
     long int_id;
     String idUsuario;
+    String inscrito;
 
     public TaskEvento(Context context) {
         act=(Activity)context;
@@ -88,7 +89,7 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
             String fecha_inicio_evento = mainNode.getString("int_inicio");
             String fecha_fin_evento= mainNode.getString("int_final");
             String int_desc=mainNode.getString("int_desc");
-            String inscrito=mainNode.getString("inscrito");
+            inscrito=mainNode.getString("inscrito");
             String disponibles =mainNode.getString("disponibles");
 
             evento = new EventoModel(int_id,rec_id,imageEvento,ubicacion_evento,cat_desc,fecha_inicio_evento,fecha_fin_evento,int_titulo,int_desc, disponibles);
@@ -226,6 +227,10 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
             TextView disponibles= (TextView) a.findViewById(R.id.disponibles);
             final ImageButton inscribete=(ImageButton) a.findViewById(R.id.boton_registro_eve);
 
+            if(Integer.parseInt(inscrito)>0){
+                inscribete.setBackground(a.getResources().getDrawable(R.drawable.action_eventok_st));
+            }
+            //inscribete.setImageDrawable((Drawable) a.findViewById(R.drawable.reader));
             /*String pathFoto = evento.getImageEvento();
 
 
@@ -254,7 +259,9 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
                     PopupMenu popup = new PopupMenu(aquery.getContext(), button1);
                     //Inflating the Popup using xml file
                     popup.getMenuInflater().inflate(R.menu.popup_menu_evento, popup.getMenu());
-
+                    if(Integer.parseInt(inscrito)>0) {
+                        popup.getMenu().getItem(0).setVisible(false);
+                    }
                     popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                         public boolean onMenuItemClick(MenuItem item) {
                             String tituloItem = (String) item.getTitle();
