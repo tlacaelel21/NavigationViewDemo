@@ -66,13 +66,14 @@
         </activity>
 
         <activity
-            android:name=".PonentesActivity"
-            android:label="@string/ponentes_cab"
+            android:name=".RecintoActivity"
+            android:label="@string/recinto_cab"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+
 
         <activity
             android:name=".PonenteActivity"
@@ -109,6 +110,16 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".AgendaActivity"
+            android:screenOrientation="nosensor"
+            android:label="@string/agenda_cab"
+            android:parentActivityName=".Eventos" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Eventos" />
         </activity>
 
         <activity

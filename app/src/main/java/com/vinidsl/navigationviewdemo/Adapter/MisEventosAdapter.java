@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
+import com.vinidsl.navigationviewdemo.AgendaActivity;
 import com.vinidsl.navigationviewdemo.Documentos;
 import com.vinidsl.navigationviewdemo.EncuestaActivity;
 import com.vinidsl.navigationviewdemo.MainActivity;
@@ -133,9 +134,9 @@ public class MisEventosAdapter extends ArrayAdapter<MisEventosModel> {
                                 act.startActivity(prog);
                             }
                             if (item.getItemId() == R.id.item_agenda){
-                                //Intent prog = new Intent(act, EncuestaActivity.class);
-                                //act.startActivity(prog);
-                                Toast.makeText(aquery.getContext(), "*Agenda* "+tituloItem, Toast.LENGTH_SHORT).show();
+                                Intent prog = new Intent(act, AgendaActivity.class);
+                                act.startActivity(prog);
+                                //Toast.makeText(aquery.getContext(), "*Agenda* "+tituloItem, Toast.LENGTH_SHORT).show();
                             }
                             if (item.getItemId() == R.id.item_encuesta){
                                 Intent prog = new Intent(act, EncuestaActivity.class);

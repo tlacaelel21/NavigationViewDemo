@@ -33,6 +33,7 @@ import com.vinidsl.navigationviewdemo.PatrocinadoresActivity;
 import com.vinidsl.navigationviewdemo.PonentesActivity;
 import com.vinidsl.navigationviewdemo.ProgramaActivity;
 import com.vinidsl.navigationviewdemo.R;
+import com.vinidsl.navigationviewdemo.RecintoActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -277,7 +278,9 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
                                 }
                             }
                             if (item.getItemId() == R.id.item_recinto) {
-                                Toast.makeText(aquery.getContext(), "*** RECINTO *** ", Toast.LENGTH_SHORT).show();
+                                Intent prog = new Intent(act, RecintoActivity.class);
+                                prog.putExtra("id_evento", "" + evento.getRec_id());
+                                act.startActivity(prog);
                             }
                             if (item.getItemId() == R.id.item_programa) {
                                 Intent prog = new Intent(act, ProgramaActivity.class);

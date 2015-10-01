@@ -1,47 +1,36 @@
 package com.vinidsl.navigationviewdemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.ActionMenuView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.vinidsl.navigationviewdemo.Adapter.ProgramasAdapter;
-import com.vinidsl.navigationviewdemo.Model.Horario;
-import com.vinidsl.navigationviewdemo.Model.Noticia;
-import com.vinidsl.navigationviewdemo.Tasks.ProgramaTask;
-
-import java.util.ArrayList;
+import com.vinidsl.navigationviewdemo.Tasks.DetallePonenteTask;
+import com.vinidsl.navigationviewdemo.Tasks.RecintoTask;
 
 /**
- * Created by JoseRogelio on 07/08/2015.
+ * Created by JoseRogelio on 09/08/2015.
  */
-public class ProgramaActivity extends AppCompatActivity {
+public class RecintoActivity extends AppCompatActivity {
 
     private LinearLayout mIndicatorContainer;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_programa);
+        setContentView(R.layout.activity_recinto);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Bundle extras = getIntent().getExtras();
-        String idEvento = extras.getString("id_evento");
+        ViewPager pager = (ViewPager) findViewById(R.id.recinto_fotos_paginador);
 
-        ViewPager pager = (ViewPager) findViewById(R.id.programa_contenedor);
-
-        mIndicatorContainer = (LinearLayout) findViewById(R.id.programa_paginador);
+        mIndicatorContainer = (LinearLayout) findViewById(R.id.recinto_contenedor_paginador);
 
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -58,8 +47,16 @@ public class ProgramaActivity extends AppCompatActivity {
             }
         });
 
-        ProgramaTask task = new ProgramaTask(this);
-        task.execute(idEvento);
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+
+        if(extras != null) {
+
+            String idEvento = extras.getString("id_evento");
+
+            RecintoTask task = new RecintoTask(this);
+            task.execute(idEvento);
+        }
 
     }
 
@@ -67,7 +64,7 @@ public class ProgramaActivity extends AppCompatActivity {
         for(int i = 0; i<totalPages; i++) {
             ImageView indicador = new ImageView(this);
             indicador.setImageResource(R.drawable.pager_indicator);
-            LayoutParams params = new LayoutParams(20, 20);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(20, 20);
             params.leftMargin = 5;
             params.rightMargin = 5;
             indicador.setLayoutParams(params);
@@ -83,8 +80,7 @@ public class ProgramaActivity extends AppCompatActivity {
             if(i ==  seleccion)
                 indicador.setImageResource(R.drawable.pager_indicator_active);
         }
-        ((TextView) findViewById(R.id.programa_cab_indicador_dia))
-                .setText(String.format(getString(R.string.programa_list_cab_dia), seleccion + 1));
+
     }
 
 }

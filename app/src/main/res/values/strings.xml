@@ -154,4 +154,17 @@
         <item>Elem5</item>
     </string-array>
 
+    <!-- Recinto -->
+    <string name="recinto_cab">Recinto</string>
+    <string name="recinto_desc">Descripción</string>
+    <string name="recinto_ubic">Ubicación</string>
+    <string name="recinto_cont">Contacto</string>
+    <string name="recinto_tel">Telefono: </string>
+    <string name="recinto_mail">Email: </string>
+    <string name="recinto_fb">Facebook: </string>
+    <string name="recinto_tw">Twitter: </string>
+
+    <!-- Agenda -->
+    <string name="agenda_cab">Agenda Salas de Reuniones</string>
+
 </resources>
