@@ -57,32 +57,35 @@ public class DetallePonenteTask extends AsyncTask<String, Void, Void> {
         try {
 
             JSONObject mainNode = new JSONObject(JsonStr);
-
+           // JSONObject mainNode = new JSONObject(JsonStr);
 
             // detalle_pon:{pon_nombre, pon_foto, pon_empresa, pon_correo, pon_puesto, pon_calif},
             // ponencias:[{pro_id, pro_nombre, pro_fecha_ini, pro_lugar}, {}, {}]
 
-            JSONArray mainArray = mainNode.getJSONArray("ponencias");
+            JSONObject mainArray = mainNode.getJSONObject("detalle_pon");
 
-            String nombre = mainNode.getString("pon_nombre");
-            String foto = mainNode.getString("pon_empresa");
-            String empresa = mainNode.getString("pon_empresa");
-            String correo = mainNode.getString("pon_correo");
-            String calificacion = mainNode.getString("pon_calif");
 
-            for(int i = 0; i < mainArray.length(); i++) {
+            String nombre = mainArray.getString("pon_nombre");
+            String foto = mainArray.getString("pon_empresa");
+            String empresa = mainArray.getString("pon_empresa");
+            String correo = mainArray.getString("pon_correo");
+            String calificacion = mainArray.getString("pon_calif");
 
-                JSONObject node = mainArray.getJSONObject(i);
+            JSONArray mainArrayPonencias = mainNode.getJSONArray("ponencias");
+
+            for(int i = 0; i < mainArrayPonencias.length(); i++) {
+                JSONObject node = mainArrayPonencias.getJSONObject(i);
 
                 long id = node.getLong("pro_id");
                 String nombreArr = node.getString("pro_nombre");
                 String fechaIniArr = node.getString("pro_fecha_ini");
                 String lugarArr = node.getString("pro_lugar");
 
-                Ponencia p =
+                Log.i("PONEN","* "+id+" "+nombreArr+" "+fechaIniArr+" "+lugarArr+" *");
+                /*Ponencia p =
                         new Ponencia(id, nombreArr, fechaIniArr, lugarArr);
 
-                ponencias.add(p);
+                ponencias.add(p);*/
 
             }
 
@@ -122,12 +125,13 @@ public class DetallePonenteTask extends AsyncTask<String, Void, Void> {
                     mContext.getString(R.string.base_url);
             final String QUERY_PARAM = "cod";
             String parametro = c.encriptar(SERVICE_ID + "|" + params[0]);
+            parametro=parametro.replaceAll("\\+", "%2B");
+            parametro=parametro.replaceAll("\\/", "%2F");
 
-            Log.i(LOG_TAG, parametro);
+           /* Uri builtUri = Uri.parse(BASE_URL).buildUpon()
+                    .appendQueryParameter(QUERY_PARAM, parametro).build();*/
 
-            Uri builtUri = Uri.parse(BASE_URL).buildUpon()
-                    .appendQueryParameter(QUERY_PARAM, parametro).build();
-
+            Uri builtUri=Uri.parse(BASE_URL + "cod=" + parametro);
             // Inicializando conexión
             URL url = new URL(builtUri.toString());
             // Estableciendo parametros de petición
