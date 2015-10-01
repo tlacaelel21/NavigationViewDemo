@@ -25,6 +25,7 @@ import com.vinidsl.navigationviewdemo.Model.CarruselModel;
 import com.vinidsl.navigationviewdemo.Model.FeriaIntModel;
 import com.vinidsl.navigationviewdemo.Tasks.CarruselTask;
 import com.vinidsl.navigationviewdemo.Tasks.FeriaInterTask;
+import com.vinidsl.navigationviewdemo.Tasks.TopTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,7 +94,9 @@ public class Pantalla_Princi extends Fragment {
             }
         });
 
-        FeriaInterTask feriasTask= new FeriaInterTask(getActivity());
+        /*FeriaInterTask feriasTask= new FeriaInterTask(getActivity());
+        feriasTask.execute("");*/
+        TopTask feriasTask= new TopTask(getActivity());
         feriasTask.execute("");
 
 
