@@ -1,325 +1,460 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:grid="http://schemas.android.com/apk/res-auto"
-
-    grid:alignmentMode="alignBounds"
-    grid:columnCount="3"
-    grid:rowOrderPreserved="true"
-
+    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:padding="5dp"
+            android:text="7:00"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="26dp" />
+
+        <TextView
+            android:padding="5dp"
+            android:text="8:00"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="26dp" />
+
+        <TextView
+            android:padding="5dp"
+            android:text="9:00"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="26dp" />
+
+        <TextView
+            android:padding="5dp"
+            android:text="10:00"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="26dp" />
+
+        <TextView
+            android:padding="5dp"
+            android:text="11:00"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="24dp" />
+
+        <TextView
+            android:padding="5dp"
+            android:text="12:00"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:padding="5dp"
+            android:text="13:00"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:padding="5dp"
+            android:text="14:00"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:padding="5dp"
+            android:text="15:00"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:padding="5dp"
+            android:text="16:00"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:padding="5dp"
+            android:text="17:00"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:padding="5dp"
+            android:text="18:00"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.GridLayout
+
+        grid:alignmentMode="alignBounds"
+        grid:columnCount="3"
+        grid:rowCount="12"
+        grid:rowOrderPreserved="true"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
-    <!-- 7-->
+        <!-- 7-->
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_7_1"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_7_2"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_7_3"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <!-- 8-->
+        <!-- 8-->
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_8_1"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_8_2"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_8_3"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <!-- 9-->
+        <!-- 9-->
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_9_1"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_9_2"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_9_3"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <!-- 10-->
+        <!-- 10-->
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_10_1"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_10_2"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_10_3"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <!-- 11-->
+        <!-- 11-->
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_11_1"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_11_2"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_11_3"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <!-- 12-->
+        <!-- 12-->
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_12_1"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_12_2"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_12_3"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <!-- 13-->
+        <!-- 13-->
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_13_1"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_13_2"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_13_3"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <!-- 14-->
+        <!-- 14-->
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_14_1"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_14_2"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_14_3"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <!-- 15-->
+        <!-- 15-->
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_15_1"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_15_2"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_15_3"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <!-- 16-->
+        <!-- 16-->
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_16_1"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_16_2"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_16_3"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <!-- 17-->
+        <!-- 17-->
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_17_1"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_17_2"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_17_3"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <!-- 18-->
+        <!-- 18-->
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_18_1"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_18_2"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-    <ImageButton
-        android:layout_margin="1dp"
-        android:background="@android:color/white"
-        grid:layout_columnWeight="1"
-        grid:layout_rowWeight="1"
-        android:layout_height="20dp"
-        android:layout_width="0dp"/>
+        <ImageButton
+            android:id="@+id/celda_18_3"
+            android:layout_margin="1dp"
+            android:background="@android:color/white"
+            grid:layout_columnWeight="1"
+            grid:layout_rowWeight="1"
+            android:layout_height="24dp"
+            android:layout_width="0dp"/>
 
-</android.support.v7.widget.GridLayout>
+    </android.support.v7.widget.GridLayout>
+
+</LinearLayout>

@@ -135,6 +135,7 @@ public class MisEventosAdapter extends ArrayAdapter<MisEventosModel> {
                             }
                             if (item.getItemId() == R.id.item_agenda){
                                 Intent prog = new Intent(act, AgendaActivity.class);
+                                prog.putExtra("id_evento", "" + reg_id);
                                 act.startActivity(prog);
                                 //Toast.makeText(aquery.getContext(), "*Agenda* "+tituloItem, Toast.LENGTH_SHORT).show();
                             }

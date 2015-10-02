@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.vinidsl.navigationviewdemo.Tasks.AgendaTask;
 import com.vinidsl.navigationviewdemo.Tasks.RecintoTask;
 
 /**
@@ -33,7 +34,7 @@ public class AgendaActivity extends AppCompatActivity {
 
             String idEvento = extras.getString("id_evento");
 
-            RecintoTask task = new RecintoTask(this);
+            AgendaTask task = new AgendaTask(this);
             task.execute(idEvento);
         }
 
