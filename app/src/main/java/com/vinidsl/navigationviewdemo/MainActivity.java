@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity
 
         Cifrado obj=new Cifrado();
         //String valorEnc=obj.encriptar("305|prueba@cptm.gob|1234|(null)");
-        /*String valorEnc=obj.encriptar("330|4");
+        /*String valorEnc=obj.encriptar("327");
         valorEnc=valorEnc.replaceAll("\\+", "%2B");
         valorEnc=valorEnc.replaceAll("\\/", "%2F");
         Log.i("ENC",valorEnc);*/
@@ -161,6 +161,11 @@ public class MainActivity extends AppCompatActivity
                             case R.id.aditional2:
                                 Snackbar.make(navigationView, "Item adicional 2 seleccionado", Snackbar.LENGTH_LONG).show();
                                 return true;*/
+                            case R.id.nav_calendario:
+                                CalendarioFragment calendarioFragment = new CalendarioFragment();
+                                MuestraFragment(calendarioFragment);
+                                //Snackbar.make(navigationView, "Item calendario seleccionado", Snackbar.LENGTH_LONG).show();
+                                break;
                             case R.id.nav_ferias_int:
                                 Ferias_Int ferias_int = new Ferias_Int();
                                 MuestraFragment(ferias_int);

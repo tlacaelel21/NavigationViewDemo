@@ -140,7 +140,8 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
 
             Uri builtUri = Uri.parse(BASE_URL).buildUpon()
                     .appendQueryParameter(QUERY_PARAM, parametro).build();
-            //Log.i("SERV",""+builtUri);
+
+            Log.i("SERV",""+builtUri);
             // Inicializando conexión
             URL url = new URL(builtUri.toString());
             // Estableciendo parametros de petición

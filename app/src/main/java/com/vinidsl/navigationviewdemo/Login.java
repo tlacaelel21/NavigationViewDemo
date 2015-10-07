@@ -4,6 +4,7 @@ package com.vinidsl.navigationviewdemo;
  * Created by root on 24/07/15.
  */
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +20,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -103,7 +105,8 @@ public class Login extends Fragment {
                             setMessage("Ingrese datos").setNeutralButton("Cerrar", null).show();
                 }
                 if(paso){
-
+                    Activity activity=(Activity) rootView.getContext();
+                    hideSoftKeyboard(activity);
                     TaskIngreso taskIngreso= new TaskIngreso(rootView.getContext());
                     taskIngreso.execute(email,pass);
 
@@ -156,6 +159,11 @@ public class Login extends Fragment {
     public Fragment visualiza(){
         this.onDestroy();
     return this;
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
     }
 }
 

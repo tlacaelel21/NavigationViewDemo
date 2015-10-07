@@ -3,21 +3,26 @@ package com.vinidsl.navigationviewdemo.Tasks;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.widget.ImageView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.RatingBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.androidquery.AQuery;
-import com.vinidsl.navigationviewdemo.Adapter.PonenciaAdapter;
-import com.vinidsl.navigationviewdemo.Adapter.PonentesAdapter;
+import com.vinidsl.navigationviewdemo.Adapter.AdapterCalendario;
+import com.vinidsl.navigationviewdemo.Adapter.AdapterFeriasNac;
+import com.vinidsl.navigationviewdemo.CalendarioFragment;
 import com.vinidsl.navigationviewdemo.Cifrado;
-import com.vinidsl.navigationviewdemo.Model.Ponencia;
-import com.vinidsl.navigationviewdemo.Model.Ponente;
+import com.vinidsl.navigationviewdemo.Ferias_Nac;
+import com.vinidsl.navigationviewdemo.Model.CalendarioModel;
+import com.vinidsl.navigationviewdemo.Model.CalendarioModel;
 import com.vinidsl.navigationviewdemo.R;
 
 import org.json.JSONArray;
@@ -33,66 +38,46 @@ import java.net.URL;
 import java.util.ArrayList;
 
 /**
- * Created by JoseRogelio on 15/08/2015.
+ * Created by tlacaelel21 on 6/10/15.
  */
-public class DetallePonenteTask extends AsyncTask<String, Void, Void> {
+public class CalendarioTask extends AsyncTask<String, Void, Void> {
 
-    private final String LOG_TAG = DetallePonenteTask.class.getSimpleName();
-    private final String SERVICE_ID = "320";
+    private final String LOG_TAG = CalendarioTask.class.getSimpleName();
+    private final String SERVICE_ID = "327";
 
     private final Context mContext;
     private ProgressDialog mDialog;
-    private Ponente ponente;
-    private ArrayList<Ponencia> ponencias=null ;
+    private ArrayList<CalendarioModel> calendarioListado;
     private int insertados;
-    private AQuery aquery;
 
-    public DetallePonenteTask(Context context) {
+    public CalendarioTask(Context context) {
         mContext = context;
     }
-
+    int mes=0;
     private void populateList(String JsonStr)
             throws JSONException {
-
         try {
-
+            calendarioListado = new ArrayList<CalendarioModel>();
             JSONObject mainNode = new JSONObject(JsonStr);
-           // JSONObject mainNode = new JSONObject(JsonStr);
+            JSONArray mainArray = mainNode.getJSONArray("settings"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
 
-            // detalle_pon:{pon_nombre, pon_foto, pon_empresa, pon_correo, pon_puesto, pon_calif},
-            // ponencias:[{pro_id, pro_nombre, pro_fecha_ini, pro_lugar}, {}, {}]
-
-            JSONObject mainArray = mainNode.getJSONObject("detalle_pon");
-
-
-            String nombre = mainArray.getString("pon_nombre");
-            String foto = mainArray.getString("pon_empresa");
-            String empresa = mainArray.getString("pon_empresa");
-            String correo = mainArray.getString("pon_correo");
-            String calificacion = mainArray.getString("pon_calif");
-
-            JSONArray mainArrayPonencias = mainNode.getJSONArray("ponencias");
-            Ponencia p=null;
-            ponencias=new ArrayList<Ponencia>();
-            for(int i = 0; i < mainArrayPonencias.length(); i++) {
-                JSONObject node = mainArrayPonencias.getJSONObject(i);
-
-                long id = node.getLong("pro_id");
-                String nombreArr = node.getString("pro_nombre");
-                String fechaIniArr = node.getString("pro_fecha_ini");
-                String lugarArr = node.getString("pro_lugar");
-
-                Log.i("PONEN","* "+id+" "+nombreArr+" "+fechaIniArr+" "+lugarArr+" *");
-                p = new Ponencia(id, nombreArr, fechaIniArr, lugarArr);
-                ponencias.add(p);
+            for(int i = 0; i < mainArray.length(); i++) {
+                JSONObject node = mainArray.getJSONObject(i);;
+                String st_titulo = node.getString("st_titulo");
+                String st_url = node.getString("st_url");
+                CalendarioModel calendarioM;
+                if(null!=st_titulo){
+                    if(st_titulo.equals("liga calendario")){
+                        calendarioM =new CalendarioModel(st_titulo,st_url);
+                        calendarioListado.add(calendarioM);
+                        i=mainArray.length();
+                    }
+                }
             }
-
-            ponente = new Ponente(0, 0, nombre, empresa, foto, correo, calificacion);
-
             insertados = 0;
 
-            if ( ponente != null ) {
-                insertados = 1;
+            if ( calendarioListado.size() > 0 ) {
+                insertados = calendarioListado.size();
             }
 
         } catch (JSONException e) {
@@ -122,15 +107,16 @@ public class DetallePonenteTask extends AsyncTask<String, Void, Void> {
             final String BASE_URL =
                     mContext.getString(R.string.base_url);
             final String QUERY_PARAM = "cod";
-            String parametro = c.encriptar(SERVICE_ID + "|" + params[0]);
+            //String parametro = c.encriptar(SERVICE_ID + "|" + params[0]);
+            String parametro = c.encriptar(SERVICE_ID );
             parametro=parametro.replaceAll("\\+", "%2B");
             parametro=parametro.replaceAll("\\/", "%2F");
+            Log.i("SERV",parametro);
 
-           /* Uri builtUri = Uri.parse(BASE_URL).buildUpon()
-                    .appendQueryParameter(QUERY_PARAM, parametro).build();*/
+            /*Uri builtUri = Uri.parse(BASE_URL).buildUpon()
+                    .appendQueryParameter(QUERY_PARAM, "Lk%2B7p%2FCuWuhh5u58dn6nUQ==").build();*/
 
-            Uri builtUri=Uri.parse(BASE_URL + "cod=" + parametro);
-            Log.i("SERV",""+builtUri);
+            Uri builtUri=Uri.parse(BASE_URL+"cod="+parametro);
             // Inicializando conexión
             URL url = new URL(builtUri.toString());
             // Estableciendo parametros de petición
@@ -190,7 +176,7 @@ public class DetallePonenteTask extends AsyncTask<String, Void, Void> {
         }
 
         // validaciones correspondientes
-        if(ponente == null) {
+        if(calendarioListado == null) {
             Toast.makeText(mContext, "Sin conexión a Internet", Toast.LENGTH_LONG).show();
             Log.i("DESCARGA", "SIN INTERNET");
         } else if(insertados == 0) {
@@ -200,39 +186,44 @@ public class DetallePonenteTask extends AsyncTask<String, Void, Void> {
             // ejecución para un caso ideal donde todo resulto exitoso
         } else {
 
-            aquery = new AQuery(mContext);
-            Activity a = (Activity) mContext;
-            TextView nombreTV = (TextView) a.findViewById(R.id.ponente_nombre);
-            TextView puestoTV = (TextView) a.findViewById(R.id.ponente_puesto);
-            TextView empresaTV = (TextView) a.findViewById(R.id.ponente_empresa);
-            TextView correoTV = (TextView) a.findViewById(R.id.ponente_correo);
-            RatingBar califRB = (RatingBar) a.findViewById(R.id.ponente_calificacion);
-            ListView lista = (ListView) a.findViewById(R.id.ponente_lista_ponencias);
-
-            String pathFoto = ponente.getPathFoto();
-
-            float calif;
-            try {
-                calif = Float.parseFloat(ponente.getCalificacion());
-            } catch (NumberFormatException e) {
-                calif = 0f;
-            }
-
-            if(pathFoto != null && !pathFoto.isEmpty()) {
-                aquery.id(R.id.ponente_foto).image(ponente.getPathFoto());
-            }
-
-            nombreTV.setText(ponente.getNombre());
-            puestoTV.setText(ponente.getPuesto());
-            empresaTV.setText("");
-            correoTV.setText(ponente.getCorreo());
-
-            califRB.setMax(5);
-            califRB.setStepSize(0.5f);
-            califRB.setRating(calif);
-
-            PonenciaAdapter adapter = new PonenciaAdapter((Activity) mContext, ponencias);
+            ListView lista = (ListView)
+                    ((Activity) mContext).findViewById(R.id.listadoCalendario); // id del ListView
+            final AdapterCalendario adapter =
+                    new AdapterCalendario((Activity) mContext, calendarioListado);
             lista.setAdapter(adapter);
+
+            /*lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    CalendarioModel n = adapter.getItem(position);
+
+                    Intent activity = new Intent(mContext, CalendarioFragment.class);
+                    activity.putExtra("id", n.getId());
+                    activity.putExtra("titulo", n.getTitulo());
+                    activity.putExtra("desc", n.getUrlExterno());
+                    mContext.startActivity(activity);
+                }
+            });*/
+            /*Activity acitividad= (Activity)mContext;
+
+            ListView lista = (ListView)acitividad.findViewById(R.id.listadoFerias);
+
+            FeriasIntAdapter adapter = new FeriasIntAdapter(acitividad, R.layout.ferias_item,
+                    calendarioListado);
+            lista.setAdapter(adapter);*/
+            /*FeriasIntAdapter adapter =
+                    new FeriasIntAdapter(mContext, );*/
+            //paginador.setAdapter(adapter);
+            /*ViewPager paginador = (ViewPager)
+                    ((Activity) mContext).findViewById(R.id.calendarioListado_contenedor); // id del ViewPager
+            ProgramasAdapter adapter =
+                    new ProgramasAdapter((
+                            (AppCompatActivity) mContext).getSupportFragmentManager(), calendarioListado);
+            paginador.setAdapter(adapter);
+
+
+            ProgramaActivity activity = (ProgramaActivity) mContext;
+            activity.dibujarPaginas(calendarioListado.size());*/
 
         }
 

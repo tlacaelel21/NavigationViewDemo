@@ -1,8 +1,10 @@
 package com.vinidsl.navigationviewdemo;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.vinidsl.navigationviewdemo.Adapter.HorarioAdapter;
 import com.vinidsl.navigationviewdemo.Model.Cita;
@@ -191,6 +194,17 @@ public class AgendaFragment extends Fragment {
                     boton.setBackgroundColor(Color.GREEN);
                 } else if (lista.get(i).getConfirmado().equals("2")) {
                     boton.setBackgroundColor(Color.YELLOW);
+                } else if (!lista.get(i).getConfirmado().equals("0")) {
+                    boton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            Activity activity = getActivity();
+
+                            Toast.makeText(activity, "ENTRO", Toast.LENGTH_LONG).show();
+                        }
+                    });
+
                 }
             } catch(NullPointerException e) {
                 Log.i("BOTON", lista.get(i).getFecha());

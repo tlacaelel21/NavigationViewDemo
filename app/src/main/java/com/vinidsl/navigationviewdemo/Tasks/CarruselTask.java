@@ -3,21 +3,26 @@ package com.vinidsl.navigationviewdemo.Tasks;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.vinidsl.navigationviewdemo.Adapter.CarruselAdapter;
 import com.vinidsl.navigationviewdemo.Adapter.FeriasIntAdapter;
 import com.vinidsl.navigationviewdemo.Cifrado;
+import com.vinidsl.navigationviewdemo.Evento;
 import com.vinidsl.navigationviewdemo.Model.CarruselModel;
 import com.vinidsl.navigationviewdemo.Model.FeriaIntModel;
 import com.vinidsl.navigationviewdemo.Model.Horario;
+import com.vinidsl.navigationviewdemo.Model.TopModel;
 import com.vinidsl.navigationviewdemo.Pantalla_Princi;
 import com.vinidsl.navigationviewdemo.R;
 
@@ -234,6 +239,7 @@ public class CarruselTask extends AsyncTask<String, Void, Void> {
 
             ListView lista = (ListView)actividad.findViewById(R.id.listadoFerias);
 
+
             /*FeriasIntAdapter adapter = new FeriasIntAdapter(actividad, R.layout.ferias_item,
                     feriaListado);
             lista.setAdapter(adapter);*/
@@ -241,7 +247,7 @@ public class CarruselTask extends AsyncTask<String, Void, Void> {
             /************ Para el carrusel ******************/
             ViewPager paginador = (ViewPager)
                     actividad.findViewById(R.id.fotos_contenedor); // id del ViewPager
-            CarruselAdapter adapterCarrusel =
+            final CarruselAdapter adapterCarrusel =
                     new CarruselAdapter((
                             (AppCompatActivity) mContext).getSupportFragmentManager(), carrusel);
             paginador.setAdapter(adapterCarrusel);

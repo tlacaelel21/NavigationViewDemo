@@ -57,10 +57,26 @@ public class EventoModel implements Parcelable {
     }
 
     public String getFecha_inicio_evento() {
+        String dia="", mes="";
+        String Mes[]={"ENE", "FEB", "MZO", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"};
+        if(null!=fecha_inicio_evento&&fecha_inicio_evento.length()>6) {
+            String fecha[] = fecha_inicio_evento.split("-");
+            dia=fecha[2];
+            mes=Mes[Integer.parseInt(fecha[1])-1];
+            fecha_inicio_evento=dia+" "+mes;
+        }
         return fecha_inicio_evento;
     }
 
     public String getFecha_fin_evento() {
+        String dia="", mes="";
+        String Mes[]={"ENE", "FEB", "MZO", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"};
+        if(null!=fecha_fin_evento&&fecha_fin_evento.length()>6) {
+            String fecha[] = fecha_fin_evento.split("-");
+            dia=fecha[2];
+            mes=Mes[Integer.parseInt(fecha[1])-1];
+            fecha_fin_evento=dia+" "+mes;
+        }
         return fecha_fin_evento;
     }
 

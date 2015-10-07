@@ -20,12 +20,16 @@
     <group
         android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_calendario"
+            android:icon="@drawable/ic_event_amar"
+            android:title="@string/nav_item_calendario"/>
+        <item
             android:id="@+id/nav_ferias_int"
-            android:icon="@drawable/menu_international_clear"
+            android:icon="@drawable/head_international_st"
             android:title="@string/nav_item_ferias_int"/>
         <item
             android:id="@+id/nav_ferias_nac"
-            android:icon="@drawable/menu_nacional_clear"
+            android:icon="@drawable/head_national_st"
             android:title="@string/nav_item_ferias_nac"/>
     </group>
     <group

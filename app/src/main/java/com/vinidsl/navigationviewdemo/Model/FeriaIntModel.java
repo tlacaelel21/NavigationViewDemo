@@ -6,6 +6,7 @@ package com.vinidsl.navigationviewdemo.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 public class FeriaIntModel implements Parcelable {
     private long int_id;
@@ -31,10 +32,26 @@ public class FeriaIntModel implements Parcelable {
     }
 
     public String getFechaInicio() {
+        String dia="", mes="";
+        String Mes[]={"ENE", "FEB", "MZO", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"};
+        if(null!=mFechaInicio&&mFechaInicio.length()>6) {
+            String fecha[] = mFechaInicio.split("-");
+            dia=fecha[2];
+            mes=Mes[Integer.parseInt(fecha[1])-1];
+            mFechaInicio=dia+" "+mes;
+        }
         return mFechaInicio;
     }
 
     public String getFechaFin() {
+        String dia="", mes="";
+        String Mes[]={"ENE", "FEB", "MZO", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"};
+        if(null!=mFechaFin&&mFechaFin.length()>6) {
+            String fecha[] = mFechaFin.split("-");
+            dia=fecha[2];
+            mes=Mes[Integer.parseInt(fecha[1])-1];
+            mFechaFin=dia+" "+mes;
+        }
         return mFechaFin;
     }
 

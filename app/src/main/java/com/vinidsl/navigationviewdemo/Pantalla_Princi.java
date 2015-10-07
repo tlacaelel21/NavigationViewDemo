@@ -81,12 +81,17 @@ public class Pantalla_Princi extends Fragment {
         pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                dibujarSeleccion(position);
             }
 
             @Override
             public void onPageSelected(int position) {
-                dibujarSeleccion(position);
+
+                //dibujarSeleccion(position);
+                Log.i("FFF", "ENTRO");
             }
+
+            
 
             @Override
             public void onPageScrollStateChanged(int state) {

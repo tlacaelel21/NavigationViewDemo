@@ -19,6 +19,15 @@
         android:textSize="20sp"
         android:textColor="@android:color/white" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
     <ImageView
         android:background="@drawable/newspaper"
         android:contentDescription="@string/noticias_item_cd_foto"
@@ -26,6 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="198dp"
         android:scaleType="centerCrop"/>
+
 
     <TextView
         android:id="@+id/ponente_nombre"
@@ -90,11 +100,11 @@
         android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:padding="15dp">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -110,13 +120,15 @@
             android:text="@string/ponencia_list_cab_fecha"
             android:textColor="@android:color/white"/>
 
-    </LinearLayout>
 
     <ListView
         android:id="@+id/ponente_lista_ponencias"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="198dp"
         android:divider="@color/default_fondo_img"
         android:dividerHeight="1dp"/>
 
+        </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

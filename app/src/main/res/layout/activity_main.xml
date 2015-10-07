@@ -40,7 +40,7 @@
 
 
         <Button
-            android:background="@drawable/boton_perfil"
+            android:background="@drawable/button_menu_login"
             android:id="@+id/navigation_button"
             android:layout_gravity="bottom|center_horizontal"
             android:gravity="left|center_vertical"
