@@ -43,6 +43,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 
 public class FeriaInterTask extends AsyncTask<String, Void, Void> {
@@ -99,7 +100,7 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
                 aux.add(feriaListado.get(i));
                 //if(mes != messiguiente)
             }*/
-
+            feriaListado=arreglarLista(feriaListado);
             insertados = 0;
 
             if ( feriaListado.size() > 0 ) {
@@ -263,6 +264,107 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
 
         }
 
+    }
+
+    /**
+     * metodo para ordenar la lista añadiendo  cabeceras
+     * @param lista lista original
+     * @return lista ordenada con cabeceras
+     */
+    private ArrayList<FeriaIntModel> arreglarLista(ArrayList<FeriaIntModel> lista) {
+        ArrayList<FeriaIntModel> listaOrden = new ArrayList<FeriaIntModel>();
+        ArrayList<FeriaIntModel> listaSNOrden = lista;
+
+        int indiceListaOrdenada = 0;
+        for(int i = 0; i < listaSNOrden.size() ; i++) {
+            if(i == 0) {
+
+                //long int_id,String int_titulo, String int_lugar, String pais_desc,
+                // String foto_int, String int_inicio, String int_final
+                // se agrega la cabecera
+                FeriaIntModel n = new FeriaIntModel(-1 ,
+                        obtNombreMes(listaSNOrden.get(i).getFecha()),
+                        "Mes",
+                        "", "","","");
+                listaOrden.add(n);
+                indiceListaOrdenada = 0;
+
+            } else {
+
+                if(obtMes(listaSNOrden.get(i).getFecha())
+                        < obtMes(listaOrden.get(indiceListaOrdenada).getFecha())) {
+
+                    //l(long int_id,String int_titulo, String int_lugar, String pais_desc, String foto_int, String int_inicio, String int_final) {
+                    // se agrega la cabecera
+                    FeriaIntModel n = new FeriaIntModel(-1 ,
+                            obtNombreMes(listaSNOrden.get(i).getFecha()),
+                            "Fecha",
+                            "", "","","");
+                    listaOrden.add(n);
+
+                }
+            }
+
+            listaOrden.add(listaSNOrden.get(i));
+            indiceListaOrdenada++;
+
+        }
+        return listaOrden;
+    }
+
+    private String obtNombreMes(String fechaStr) {
+        int mes = 1;
+        // fechaYHORA = [{2015-09-01}, {14:16:01.0}]
+        //String[] fechaYHora = fechaStr.split(Pattern.quote(" "));
+        // fecha = [{2015}, {09}, {01}]
+        String[] fecha = fechaStr.split(Pattern.quote("-"));
+        mes = Integer.parseInt(fecha[1]);
+        switch(mes) {
+            case 1:
+                return "Enero " + fecha[0];
+            case 2:
+                return "Febrero " + fecha[0];
+            case 3:
+                return "Marzo " + fecha[0];
+            case 4:
+                return "Abril " + fecha[0];
+            case 5:
+                return "Mayo " + fecha[0];
+            case 6:
+                return "Junio " + fecha[0];
+            case 7:
+                return "Julio " + fecha[0];
+            case 8:
+                return "Agosto " + fecha[0];
+            case 9:
+                return "Septiembre " + fecha[0];
+            case 10:
+                return "Octubre " + fecha[0];
+            case 11:
+                return "Noviembre " + fecha[0];
+            case 12:
+                return "Diciembre " + fecha[0];
+            default:
+                return "Enero 2015";
+        }
+    }
+
+    /**
+     * metodo para obtener el mes de una fecha con el formato 2015-09-01 14:16:01.0
+     * @param fechaStr cadena que contiene la fecha
+     * @return valor del mes (1-12)
+     */
+    private int obtMes(String fechaStr) {
+        int mes = 1;
+        // fechaYHORA = [{2015-09-01}, {14:16:01.0}]
+        //String[] fechaYHora = fechaStr.split(Pattern.quote(" "));
+        // fecha = [{2015}, {09}, {01}]
+        String[] fecha = fechaStr.split(Pattern.quote("-"));
+        Log.i("TA","->"+fechaStr);
+        Log.i("TA",""+fecha.length);
+        if(!fechaStr.equals(""))
+           mes = Integer.parseInt(fecha[1]);
+        return mes;
     }
 
 }

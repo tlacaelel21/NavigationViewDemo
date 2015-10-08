@@ -12,6 +12,7 @@ public class FeriaIntModel implements Parcelable {
     private long int_id;
     private String mFechaInicio;
     private String mFechaFin;
+    private String mFecha;
     private String mNombre;
     private String int_lugar;
     private String pais_desc;
@@ -25,10 +26,15 @@ public class FeriaIntModel implements Parcelable {
         this.mFechaInicio = int_inicio;
         this.mFechaFin = int_final;
         this.mFotoInt = foto_int;
+        this.mFecha=mFechaInicio;
     }
 
     public long getId() {
         return int_id;
+    }
+
+    public String getFecha() {
+        return mFecha;
     }
 
     public String getFechaInicio() {

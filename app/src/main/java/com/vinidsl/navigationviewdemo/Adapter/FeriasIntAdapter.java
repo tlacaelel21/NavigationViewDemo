@@ -14,6 +14,7 @@ import com.vinidsl.navigationviewdemo.Model.FeriaIntModel;
 import com.vinidsl.navigationviewdemo.R;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class FeriasIntAdapter extends BaseAdapter {
     // constante para saber si el item es cabecera
@@ -89,11 +90,14 @@ public class FeriasIntAdapter extends BaseAdapter {
         if (feriaIntModel != null) {
 
             if(tipoItem == TIPO_ITEM_CONTENIDO) {
+                String fecha = obtNombreMes(feriaIntModel.getFecha()) + obtDia(feriaIntModel.getFecha()) +
+                        ", " + obtAnio(feriaIntModel.getFecha());
                 holder.nombreFI.setText(feriaIntModel.getNombre());
                 holder.ubicacionFI.setText(feriaIntModel.getInt_lugar() + ", " + feriaIntModel.getPais_desc());
                 holder.fecha_inicio_fi.setText(feriaIntModel.getFechaInicio());
                 holder.fecha_fin_fi.setText(feriaIntModel.getFechaFin());
                 String pathFoto = feriaIntModel.getFotoInt();
+                holder.fecha_inicio_fi.setText(fecha);
                 //if(!pathFoto.isEmpty()) {
                     //aquery.id(holder.fotoIV).image(pathFoto);
                     //Log.i("FOTO",pathFoto);
@@ -119,7 +123,7 @@ public class FeriasIntAdapter extends BaseAdapter {
                 //}
             } else if(tipoItem == TIPO_ITEM_CABECERA) {
                 holder.nombreFI.setText(feriaIntModel.getNombre());
-                holder.fecha_inicio_fi.setText(feriaIntModel.getFechaInicio());
+                holder.fecha_inicio_fi.setText(feriaIntModel.getFecha());
                 holder.separadorV.setBackgroundColor(
                         activityRef.getResources().getColor(R.color.cab_ferias_int));
             }
@@ -140,8 +144,8 @@ public class FeriasIntAdapter extends BaseAdapter {
 
          public ViewHolder(View v, int tipo) {
             if(tipo == TIPO_ITEM_CABECERA) {
-                nombreFI = (TextView) v.findViewById(R.id.nombre);
-                fecha_inicio_fi = (TextView) v.findViewById(R.id.ubicacion);
+                nombreFI = (TextView) v.findViewById(R.id.list_titulo);
+                fecha_inicio_fi = (TextView) v.findViewById(R.id.list_subtitulo);
                 separadorV = v.findViewById(R.id.list_separador);
                 fotoIV = null;
             } else if(tipo == TIPO_ITEM_CONTENIDO) {
@@ -156,5 +160,61 @@ public class FeriasIntAdapter extends BaseAdapter {
         }
     }
 
+    private String obtNombreMes(String fechaStr) {
+        int mes = 1;
+        // fechaYHORA = [{2015-09-01}, {14:16:01.0}]
+        String[] fechaYHora = fechaStr.split(Pattern.quote(" "));
+        // fecha = [{2015}, {09}, {01}]
+        String[] fecha = fechaYHora[0].split(Pattern.quote("-"));
+        mes = Integer.parseInt(fecha[1]);
+        switch(mes) {
+            case 1:
+                return "Enero ";
+            case 2:
+                return "Febrero ";
+            case 3:
+                return "Marzo ";
+            case 4:
+                return "Abril ";
+            case 5:
+                return "Mayo ";
+            case 6:
+                return "Junio ";
+            case 7:
+                return "Julio ";
+            case 8:
+                return "Agosto ";
+            case 9:
+                return "Septiembre ";
+            case 10:
+                return "Octubre ";
+            case 11:
+                return "Noviembre ";
+            case 12:
+                return "Diciembre ";
+            default:
+                return "Enero ";
+        }
+    }
+
+    private int obtDia(String fechaStr) {
+        int dia = 1;
+        // fechaYHORA = [{2015-09-01}, {14:16:01.0}]
+        String[] fechaYHora = fechaStr.split(Pattern.quote(" "));
+        // fecha = [{2015}, {09}, {01}]
+        String[] fecha = fechaYHora[0].split(Pattern.quote("-"));
+        dia = Integer.parseInt(fecha[2]);
+        return dia;
+    }
+
+    private int obtAnio(String fechaStr) {
+        int anio = 1;
+        // fechaYHORA = [{2015-09-01}, {14:16:01.0}]
+        String[] fechaYHora = fechaStr.split(Pattern.quote(" "));
+        // fecha = [{2015}, {09}, {01}]
+        String[] fecha = fechaYHora[0].split(Pattern.quote("-"));
+        anio = Integer.parseInt(fecha[0]);
+        return anio;
+    }
 }
 
