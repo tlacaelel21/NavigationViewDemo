@@ -298,10 +298,9 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
                     // se agrega la cabecera
                     FeriaIntModel n = new FeriaIntModel(-1 ,
                             obtNombreMes(listaSNOrden.get(i).getFecha()),
-                            "Fecha",
+                            "Mes",
                             "", "","","");
                     listaOrden.add(n);
-
                 }
             }
 

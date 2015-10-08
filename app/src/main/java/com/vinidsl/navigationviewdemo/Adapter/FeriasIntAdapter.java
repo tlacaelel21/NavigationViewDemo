@@ -77,7 +77,7 @@ public class FeriasIntAdapter extends BaseAdapter {
             if(tipoItem == TIPO_ITEM_CABECERA) {
                 v = vi.inflate(R.layout.list_separador_fi_item, null);
             } else if(tipoItem == TIPO_ITEM_CONTENIDO) {
-                v = vi.inflate(R.layout.ferias_item, null);
+                v = vi.inflate(R.layout.ferias_item , null);
             }
             holder = new ViewHolder(v, getItemViewType(position));
             v.setTag(holder);
@@ -90,6 +90,8 @@ public class FeriasIntAdapter extends BaseAdapter {
         if (feriaIntModel != null) {
 
             if(tipoItem == TIPO_ITEM_CONTENIDO) {
+                holder.nombreFI.setText(feriaIntModel.getNombre());
+
                 String fecha = obtNombreMes(feriaIntModel.getFecha()) + obtDia(feriaIntModel.getFecha()) +
                         ", " + obtAnio(feriaIntModel.getFecha());
                 holder.nombreFI.setText(feriaIntModel.getNombre());
@@ -97,7 +99,8 @@ public class FeriasIntAdapter extends BaseAdapter {
                 holder.fecha_inicio_fi.setText(feriaIntModel.getFechaInicio());
                 holder.fecha_fin_fi.setText(feriaIntModel.getFechaFin());
                 String pathFoto = feriaIntModel.getFotoInt();
-                holder.fecha_inicio_fi.setText(fecha);
+                //holder.fecha_inicio_fi.setText(fecha);
+
                 //if(!pathFoto.isEmpty()) {
                     //aquery.id(holder.fotoIV).image(pathFoto);
                     //Log.i("FOTO",pathFoto);
@@ -123,7 +126,7 @@ public class FeriasIntAdapter extends BaseAdapter {
                 //}
             } else if(tipoItem == TIPO_ITEM_CABECERA) {
                 holder.nombreFI.setText(feriaIntModel.getNombre());
-                holder.fecha_inicio_fi.setText(feriaIntModel.getFecha());
+                holder.fecha_inicio_fi.setText(feriaIntModel.getFechaInicio());
                 holder.separadorV.setBackgroundColor(
                         activityRef.getResources().getColor(R.color.cab_ferias_int));
             }
