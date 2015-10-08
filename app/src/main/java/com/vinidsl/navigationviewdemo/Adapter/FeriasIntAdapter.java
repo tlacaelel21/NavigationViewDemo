@@ -1,28 +1,21 @@
 package com.vinidsl.navigationviewdemo.Adapter;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.androidquery.AQuery;
-import com.vinidsl.navigationviewdemo.Ferias_Int;
+import com.androidquery.callback.ImageOptions;
 import com.vinidsl.navigationviewdemo.Model.FeriaIntModel;
 import com.vinidsl.navigationviewdemo.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FeriasIntAdapter extends BaseAdapter {
-
     // constante para saber si el item es cabecera
     private static final int TIPO_ITEM_CABECERA = 0;
     // constante para saber si el item es un elemento con contenido
@@ -104,7 +97,25 @@ public class FeriasIntAdapter extends BaseAdapter {
                 //if(!pathFoto.isEmpty()) {
                     //aquery.id(holder.fotoIV).image(pathFoto);
                     //Log.i("FOTO",pathFoto);
-                    aquery.id(holder.fotoIV).image(activityRef.getApplicationContext().getString(R.string.base_img)+feriaIntModel.getFotoInt());
+                /*ImageView imageView1 =(ImageView) v.findViewById(R.id.foto_unica);
+                *//*Bitmap bm = BitmapFactory.decodeResource(activityRef.getResources(),R.drawable.fondo_login);
+                roundedImage = new RoundImage(bm);
+                imageView1.setImageDrawable(roundedImage);*//*
+                //aquery.id(holder.fotoIV).image(roundedImage);
+                Bitmap bitmap= null;
+                try {
+                    bitmap = getBitmap("http://desarrollo.smartthinking.com.mx:8080/Cptm/media/FerInt/36_20150930114703.jpg");
+                    roundedImage = new RoundImage(bitmap);
+                    imageView1.setImageDrawable(roundedImage);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }*/
+
+                //aquery.id(holder.fotoIV).image(activityRef.getApplicationContext().getString(R.string.base_img)+feriaIntModel.getFotoInt());
+                ImageOptions options = new ImageOptions();
+                options.round = 205;
+                //aquery.id(id).image(url, options);
+                aquery.id(holder.fotoIV).image(activityRef.getApplicationContext().getString(R.string.base_img)+feriaIntModel.getFotoInt(),options);
                 //}
             } else if(tipoItem == TIPO_ITEM_CABECERA) {
                 holder.nombreFI.setText(feriaIntModel.getNombre());

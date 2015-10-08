@@ -3,6 +3,8 @@ package com.vinidsl.navigationviewdemo;
 /**
  * Created by root on 24/07/15.
  */
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -35,6 +37,7 @@ public class Pantalla_Princi extends Fragment {
     private LinearLayout mIndicatorContainer;
     View rootView;
     Context context;
+    ViewPager viewPager;
 
     public Pantalla_Princi() {
         // Required empty public constructor
@@ -46,6 +49,17 @@ public class Pantalla_Princi extends Fragment {
         // Inflate the layout for this fragment
 
         rootView = inflater.inflate(R.layout.vista_principal, container, false);
+
+        //viewPager= (ViewPager) rootView.findViewById(R.id.fotos_contenedor);
+
+        /*viewPager.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Log.i("CARRUSEL", "CLIC CLIC");
+            }
+        });*/
+
         /*String[][] ferias = {
                 {"feria 1","Paris"},
                 {"feria 2","Tokio"},
@@ -91,13 +105,19 @@ public class Pantalla_Princi extends Fragment {
                 Log.i("FFF", "ENTRO");
             }
 
-            
-
             @Override
             public void onPageScrollStateChanged(int state) {
 
             }
         });
+
+        /*pager.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Log.i("TEST", "CLIC2 CLIC2");
+            }
+        });*/
 
         /*FeriaInterTask feriasTask= new FeriaInterTask(getActivity());
         feriasTask.execute("");*/

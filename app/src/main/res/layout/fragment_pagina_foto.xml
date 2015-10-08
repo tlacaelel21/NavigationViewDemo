@@ -7,7 +7,7 @@
         android:id="@+id/pagina_foto_imagen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY" />
 
     <LinearLayout
         android:background="#9000"

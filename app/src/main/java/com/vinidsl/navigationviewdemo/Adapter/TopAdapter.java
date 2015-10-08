@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.androidquery.AQuery;
+import com.androidquery.callback.ImageOptions;
 import com.vinidsl.navigationviewdemo.Model.TopModel;
 import com.vinidsl.navigationviewdemo.R;
 
@@ -100,7 +101,10 @@ public class TopAdapter extends BaseAdapter {
                 //if(!pathFoto.isEmpty()) {
                 //aquery.id(holder.fotoIV).image(pathFoto);
                 //Log.i("FOTO",pathFoto);
-                aquery.id(holder.fotoIV).image(activityRef.getApplicationContext().getString(R.string.base_img)+topModel.getFotoInt());
+                ImageOptions options = new ImageOptions();
+                options.round = 205;
+                //aquery.id(id).image(url, options);
+                aquery.id(holder.fotoIV).image(activityRef.getApplicationContext().getString(R.string.base_img)+topModel.getFotoInt(),options);
                 //}
             } else if(tipoItem == TIPO_ITEM_CABECERA) {
                 holder.nombreFI.setText(topModel.getNombre());

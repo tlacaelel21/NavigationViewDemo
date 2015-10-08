@@ -110,7 +110,7 @@ public class CarruselTask extends AsyncTask<String, Void, Void> {
                     String ponenteEmp = node.getString("pon_empresa");
                     String ponentePues = node.getString("pon_puesto");*/
 
-                    long id = 1;
+                    long id = node.getLong("int_id");
                     String nombre = "NOMBRE";
                     String fechaIni = "inicio";
                     String fechaFin = "fin";
@@ -255,7 +255,14 @@ public class CarruselTask extends AsyncTask<String, Void, Void> {
             Pantalla_Princi activity = (Pantalla_Princi) fragmento;
             //activity.dibujarPaginas(carrusel.size());
             activity.dibujarPaginas(carrusel.size(), mContext);
+           // paginador.onTouchEvent()
 
+            /*paginador.setOnItemClickListener(new View.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                }
+            });*/
         }
 
     }

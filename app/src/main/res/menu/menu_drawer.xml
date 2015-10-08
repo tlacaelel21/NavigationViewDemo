@@ -21,15 +21,15 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/nav_calendario"
-            android:icon="@drawable/ic_event_amar"
+            android:icon="@drawable/menu_calendario"
             android:title="@string/nav_item_calendario"/>
         <item
             android:id="@+id/nav_ferias_int"
-            android:icon="@drawable/head_international_st"
+            android:icon="@drawable/menu_international"
             android:title="@string/nav_item_ferias_int"/>
         <item
             android:id="@+id/nav_ferias_nac"
-            android:icon="@drawable/head_national_st"
+            android:icon="@drawable/menu_nacional"
             android:title="@string/nav_item_ferias_nac"/>
     </group>
     <group
@@ -37,11 +37,11 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/nav_mis_eventos"
-            android:icon="@drawable/menu_myevents_clear"
+            android:icon="@drawable/menu_myevents"
             android:title="@string/nav_item_mis_eventos" />
         <item
             android:id="@+id/nav_mi_perfil"
-            android:icon="@drawable/menu_profile_clear"
+            android:icon="@drawable/menu_profile"
             android:title="@string/nav_item_mi_perfil" />
 
     </group>
