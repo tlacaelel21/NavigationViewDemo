@@ -4,9 +4,9 @@
     <string name="action_settings">Settings</string>
 
 
-    <string name="base_url">http://www.smartthinking.com.mx:8080/Cptm/DataSMobile?</string>
-    <string name="base_img">http://www.smartthinking.com.mx:8080/Cptm/</string>
-    <string name="base_img_carrusel">http://www.smartthinking.com.mx:8080/Cptm</string>
+    <string name="base_url">http://feriasyeventos.cptm.com.mx/DataSMobile?</string>
+    <string name="base_img">http://feriasyeventos.cptm.com.mx/</string>
+    <string name="base_img_carrusel">http://feriasyeventos.cptm.com.mx/</string>
 
     <!-- Textos para parametros -->
     <string name="espacio_prefs">CPTM_PrefSpace</string>

@@ -185,7 +185,7 @@
                 android:textSize="16dp"
                 android:visibility="gone"/>
             <Spinner
-                android:background="@drawable/field_profile"
+                android:background="@drawable/combo_registro"
                 android:id="@+id/spinnerActi"
                 android:hint="@string/perfil_pais"
                 android:layout_height="wrap_content"
