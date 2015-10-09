@@ -48,7 +48,7 @@
 
         <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:id="@+id/textView1"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"/>
@@ -123,7 +123,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/textView2"
+            android:id="@+id/textCondi"
+            android:layout_weight="0.42"
+            android:paddingTop="25px"
+            android:paddingBottom="25px"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/textPriv"
             android:layout_weight="0.42"
             android:paddingTop="25px"
             android:paddingBottom="25px"

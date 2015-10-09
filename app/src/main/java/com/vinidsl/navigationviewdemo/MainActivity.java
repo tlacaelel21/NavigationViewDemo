@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity
 
         Cifrado obj=new Cifrado();
         //String valorEnc=obj.encriptar("305|prueba@cptm.gob|1234|(null)");
-        /*String valorEnc=obj.encriptar("327");
+       /* String valorEnc=obj.encriptar("327");
         valorEnc=valorEnc.replaceAll("\\+", "%2B");
         valorEnc=valorEnc.replaceAll("\\/", "%2F");
         Log.i("ENC",valorEnc);*/

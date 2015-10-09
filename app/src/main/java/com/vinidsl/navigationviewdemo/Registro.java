@@ -5,7 +5,9 @@ package com.vinidsl.navigationviewdemo;
  */
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -43,8 +45,10 @@ public class Registro extends Fragment {
         //Log.d("ENTRO", "ENTRAAAAAA***************************************************7777777");
         // Inflate the layout for this fragment
         final View rootView = inflater.inflate(R.layout.registro, container, false);
-        TextView username=(TextView)rootView.findViewById(R.id.textView2);
-        username.setText(Html.fromHtml(getString(R.string.term_cond)));
+        TextView username=(TextView)rootView.findViewById(R.id.textCondi);
+        TextView priv=(TextView)rootView.findViewById(R.id.textPriv);
+        username.setText(Html.fromHtml(getString(R.string.cond)));
+        priv.setText(Html.fromHtml(getString(R.string.priv)));
 
         nombre_usr=(TextView)rootView.findViewById(R.id.nombre_usr_reg);
         compania_usr_reg=(TextView)rootView.findViewById(R.id.compania_usr_reg);
@@ -54,6 +58,27 @@ public class Registro extends Fragment {
         pass1=(TextView)rootView.findViewById(R.id.password1);
         pass2=(TextView)rootView.findViewById(R.id.password2);
 
+
+        ((TextView) rootView.findViewById(R.id.textCondi)).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                //Toast.makeText(rootView.getContext(), "Rec Contraseña", Toast.LENGTH_LONG).show();
+                Activity activityRef=(Activity) rootView.getContext() ;
+                String urlLink="http://desarrollo.smartthinking.com.mx:8080/Cptm/media/Avisos/1_20150922143551.pdf";
+                Uri uri = Uri.parse(urlLink); // missing 'http://' will cause crashed
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("" + urlLink));
+                activityRef.startActivity(browserIntent);
+            }
+        });
+        ((TextView) rootView.findViewById(R.id.textPriv)).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                //Toast.makeText(rootView.getContext(), "Rec Contraseña", Toast.LENGTH_LONG).show();
+                Activity activityRef=(Activity) rootView.getContext() ;
+                String urlLink="http://desarrollo.smartthinking.com.mx:8080/Cptm/media/Avisos/2_20150922143542.pdf";
+                Uri uri = Uri.parse(urlLink); // missing 'http://' will cause crashed
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("" + urlLink));
+                activityRef.startActivity(browserIntent);
+            }
+        });
 
         //aButton = (Button)rootView.findViewById(R.id.button);
 

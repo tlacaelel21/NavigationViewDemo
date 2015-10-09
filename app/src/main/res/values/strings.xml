@@ -29,9 +29,14 @@
     <string name="frag4">Ingresa</string>
     <string name="link">www.visitmexico.com</string>
 
-    <string name="term_cond">
+    <string name="cond">
       <![CDATA[
-        Al dar clic en <b>Registra</b> aceptas las <font color="#1CA8B8"><b>Conidiciones de servicio</b></font> y <font color="#1CA8B8"><b>Política de Privacidad</b></font>.
+        Al dar clic en <b>Registra</b> aceptas las <font color="#1CA8B8"><b>Conidiciones de servicio</b></font>
+      ]]>
+    </string>
+    <string name="priv">
+      <![CDATA[
+        y <font color="#1CA8B8"><b>Política de Privacidad</b></font>.
       ]]>
     </string>
     <string name="login_text">
