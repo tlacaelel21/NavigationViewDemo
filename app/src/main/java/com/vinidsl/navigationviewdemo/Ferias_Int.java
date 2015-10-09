@@ -28,6 +28,7 @@ public class Ferias_Int extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.ferias_int, container, false);
+
 /*
         String[][] ferias = {
                 {"feria 1","Paris"},
