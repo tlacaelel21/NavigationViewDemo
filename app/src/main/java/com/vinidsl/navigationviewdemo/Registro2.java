@@ -8,11 +8,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vinidsl.navigationviewdemo.Tasks.RegistroUsuarioMailTask;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by tlacaelel21 on 28/09/15.
@@ -32,6 +37,7 @@ public class Registro2 extends Fragment {
     TextView actividad_usr;
     TextView tel_oficina_usr;
     TextView email_contacto_usr;
+    Spinner spinner2;
 
     String parametro="";
 
@@ -50,6 +56,7 @@ public class Registro2 extends Fragment {
 
         final View rootView = inflater.inflate(R.layout.registro_2, container,false);
 
+
         calle_usr=(TextView)rootView.findViewById(R.id.calle);
         num_ext_usr=(TextView)rootView.findViewById(R.id.num_ext);
         num_int_usr=(TextView)rootView.findViewById(R.id.num_int);
@@ -63,7 +70,10 @@ public class Registro2 extends Fragment {
         tel_oficina_usr=(TextView)rootView.findViewById(R.id.tel_oficina);
         email_contacto_usr=(TextView)rootView.findViewById(R.id.email_contacto);
 
-
+        Spinner spinner=(Spinner)rootView.findViewById(R.id.spinner2);
+        Spinner spinnerAct=(Spinner)rootView.findViewById(R.id.spinnerActi);
+        addItemsOnSpinner2(spinner,rootView);
+        addItemsOnSpinnerAct(spinnerAct, rootView);
         ((Button) rootView.findViewById(R.id.registro_completo)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 String calle = calle_usr.getText().toString();
@@ -85,7 +95,7 @@ public class Registro2 extends Fragment {
                         "|" + municipio + "|" + estado +
                         "|" + pais + "|" + tel_oficina + "|" + pagina + "|" + email_contacto + "|" + actividad;
 
-               // Log.i("VALOR", parametro);
+                // Log.i("VALOR", parametro);
                 RegistroUsuarioMailTask registroUsuarioMailTask = new RegistroUsuarioMailTask(getActivity());
                 registroUsuarioMailTask.execute(parametro, usr_correo);
             }
@@ -104,6 +114,31 @@ public class Registro2 extends Fragment {
     public Fragment visualiza(){
         this.onDestroy();
         return this;
+    }
+
+    public void addItemsOnSpinner2(Spinner spinner2,View rootView) {
+        List<String> list = new ArrayList<String>();
+        list.add("México");
+        list.add("USA");
+        list.add("Colombia");
+        list.add("Croacia");
+        list.add("Ecuador");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_spinner_item,list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner2.setAdapter(dataAdapter);
+    }
+
+    public void addItemsOnSpinnerAct(Spinner spinner2,View rootView) {
+        List<String> list = new ArrayList<String>();
+        list.add("Hoteleria");
+        list.add("Tour Operador / DMC");
+        list.add("Destino");
+        list.add("Estado");
+        list.add("Otro");
+        list.add("Centro de Convenciones");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_spinner_item,list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner2.setAdapter(dataAdapter);
     }
 }
 

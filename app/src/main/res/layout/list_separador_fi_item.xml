@@ -32,7 +32,13 @@
             android:textColor="@color/texto_separador"/>
 
     </LinearLayout>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=""
+        android:background="@color/liston_ferias_int"
+        android:id="@+id/textView8" />
     <View
         android:id="@+id/list_separador"
         android:background="@android:color/black"

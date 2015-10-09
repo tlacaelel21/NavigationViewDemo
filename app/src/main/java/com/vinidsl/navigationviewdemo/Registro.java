@@ -17,12 +17,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vinidsl.navigationviewdemo.Tasks.RegistroUsuarioMailTask;
 import com.vinidsl.navigationviewdemo.Tasks.RegistroUsuarioTask;
+import com.vinidsl.navigationviewdemo.Tasks.ValidaCorreo;
 
 public class Registro extends Fragment {
     Button aButton;
@@ -58,12 +60,22 @@ public class Registro extends Fragment {
         pass1=(TextView)rootView.findViewById(R.id.password1);
         pass2=(TextView)rootView.findViewById(R.id.password2);
 
+        correo_usr_reg.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    final String email=correo_usr_reg.getText().toString();
+                    ValidaCorreo validaCorreo=new ValidaCorreo(rootView.getContext());
+                    validaCorreo.execute(email);
+                }
+            }
+        });
 
         ((TextView) rootView.findViewById(R.id.textCondi)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 //Toast.makeText(rootView.getContext(), "Rec Contraseña", Toast.LENGTH_LONG).show();
-                Activity activityRef=(Activity) rootView.getContext() ;
-                String urlLink="http://desarrollo.smartthinking.com.mx:8080/Cptm/media/Avisos/1_20150922143551.pdf";
+                Activity activityRef = (Activity) rootView.getContext();
+                String urlLink = "http://desarrollo.smartthinking.com.mx:8080/Cptm/media/Avisos/1_20150922143551.pdf";
                 Uri uri = Uri.parse(urlLink); // missing 'http://' will cause crashed
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("" + urlLink));
                 activityRef.startActivity(browserIntent);
@@ -90,15 +102,15 @@ public class Registro extends Fragment {
                         String usr_puesto = puesto_usr_reg.getText().toString();
                         String usr_tel = telefono_usr_reg.getText().toString();
                         String usr_correo = correo_usr_reg.getText().toString();
-                        String usr_psw1= pass1.getText().toString();
-                        String usr_psw2= pass2.getText().toString();
+                        String usr_psw1 = pass1.getText().toString();
+                        String usr_psw2 = pass2.getText().toString();
 
-                        if(usr_psw1.equals(usr_psw2)){
+                        if (usr_psw1.equals(usr_psw2) && !usr_psw1.equals("") && !usr_psw2.equals("")) {
 
-                        //nombre|cargo|telefono|email|password|compañía|calle|noext|noint|colonia|cp|municipio|estado|
-                        //id_pais|tel_oficina|pagina_web|email_contacto|id_actividad
-                        String parametro = usr_nombre + "|"+usr_puesto+"|"+usr_tel+"|"+usr_correo+"|"+usr_correo+"|"+pass1+
-                                "|"+usr_comp;
+                            //nombre|cargo|telefono|email|password|compañía|calle|noext|noint|colonia|cp|municipio|estado|
+                            //id_pais|tel_oficina|pagina_web|email_contacto|id_actividad
+                            String parametro = usr_nombre + "|" + usr_puesto + "|" + usr_tel + "|" + usr_correo + "|" + usr_correo + "|" + pass1 +
+                                    "|" + usr_comp;
 
 
                         /*RegistroUsuarioTask registroUsuarioTask=new RegistroUsuarioTask(getActivity());
@@ -129,8 +141,8 @@ public class Registro extends Fragment {
                             ft.addToBackStack(null);
                             ft.commit();
 
-                        }else{
-                            Context mContext=rootView.getContext();
+                        } else {
+                            Context mContext = rootView.getContext();
                             Toast.makeText(mContext, "Las contreñas no coinciden", Toast.LENGTH_LONG).show();
                         }
 

@@ -126,7 +126,20 @@
                 android:layout_margin="5dp"
                 android:layout_width="match_parent"
                 android:padding="15dp"
-                android:textSize="16dp"/>
+                android:textSize="16dp"
+                android:visibility="gone"/>
+
+            <Spinner
+                android:background="@drawable/field_profile"
+                android:id="@+id/spinner2"
+                android:hint="@string/perfil_pais"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"
+                android:prompt="@string/perfil_pais"
+                />
 
             <EditText
                 android:background="@drawable/field_profile"
@@ -154,7 +167,7 @@
                 android:background="@drawable/field_profile"
                 android:id="@+id/email_contacto"
                 android:inputType="textEmailAddress|textAutoComplete"
-                android:hint="@string/perfil_actividad"
+                android:hint="Correo de contacto"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_width="match_parent"
@@ -169,7 +182,19 @@
                 android:layout_margin="5dp"
                 android:layout_width="match_parent"
                 android:padding="15dp"
-                android:textSize="16dp"/>
+                android:textSize="16dp"
+                android:visibility="gone"/>
+            <Spinner
+                android:background="@drawable/field_profile"
+                android:id="@+id/spinnerActi"
+                android:hint="@string/perfil_pais"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:textSize="16dp"
+                android:prompt="@string/perfil_actividad"
+                />
 
             <Button
                 android:background="@drawable/botonpulsado"
