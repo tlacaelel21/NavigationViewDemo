@@ -77,8 +77,10 @@ public class Registro extends Fragment {
                 Activity activityRef = (Activity) rootView.getContext();
                 String urlLink = "http://desarrollo.smartthinking.com.mx:8080/Cptm/media/Avisos/1_20150922143551.pdf";
                 Uri uri = Uri.parse(urlLink); // missing 'http://' will cause crashed
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("" + urlLink));
-                activityRef.startActivity(browserIntent);
+                Intent intent = new Intent(rootView.getContext(), WebActivity.class);
+                intent.putExtra("urlOpen", ""+uri );
+                intent.putExtra("urlTipo", "1" );
+                activityRef.startActivity(intent);
             }
         });
         ((TextView) rootView.findViewById(R.id.textPriv)).setOnClickListener(new View.OnClickListener() {
@@ -86,9 +88,10 @@ public class Registro extends Fragment {
                 //Toast.makeText(rootView.getContext(), "Rec Contraseña", Toast.LENGTH_LONG).show();
                 Activity activityRef=(Activity) rootView.getContext() ;
                 String urlLink="http://desarrollo.smartthinking.com.mx:8080/Cptm/media/Avisos/2_20150922143542.pdf";
-                Uri uri = Uri.parse(urlLink); // missing 'http://' will cause crashed
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("" + urlLink));
-                activityRef.startActivity(browserIntent);
+                Intent intent = new Intent(rootView.getContext(), WebActivity.class);
+                intent.putExtra("urlOpen", ""+urlLink);
+                intent.putExtra("urlTipo", "1" );
+                activityRef.startActivity(intent);
             }
         });
 

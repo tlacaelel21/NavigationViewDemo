@@ -130,7 +130,7 @@
                 android:visibility="gone"/>
 
             <Spinner
-                android:background="@drawable/field_profile"
+                android:background="@drawable/combo_registro"
                 android:id="@+id/spinner2"
                 android:hint="@string/perfil_pais"
                 android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
                 android:padding="15dp"
                 android:textSize="16dp"/>
             <EditText
-                android:background="@drawable/field_profile"
+                android:background="@drawable/combo_registro"
                 android:id="@+id/actividad"
                 android:inputType="textCapSentences|textAutoComplete"
                 android:hint="@string/perfil_actividad"

@@ -22,6 +22,7 @@ import com.androidquery.AQuery;
 import com.vinidsl.navigationviewdemo.Model.FeriasNacModel;
 import com.vinidsl.navigationviewdemo.Model.FeriasNacModel;
 import com.vinidsl.navigationviewdemo.R;
+import com.vinidsl.navigationviewdemo.WebActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -113,8 +114,13 @@ public class AdapterFeriasNac extends BaseAdapter {
                     @Override
                     public void onClick(View v) {
                         Uri uri = Uri.parse(urlLink); // missing 'http://' will cause crashed
-                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://" + urlLink));
-                            activityRef.startActivity(browserIntent);
+                        Intent intent = new Intent(v.getContext(), WebActivity.class);
+                        intent.putExtra("urlOpen",""+uri );
+                        intent.putExtra("urlTipo", "2" );
+                        activityRef.startActivity(intent);
+                   /* Uri uri = Uri.parse(urlLink); // missing 'http://' will cause crashed
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://" + urlLink));
+                    activityRef.startActivity(browserIntent);*/
                     }
                 });
             } else if(tipoItem == TIPO_ITEM_CABECERA) {
