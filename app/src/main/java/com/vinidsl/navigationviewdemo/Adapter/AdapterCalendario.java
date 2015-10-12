@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.androidquery.AQuery;
 import com.vinidsl.navigationviewdemo.Model.CalendarioModel;
 import com.vinidsl.navigationviewdemo.R;
+import com.vinidsl.navigationviewdemo.WebActivity;
 
 import java.util.ArrayList;
 
@@ -107,8 +108,12 @@ public class AdapterCalendario extends BaseAdapter {
                     if(null!=urlLink) {
                         //if(urlLink.indexOf("http")>0){
                             Uri uri = Uri.parse(urlLink); // missing 'http://' will cause crashed
-                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("" + urlLink));
-                            activityRef.startActivity(browserIntent);
+                            Intent intent = new Intent(v.getContext(), WebActivity.class);
+                            intent.putExtra("urlOpen", ""+uri );
+                            intent.putExtra("urlTipo", "1" );
+                            activityRef.startActivity(intent);
+                            /*Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("" + urlLink));
+                            activityRef.startActivity(browserIntent);*/
                         //}
                     }
                     /*}
