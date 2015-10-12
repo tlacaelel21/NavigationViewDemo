@@ -78,7 +78,7 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
                     String foto = node.getString("int_foto");
                     String int_final = node.getString("int_final");
                     String int_inicio = node.getString("int_inicio");
-                //Log.i("FECHA",int_inicio);
+                    //Log.i("FECHA", int_inicio);
                     //mes=Integer.parseInt(int_inicio.substring(5,7));
                 //Log.i("MES",""+mes);
 
@@ -100,7 +100,13 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
                 aux.add(feriaListado.get(i));
                 //if(mes != messiguiente)
             }*/
-            feriaListado=arreglarLista(feriaListado);
+            feriaListado = arreglarLista(feriaListado);
+
+
+            for(int i = 0; i < feriaListado.size();  i++) {
+                Log.i(LOG_TAG, feriaListado.get(i).getFecha() + " | " +
+                        feriaListado.get(i).getId());
+            }
             insertados = 0;
 
             if ( feriaListado.size() > 0 ) {
@@ -291,8 +297,16 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
 
             } else {
 
-                if(obtMes(listaSNOrden.get(i).getFecha())
-                        < obtMes(listaOrden.get(indiceListaOrdenada).getFecha())) {
+                Log.i(LOG_TAG, obtMes(listaSNOrden.get(i).getFecha()) + " / " +
+                        obtMes(listaOrden.get(indiceListaOrdenada).getFecha()));
+
+                /*if(obtMes(listaSNOrden.get(i).getFecha())
+                        > obtMes(listaOrden.get(indiceListaOrdenada).getFecha())) {*/
+
+                if(validaDiferencia(listaOrden.get(indiceListaOrdenada).getFecha(),
+                        listaSNOrden.get(i).getFecha()) > 0) {
+
+                    Log.i(LOG_TAG, "entre");
 
                     //l(long int_id,String int_titulo, String int_lugar, String pais_desc, String foto_int, String int_inicio, String int_final) {
                     // se agrega la cabecera
@@ -301,6 +315,8 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
                             "Mes",
                             "", "","","");
                     listaOrden.add(n);
+
+                    indiceListaOrdenada++;
                 }
             }
 
@@ -309,6 +325,22 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
 
         }
         return listaOrden;
+    }
+
+    private int validaDiferencia(String fechaIzq, String fechaDer) {
+        String[] fIzqS = fechaIzq.split(Pattern.quote("-"));
+        String[] fDerS = fechaDer.split(Pattern.quote("-"));
+        int anioIzq = Integer.parseInt(fIzqS[0]);
+        int anioDer = Integer.parseInt(fDerS[0]);
+        int mesIzq = Integer.parseInt(fIzqS[1]);
+        int mesDer = Integer.parseInt(fDerS[1]);
+
+        int dif = 0;
+
+        if(anioIzq < anioDer) dif ++;
+        if(mesIzq < mesDer) dif++;
+
+        return dif;
     }
 
     private String obtNombreMes(String fechaStr) {
@@ -359,8 +391,8 @@ public class FeriaInterTask extends AsyncTask<String, Void, Void> {
         //String[] fechaYHora = fechaStr.split(Pattern.quote(" "));
         // fecha = [{2015}, {09}, {01}]
         String[] fecha = fechaStr.split(Pattern.quote("-"));
-        Log.i("TA","->"+fechaStr);
-        Log.i("TA",""+fecha.length);
+        //Log.i("TA","->"+fechaStr);
+        //Log.i("TA",""+fecha.length);
         if(!fechaStr.equals(""))
            mes = Integer.parseInt(fecha[1]);
         return mes;

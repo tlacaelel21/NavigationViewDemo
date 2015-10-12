@@ -63,7 +63,6 @@
         <TextView
             android:padding="15dp"
             android:id="@+id/agenda_sala_uno"
-            android:text="Sala 1"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -72,7 +71,6 @@
         <TextView
             android:padding="15dp"
             android:id="@+id/agenda_sala_dos"
-            android:text="Sala 2"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -81,7 +79,6 @@
         <TextView
             android:padding="15dp"
             android:id="@+id/agenda_sala_tres"
-            android:text="Sala 3"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_weight="1"
