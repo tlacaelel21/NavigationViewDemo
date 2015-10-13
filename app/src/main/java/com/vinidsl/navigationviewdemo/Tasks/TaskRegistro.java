@@ -6,8 +6,10 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vinidsl.navigationviewdemo.Adapter.AdapterCalendario;
@@ -16,6 +18,8 @@ import com.vinidsl.navigationviewdemo.Model.RegistroModel;
 import com.vinidsl.navigationviewdemo.Model.RegistroModel;
 import com.vinidsl.navigationviewdemo.Model.Respuesta;
 import com.vinidsl.navigationviewdemo.R;
+import com.vinidsl.navigationviewdemo.Registro;
+import com.vinidsl.navigationviewdemo.Registro2;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,6 +32,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by tlacaelel21 on 13/10/15.
@@ -42,6 +47,8 @@ public class TaskRegistro extends AsyncTask<String, Void, Void> {
     private ArrayList<RegistroModel> registroListado;
     private int insertados;
 
+    ArrayList<String> paises_des=new ArrayList<String>();
+
     public TaskRegistro(Context context) {
         mContext = context;
     }
@@ -51,16 +58,17 @@ public class TaskRegistro extends AsyncTask<String, Void, Void> {
         try {
             registroListado = new ArrayList<RegistroModel>();
 
+
             JSONObject mainNode = new JSONObject(JsonStr);
             JSONArray mainArray = mainNode.getJSONArray("paises"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
 
             for(int i = 0; i < mainArray.length(); i++) {
                 JSONObject node = mainArray.getJSONObject(i);;
                 String desc = node.getString("desc");
-                String id_pais = node.getString("id");
-                RegistroModel calendarioM;
-                Log.i("SPIN",""+desc);
-                
+                long id_pais = node.getLong("id");
+                RegistroModel calendarioM=new RegistroModel(id_pais,desc);
+                registroListado.add(calendarioM);
+                paises_des.add(desc);
             }
             insertados = 0;
 
@@ -180,14 +188,19 @@ public class TaskRegistro extends AsyncTask<String, Void, Void> {
                     new AdapterCalendario((Activity) mContext, registroListado);
             lista.setAdapter(adapter);
 */
+            Activity a = (Activity) mContext;
+            Spinner paises=(Spinner)a.findViewById(R.id.spinner2);
+            Registro2 registro=new Registro2();
+            registro.addItemsOnSpinner2(paises,mContext,paises_des);
 
-            Spinner inputSP = new Spinner(mContext);
+            /*Spinner inputSP = new Spinner(mContext);
             ArrayList<String> respuestas = new ArrayList<String>();
 
             for(int i = 0; i<registroListado.size() ; i++) {
                 Respuesta[] r = registroListado.get(i).getRespuestas();
 
-            }
+            }*/
+            //RegistroModel registroModel=new RegistroModel();
             /*lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

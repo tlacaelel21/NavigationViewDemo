@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vinidsl.navigationviewdemo.Tasks.RegistroUsuarioMailTask;
+import com.vinidsl.navigationviewdemo.Tasks.TaskRegistro;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +73,7 @@ public class Registro2 extends Fragment {
 
         Spinner spinner=(Spinner)rootView.findViewById(R.id.spinner2);
         Spinner spinnerAct=(Spinner)rootView.findViewById(R.id.spinnerActi);
-        addItemsOnSpinner2(spinner,rootView);
+        //addItemsOnSpinner2(spinner,rootView);
         addItemsOnSpinnerAct(spinnerAct, rootView);
         ((Button) rootView.findViewById(R.id.registro_completo)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -100,6 +101,8 @@ public class Registro2 extends Fragment {
                 registroUsuarioMailTask.execute(parametro, usr_correo);
             }
         });
+        TaskRegistro taskRegistro=new TaskRegistro(rootView.getContext());
+        taskRegistro.execute();
 
         return rootView;
     }
@@ -116,14 +119,17 @@ public class Registro2 extends Fragment {
         return this;
     }
 
-    public void addItemsOnSpinner2(Spinner spinner2,View rootView) {
+    public void addItemsOnSpinner2(Spinner spinner2,Context rootView,ArrayList<String> paises ) {
         List<String> list = new ArrayList<String>();
+        for(int i=0; i<paises.size();i++){
+            list.add(paises.get(i));
+        }
         list.add("México");
-        list.add("USA");
+        /*list.add("USA");
         list.add("Colombia");
         list.add("Croacia");
-        list.add("Ecuador");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_spinner_item,list);
+        list.add("Ecuador");*/
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(rootView, android.R.layout.simple_spinner_item,list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(dataAdapter);
     }

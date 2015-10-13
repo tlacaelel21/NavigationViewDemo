@@ -166,9 +166,6 @@ public class Registro extends Fragment {
                         ft.commit();*/
                     }
                 });
-        TaskRegistro taskRegistro=new TaskRegistro(rootView.getContext());
-        taskRegistro.execute();
-
         return rootView;
     }
 

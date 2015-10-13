@@ -6,30 +6,18 @@ package com.vinidsl.navigationviewdemo.Model;
 public class RegistroModel {
 
     long id;
-    String caption;
-    String tipo;
-    Respuesta[] respuestas;
+    String desc;
 
-    public RegistroModel(long id, String caption, String tipo, Respuesta[] respuestas) {
+    public RegistroModel(long id, String desc) {
         this.id = id;
-        this.caption = caption;
-        this.tipo = tipo;
-        this.respuestas = respuestas;
+        this.desc = desc;
     }
 
     public long getId() {
         return id;
     }
 
-    public String getCaption() {
-        return caption;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public Respuesta[] getRespuestas() {
-        return respuestas;
+    public String getdesc() {
+        return desc;
     }
 }
