@@ -141,6 +141,7 @@ public class MisEventosAdapter extends ArrayAdapter<MisEventosModel> {
                             }
                             if (item.getItemId() == R.id.item_encuesta){
                                 Intent prog = new Intent(act, EncuestaActivity.class);
+                                prog.putExtra("id_evento", "" + reg_id);
                                 act.startActivity(prog);
                                 //Toast.makeText(aquery.getContext(), "** "+tituloItem, Toast.LENGTH_SHORT).show();
                             }

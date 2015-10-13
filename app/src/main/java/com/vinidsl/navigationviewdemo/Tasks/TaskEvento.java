@@ -306,6 +306,7 @@ public class TaskEvento extends AsyncTask<String, Void, Void> {
                             }
                             if (item.getItemId() == R.id.item_patrocinador) {
                                 Intent prog = new Intent(act, PatrocinadoresActivity.class);
+                                prog.putExtra("id_evento", "" + int_id);
                                 act.startActivity(prog);
                                 //Toast.makeText(aquery.getContext(), "** "+tituloItem, Toast.LENGTH_SHORT).show();
                             }

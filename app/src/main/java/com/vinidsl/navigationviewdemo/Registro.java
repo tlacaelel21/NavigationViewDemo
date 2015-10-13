@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.vinidsl.navigationviewdemo.Tasks.RegistroUsuarioMailTask;
 import com.vinidsl.navigationviewdemo.Tasks.RegistroUsuarioTask;
+import com.vinidsl.navigationviewdemo.Tasks.TaskRegistro;
 import com.vinidsl.navigationviewdemo.Tasks.ValidaCorreo;
 
 public class Registro extends Fragment {
@@ -64,8 +65,8 @@ public class Registro extends Fragment {
 
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    final String email=correo_usr_reg.getText().toString();
-                    ValidaCorreo validaCorreo=new ValidaCorreo(rootView.getContext());
+                    final String email = correo_usr_reg.getText().toString();
+                    ValidaCorreo validaCorreo = new ValidaCorreo(rootView.getContext());
                     validaCorreo.execute(email);
                 }
             }
@@ -165,6 +166,8 @@ public class Registro extends Fragment {
                         ft.commit();*/
                     }
                 });
+        TaskRegistro taskRegistro=new TaskRegistro(rootView.getContext());
+        taskRegistro.execute();
 
         return rootView;
     }

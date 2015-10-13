@@ -1,5 +1,6 @@
 package com.vinidsl.navigationviewdemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -56,10 +57,12 @@ public class EncuestaActivity extends AppCompatActivity {
             }
         });
 
-        String idEvento = "1";
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        String id_evento=extras.getString("id_evento");
 
         EncuestasTask task = new EncuestasTask(this);
-        task.execute(idEvento);
+        task.execute(id_evento);
 
     }
 
@@ -74,8 +77,10 @@ public class EncuestaActivity extends AppCompatActivity {
         //String[] respuestas = new String[preguntas.size()];
         int indice = 0;
 
-        String idEvento = "1";
-        String parametro = idEvento;
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        String id_evento=extras.getString("id_evento");
+        String parametro = id_evento;
 
         for(int i = 1; i < contenedor.getChildCount(); i=i+2) {
 
