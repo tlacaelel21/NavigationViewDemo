@@ -109,7 +109,7 @@
             android:textSize="16dp"/>
 
         <Button
-            android:background="@drawable/boton_perfil"
+            android:background="@drawable/botonpulsado"
             android:id="@+id/datos_fiscales_boton_actualizar"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -122,7 +122,7 @@
             android:textStyle="bold"/>
 
         <Button
-            android:background="@drawable/boton_perfil"
+            android:background="@drawable/botonpulsado"
             android:id="@+id/datos_fiscales_boton_eliminar"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"

@@ -18,7 +18,7 @@
     <string name="nav_item_ferias_int">Ferias Internacionales</string>
     <string name="nav_item_ferias_nac">Ferias Nacionales</string>
     <string name="nav_item_calendario">Calendario</string>
-    <string name="nav_item_mis_eventos">Mis eventos</string>
+    <string name="nav_item_mis_eventos">Mis Ferias</string>
     <string name="nav_item_mi_perfil">Mi perfil</string>
     <string name="nav_button_login">Iniciar sesión</string>
     <string name="nav_button_logout">Cerrar sesión</string>

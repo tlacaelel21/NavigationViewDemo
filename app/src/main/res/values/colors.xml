@@ -4,28 +4,28 @@
 
     <color name="primary">#EEEEEE</color>
     <color name="primary_dark">#CCCCCC</color>
-    <color name ="accent">#1CA8B8</color>
+    <color name ="accent">#10A6B7</color>
     <color name="primary_text">#FF0000</color>
-    <color name="primary_text_toolbar">#0099FF</color>
+    <color name="primary_text_toolbar">#10A6B7</color>
     <color name="window_background">#EEEEEE</color>
-    <color name="drawer_item_text">#FF47A3</color>
-    <color name="drawer_item">#9C036D</color>
+    <color name="drawer_item_text">#EA1388</color>
+    <color name="drawer_item">#B52F89</color>
     <color name="link">#000</color>
-    <color name="liston_main">#CB0520</color>
-    <color name="liston_ferias_int">#9C036D</color>
-    <color name="liston_ferias_nac">#CD1170</color>
-    <color name="liston_noticias">#EC8816</color>
-    <color name="titulo_login">#5498BD</color>
+    <color name="liston_main">#B52F89</color>
+    <color name="liston_ferias_int">#B52F89</color>
+    <color name="liston_ferias_nac">#EA1388</color>
+    <color name="liston_noticias">#F3A529</color>
+    <color name="titulo_login">#10A6B7</color>
     <color name="fondo_blanco">#FFFFFF</color>
 
-    <color name="cab_perfil">#5498bd</color>
-    <color name="cab_noticia">#ec8816</color>
-    <color name="cab_patrocinadores">#5498bd</color>
-    <color name="cab_programa">#cb0520</color>
-    <color name="cab_ponentes">#5498bd</color>
-    <color name="cab_encuesta">#9c036d</color>
+    <color name="cab_perfil">#10A6B7</color>
+    <color name="cab_noticia">#F3A529</color>
+    <color name="cab_patrocinadores">#10A6B7</color>
+    <color name="cab_programa">#E92C32</color>
+    <color name="cab_ponentes">#10A6B7</color>
+    <color name="cab_encuesta">#B52F89</color>
     <color name="cab_ferias_int">#ccc</color>
-    <color name="cab_agenda">#7eb112</color>
+    <color name="cab_agenda">#8BC243</color>
 
     <color name="default_fondo_img">#ccc</color>
     <color name="texto_separador">#777</color>

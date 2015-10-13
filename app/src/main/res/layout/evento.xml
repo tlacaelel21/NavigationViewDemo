@@ -7,7 +7,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/liston_main"
+        android:background="@color/cab_programa"
         android:weightSum="1">
         <TextView
             android:layout_width="48dp"
@@ -67,7 +67,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="76dp"
-        android:background="@color/liston_main">
+        android:background="@color/cab_programa">
 
         <TextView
             android:id="@+id/nombre_evento"

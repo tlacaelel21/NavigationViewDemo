@@ -73,7 +73,7 @@
             android:textColor="#FFF"
             android:textStyle="bold"
             android:textSize="20dip"
-            android:background="@drawable/boton_login"
+            android:background="@drawable/botonpulsado"
             android:id="@+id/boton_ingresar"
             android:layout_weight="0.11" />
         <TextView

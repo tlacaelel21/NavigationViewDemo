@@ -10,7 +10,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/liston_main"
+        android:background="@color/cab_programa"
         android:weightSum="1">
         <TextView
             android:layout_width="48dp"
@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Mis eventos"
+            android:text="@string/nav_item_mis_eventos"
             android:id="@+id/textView"
             android:textSize="24dip"
             android:textColor="#FFFFFF"
@@ -86,7 +86,7 @@
         android:layout_height="3dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text=""
-        android:background="@color/liston_main"
+        android:background="@color/cab_programa"
         android:id="@+id/textView8" />
 
     <ListView
