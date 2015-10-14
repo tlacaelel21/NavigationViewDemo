@@ -1,5 +1,7 @@
 package com.vinidsl.navigationviewdemo.Model;
 
+import java.util.ArrayList;
+
 /**
  * Created by JoseRogelio on 21/08/2015.
  */
@@ -8,9 +10,9 @@ public class Pregunta {
     long id;
     String caption;
     String tipo;
-    Respuesta[] respuestas;
+    ArrayList<Respuesta> respuestas;
 
-    public Pregunta(long id, String caption, String tipo, Respuesta[] respuestas) {
+    public Pregunta(long id, String caption, String tipo, ArrayList<Respuesta> respuestas) {
         this.id = id;
         this.caption = caption;
         this.tipo = tipo;
@@ -29,7 +31,7 @@ public class Pregunta {
         return tipo;
     }
 
-    public Respuesta[] getRespuestas() {
+    public ArrayList<Respuesta> getRespuestas() {
         return respuestas;
     }
 }

@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,11 +44,11 @@ import java.util.ArrayList;
  */
 public class EncuestasTask extends AsyncTask<String, Void, Void> {
 
-    private final static String TIPO_INPUT_TEXT = "1";
-    private final static String TIPO_COMBO_BOX = "2";
-    private final static String TIPO_CHECK_BOX = "3";
-    private final static String TIPO_MULTI_CHECK = "4";
-    private final static String TIPO_PICKER = "5";
+    private final static String TIPO_INPUT_TEXT = "3";
+    private final static String TIPO_COMBO_BOX = "4";
+    private final static String TIPO_CHECK_BOX = "2";
+    private final static String TIPO_MULTI_CHECK = "1";
+    private final static String TIPO_PICKER = "0";
 
     private final String LOG_TAG = EncuestasTask.class.getSimpleName();
     private final String SERVICE_ID = "324";
@@ -77,24 +79,27 @@ public class EncuestasTask extends AsyncTask<String, Void, Void> {
 
                 JSONObject node = mainArray.getJSONObject(i);
 
-                long id = node.getLong("preg_id");
-                String caption = node.getString("preg_caption");
-                String tipo = node.getString("preg_tipo");
+                long id = node.getLong("id");
+                String caption = node.getString("texto_esp");
+                String captionIng = node.getString("texto_ing");
+                String tipo = node.getString("tipo");
 
 
                 JSONArray innerArray = node.getJSONArray("respuestas");
 
-                Respuesta[] respuestas = new Respuesta[innerArray.length()];
+                ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
 
                 for (int j = 0; j< innerArray.length(); j++) {
                     JSONObject innerNode = innerArray.getJSONObject(j);
-                    long idArr = innerNode.getInt("resp_id");
-                    String resCaption = innerNode.getString("resp_caption");
-                    respuestas[j] = new Respuesta(idArr, resCaption);
+                    long idArr = innerNode.getInt("id");
+                    String resCaption = innerNode.getString("texto_esp");
+                    String resCaptionIng = innerNode.getString("texto_ing");
+                    respuestas.add(new Respuesta(idArr, resCaption + " / " +
+                        resCaptionIng));
                 }
 
                 Pregunta p =
-                        new Pregunta(id, caption, tipo, respuestas);
+                        new Pregunta(id, caption + " / " + captionIng, tipo, respuestas);
 
                 preguntas.add(p);
 
@@ -243,31 +248,52 @@ public class EncuestasTask extends AsyncTask<String, Void, Void> {
                 caption.setText(preguntas.get(i).getCaption());
                 contenedor.addView(caption);
 
+                LinearLayout.LayoutParams params;
+
                 switch(preguntas.get(i).getTipo()) {
                     case TIPO_INPUT_TEXT:
                         EditText inputET = new EditText(mContext);
                         inputET.setHint("Respuesta");
+                        inputET.setTextSize(16);
                         contenedor.addView(inputET);
+                        params = (LinearLayout.LayoutParams) inputET.getLayoutParams();
+                        params.topMargin = 20;
+                        params.bottomMargin = 30;
+                        params.height = 80;
+                        inputET.setLayoutParams(params);
                         break;
                     case TIPO_CHECK_BOX:
-
+                        RadioGroup group = new RadioGroup(mContext);
+                        contenedor.addView(group);
+                        ArrayList<Respuesta> respuestasG = preguntas.get(i).getRespuestas();
+                        for(int j = 0; j < respuestasG.size(); j++) {
+                            RadioButton button = new RadioButton(mContext);
+                            button.setText(respuestasG.get(j).getRespuesta());
+                            button.setId(j);
+                            group.addView(button);
+                        }
                         break;
                     case TIPO_MULTI_CHECK:
 
                         break;
                     case TIPO_COMBO_BOX:
                         Spinner inputSP = new Spinner(mContext);
-                        ArrayList<String> respuestas = new ArrayList<String>();
-                        Respuesta[] r = preguntas.get(i).getRespuestas();
-                        for(int j = 0 ; j<r.length ; j++) {
-                            respuestas.add(r[j].getRespuesta());
+                        ArrayList<Respuesta> respuestas = preguntas.get(i).getRespuestas();
+                        ArrayList<String> respuestasTexto = new ArrayList<String>();
+                        for(int j = 0; j < respuestas.size(); j++) {
+                            respuestasTexto.add(respuestas.get(j).getRespuesta());
                         }
                         ArrayAdapter<String> adapter =
                                 new ArrayAdapter<String>(mContext,
                                         android.R.layout.simple_expandable_list_item_1,
-                                        respuestas);
+                                        respuestasTexto);
                         inputSP.setAdapter(adapter);
                         contenedor.addView(inputSP);
+                        params = (LinearLayout.LayoutParams) inputSP.getLayoutParams();
+                        params.topMargin = 20;
+                        params.bottomMargin = 30;
+                        params.height = 80;
+                        inputSP.setLayoutParams(params);
                         break;
                     case TIPO_PICKER:
 

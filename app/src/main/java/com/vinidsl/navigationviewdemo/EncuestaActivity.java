@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
@@ -30,11 +31,11 @@ import java.util.ArrayList;
  */
 public class EncuestaActivity extends AppCompatActivity {
 
-    private final static String TIPO_INPUT_TEXT = "1";
-    private final static String TIPO_COMBO_BOX = "2";
-    private final static String TIPO_CHECK_BOX = "3";
-    private final static String TIPO_MULTI_CHECK = "4";
-    private final static String TIPO_PICKER = "5";
+    private final static String TIPO_INPUT_TEXT = "3";
+    private final static String TIPO_COMBO_BOX = "4";
+    private final static String TIPO_CHECK_BOX = "2";
+    private final static String TIPO_MULTI_CHECK = "1";
+    private final static String TIPO_PICKER = "0";
 
     private ArrayList<Pregunta> preguntas;
 
@@ -84,6 +85,8 @@ public class EncuestaActivity extends AppCompatActivity {
 
         for(int i = 1; i < contenedor.getChildCount(); i=i+2) {
 
+            Log.i("PREGUNTA", "-" + i);
+
             switch (preguntas.get(indice).getTipo()) {
                 case TIPO_INPUT_TEXT:
                     EditText inputET = (EditText) contenedor.getChildAt(i);
@@ -97,7 +100,18 @@ public class EncuestaActivity extends AppCompatActivity {
                     //respuestas[indice] = inputET.getText().toString();
                     break;
                 case TIPO_CHECK_BOX:
-
+                    RadioGroup group = (RadioGroup) contenedor.getChildAt(i);
+                    int indexG = group.getCheckedRadioButtonId();
+                    //Log.i("id", "ASD " + indexG + "/" + preguntas.get(indice).getRespuestas().size());
+                    String respTextG = preguntas.get(indice).getRespuestas().get(indexG).getRespuesta();
+                    long respIdG = preguntas.get(indice).getRespuestas().get(indexG).getId();
+                    parametro = parametro
+                            + "|" +
+                            preguntas.get(indice).getId() // id_pregunta
+                            + "|" +
+                            respIdG // id_respuesta
+                            + "|" +
+                            respTextG; // respuesta
                     break;
                 case TIPO_MULTI_CHECK:
 
