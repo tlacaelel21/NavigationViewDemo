@@ -41,6 +41,7 @@ public class Registro2 extends Fragment {
     TextView email_contacto_usr;
     Spinner spinner2;
     long idPais;
+    TaskRegistro taskRegistro;
 
     String parametro="";
 
@@ -93,22 +94,20 @@ public class Registro2 extends Fragment {
                 String actividad = actividad_usr.getText().toString();
                 String tel_oficina = tel_oficina_usr.getText().toString();
                 String email_contacto = email_contacto_usr.getText().toString();
-                pais = String.valueOf(spinner.getSelectedItemPosition() );
-                Log.i("VALOR", pais);
-                idPais=valoresPaises[Integer.parseInt(pais)];
+                pais = String.valueOf(spinner.getSelectedItemPosition());
+                idPais = valoresPaises[Integer.parseInt(pais)];
                 actividad = "1";
-
+                Log.i("VALOR", ""+idPais);
                 String parametro = myValues + "|" + calle + "|" + num_ext + "|" + num_int + "|" + colonia + "|" + codigo_postal +
                         "|" + municipio + "|" + estado +
                         "|" + idPais + "|" + tel_oficina + "|" + pagina + "|" + email_contacto + "|" + actividad;
-
-                Log.i("VALOR", parametro);
-                //RegistroUsuarioMailTask registroUsuarioMailTask = new RegistroUsuarioMailTask(getActivity());
-                //registroUsuarioMailTask.execute(parametro, usr_correo);
+                //Log.i("VALOR", parametro);
             }
         });
-        TaskRegistro taskRegistro=new TaskRegistro(rootView.getContext());
+        taskRegistro=new TaskRegistro(rootView.getContext());
+        taskRegistro.setFragment(this);
         taskRegistro.execute();
+
 
 
         /*spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -145,25 +144,14 @@ public class Registro2 extends Fragment {
         return this;
     }
 
-    public void addItemsOnSpinner2(Spinner spinner2,Context rootView,ArrayList<String> paises ,long valsP[]) {
+    public void addItemsOnSpinner2(Spinner spinner2,Context rootView,ArrayList<String> paises ) {
         List<String> list = new ArrayList<String>();
         for(int i=0; i<paises.size();i++){
             list.add(paises.get(i));
         }
-        //list.add("México");
-        /*list.add("USA");
-        list.add("Colombia");
-        list.add("Croacia");
-        list.add("Ecuador");*/
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(rootView, android.R.layout.simple_spinner_item,list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(dataAdapter);
-        Log.i("VALOR", "" + valsP.length);
-        valoresPaises=new long[valsP.length];
-        valoresPaises=valsP;
-        Log.i("VALOR", "" + valoresPaises.length);
-        Log.i("VALOR", "" + valoresPaises[2]);
-        setValores(valsP);
     }
 
     public void addItemsOnSpinnerAct(Spinner spinner2,View rootView) {

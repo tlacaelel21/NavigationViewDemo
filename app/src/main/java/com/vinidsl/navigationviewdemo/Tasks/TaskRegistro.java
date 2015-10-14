@@ -6,19 +6,14 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vinidsl.navigationviewdemo.Adapter.AdapterCalendario;
+
 import com.vinidsl.navigationviewdemo.Cifrado;
 import com.vinidsl.navigationviewdemo.Model.RegistroModel;
-import com.vinidsl.navigationviewdemo.Model.RegistroModel;
-import com.vinidsl.navigationviewdemo.Model.Respuesta;
 import com.vinidsl.navigationviewdemo.R;
-import com.vinidsl.navigationviewdemo.Registro;
 import com.vinidsl.navigationviewdemo.Registro2;
 
 import org.json.JSONArray;
@@ -48,6 +43,7 @@ public class TaskRegistro extends AsyncTask<String, Void, Void> {
     private int insertados;
     long valoresPaises[];
     String idsP;
+    Registro2 miFrag;
 
     ArrayList<String> paises_des=new ArrayList<String>();
 
@@ -195,9 +191,10 @@ public class TaskRegistro extends AsyncTask<String, Void, Void> {
             Activity a = (Activity) mContext;
             Spinner paises=(Spinner)a.findViewById(R.id.spinner2);
             TextView vals=(TextView)a.findViewById(R.id.num_ext);
-            Registro2 registro=new Registro2();
-            registro.addItemsOnSpinner2(paises,mContext,paises_des,valoresPaises);
-            vals.setText(""+idsP);
+            //Registro2 registro=new Registro2();
+            miFrag.addItemsOnSpinner2(paises,mContext,paises_des);
+            //vals.setText(""+idsP);
+            miFrag.setValores(valoresPaises);
             //registro.setValores(valoresPaises);
 
             /*Spinner inputSP = new Spinner(mContext);
@@ -243,6 +240,13 @@ public class TaskRegistro extends AsyncTask<String, Void, Void> {
 
         }
 
+    }
+    public void setFragment(Registro2 frag) {
+      miFrag=frag;
+    }
+
+    public long getId(int opc){
+        return valoresPaises[opc];
     }
 
 }
