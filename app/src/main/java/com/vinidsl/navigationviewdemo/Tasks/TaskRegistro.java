@@ -46,6 +46,8 @@ public class TaskRegistro extends AsyncTask<String, Void, Void> {
     private ProgressDialog mDialog;
     private ArrayList<RegistroModel> registroListado;
     private int insertados;
+    long valoresPaises[];
+    String idsP;
 
     ArrayList<String> paises_des=new ArrayList<String>();
 
@@ -58,10 +60,10 @@ public class TaskRegistro extends AsyncTask<String, Void, Void> {
         try {
             registroListado = new ArrayList<RegistroModel>();
 
-
             JSONObject mainNode = new JSONObject(JsonStr);
             JSONArray mainArray = mainNode.getJSONArray("paises"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
 
+            valoresPaises=new long[mainArray.length()];
             for(int i = 0; i < mainArray.length(); i++) {
                 JSONObject node = mainArray.getJSONObject(i);;
                 String desc = node.getString("desc");
@@ -69,6 +71,8 @@ public class TaskRegistro extends AsyncTask<String, Void, Void> {
                 RegistroModel calendarioM=new RegistroModel(id_pais,desc);
                 registroListado.add(calendarioM);
                 paises_des.add(desc);
+                valoresPaises[i]= id_pais;
+                idsP=idsP+id_pais+",";
             }
             insertados = 0;
 
@@ -190,8 +194,11 @@ public class TaskRegistro extends AsyncTask<String, Void, Void> {
 */
             Activity a = (Activity) mContext;
             Spinner paises=(Spinner)a.findViewById(R.id.spinner2);
+            TextView vals=(TextView)a.findViewById(R.id.num_ext);
             Registro2 registro=new Registro2();
-            registro.addItemsOnSpinner2(paises,mContext,paises_des);
+            registro.addItemsOnSpinner2(paises,mContext,paises_des,valoresPaises);
+            vals.setText(""+idsP);
+            //registro.setValores(valoresPaises);
 
             /*Spinner inputSP = new Spinner(mContext);
             ArrayList<String> respuestas = new ArrayList<String>();
