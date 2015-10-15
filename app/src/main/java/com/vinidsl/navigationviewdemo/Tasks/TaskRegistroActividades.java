@@ -10,7 +10,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.vinidsl.navigationviewdemo.Cifrado;
 import com.vinidsl.navigationviewdemo.Model.RegistroModel;
 import com.vinidsl.navigationviewdemo.R;
@@ -28,26 +27,25 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-
 /**
- * Created by tlacaelel21 on 13/10/15.
+ * Created by tlacaelel21 on 14/10/15.
  */
-public class TaskRegistro extends AsyncTask<String, Void, Void> {
+public class TaskRegistroActividades extends AsyncTask<String, Void, Void> {
 
-    private final String LOG_TAG = TaskRegistro.class.getSimpleName();
-    private final String SERVICE_ID = "334";
+    private final String LOG_TAG = TaskRegistroActividades.class.getSimpleName();
+    private final String SERVICE_ID = "335";
 
     private final Context mContext;
     private ProgressDialog mDialog;
     private ArrayList<RegistroModel> registroListado;
     private int insertados;
-    long valoresPaises[];
+    long valoresActi[];
     String idsP;
     Registro2 miFrag;
 
-    ArrayList<String> paises_des=new ArrayList<String>();
+    ArrayList<String> actividades_des=new ArrayList<String>();
 
-    public TaskRegistro(Context context) {
+    public TaskRegistroActividades(Context context) {
         mContext = context;
     }
     int mes=0;
@@ -57,17 +55,17 @@ public class TaskRegistro extends AsyncTask<String, Void, Void> {
             registroListado = new ArrayList<RegistroModel>();
 
             JSONObject mainNode = new JSONObject(JsonStr);
-            JSONArray mainArray = mainNode.getJSONArray("paises"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
+            JSONArray mainArray = mainNode.getJSONArray("actividades"); // este método extrae un arreglo de JSON con el nombre de llave_arreglo
 
-            valoresPaises=new long[mainArray.length()];
+            valoresActi=new long[mainArray.length()];
             for(int i = 0; i < mainArray.length(); i++) {
                 JSONObject node = mainArray.getJSONObject(i);;
                 String desc = node.getString("desc");
                 long id_pais = node.getLong("id");
                 RegistroModel calendarioM=new RegistroModel(id_pais,desc);
                 registroListado.add(calendarioM);
-                paises_des.add(desc);
-                valoresPaises[i]= id_pais;
+                actividades_des.add(desc);
+                valoresActi[i]= id_pais;
                 idsP=idsP+id_pais+",";
             }
             insertados = 0;
@@ -107,7 +105,7 @@ public class TaskRegistro extends AsyncTask<String, Void, Void> {
             String parametro = c.encriptar(SERVICE_ID );
             parametro=parametro.replaceAll("\\+", "%2B");
             parametro=parametro.replaceAll("\\/", "%2F");
-            Log.i("SERV",parametro);
+            Log.i("SERV_A",parametro);
 
             /*Uri builtUri = Uri.parse(BASE_URL).buildUpon()
                     .appendQueryParameter(QUERY_PARAM, "Lk%2B7p%2FCuWuhh5u58dn6nUQ==").build();*/
@@ -182,20 +180,12 @@ public class TaskRegistro extends AsyncTask<String, Void, Void> {
             // ejecución para un caso ideal donde todo resulto exitoso
         } else {
 
-            /*ListView lista = (ListView)
-                    ((Activity) mContext).findViewById(R.id.listadoCalendario); // id del ListView
-            final AdapterCalendario adapter =
-                    new AdapterCalendario((Activity) mContext, registroListado);
-            lista.setAdapter(adapter);
-*/
             Activity a = (Activity) mContext;
-            Spinner paises=(Spinner)a.findViewById(R.id.spinner2);
-            TextView vals=(TextView)a.findViewById(R.id.num_ext);
-            //Registro2 registro=new Registro2();
-            miFrag.addItemsOnSpinner2(paises,mContext,paises_des);
-            //vals.setText(""+idsP);
-            miFrag.setValores(valoresPaises);
-            //registro.setValores(valoresPaises);
+            Spinner paises=(Spinner)a.findViewById(R.id.spinnerActi);
+
+            miFrag.addItemsOnSpinnerAct(paises,mContext,actividades_des);
+            miFrag.setValoresAct(valoresActi);
+
 
             /*Spinner inputSP = new Spinner(mContext);
             ArrayList<String> respuestas = new ArrayList<String>();
@@ -242,11 +232,11 @@ public class TaskRegistro extends AsyncTask<String, Void, Void> {
 
     }
     public void setFragment(Registro2 frag) {
-      miFrag=frag;
+        miFrag=frag;
     }
 
     public long getId(int opc){
-        return valoresPaises[opc];
+        return valoresActi[opc];
     }
 
 }

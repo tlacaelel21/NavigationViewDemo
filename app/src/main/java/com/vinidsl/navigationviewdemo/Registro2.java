@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.vinidsl.navigationviewdemo.Tasks.RegistroUsuarioMailTask;
 import com.vinidsl.navigationviewdemo.Tasks.TaskRegistro;
+import com.vinidsl.navigationviewdemo.Tasks.TaskRegistroActividades;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +47,7 @@ public class Registro2 extends Fragment {
     String parametro="";
 
     long valoresPaises[];
+    long valoresActividades[];
 
     public Registro2() {
         // Required empty public constructor
@@ -77,9 +79,9 @@ public class Registro2 extends Fragment {
         email_contacto_usr=(TextView)rootView.findViewById(R.id.email_contacto);
 
         final Spinner spinner=(Spinner)rootView.findViewById(R.id.spinner2);
-        Spinner spinnerAct=(Spinner)rootView.findViewById(R.id.spinnerActi);
+        final Spinner spinnerAct=(Spinner)rootView.findViewById(R.id.spinnerActi);
         //addItemsOnSpinner2(spinner,rootView);
-        addItemsOnSpinnerAct(spinnerAct, rootView);
+        //addItemsOnSpinnerAct(spinnerAct, rootView);
         ((Button) rootView.findViewById(R.id.registro_completo)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 String calle = calle_usr.getText().toString();
@@ -95,18 +97,24 @@ public class Registro2 extends Fragment {
                 String tel_oficina = tel_oficina_usr.getText().toString();
                 String email_contacto = email_contacto_usr.getText().toString();
                 pais = String.valueOf(spinner.getSelectedItemPosition());
+                actividad = String.valueOf(spinnerAct.getSelectedItemPosition());
                 idPais = valoresPaises[Integer.parseInt(pais)];
-                actividad = "1";
+                long idAct = valoresActividades[Integer.parseInt(actividad)];
                 Log.i("VALOR", ""+idPais);
+                Log.i("VALOR", ""+idAct);
                 String parametro = myValues + "|" + calle + "|" + num_ext + "|" + num_int + "|" + colonia + "|" + codigo_postal +
                         "|" + municipio + "|" + estado +
-                        "|" + idPais + "|" + tel_oficina + "|" + pagina + "|" + email_contacto + "|" + actividad;
+                        "|" + idPais + "|" + tel_oficina + "|" + pagina + "|" + email_contacto + "|" + idAct;
                 //Log.i("VALOR", parametro);
             }
         });
         taskRegistro=new TaskRegistro(rootView.getContext());
         taskRegistro.setFragment(this);
         taskRegistro.execute();
+
+        TaskRegistroActividades taskRegistroActividades=new TaskRegistroActividades(rootView.getContext());
+        taskRegistroActividades.setFragment(this);
+        taskRegistroActividades.execute();
 
 
 
@@ -154,21 +162,21 @@ public class Registro2 extends Fragment {
         spinner2.setAdapter(dataAdapter);
     }
 
-    public void addItemsOnSpinnerAct(Spinner spinner2,View rootView) {
+    public void addItemsOnSpinnerAct(Spinner spinnerAct,Context rootView,ArrayList<String> actividades) {
         List<String> list = new ArrayList<String>();
-        list.add("Hoteleria");
-        list.add("Tour Operador / DMC");
-        list.add("Destino");
-        list.add("Estado");
-        list.add("Otro");
-        list.add("Centro de Convenciones");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_spinner_item,list);
+        for(int i=0; i<actividades.size();i++){
+            list.add(actividades.get(i));
+        }
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(rootView, android.R.layout.simple_spinner_item,list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner2.setAdapter(dataAdapter);
+        spinnerAct.setAdapter(dataAdapter);
     }
 
     public void setValores(long valsPaises[]){
         this.valoresPaises=valsPaises;
+    }
+    public void setValoresAct(long valsActi[]){
+        this.valoresActividades=valsActi;
     }
 }
 
