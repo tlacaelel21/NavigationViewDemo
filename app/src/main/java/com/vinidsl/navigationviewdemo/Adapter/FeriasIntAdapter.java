@@ -122,7 +122,7 @@ public class FeriasIntAdapter extends BaseAdapter {
                 ImageOptions options = new ImageOptions();
                 options.round = 205;
                 //aquery.id(id).image(url, options);
-                aquery.id(holder.fotoIV).image(activityRef.getApplicationContext().getString(R.string.base_img)+feriaIntModel.getFotoInt(),options);
+                aquery.id(holder.fotoIV).image(activityRef.getApplicationContext().getString(R.string.base_img)+feriaIntModel.getFotoInt());
                 //}
             } else if(tipoItem == TIPO_ITEM_CABECERA) {
                 holder.nombreFI.setText(feriaIntModel.getNombre());

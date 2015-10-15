@@ -104,7 +104,7 @@ public class TopAdapter extends BaseAdapter {
                 ImageOptions options = new ImageOptions();
                 options.round = 205;
                 //aquery.id(id).image(url, options);
-                aquery.id(holder.fotoIV).image(activityRef.getApplicationContext().getString(R.string.base_img)+topModel.getFotoInt(),options);
+                aquery.id(holder.fotoIV).image(activityRef.getApplicationContext().getString(R.string.base_img)+topModel.getFotoInt());
                 //}
             } else if(tipoItem == TIPO_ITEM_CABECERA) {
                 holder.nombreFI.setText(topModel.getNombre());

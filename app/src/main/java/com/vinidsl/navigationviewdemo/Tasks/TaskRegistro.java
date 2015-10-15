@@ -190,7 +190,6 @@ public class TaskRegistro extends AsyncTask<String, Void, Void> {
 */
             Activity a = (Activity) mContext;
             Spinner paises=(Spinner)a.findViewById(R.id.spinner2);
-            TextView vals=(TextView)a.findViewById(R.id.num_ext);
             //Registro2 registro=new Registro2();
             miFrag.addItemsOnSpinner2(paises,mContext,paises_des);
             //vals.setText(""+idsP);

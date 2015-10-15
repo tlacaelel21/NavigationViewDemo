@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.vinidsl.navigationviewdemo.Tasks.RegistroUsuarioMailTask;
 import com.vinidsl.navigationviewdemo.Tasks.RegistroUsuarioTask;
 import com.vinidsl.navigationviewdemo.Tasks.TaskRegistro;
+import com.vinidsl.navigationviewdemo.Tasks.TaskTermCondi;
 import com.vinidsl.navigationviewdemo.Tasks.ValidaCorreo;
 
 public class Registro extends Fragment {
@@ -48,9 +49,9 @@ public class Registro extends Fragment {
         //Log.d("ENTRO", "ENTRAAAAAA***************************************************7777777");
         // Inflate the layout for this fragment
         final View rootView = inflater.inflate(R.layout.registro, container, false);
-        TextView username=(TextView)rootView.findViewById(R.id.textCondi);
+        TextView condic=(TextView)rootView.findViewById(R.id.textCondi);
         TextView priv=(TextView)rootView.findViewById(R.id.textPriv);
-        username.setText(Html.fromHtml(getString(R.string.cond)));
+        condic.setText(Html.fromHtml(getString(R.string.cond)));
         priv.setText(Html.fromHtml(getString(R.string.priv)));
 
         nombre_usr=(TextView)rootView.findViewById(R.id.nombre_usr_reg);
@@ -72,26 +73,15 @@ public class Registro extends Fragment {
             }
         });
 
-        ((TextView) rootView.findViewById(R.id.textCondi)).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                //Toast.makeText(rootView.getContext(), "Rec Contraseña", Toast.LENGTH_LONG).show();
-                Activity activityRef = (Activity) rootView.getContext();
-                String urlLink = "http://desarrollo.smartthinking.com.mx:8080/Cptm/media/Avisos/1_20150922143551.pdf";
-                Uri uri = Uri.parse(urlLink); // missing 'http://' will cause crashed
-                Intent intent = new Intent(rootView.getContext(), WebActivity.class);
-                intent.putExtra("urlOpen", ""+uri );
-                intent.putExtra("urlTipo", "1" );
-                activityRef.startActivity(intent);
-            }
-        });
+
         ((TextView) rootView.findViewById(R.id.textPriv)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 //Toast.makeText(rootView.getContext(), "Rec Contraseña", Toast.LENGTH_LONG).show();
-                Activity activityRef=(Activity) rootView.getContext() ;
-                String urlLink="http://desarrollo.smartthinking.com.mx:8080/Cptm/media/Avisos/2_20150922143542.pdf";
+                Activity activityRef = (Activity) rootView.getContext();
+                String urlLink = "http://desarrollo.smartthinking.com.mx:8080/Cptm/media/Avisos/2_20150922143542.pdf";
                 Intent intent = new Intent(rootView.getContext(), WebActivity.class);
-                intent.putExtra("urlOpen", ""+urlLink);
-                intent.putExtra("urlTipo", "1" );
+                intent.putExtra("urlOpen", "" + urlLink);
+                intent.putExtra("urlTipo", "1");
                 activityRef.startActivity(intent);
             }
         });
@@ -166,6 +156,11 @@ public class Registro extends Fragment {
                         ft.commit();*/
                     }
                 });
+
+        TaskTermCondi taskTermCondi= new TaskTermCondi(rootView.getContext());
+        taskTermCondi.setFragment(this);
+        taskTermCondi.execute();
+
         return rootView;
     }
 
@@ -179,5 +174,37 @@ public class Registro extends Fragment {
     public Fragment visualiza(){
         this.onDestroy();
         return this;
+    }
+
+    public void colocaLigas(String ligaCondi,TextView textCondi,String ligaTerm,TextView textPriv,Activity a, Context mContext){
+        final String ligaTer=ligaTerm;
+        final String ligaCon=ligaCondi;
+        final Activity activity=a;
+        final Context context=mContext;
+
+        Log.i("LIGA",""+ligaCon);
+        Log.i("LIGA",""+ligaTer);
+
+        textCondi.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                String urlLink = ligaCon;
+                Uri uri = Uri.parse(urlLink); // missing 'http://' will cause crashed
+                Intent intent = new Intent(context, WebActivity.class);
+                intent.putExtra("urlOpen", "" + uri);
+                intent.putExtra("urlTipo", "1");
+                activity.startActivity(intent);
+            }
+        });
+
+        textPriv.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                String urlLink = ligaTer;
+                Uri uri = Uri.parse(urlLink); // missing 'http://' will cause crashed
+                Intent intent = new Intent(context, WebActivity.class);
+                intent.putExtra("urlOpen", "" + uri);
+                intent.putExtra("urlTipo", "1");
+                activity.startActivity(intent);
+            }
+        });
     }
 }
